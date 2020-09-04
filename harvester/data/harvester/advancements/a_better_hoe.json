@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:netherite_hoe"
+    },
+    "title": "A Better Hoe?!",
+    "description": "Obtain an irgol or obdiam hoe",
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "tinkererscraft:tinkerers_craft/make_obdiam",
+  "rewards": {
+    "experience": 100
+  },
+  "criteria": {
+    "impossible": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

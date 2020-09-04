@@ -1,0 +1,37 @@
+as 1 at 1 at player as 2 if ID 2 = ID 1 tp player to 2
+
+
+
+have a scoreboard dummy to track number of teleporter IDs
+test conduit items on the ground WITHOUT a tag if the block theyre in is a door (since full block etc etc)
+if it is spawn an AEC with the tag entrance and the score of the current teleporter ID
+data modify the conduit item to have the tag and a teleporter ID NBT of the current ID
+set the teleporter ID scoreboard to n + 1
+test conduit items on the ground WITH the tag and  if the block theyre in is a door
+
+if it is spawn an AEC and execute store the score of its teleporter ID to the one in the data get of the conduit item's teleporter ID nbt and tag it exit
+have a command that runs from all teleporters with the tag entrance that teleports players in distance=..1 to the apropos exit
+not sure how to check for the opposing score but it should be possible with execute
+
+
+
+
+wait actually you can just do scoreboard players add currentID 1
+since yougrab that ID into an armour stand and you have a dummyplayer with the current id
+
+
+
+
+does items keep tag if picked up?
+if you store it in item.tag yes
+
+
+
+
+/execute as @e[type=armor_stand,tag=entrance] at @s at @a[distance=..1] as @e[type=armor_stand,tag=exit] if score @s TPID = @e[type=minecraft:armor_stand,sort=nearest,tag=entrance,limit=1] TPID run tp @p @s 
+
+i think this should work?
+wait no it wont let me
+there now it will
+execute as the entrance at the entrance at the closest player within 1 block as all armour stands with the exit tag if their score is the same as the closest entrance armour stand (from the player) and teleport the closest player from the player to the exit armour stand
+TPID being the scoreboard dummy that stores the teleproter id

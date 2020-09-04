@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:barrier"
+    },
+    "title": "It's Too Small",
+    "description": "Fill a storage segment to full capacity",
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "parent": "tinkererscraft:tinkerers_craft/build_smeltery",
+  "rewards": {
+    "experience": 500
+  },
+  "criteria": {
+    "impossible": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}
