@@ -4,8 +4,8 @@ All of the developmental versions for datapacks created by [touchportal](https:/
 ---
 
 ### List of datapacks:
-+ [Tinkerer's Craft](https:/github.com/touchportal/tinkererscraft) v1.9.1
-+ [Dimensional Doors](https:/github.com/touchportal/dimensionaldoors) v1.3.1
-+ [Harvester](https:/github.com/touchportal/harvester) v1.3.0
++ [Tinkerer's Craft](https:/github.com/touchportal/tinkererscraft)
++ [Dimensional Doors](https:/github.com/touchportal/dimensionaldoors)
++ [Harvester](https:/github.com/touchportal/harvester)
 
 ---
