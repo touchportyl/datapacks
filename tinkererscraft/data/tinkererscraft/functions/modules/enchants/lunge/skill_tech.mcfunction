@@ -11,7 +11,7 @@
 
 
 # advancement
-advancement grant @s only tinkererscraft:tinkerers_craft/lunge_skill
+advancement grant @s until tinkererscraft:skills/lunge_tech
 
 # potion effects
 effect give @s minecraft:speed 7 3 true

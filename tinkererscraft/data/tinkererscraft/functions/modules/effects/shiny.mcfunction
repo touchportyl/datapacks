@@ -6,11 +6,12 @@
 #> -----------------------------------------------
 
 
-#> _template (references: ../null)
-# this acts as a template and can also be used for testing code
+#> shiny (references: ../modules/enchants/shiny/controller)
+# this code displays particle effects as a flair
 
 
-
+#pfx:shiny
+particle minecraft:composter ~ ~0.8 ~ 0.25 0.4 0.25 0 1 normal
 
 
 #> End of file

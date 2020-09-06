@@ -6,11 +6,18 @@
 #> -----------------------------------------------
 
 
-#> _template (references: ../null)
-# this acts as a template and can also be used for testing code
+#> recent (references: ../main)
+# this code tags items that are just casted
 
 
+# pfx:smoke
+scoreboard players set @s TC_SmeltingTimer 80
 
+#todo:gc
+tag @s remove TC_justcasted
+
+# semi-persistent tag
+tag @s add TC_casted
 
 
 #> End of file

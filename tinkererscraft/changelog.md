@@ -1,4 +1,4 @@
-# changelog v2.0
+# changelog v2.0.0
 
 gameplay related changes:
 
@@ -43,12 +43,22 @@ full dev log:
 - removed the requirement of jumping to get the lunge skill tech
 + fixed a bug where jumping did not reset lunge
 + edited the guide book to reflect the change above
-- lowered the reward for the "I Am Speed" advancement
 + buffed the effects of the lunge skill
++ tweaked the smeltery breaking explosion sound effects
++ reworked the storage advancements to prepare for future updates
+- rebalanced the xp rewards for advancements
++ restructured the entire datapack
++ reduced the heated smelting radius to 4 (from 5)
++ improved the flaming particle effect to show the range of the heated effect
 
 
 
 # todo
+
+heated items on the floor has special effects on the block it is on and in
+- grass block turns into dirt, then into coarse dirt (70 > 100)
+- grass, weeds, and flowers turns into dead bushes (85)
+- water will sizzle
 
 run garbage collection at tick 19
 

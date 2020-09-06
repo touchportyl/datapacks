@@ -6,124 +6,68 @@
 #> -----------------------------------------------
 
 
-#> smeltee_detection
-execute as @e[type=minecraft:item] at @s if block ~ ~-1 ~ minecraft:gilded_blackstone run function tinkererscraft:modules/smeltee_detection
+#> item detection > storage fill
+execute as @e[type=minecraft:item] at @s if block ~ ~-1 ~ minecraft:gilded_blackstone run function tinkererscraft:modules/smelting/item_detection
 
-#> build_smeltery
-execute as @e[tag=TC_buildsmeltery] at @s align xyz unless entity @e[tag=TC_smeltery,distance=..15] run function tinkererscraft:modules/build_smeltery
+#> build > initialize
+execute as @e[tag=TC_buildsmeltery] at @s align xyz unless entity @e[tag=TC_smeltery,distance=..15] run function tinkererscraft:modules/smeltery/build
 
 #> smelt
-execute as @e[tag=TC_smelting] at @s as @e[tag=TC_smeltery,distance=..2] at @s align xyz run function tinkererscraft:modules/smelt
+execute as @e[tag=TC_smelting] at @s as @e[tag=TC_smeltery,distance=..2] at @s align xyz run function tinkererscraft:modules/smelting/smelt
 
-#> reaction_irgol
-execute as @e[tag=TC_irgolreaction] at @s run function tinkererscraft:modules/reaction_irgol
+#> irgol
+execute as @e[tag=TC_irgolreaction] at @s run function tinkererscraft:modules/smelting/reacting/irgol
 
-#> reaction_odbiam
-execute as @e[tag=TC_obdiamreaction] at @s run function tinkererscraft:modules/reaction_odbiam
+#> odbiam
+execute as @e[tag=TC_obdiamreaction] at @s run function tinkererscraft:modules/smelting/reacting/odbiam
 
-#> storage_capacity
-execute as @e[tag=TC_smeltery] at @s run function tinkererscraft:modules/storage_capacity
+#> limit > todo
+execute as @e[tag=TC_smeltery] at @s run function tinkererscraft:modules/smeltery/capacity/limit
 
 #todo:gc
 execute as @e[tag=TC_smelting] at @s run kill @s
 
-#> remove_smeltery
-execute as @e[tag=TC_smeltery] at @s run function tinkererscraft:modules/remove_smeltery
+#> check > remove
+execute as @e[tag=TC_smeltery] at @s run function tinkererscraft:modules/smeltery/check
 
-#> effects_ambient
-execute as @e[tag=TC_smeltery] at @s run function tinkererscraft:modules/effects/effects_ambient
+#> smeltery_ambient
+execute as @e[tag=TC_smeltery] at @s run function tinkererscraft:modules/effects/smeltery_ambient
 
-#> ui_display
-execute as @e[tag=TC_smeltery] at @s run function tinkererscraft:modules/ui_display
+#> controller
+execute as @e[tag=TC_smeltery] at @s unless block ^ ^1 ^1 minecraft:black_stained_glass run function tinkererscraft:modules/smeltery/ui/controller
 
-#delete glass item if silk touch
-execute as @e[tag=TC_display] at @s unless block ^ ^1 ^1 minecraft:black_stained_glass run kill @e[type=minecraft:item,name="Black Stained Glass",distance=..1]
-
-#> smeltery_output
-execute as @e[tag=TC_smeltery] at @s run function tinkererscraft:modules/smeltery_output
+#> check > check_anvil
+execute as @e[tag=TC_smeltery] at @s run function tinkererscraft:modules/smeltery/output/check
 
 #> item_frame_alignment
-execute as @e[tag=TC_smeltery,tag=TC_anvil] at @s run function tinkererscraft:modules/item_frame_alignment
+execute as @e[tag=TC_smeltery,tag=TC_anvil] at @s run function tinkererscraft:modules/smeltery/item_frame_alignment
 
-#> smeltery_pouring
-execute as @e[tag=TC_smeltery] at @s if block ^ ^ ^2 minecraft:lever[powered=true] run function tinkererscraft:modules/smeltery_pouring
+#> controller > fx & drain > (item to drain) > casting_item
+execute as @e[tag=TC_smeltery] at @s if block ^ ^ ^2 minecraft:lever[powered=true] run function tinkererscraft:modules/casting/pouring/controller
 
-#> smeltery_pouring_conditions
-execute as @e[tag=TC_smeltery,scores={TC_OutputTimer=1..}] run function tinkererscraft:modules/smeltery_pouring_conditions
+#> conditions
+execute as @e[tag=TC_smeltery,scores={TC_OutputTimer=1..}] run function tinkererscraft:modules/casting/pouring/conditions
 
-#> casting_stop
-execute as @e[tag=TC_stoppour] at @s if block ^ ^ ^2 minecraft:lever[powered=true] run function tinkererscraft:modules/casting_stop
-
-#todo:gc
-execute as @e[tag=TC_smeltery,scores={TC_OutputTimer=1..}] at @s if block ^ ^ ^2 minecraft:lever[powered=false] run scoreboard players reset @s TC_OutputTimer
-execute as @e[tag=TC_stoppour] run tag @s remove TC_stoppour
+#> stop
+execute as @e[tag=TC_stoppour] at @s if block ^ ^ ^2 minecraft:lever[powered=true] run function tinkererscraft:modules/casting/stop
 
 #> casting_hazard
-execute as @e[tag=TC_smeltery] at @s if block ^ ^ ^2 minecraft:lever[powered=true] positioned ^ ^ ^2 run function tinkererscraft:modules/casting_hazard
+execute as @e[tag=TC_smeltery] at @s if block ^ ^ ^2 minecraft:lever[powered=true] positioned ^ ^ ^2 run function tinkererscraft:modules/casting/hazard
 
 #> casting_recent
-execute as @e[tag=TC_justcasted] run function tinkererscraft:modules/casting_recent
+execute as @e[tag=TC_justcasted] run function tinkererscraft:modules/casting/recent
 
+#> flaming > controller
+function tinkererscraft:modules/enchants/flaming
 
-#> -------------------
-#> Custom Tag: Flaming
+#> shiny > controller
+function tinkererscraft:modules/enchants/shiny
 
-# tag flaming items
-tag @e[nbt={SelectedItem:{tag:{TC_Flaming:1b}}}] add TC_isFlaming
-tag @e[nbt={Item:{tag:{TC_Flaming:1b}}}] add TC_isFlaming
+#> heated > controller
+function tinkererscraft:modules/enchants/heated
 
-# catch
-execute as @e[tag=!TC_isFlaming,scores={TC_FlamingTimer=0..}] run scoreboard players reset @s TC_FlamingTimer
-
-#> enchants_flaming
-execute as @e[tag=TC_isFlaming] at @s run function tinkererscraft:modules/enchants/enchants_flaming
-
-
-#> -----------------
-#> Custom Tag: Shiny
-
-# tag shiny items
-tag @e[nbt={SelectedItem:{tag:{TC_Shiny:1b}}}] add TC_isShiny
-
-# catch
-execute as @e[tag=!TC_isShiny,scores={TC_ShinyTimer=0..}] run scoreboard players reset @s TC_ShinyTimer
-
-#> enchants_shiny
-execute as @e[tag=TC_isShiny] at @s run function tinkererscraft:modules/enchants/enchants_shiny
-
-
-#> ------------------
-#> Custom Tag: Heated
-
-# tag heated items
-tag @e[nbt={SelectedItem:{tag:{TC_Heated:1b}}}] add TC_isHeated
-tag @e[nbt={Item:{tag:{TC_Heated:1b}}}] add TC_isHeated
-
-#> enchants_heated
-function tinkererscraft:modules/enchants/enchants_heated
-
-
-#> ------------------
-#> Custom Tag: Lunge
-
-# tag
-execute as @e[nbt={SelectedItem:{tag:{TC_Lunge:1b}}}] at @s run tag @s add TC_holdLunge
-execute as @e[tag=TC_holdLunge] at @s if predicate tinkererscraft:player_checkers/is_sneaking run tag @s add TC_usingLunge
-
-#> enchants_lunge
-execute as @e[tag=TC_usingLunge] run function tinkererscraft:modules/enchants/enchants_lunge
-
-# catch
-execute as @e[tag=!TC_holdLunge] run tag @s remove TC_usingLunge
-execute as @e[tag=TC_usingLunge] if predicate tinkererscraft:player_checkers/is_sneaking_ run tag @s remove TC_usingLunge
-execute as @e[tag=TC_usingLunge,nbt={OnGround:0b}] run tag @s remove TC_usingLunge
-
-# reset lunge
-execute as @e[tag=!TC_usingLunge] run scoreboard players reset @s TC_LungeTimer
-
-#todo:gc
-execute as @e[tag=TC_holdLunge] at @s run tag @s remove TC_holdLunge
-
+#> lunge > controller
+function tinkererscraft:modules/enchants/lunge
 
 
 

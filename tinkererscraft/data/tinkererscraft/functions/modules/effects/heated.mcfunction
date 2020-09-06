@@ -6,11 +6,12 @@
 #> -----------------------------------------------
 
 
-#> _template (references: ../null)
-# this acts as a template and can also be used for testing code
+#> heated (references: ../modules/enchants/heated/controller)
+# this code adds particle effects to heated items
 
 
-
+#pfx:smoke
+particle minecraft:smoke ~ ~0.3 ~ 0.1 0.1 0.1 0 1 normal
 
 
 #> End of file
