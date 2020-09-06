@@ -1,10 +1,10 @@
 # touchportal's Datapacks
 All of the developmental versions for datapacks created by [touchportal](https:/github.com/touchportal) can be found here. The builds here are unfinished and not ready to be used.
 
----
-
 This code is protected by the GNU GPLv3 License
+
 © 2020 Portyl Studios
+
 https://portylstudios.com
 
 ---
