@@ -15,9 +15,7 @@ https://portylstudios.com
 ---
 
 ## Versioning System
-Just because I can, I developed a versioning system with apis and multi-datapack features. It will be released as a template package soon, and all my datapacks will be ported to this new system. [The flowchart on how it works can be found here.](https://bubbl.us/11133984)
-
-<iframe width="90%" height="600" allowfullscreen frameborder="0" src="https://bubbl.us/NTg1MzA3NC8xMTEzMzk4NC9lNmRlMWE4NTcxNWVmOGQ5ZTRiYWViOGE4OGEwNDQzYg==-X?s=11133984&utm_source=page-embed&utm_medium=link"></iframe>
+Just because I can, I developed a versioning system with apis and multi-datapack features. It will be released as a template package soon, and all my datapacks will be ported to this new system. [The flowchart on how it works can be found here.](http://go.bubbl.us/a9e420/ba77?/Datapack-Installation-Flowchart)
 
 ### Features:
 - Standardised naming and structural system no matter what kind of pack you're developing
