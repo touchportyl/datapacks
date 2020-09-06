@@ -48,18 +48,17 @@ execute as @s at @s store result score @s TC_bObsidian run data get entity @e[ta
 scoreboard players operation @s[scores={TC_bObsidian=1..}] TC_lObsidian += @s TC_bObsidian
 
 #sfx:smelting
-playsound minecraft:block.lava.pop block @a ~ ~ ~ 0.5 0.5 0
-particle minecraft:effect ~0.5 ~2 ~0.5 0.2 0.1 0.2 0 10 force
+function tinkererscraft:modules/effects/smelting/smelt
 
 # xp reward
-execute as @s at @s as @e[tag=TC_ironore,distance=..2,scores={TC_lIron=..4096}] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:1}
-execute as @s at @s as @e[tag=TC_goldore,distance=..2,scores={TC_lGold=..4096}] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:1}
-execute as @s at @s as @e[tag=TC_nethergoldore,distance=..2,scores={TC_lGold=..4096}] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:1}
-execute as @s at @s as @e[tag=TC_iron,distance=..2,scores={TC_lIron=..4096}] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
-execute as @s at @s as @e[tag=TC_gold,distance=..2,scores={TC_lGold=..4096}] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
-execute as @s at @s as @e[tag=TC_ironblock,distance=..2,scores={TC_lIron=..4096}] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
-execute as @s at @s as @e[tag=TC_goldblock,distance=..2,scores={TC_lGold=..4096}] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
-execute as @s at @s as @e[tag=TC_obsidian,distance=..2,scores={TC_lObsidian=..4096}] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
+execute as @s[scores={TC_lIron=..4096}] at @s as @e[tag=TC_ironore,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:1}
+execute as @s[scores={TC_lGold=..4096}] at @s as @e[tag=TC_goldore,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:1}
+execute as @s[scores={TC_lGold=..4096}] at @s as @e[tag=TC_nethergoldore,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:1}
+execute as @s[scores={TC_lIron=..4096}] at @s as @e[tag=TC_iron,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
+execute as @s[scores={TC_lGold=..4096}] at @s as @e[tag=TC_gold,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
+execute as @s[scores={TC_lIron=..4096}] at @s as @e[tag=TC_ironblock,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
+execute as @s[scores={TC_lGold=..4096}] at @s as @e[tag=TC_goldblock,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
+execute as @s[scores={TC_lObsidian=..4096}] at @s as @e[tag=TC_obsidian,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
 
 # update ui
 function tinkererscraft:modules/smeltery/ui/update

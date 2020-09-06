@@ -6,7 +6,7 @@
 #> -----------------------------------------------
 
 
-#> check anvil (references: ../modules/smeltery/output/check)
+#> check anvil (references: ../modules/casting/output/check)
 # this code sorts the anvil setup in front of the smeltery into the appropriate tags for the next segment of code
 
 

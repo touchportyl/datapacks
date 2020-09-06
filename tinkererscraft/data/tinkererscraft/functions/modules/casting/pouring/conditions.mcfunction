@@ -49,10 +49,5 @@ execute as @s[tag=TC_outputobdiam,tag=TC_anvil,tag=TC_ingot] run tag @s add TC_s
 execute as @s[tag=TC_outputobdiam,tag=TC_anvil,tag=TC_pressureplate] run tag @s add TC_stoppour
 
 
-#todo:gc
-execute as @e[tag=TC_smeltery,scores={TC_OutputTimer=1..}] at @s if block ^ ^ ^2 minecraft:lever[powered=false] run scoreboard players reset @s TC_OutputTimer
-execute as @e[tag=TC_stoppour] run tag @s remove TC_stoppour
-
-
 #> End of file
 #> -----------

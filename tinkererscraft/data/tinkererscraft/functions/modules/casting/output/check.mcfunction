@@ -17,7 +17,7 @@ execute as @s at @s if block ^ ^-1 ^2 minecraft:cauldron run tag @s add TC_cauld
 execute as @s at @s if block ^ ^-1 ^2 minecraft:anvil run tag @s add TC_anvil
 
 #> check_anvil
-execute as @e[tag=TC_anvil] at @s run function tinkererscraft:modules/smeltery/output/check_anvil
+execute as @s[tag=TC_anvil] at @s run function tinkererscraft:modules/casting/output/check_anvil
 
 
 #> End of file

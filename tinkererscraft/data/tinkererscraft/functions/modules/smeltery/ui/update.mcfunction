@@ -6,7 +6,7 @@
 #> -----------------------------------------------
 
 
-#> update (references: ../modules/smeltery/ui/controller && ../modules/smelting/smelt)
+#> update (references: ../modules/smeltery/ui/controller && ../modules/smelting/smelt && ../modules/casting/pouring/controller && ../modules/smeltery/capcity/limit)
 # this code updates the ore displays
 
 

@@ -34,6 +34,13 @@ execute as @s[scores={TC_lObsidian=4097..}] run scoreboard players set @s TC_lOb
 execute as @s[scores={TC_lIrgol=4097..}] run scoreboard players set @s TC_lGold 4096
 execute as @s[scores={TC_lObdiam=4097..}] run scoreboard players set @s TC_lObsidian 4096
 
+# update ui
+execute as @s[scores={TC_lIron=4097..}] run function tinkererscraft:modules/smeltery/ui/update
+execute as @s[scores={TC_lGold=4097..}] run function tinkererscraft:modules/smeltery/ui/update
+execute as @s[scores={TC_lObsidian=4097..}] run function tinkererscraft:modules/smeltery/ui/update
+execute as @s[scores={TC_lIrgol=4097..}] run function tinkererscraft:modules/smeltery/ui/update
+execute as @s[scores={TC_lObdiam=4097..}] run function tinkererscraft:modules/smeltery/ui/update
+
 
 #> End of file
 #> -----------

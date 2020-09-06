@@ -9,6 +9,8 @@ gameplay related changes:
 + empty tanks no longer show up when cycling through the display
 + jumping now resets lunge
 + the lunge skill no longer requires a jump to activate
++ the heated smelting radius to 4 (from 5)
++ smeltery now makes a hissing sound as an indication of failure
 
 
 full dev log:
@@ -50,6 +52,11 @@ full dev log:
 + restructured the entire datapack
 + reduced the heated smelting radius to 4 (from 5)
 + improved the flaming particle effect to show the range of the heated effect
++ fixed a bug where nether gold ore did not create a smeltery
++ improved item detection by tagging items that cannot be smelted with TC_slag
++ added sound effects for trying to smelt slag
++ fixed a bug where the ui did not update when the storage capacity limiter sets the value
++ fixed a bug where xp did not spawn
 
 
 

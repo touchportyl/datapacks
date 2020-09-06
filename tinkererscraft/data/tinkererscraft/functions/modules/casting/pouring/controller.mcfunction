@@ -28,5 +28,9 @@ execute as @s[tag=TC_anvil] at @s run function tinkererscraft:modules/effects/po
 function tinkererscraft:modules/casting/drain
 
 
+# update ui
+function tinkererscraft:modules/smeltery/ui/update
+
+
 #> End of file
 #> -----------

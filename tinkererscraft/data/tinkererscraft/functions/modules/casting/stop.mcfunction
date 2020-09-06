@@ -19,6 +19,10 @@ execute as @s at @s if block ^ ^ ^2 minecraft:lever[facing=south] run setblock ^
 execute as @s at @s if block ^ ^ ^2 minecraft:lever[facing=east] run setblock ^ ^ ^2 minecraft:lever[facing=east,powered=false] replace
 execute as @s at @s if block ^ ^ ^2 minecraft:lever[facing=west] run setblock ^ ^ ^2 minecraft:lever[facing=west,powered=false] replace
 
+#todo:gc
+execute as @e[tag=TC_smeltery,scores={TC_OutputTimer=1..}] at @s if block ^ ^ ^2 minecraft:lever[powered=false] run scoreboard players reset @s TC_OutputTimer
+execute as @e[tag=TC_stoppour] run tag @s remove TC_stoppour
+
 
 #> End of file
 #> -----------

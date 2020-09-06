@@ -6,7 +6,7 @@
 #> -----------------------------------------------
 
 
-#> effects ambient
+#> ambient (references: ../main)
 # this code adds particle effects and light to running smelteries
 
 
