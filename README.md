@@ -1,9 +1,7 @@
 # touchportal's Datapacks
-All of the developmental versions for datapacks created by [touchportal](https:/github.com/touchportal) can be found here. The builds here are unfinished and not ready to be used.
+All of the developmental versions for datapacks created by [touchportal](https:/github.com/touchportal) can be found here. The builds here are unfinished and are not game ready.
 
-This code is protected by the GNU GPLv3 License
-© 2020 Portyl Studios
-https://portylstudios.com
+This code is protected by the GNU GPLv3 License | © 2020 Portyl Studios https://portylstudios.com
 
 ---
 
@@ -24,4 +22,4 @@ Just because I can, I developed a versioning system with apis and multi-datapack
 - Detect and install your datapack unless a newer version exists
 - Run cleanup code to remove deprecated items, tags, and entities for old versions of your datapack
 - Enable extra features if two datapacks are installed together (uninstalling one pack will simply disable the extra features)
-- Cleanly uninstall and disable your pack with a simple function (<namespace>:uninstall)
+- Cleanly uninstall and disable your pack with a simple function (namespace:uninstall)
