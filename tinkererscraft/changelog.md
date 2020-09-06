@@ -7,6 +7,8 @@ gameplay related changes:
 + throwing in a smeltable item spawns an xp orb as a indication of success
 + smelting ores in the smeltery gives some xp (per stack, it does not consider the amount of ores in a stack)
 + empty tanks no longer show up when cycling through the display
++ jumping now resets lunge
++ the lunge skill no longer requires a jump to activate
 
 
 full dev log:
@@ -29,7 +31,7 @@ full dev log:
 - increased the amount of time taken to cast nuggets, ingots, and obdiam tools
 + fixed a bug where xp is given on smelt even when the smeltery is full
 + redesigned the loading and installing sequence
-+ many tags used for loading and installing are now deprecated
+- many tags and fake player names used for loading and installing are now deprecated
 + added a version checker for filtering minecraft versions from 1.13 to 1.16 (thanks to Ryuggo)
 + added an internal versioning system the datapack
 + added an uninstall file to remove the pack without leaving persistent traces (ignores global objectives, currently doesn't remove custom items from inventories, chests, or floor)
@@ -38,6 +40,11 @@ full dev log:
 + updated the custom enchants system
 + merged the justcasted particle effect with the heated particle effect
 + tweaked the persistent tag for newly casted items to be TC_casted (used to be TC_justcasted)
+- removed the requirement of jumping to get the lunge skill tech
++ fixed a bug where jumping did not reset lunge
++ edited the guide book to reflect the change above
+- lowered the reward for the "I Am Speed" advancement
++ buffed the effects of the lunge skill
 
 
 

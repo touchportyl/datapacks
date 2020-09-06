@@ -12,7 +12,7 @@
     "hidden": false
   },
   "rewards": {
-    "function": "tinkererscraft:advancements/tinkerers_craft"
+    "function": "tinkererscraft:advancements/guide_book"
   },
   "criteria": {
     "found_bastion": {

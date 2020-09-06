@@ -103,57 +103,32 @@ tag @e[nbt={Item:{tag:{TC_Heated:1b}}}] add TC_isHeated
 function tinkererscraft:modules/enchants/enchants_heated
 
 
+#> ------------------
+#> Custom Tag: Lunge
 
-
-
-
-
-
-
-
-#> lunge
-# Custom enchant for Irgol swords
-
-# active weapon detection
+# tag
 execute as @e[nbt={SelectedItem:{tag:{TC_Lunge:1b}}}] at @s run tag @s add TC_holdLunge
 execute as @e[tag=TC_holdLunge] at @s if predicate tinkererscraft:player_checkers/is_sneaking run tag @s add TC_usingLunge
 
-# weapon ability
-execute as @e[tag=TC_usingLunge,scores={TC_LungeTimer=5}] at @s run effect give @s minecraft:speed 1 0 true
-execute as @e[tag=TC_usingLunge,scores={TC_LungeTimer=5}] at @s run effect give @s minecraft:jump_boost 1 0 true
-execute as @e[tag=TC_usingLunge,scores={TC_LungeTimer=5}] at @s run playsound minecraft:entity.experience_orb.pickup player @a ~ ~ ~ 0.5 1 0
+#> enchants_lunge
+execute as @e[tag=TC_usingLunge] run function tinkererscraft:modules/enchants/enchants_lunge
 
-execute as @e[tag=TC_usingLunge,scores={TC_LungeTimer=20}] at @s run effect give @s minecraft:speed 1 1 true
-execute as @e[tag=TC_usingLunge,scores={TC_LungeTimer=20}] at @s run effect give @s minecraft:jump_boost 1 0 true
-execute as @e[tag=TC_usingLunge,scores={TC_LungeTimer=20}] at @s run playsound minecraft:entity.experience_orb.pickup player @a ~ ~ ~ 0.5 1.2 0
-
-execute as @e[tag=TC_usingLunge,scores={TC_LungeTimer=35..}] at @s run effect give @s minecraft:speed 2 2 true
-execute as @e[tag=TC_usingLunge,scores={TC_LungeTimer=35..}] at @s run effect give @s minecraft:jump_boost 1 0 true
-execute as @e[tag=TC_usingLunge,scores={TC_LungeTimer=35}] at @s run playsound minecraft:entity.experience_orb.pickup player @a ~ ~ ~ 0.5 1.4 0
-
-execute as @e[tag=TC_usingLunge,scores={TC_LungeTimer=36..}] at @s if predicate tinkererscraft:player_checkers/is_sneaking_ run particle minecraft:smoke ~ ~1 ~ 0.2 0.2 0.2 0.1 20 normal
-
-# weapon skill move
-execute as @e[tag=TC_usingLunge,scores={TC_LungeTimer=36..40},nbt={OnGround:0b}] at @s if predicate tinkererscraft:player_checkers/is_sneaking_ run tag @s add TC_boostedLunge
-execute as @e[tag=TC_boostedLunge] at @s run effect give @s minecraft:speed 5 2 true
-execute as @e[tag=TC_boostedLunge] at @s run effect give @s minecraft:jump_boost 2 0 true
-execute as @e[tag=TC_boostedLunge] at @s run particle minecraft:explosion ~ ~0.2 ~ 0 0 0 0 1 force
-execute as @e[tag=TC_boostedLunge] at @s run playsound entity.generic.explode block @a ~ ~ ~ 0.5 2 0
-
-execute as @e[tag=TC_boostedLunge] at @s run advancement grant @s only tinkererscraft:tinkerers_craft/lunge_skill
-
-execute as @e[tag=TC_boostedLunge] at @s run tag @s remove TC_boostedLunge
-
-
-# cancel lunge
+# catch
 execute as @e[tag=!TC_holdLunge] run tag @s remove TC_usingLunge
 execute as @e[tag=TC_usingLunge] if predicate tinkererscraft:player_checkers/is_sneaking_ run tag @s remove TC_usingLunge
+execute as @e[tag=TC_usingLunge,nbt={OnGround:0b}] run tag @s remove TC_usingLunge
 
 # reset lunge
 execute as @e[tag=!TC_usingLunge] run scoreboard players reset @s TC_LungeTimer
 
-# remove tag
+#todo:gc
 execute as @e[tag=TC_holdLunge] at @s run tag @s remove TC_holdLunge
+
+
+
+
+
+
 
 
 #> Riptide
