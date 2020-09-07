@@ -25,6 +25,9 @@ execute as @s at @s as @e[type=player,distance=..7,sort=nearest] run advancement
 #todo:gc
 tag @s remove TC_irgolreaction
 
+# display shows recently smelted
+function tinkererscraft:modules/smeltery/ui/override/irgol
+
 
 #> End of file
 #> -----------

@@ -57,10 +57,19 @@ full dev log:
 + added sound effects for trying to smelt slag
 + fixed a bug where the ui did not update when the storage capacity limiter sets the value
 + fixed a bug where xp did not spawn
++ added a ui override system
++ improved the item detection system to automatically switch the ui display to the most recent item thrown in
 
 
 
 # todo
+
+Riptide
+- when holding riptide, randomly tag nearby entities with TC_markedfordeath or TC_markedfordeath_
+- when holding riptide & TC_markedfordeath, effect glowing if near player
+- when holding riptide & TC_markedfordeath & TC_hurt, tag with TC_rip
+
+
 
 heated items on the floor has special effects on the block it is on and in
 - grass block turns into dirt, then into coarse dirt (70 > 100)

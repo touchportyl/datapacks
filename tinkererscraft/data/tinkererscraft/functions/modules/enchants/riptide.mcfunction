@@ -21,7 +21,7 @@ scoreboard players add @e[tag=TC_hurt] TC_rand_20 1
 scoreboard players set @e[tag=TC_hurt,scores={TC_rand_20=20..}] TC_rand_20 1
 
 # activate riptide
-execute as @e[tag=TC_holdRiptide] at @s run tag @e[tag=TC_hurt,scores={TC_rand_20=1..20},distance=..4] add TC_rip
+execute as @e[tag=TC_holdRiptide] at @s run tag @e[tag=TC_hurt,scores={TC_rand_20=4},distance=..4] add TC_rip
 
 #> controller
 execute as @e[tag=TC_rip] at @s run function tinkererscraft:modules/enchants/riptide/controller

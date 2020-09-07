@@ -27,6 +27,9 @@ execute as @s[tag=TC_anvil] at @s run function tinkererscraft:modules/effects/po
 #> drain
 function tinkererscraft:modules/casting/drain
 
+#> conditions
+execute as @s[scores={TC_OutputTimer=1..}] run function tinkererscraft:modules/casting/pouring/conditions
+
 
 # update ui
 function tinkererscraft:modules/smeltery/ui/update

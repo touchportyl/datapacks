@@ -48,12 +48,6 @@ execute as @e[tag=TC_smeltery,tag=TC_anvil] at @s run function tinkererscraft:mo
 #> controller > fx & drain > (item to drain) > casting_item
 execute as @e[tag=TC_smeltery] at @s if block ^ ^ ^2 minecraft:lever[powered=true] run function tinkererscraft:modules/casting/pouring/controller
 
-#> conditions
-execute as @e[tag=TC_smeltery,scores={TC_OutputTimer=1..}] run function tinkererscraft:modules/casting/pouring/conditions
-
-#> stop
-execute as @e[tag=TC_stoppour] at @s if block ^ ^ ^2 minecraft:lever[powered=true] run function tinkererscraft:modules/casting/stop
-
 #> casting_hazard
 execute as @e[tag=TC_smeltery] at @s if block ^ ^ ^2 minecraft:lever[powered=true] positioned ^ ^ ^2 run function tinkererscraft:modules/casting/hazard
 

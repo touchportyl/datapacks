@@ -6,7 +6,7 @@
 #> -----------------------------------------------
 
 
-#> give_item (references: ../modules/casting/drain/..)
+#> custom_items (references: ../modules/casting/drain/..)
 # this contains a list of all the items that can be casted
 # sorted by:
 # - blocks

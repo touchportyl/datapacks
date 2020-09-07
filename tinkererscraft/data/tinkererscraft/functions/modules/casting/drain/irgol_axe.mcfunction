@@ -15,7 +15,7 @@ execute as @s[scores={TC_OutputTimer=40}] run scoreboard players remove @s TC_lI
 execute as @s[scores={TC_OutputTimer=60}] run scoreboard players remove @s TC_lIrgol 1
 execute as @s[scores={TC_OutputTimer=80..}] run tag @s add TC_stoppour
 
-execute as @s[tag=TC_stoppour] at @s run function tinkererscraft:modules/casting/give_item
+execute as @s[tag=TC_stoppour] at @s run function tinkererscraft:modules/casting/custom_items
 
 
 #> End of file

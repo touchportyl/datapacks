@@ -55,6 +55,16 @@ execute as @e[tag=TC_obsidian,tag=!TC_smelting] run tag @s add TC_buildsmeltery
 tag @e[tag=TC_smelting,tag=!TC_ironore,tag=!TC_goldore,tag=!TC_nethergoldore,tag=!TC_iron,tag=!TC_gold,tag=!TC_ironblock,tag=!TC_goldblock,tag=!TC_obsidian] add TC_slag
 tag @e[tag=TC_slag] remove TC_smelting
 
+# display shows recently smelted
+execute as @e[tag=TC_ironore] at @s as @e[tag=TC_smeltery,distance=..2] at @s run function tinkererscraft:modules/smeltery/ui/override/iron
+execute as @e[tag=TC_goldore] at @s as @e[tag=TC_smeltery,distance=..2] at @s run function tinkererscraft:modules/smeltery/ui/override/gold
+execute as @e[tag=TC_nethergoldore] at @s as @e[tag=TC_smeltery,distance=..2] at @s run function tinkererscraft:modules/smeltery/ui/override/gold
+execute as @e[tag=TC_iron] at @s as @e[tag=TC_smeltery,distance=..2] at @s run function tinkererscraft:modules/smeltery/ui/override/iron
+execute as @e[tag=TC_gold] at @s as @e[tag=TC_smeltery,distance=..2] at @s run function tinkererscraft:modules/smeltery/ui/override/gold
+execute as @e[tag=TC_ironblock] at @s as @e[tag=TC_smeltery,distance=..2] at @s run function tinkererscraft:modules/smeltery/ui/override/iron
+execute as @e[tag=TC_goldblock] at @s as @e[tag=TC_smeltery,distance=..2] at @s run function tinkererscraft:modules/smeltery/ui/override/gold
+execute as @e[tag=TC_obsidian] at @s as @e[tag=TC_smeltery,distance=..2] at @s run function tinkererscraft:modules/smeltery/ui/override/obsidian
+
 
 #> End of file
 #> -----------
