@@ -11,7 +11,7 @@
 
 
 #sfx:clang
-playsound minecraft:block.anvil.place block @a ^ ^ ^2 1 2 0
+playsound minecraft:block.anvil.place block @a ^ ^ ^2 0.5 2 0
 
 #sfx:pour
 playsound minecraft:item.bucket.empty_lava block @a ^ ^ ^2 1 0 0

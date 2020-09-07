@@ -6,6 +6,10 @@
 #> -----------------------------------------------
 
 
+#> main
+# this is the main controller that runs the entirety of tinkerers craft
+
+
 #> item detection > storage fill
 execute as @e[type=minecraft:item] at @s if block ~ ~-1 ~ minecraft:gilded_blackstone run function tinkererscraft:modules/smelting/item_detection
 
@@ -69,60 +73,15 @@ function tinkererscraft:modules/enchants/lunge
 #> riptide > controller
 function tinkererscraft:modules/enchants/riptide
 
+#> guidebook
+execute as @e[nbt={Item:{tag:{TC_GuideBook:1b}},OnGround:1b}] at @s run function tinkererscraft:modules/effects/guidebook
+
+#> guide
+execute as @e[nbt={SelectedItem:{tag:{TC_GuideBook:1b}}}] at @s unless entity @e[tag=TC_smeltery,distance=..15] if predicate tinkererscraft:player_checkers/is_sneaking run function tinkererscraft:modules/smeltery/guide
+
+#> garbage_collection
+function tinkererscraft:modules/garbage_collection/controller
 
 
-
-
-
-#> guidebook visual guide
-
-#active detection
-execute as @e[nbt={SelectedItem:{tag:{TC_GuideBook:1b}}}] at @s if predicate tinkererscraft:player_checkers/is_sneaking run tag @s add TC_activateGuideBook
-
-#player orientation detection
-execute as @e[tag=TC_activateGuideBook,y_rotation=135..225] run tag @s add TC_facingNorth
-execute as @e[tag=TC_activateGuideBook,y_rotation=225..315] run tag @s add TC_facingEast
-execute as @e[tag=TC_activateGuideBook,y_rotation=315..45] run tag @s add TC_facingSouth
-execute as @e[tag=TC_activateGuideBook,y_rotation=45..135] run tag @s add TC_facingWest
-
-#place guide
-function tinkererscraft:packages/guide_book/north_smeltery
-function tinkererscraft:packages/guide_book/east_smeltery
-function tinkererscraft:packages/guide_book/south_smeltery
-function tinkererscraft:packages/guide_book/west_smeltery
-
-# remove tag
-execute as @e[tag=TC_activateGuideBook] at @s run tag @s remove TC_activateGuideBook
-execute as @e[tag=TC_facingNorth] at @s run tag @s remove TC_facingNorth
-execute as @e[tag=TC_facingEast] at @s run tag @s remove TC_facingEast
-execute as @e[tag=TC_facingSouth] at @s run tag @s remove TC_facingSouth
-execute as @e[tag=TC_facingWest] at @s run tag @s remove TC_facingWest
-
-
-#> remove grinded tools
-
-execute as @a run clear @s minecraft:golden_pickaxe{TC_Casted:1b,RepairCost:0}
-execute as @a run clear @s minecraft:golden_sword{TC_Casted:1b,RepairCost:0}
-execute as @a run clear @s minecraft:golden_axe{TC_Casted:1b,RepairCost:0}
-execute as @a run clear @s minecraft:golden_shovel{TC_Casted:1b,RepairCost:0}
-execute as @a run clear @s minecraft:golden_hoe{TC_Casted:1b,RepairCost:0}
-
-execute as @a run clear @s minecraft:netherite_pickaxe{TC_Casted:1b,RepairCost:0}
-execute as @a run clear @s minecraft:netherite_sword{TC_Casted:1b,RepairCost:0}
-execute as @a run clear @s minecraft:netherite_axe{TC_Casted:1b,RepairCost:0}
-execute as @a run clear @s minecraft:netherite_shovel{TC_Casted:1b,RepairCost:0}
-execute as @a run clear @s minecraft:netherite_hoe{TC_Casted:1b,RepairCost:0}
-
-
-#> clear memory
-
-execute as @e[tag=TC_cauldron] run tag @s remove TC_cauldron
-execute as @e[tag=TC_anvil] run tag @s remove TC_anvil
-execute as @e[tag=TC_ingot] run tag @s remove TC_ingot
-execute as @e[tag=TC_nugget] run tag @s remove TC_nugget
-execute as @e[tag=TC_pickaxe] run tag @s remove TC_pickaxe
-execute as @e[tag=TC_sword] run tag @s remove TC_sword
-execute as @e[tag=TC_axe] run tag @s remove TC_axe
-execute as @e[tag=TC_shovel] run tag @s remove TC_shovel
-execute as @e[tag=TC_hoe] run tag @s remove TC_hoe
-execute as @e[tag=TC_pressureplate] run tag @s remove TC_pressureplate
+#> End of file
+#> -----------

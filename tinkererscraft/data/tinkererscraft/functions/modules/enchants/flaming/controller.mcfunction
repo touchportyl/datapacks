@@ -13,10 +13,10 @@
 # start timer
 scoreboard players add @s TC_FlamingTimer 1
 
-#pfx:flame_plus
+#pfx:flaming_circle_1
 execute as @e[scores={TC_FlamingTimer=35}] at @s run function tinkererscraft:modules/effects/flaming/circle_1
 
-#pfx:flame_cross
+#pfx:flaming_circle_2
 execute as @e[scores={TC_FlamingTimer=50}] at @s run function tinkererscraft:modules/effects/flaming/circle_2
 
 #todo:gc

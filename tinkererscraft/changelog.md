@@ -12,6 +12,7 @@ gameplay related changes:
 + the heated smelting radius to 4 (from 5)
 + smeltery now makes a hissing sound as an indication of failure
 + riptide enchant has been reworked (hitting entities marked for death will activate riptide, instead of random activation)
++ the guidebook visualizer will no longer show up if you are too close to a smeltery
 
 
 
@@ -65,18 +66,21 @@ full dev log:
 + reworked the riptide enchant
 + added new randomizer (TC_rand_6)
 + marked entities now glow if they are within 12 blocks of a player holding riptide
++ updated the guidebook visualization system
++ improved the lava visualizer particle
++ updated the garbage collection system
++ lowered the volume of the lever clang
++ added guidebook particles if it is dropped on the floor
 
 
 
 # todo
-
 
 heated items on the floor has special effects on the block it is on and in
 - grass block turns into dirt, then into coarse dirt (70 > 100)
 - grass, weeds, and flowers turns into dead bushes (85)
 - water will sizzle
 
-run garbage collection at tick 19
 
 redesign the storage capacity system
 - lower the limit (256)
