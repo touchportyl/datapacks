@@ -74,7 +74,6 @@ function tinkererscraft:modules/enchants/riptide
 
 
 
-
 #> guidebook visual guide
 
 #active detection

@@ -25,6 +25,8 @@ tellraw @a [{"text":""},{"text":" +","color":"green"},{"text":" [Tinkerer's Craf
 scoreboard objectives add give trigger [{"text":"Global Item Giver","color":"white"}]
 
 # randomizers
+# r6
+scoreboard objectives add TC_rand_6 dummy [{"text":"Randomizer (6) for Tinkerer's Craft","color":"gold"}]
 # r20
 scoreboard objectives add TC_rand_20 dummy [{"text":"Randomizer (20) for Tinkerer's Craft","color":"gold"}]
 

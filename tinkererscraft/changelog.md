@@ -11,6 +11,8 @@ gameplay related changes:
 + the lunge skill no longer requires a jump to activate
 + the heated smelting radius to 4 (from 5)
 + smeltery now makes a hissing sound as an indication of failure
++ riptide enchant has been reworked (hitting entities marked for death will activate riptide, instead of random activation)
+
 
 
 full dev log:
@@ -59,16 +61,14 @@ full dev log:
 + fixed a bug where xp did not spawn
 + added a ui override system
 + improved the item detection system to automatically switch the ui display to the most recent item thrown in
++ added more flair to the riptide particle timeline
++ reworked the riptide enchant
++ added new randomizer (TC_rand_6)
++ marked entities now glow if they are within 12 blocks of a player holding riptide
 
 
 
 # todo
-
-Riptide
-- when holding riptide, randomly tag nearby entities with TC_markedfordeath or TC_markedfordeath_
-- when holding riptide & TC_markedfordeath, effect glowing if near player
-- when holding riptide & TC_markedfordeath & TC_hurt, tag with TC_rip
-
 
 
 heated items on the floor has special effects on the block it is on and in
