@@ -22,12 +22,16 @@ scoreboard players set @s TC_lObsidian 0
 scoreboard players set @s TC_lIrgol 0
 scoreboard players set @s TC_lObdiam 0
 
+# set smeltery capacity
+scoreboard players set @s TC_lCapacity 256
+
 # create smeltery display
 execute as @s at @s positioned ^ ^0.8 ^1 run summon minecraft:area_effect_cloud ~ ~ ~ {Tags:["TinkerersCraft","TC_display","TC_number"],CustomName:"{\"text\":\"Break\"}",CustomNameVisible:1b,Age:-2147483648,Duration:-1,WaitTime:-2147483648,Particle:"minecraft:mycelium"}
 execute as @s at @s positioned ^ ^0.6 ^1 run summon minecraft:area_effect_cloud ~ ~ ~ {Tags:["TinkerersCraft","TC_display","TC_ore"],CustomName:"{\"text\":\"Glass\"}",CustomNameVisible:1b,Age:-2147483648,Duration:-1,WaitTime:-2147483648,Particle:"minecraft:mycelium"}
 
-#sfx:clang
+#sfx:startup
 playsound minecraft:block.anvil.use block @a ~ ~ ~ 1 1.2 0
+playsound minecraft:block.conduit.activate block @a ~ ~ ~ 1 1 0
 
 # grant advancements to players near the new smeltery
 advancement grant @e[type=player,distance=..15,sort=nearest] until tinkererscraft:smeltery/smeltery_built

@@ -14,16 +14,16 @@
 function tinkererscraft:modules/garbage_collection/grinded_tools
 
 # non-persistent tags
-execute as @e[tag=TC_cauldron] run tag @s remove TC_cauldron
-execute as @e[tag=TC_anvil] run tag @s remove TC_anvil
-execute as @e[tag=TC_ingot] run tag @s remove TC_ingot
-execute as @e[tag=TC_nugget] run tag @s remove TC_nugget
-execute as @e[tag=TC_pickaxe] run tag @s remove TC_pickaxe
-execute as @e[tag=TC_sword] run tag @s remove TC_sword
-execute as @e[tag=TC_axe] run tag @s remove TC_axe
-execute as @e[tag=TC_shovel] run tag @s remove TC_shovel
-execute as @e[tag=TC_hoe] run tag @s remove TC_hoe
-execute as @e[tag=TC_pressureplate] run tag @s remove TC_pressureplate
+tag @e[tag=TC_cauldron] remove TC_cauldron
+tag @e[tag=TC_anvil] remove TC_anvil
+tag @e[tag=TC_ingot] remove TC_ingot
+tag @e[tag=TC_nugget] remove TC_nugget
+tag @e[tag=TC_pickaxe] remove TC_pickaxe
+tag @e[tag=TC_sword] remove TC_sword
+tag @e[tag=TC_axe] remove TC_axe
+tag @e[tag=TC_shovel] remove TC_shovel
+tag @e[tag=TC_hoe] remove TC_hoe
+tag @e[tag=TC_pressureplate] remove TC_pressureplate
 
 
 #> End of file

@@ -10,7 +10,7 @@
     "announce_to_chat": true,
     "hidden": true
   },
-  "parent": "tinkererscraft:smeltery/capacity/upgrade_again",
+  "parent": "tinkererscraft:smeltery/capacity/obdiam",
   "rewards": {
     "experience": 1000
   },

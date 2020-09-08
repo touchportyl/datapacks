@@ -48,6 +48,7 @@ scoreboard objectives add TC_bGoldBlock dummy [{"text":"Gold Block Buffer","colo
 scoreboard objectives add TC_bObsidian dummy [{"text":"Obsidian Buffer","color":"gold"}]
 
 # storage
+scoreboard objectives add TC_lCapacity dummy [{"text":"Storage Capacity","color":"gold"}]
 scoreboard objectives add TC_lIron dummy [{"text":"Amount of Liquid Iron stored","color":"gold"}]
 scoreboard objectives add TC_lGold dummy [{"text":"Amount of Liquid Gold stored","color":"gold"}]
 scoreboard objectives add TC_lObsidian dummy [{"text":"Amount of Liquid Obsidian stored","color":"gold"}]

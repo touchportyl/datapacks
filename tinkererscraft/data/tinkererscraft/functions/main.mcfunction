@@ -19,17 +19,19 @@ execute as @e[tag=TC_buildsmeltery] at @s align xyz unless entity @e[tag=TC_smel
 #> smelt
 execute as @e[tag=TC_smelting] at @s as @e[tag=TC_smeltery,distance=..2] at @s align xyz run function tinkererscraft:modules/smelting/smelt
 
-#sfx:slag
+#> slag
 execute as @e[tag=TC_slag] at @s run function tinkererscraft:modules/smelting/slag
+execute as @e[tag=TC_irgolreaction] at @s if score @s TC_lIrgol < @s TC_lCapacity run function tinkererscraft:modules/smelting/slag
+execute as @e[tag=TC_obdiamreaction] at @s if score @s TC_lObdiam < @s TC_lCapacity run function tinkererscraft:modules/smelting/slag
 
 #> irgol
-execute as @e[tag=TC_irgolreaction] at @s run function tinkererscraft:modules/smelting/reacting/irgol
+execute as @e[tag=TC_irgolreaction] at @s unless score @s TC_lIrgol >= @s TC_lCapacity run function tinkererscraft:modules/smelting/reacting/irgol
 
 #> odbiam
-execute as @e[tag=TC_obdiamreaction] at @s run function tinkererscraft:modules/smelting/reacting/odbiam
+execute as @e[tag=TC_obdiamreaction] at @s unless score @s TC_lObdiam >= @s TC_lCapacity run function tinkererscraft:modules/smelting/reacting/odbiam
 
-#> limit > todo
-execute as @e[tag=TC_smeltery] at @s run function tinkererscraft:modules/smeltery/capacity/limit
+#> limiter
+execute as @e[tag=TC_smeltery] at @s run function tinkererscraft:modules/smeltery/capacity/limiter
 
 #todo:gc
 execute as @e[tag=TC_smelting] at @s run kill @s

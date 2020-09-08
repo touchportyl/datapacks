@@ -6,18 +6,15 @@
 #> -----------------------------------------------
 
 
-#> recent (references: ../main)
-# this code tags items that are just casted
+#> controller (references: ../modules/smeltery/capacity/limiter)
+# this code adds particle effects
 
 
-# pfx:smoke
-scoreboard players set @s TC_SmeltingTimer 42
+#sfx:hiss
+playsound minecraft:entity.generic.extinguish_fire block @a ~ ~ ~ 1 1 0
 
-#todo:gc
-tag @s remove TC_justcasted
-
-# semi-persistent tag
-tag @s add TC_casted
+#pfx:barrier
+particle minecraft:barrier ~ ~2.5 ~ 0 0 0 0 1 force
 
 
 #> End of file

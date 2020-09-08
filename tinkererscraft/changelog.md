@@ -76,12 +76,33 @@ full dev log:
 + added sfx when smelting a command block
 + heated tools on the floor now cause environmental damage
 + heated tools now have a particle effect when in water
++ added progression to the storage capacity system
++ default smeltery capacity is now 256
++ smelting netherite blocks increases capacity by 256 each (15 blocks to max smeltery)
++ old smelteries will update automatically to have max capacity (4096)
++ reworked advancements again to match the new storage capacity system
++ fixed a bug where the player can still react metals when the storage is full
++ added sfx when smelting a netherite block
++ tweaked all custom items to properly show their quirks in the description
++ decreased efficiency of casted iron tools to 2 (from 4)
++ fixed a bug where the cast iron sword did not have sharpness 1
++ updated the guidebook to reflect all the previous changes
++ reduced the pickup delay of obdiam tools
++ added fortune 2 or looting 2 to irgol tools
 
 
 
 # todo
 
-redesign the storage capacity system
-- lower the limit (256)
-- increase limit by throwing in netherite blocks (each block increases capacity by 256, 15 blocks to max smeltery)
-- old smelteries will update automatically to have max capacity (4096)
+
+
+
+
+
+
+
+
+
+
+
+-

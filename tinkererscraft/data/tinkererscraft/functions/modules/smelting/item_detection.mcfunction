@@ -25,10 +25,14 @@ execute as @s[name="Block of Gold"] run tag @s add TC_goldblock
 execute as @s[name="Obsidian"] run tag @s add TC_obsidian
 execute as @s[name="Redstone Dust"] run tag @s add TC_redstone
 execute as @s[name="Diamond"] run tag @s add TC_diamond
+execute as @s[name="Block of Netherite"] run tag @s add TC_netheriteblock
 execute as @s[name="Command Block"] run tag @s add TC_commandblock
 
 # filter out dev command
 execute as @e[tag=TC_commandblock] at @s as @e[tag=TC_smeltery,distance=..2] at @s run function tinkererscraft:modules/developer/storage_fill
+
+# filter out upgrade materials
+execute as @e[tag=TC_netheriteblock] at @s as @e[tag=TC_smeltery,distance=..2] at @s run function tinkererscraft:modules/smeltery/capacity/upgrade
 
 # filter out reactants
 execute as @e[tag=TC_redstone] at @s run tag @e[tag=TC_smeltery,scores={TC_lIron=2..,TC_lGold=3..},distance=..2] add TC_irgolreaction

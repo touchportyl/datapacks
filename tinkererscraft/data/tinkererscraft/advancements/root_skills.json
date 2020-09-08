@@ -1,25 +1,19 @@
 {
   "display": {
     "icon": {
-      "item": "minecraft:book"
+      "item": "minecraft:enchanted_book"
     },
     "title": "Hidden Skills",
     "description": "Unlock more hidden tech",
     "frame": "task",
-    "background": "minecraft:textures/block/polished_blackstone_bricks.png",
     "show_toast": false,
     "announce_to_chat": true,
     "hidden": true
   },
   "parent": "tinkererscraft:root",
   "criteria": {
-    "found_bastion": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "feature": "bastion_remnant"
-        }
-      }
+    "impossible": {
+      "trigger": "minecraft:impossible"
     }
   }
 }

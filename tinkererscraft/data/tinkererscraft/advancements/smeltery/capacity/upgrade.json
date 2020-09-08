@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "minecraft:netherite_block"
+      "item": "minecraft:chest"
     },
     "title": "It's Too Small",
     "description": "Upgrade a smeltery by smelting a netherite block",

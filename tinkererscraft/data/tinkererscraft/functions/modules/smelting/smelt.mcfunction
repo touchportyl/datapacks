@@ -51,14 +51,14 @@ scoreboard players operation @s[scores={TC_bObsidian=1..}] TC_lObsidian += @s TC
 function tinkererscraft:modules/effects/smelting/smelt
 
 # xp reward
-execute as @s[scores={TC_lIron=..4096}] at @s as @e[tag=TC_ironore,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:1}
-execute as @s[scores={TC_lGold=..4096}] at @s as @e[tag=TC_goldore,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:1}
-execute as @s[scores={TC_lGold=..4096}] at @s as @e[tag=TC_nethergoldore,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:1}
-execute as @s[scores={TC_lIron=..4096}] at @s as @e[tag=TC_iron,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
-execute as @s[scores={TC_lGold=..4096}] at @s as @e[tag=TC_gold,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
-execute as @s[scores={TC_lIron=..4096}] at @s as @e[tag=TC_ironblock,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
-execute as @s[scores={TC_lGold=..4096}] at @s as @e[tag=TC_goldblock,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
-execute as @s[scores={TC_lObsidian=..4096}] at @s as @e[tag=TC_obsidian,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
+execute if score @s TC_lIron < @s TC_lCapacity at @s as @e[tag=TC_ironore,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:1}
+execute if score @s TC_lGold < @s TC_lCapacity at @s as @e[tag=TC_goldore,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:1}
+execute if score @s TC_lGold < @s TC_lCapacity at @s as @e[tag=TC_nethergoldore,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:1}
+execute if score @s TC_lIron < @s TC_lCapacity at @s as @e[tag=TC_iron,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
+execute if score @s TC_lGold < @s TC_lCapacity at @s as @e[tag=TC_gold,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
+execute if score @s TC_lIron < @s TC_lCapacity at @s as @e[tag=TC_ironblock,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
+execute if score @s TC_lGold < @s TC_lCapacity at @s as @e[tag=TC_goldblock,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
+execute if score @s TC_lObsidian < @s TC_lCapacity at @s as @e[tag=TC_obsidian,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
 
 # update ui
 function tinkererscraft:modules/smeltery/ui/update
