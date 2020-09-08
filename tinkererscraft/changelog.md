@@ -13,6 +13,7 @@ gameplay related changes:
 + smeltery now makes a hissing sound as an indication of failure
 + riptide enchant has been reworked (hitting entities marked for death will activate riptide, instead of random activation)
 + the guidebook visualizer will no longer show up if you are too close to a smeltery
++ heated tools now cause environmental damage
 
 
 
@@ -71,16 +72,14 @@ full dev log:
 + updated the garbage collection system
 + lowered the volume of the lever clang
 + added guidebook particles if it is dropped on the floor
++ fixed a bug where the heated enchant would smelt casted items
++ added sfx when smelting a command block
++ heated tools on the floor now cause environmental damage
++ heated tools now have a particle effect when in water
 
 
 
 # todo
-
-heated items on the floor has special effects on the block it is on and in
-- grass block turns into dirt, then into coarse dirt (70 > 100)
-- grass, weeds, and flowers turns into dead bushes (85)
-- water will sizzle
-
 
 redesign the storage capacity system
 - lower the limit (256)
