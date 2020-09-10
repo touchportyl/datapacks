@@ -1,19 +1,28 @@
 # changelog v2.0.0
 
-gameplay related changes:
+most important change:
+ITS NOT LAGGY ANYMORE (used to be 26ms per tick, now it's 4ms per tick)
 
-+ the datapack can detect which version of minecraft you're playing and use the version of the pack designed for that update
-+ the smeltable item used to start the smeltery is now saved in the new smeltery
-+ throwing in a smeltable item spawns an xp orb as a indication of success
+smeltery:
 + smelting ores in the smeltery gives some xp (per stack, it does not consider the amount of ores in a stack)
++ the smeltable item used to start the smeltery is now saved in the new smeltery
 + empty tanks no longer show up when cycling through the display
-+ jumping now resets lunge
-+ the lunge skill no longer requires a jump to activate
-+ the heated smelting radius to 4 (from 5)
-+ smeltery now makes a hissing sound as an indication of failure
-+ riptide enchant has been reworked (hitting entities marked for death will activate riptide, instead of random activation)
++ smelteries now has a tougher progression system to fit true endgame better, upgrade using a netherite block
 + the guidebook visualizer will no longer show up if you are too close to a smeltery
+
+metals:
++ obdiam can only be produced in an upgraded furnace
++ increased the requirements to react obdiam to 3 irgol + 8 obsidian (from 2 iron + 4 obsidian)
+
+quirks and enchants:
++ minor changes to all quirks
++ the lunge skill no longer requires a jump to activate
++ jumping now resets lunge
++ riptide enchant has been reworked (hitting entities marked for death will activate riptide, instead of random activation)
 + heated tools now cause environmental damage
+
+cool dev stuff:
++ the datapack can detect which version of minecraft you're playing and use the version of the pack designed for that update
 
 
 
@@ -89,6 +98,11 @@ full dev log:
 + updated the guidebook to reflect all the previous changes
 + reduced the pickup delay of obdiam tools
 + added fortune 2 or looting 2 to irgol tools
++ increased the requirements to react obdiam to 3 irgol + 8 obsidian (from 2 iron + 4 obsidian)
++ producing obdiam now requires an upgraded smeltery
++ fixed a bug with the guidebook where clicking on the return to topic button (➥ Building a Smeltery) brings you to the contents page instead
++ shifted the obdiam advancement after the upgrade advancement (from the build smeltery advancement)
++ updated the guidebook to reflect all the previous changes
 
 
 

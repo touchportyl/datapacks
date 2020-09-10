@@ -10,7 +10,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "tinkererscraft:smeltery/smeltery_built",
+  "parent": "tinkererscraft:smeltery/capacity/upgrade",
   "rewards": {
     "experience": 100
   },

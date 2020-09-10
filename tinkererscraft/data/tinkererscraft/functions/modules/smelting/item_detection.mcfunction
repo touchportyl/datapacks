@@ -36,7 +36,7 @@ execute as @e[tag=TC_netheriteblock] at @s as @e[tag=TC_smeltery,distance=..2] a
 
 # filter out reactants
 execute as @e[tag=TC_redstone] at @s run tag @e[tag=TC_smeltery,scores={TC_lIron=2..,TC_lGold=3..},distance=..2] add TC_irgolreaction
-execute as @e[tag=TC_diamond] at @s run tag @e[tag=TC_smeltery,scores={TC_lIron=9..,TC_lObsidian=2..},distance=..2] add TC_obdiamreaction
+execute as @e[tag=TC_diamond] at @s run tag @e[tag=TC_smeltery,scores={TC_lIrgol=3..,TC_lObsidian=8..,TC_lCapacity=512..4096},distance=..2] add TC_obdiamreaction
 
 #todo:gc
 execute as @e[tag=TC_irgolreaction] at @s run kill @e[tag=TC_redstone,distance=..2]

@@ -11,8 +11,8 @@
 
 
 # obdiam
-scoreboard players remove @s TC_lIron 9
-scoreboard players remove @s TC_lObsidian 2
+scoreboard players remove @s TC_lIrgol 3
+scoreboard players remove @s TC_lObsidian 8
 scoreboard players add @s TC_lObdiam 1
 
 # reaction effects

@@ -22,7 +22,6 @@ execute if score TC_api_hash TC_api matches 101 run tellraw @a [{"text":""},{"te
 # ------
 
 # assign capacity values to old smelteries
-execute as @e[tag=TC_smeltery,scores={TC_lIron=..256,TC_lGold=..256,TC_lObsidian=..256,TC_lIrgol=..256,TC_lObdiam=..256}] unless score @s TC_lCapacity matches 256..4096 run scoreboard players set @s TC_lCapacity 256
 execute as @e[tag=TC_smeltery,scores={TC_lIron=..512,TC_lGold=..512,TC_lObsidian=..512,TC_lIrgol=..512,TC_lObdiam=..512}] unless score @s TC_lCapacity matches 256..4096 run scoreboard players set @s TC_lCapacity 512
 execute as @e[tag=TC_smeltery,scores={TC_lIron=..768,TC_lGold=..768,TC_lObsidian=..768,TC_lIrgol=..768,TC_lObdiam=..768}] unless score @s TC_lCapacity matches 256..4096 run scoreboard players set @s TC_lCapacity 768
 execute as @e[tag=TC_smeltery,scores={TC_lIron=..1024,TC_lGold=..1024,TC_lObsidian=..1024,TC_lIrgol=..1024,TC_lObdiam=..1024}] unless score @s TC_lCapacity matches 256..4096 run scoreboard players set @s TC_lCapacity 1024
