@@ -1,5 +1,5 @@
 #> -----------------------------------------------
-#> Tinkerer's Craft Datapack
+#> Harvester Datapack
 #> This code is protected by the GNU GPLv3 License
 #> © 2020 Portyl Studios
 #> https://portylstudios.com

@@ -9,6 +9,7 @@ This code is protected by the GNU GPLv3 License | © 2020 Portyl Studios https:/
 + [Tinkerer's Craft](https:/github.com/touchportal/tinkererscraft)
 + [Dimensional Doors](https:/github.com/touchportal/dimensionaldoors)
 + [Harvester](https:/github.com/touchportal/harvester)
++ Speedrun Tools (Unreleased)
 
 ---
 

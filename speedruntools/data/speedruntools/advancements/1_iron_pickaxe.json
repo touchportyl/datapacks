@@ -1,0 +1,30 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:iron_pickaxe"
+    },
+    "title": "Split 1: Obtain Iron Pickaxe",
+    "description": "Get a pickaxe. Duh.",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "speedruntools:root",
+  "rewards": {
+    "function": "speedruntools:modules/game/split/2"
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:iron_pickaxe",
+            "count": 1
+          }
+        ]
+      }
+    }
+  }
+}

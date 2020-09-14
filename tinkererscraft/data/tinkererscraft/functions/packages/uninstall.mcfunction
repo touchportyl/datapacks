@@ -22,7 +22,11 @@ tellraw @a [{"text":""},{"text":" -","color":"red"},{"text":" [Tinkerer's Craft]
 kill @e[tag=TinkerersCraft]
 
 
+
+
 # randomizers
+# r6
+scoreboard objectives remove TC_rand_6
 # r20
 scoreboard objectives remove TC_rand_20
 
@@ -44,6 +48,7 @@ scoreboard objectives remove TC_bGoldBlock
 scoreboard objectives remove TC_bObsidian
 
 # storage
+scoreboard objectives remove TC_lCapacity
 scoreboard objectives remove TC_lIron
 scoreboard objectives remove TC_lGold
 scoreboard objectives remove TC_lObsidian

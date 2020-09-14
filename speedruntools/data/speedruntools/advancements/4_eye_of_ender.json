@@ -1,0 +1,30 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:ender_eye"
+    },
+    "title": "Split 4: Craft the Eye of Ender",
+    "description": "You got the goods? Nice.",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "speedruntools:3_fortress",
+  "rewards": {
+    "function": "speedruntools:modules/game/split/5"
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:ender_eye",
+            "count": 1
+          }
+        ]
+      }
+    }
+  }
+}

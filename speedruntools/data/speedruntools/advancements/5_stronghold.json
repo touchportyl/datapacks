@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:stone_bricks"
+    },
+    "title": "Split 5: Find a Stronghold",
+    "description": "This is it. Don't die now.",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "speedruntools:4_eye_of_ender",
+  "rewards": {
+    "function": "speedruntools:modules/game/split/6"
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "feature": "stronghold"
+        }
+      }
+    }
+  }
+}

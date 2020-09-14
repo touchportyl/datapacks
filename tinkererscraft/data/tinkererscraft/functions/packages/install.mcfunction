@@ -22,7 +22,7 @@ tellraw @a [{"text":""},{"text":" +","color":"green"},{"text":" [Tinkerer's Craf
 
 
 # core variables
-scoreboard objectives add give trigger [{"text":"Global Item Giver","color":"white"}]
+#scoreboard objectives add give trigger [{"text":"Global Item Giver","color":"white"}]
 
 # randomizers
 # r6

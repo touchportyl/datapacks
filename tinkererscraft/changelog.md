@@ -48,7 +48,7 @@ full dev log:
 + redesigned the loading and installing sequence
 - many tags and fake player names used for loading and installing are now deprecated
 + added a version checker for filtering minecraft versions from 1.13 to 1.16 (thanks to Ryuggo)
-+ added an internal versioning system the datapack
++ added an internal versioning system for the datapack
 + added an uninstall file to remove the pack without leaving persistent traces (ignores global objectives, currently doesn't remove custom items from inventories, chests, or floor)
 + added capability to target specific minecraft versions
 + updated the custom particle tag system
