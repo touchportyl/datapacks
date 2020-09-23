@@ -6,7 +6,7 @@
 #> -----------------------------------------------
 
 
-#> inventory tag
+#> seeds (references: ../main)
 # this code assigns tags based on the player's inventory items
 
 
@@ -14,6 +14,7 @@ execute if entity @s[nbt={Inventory:[{id:"minecraft:wheat_seeds"}]}] run tag @s 
 execute if entity @s[nbt={Inventory:[{id:"minecraft:potato"}]}] run tag @s add H_potato
 execute if entity @s[nbt={Inventory:[{id:"minecraft:carrot"}]}] run tag @s add H_carrot
 execute if entity @s[nbt={Inventory:[{id:"minecraft:beetroot_seeds"}]}] run tag @s add H_beetroot
+execute if entity @s[nbt={Inventory:[{id:"minecraft:nether_wart"}]}] run tag @s add H_netherwart
 
 
 #> End of file

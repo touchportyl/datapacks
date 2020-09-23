@@ -1,7 +1,7 @@
 # changelog v2.0.0
 
 most important change:
-ITS NOT LAGGY ANYMORE (used to be 26ms per tick, now it's 4ms per tick)
+ITS NOT LAGGY ANYMORE (used to be 26ms+ per tick, now it's 5ms per tick)
 
 smeltery:
 + smelting ores in the smeltery gives some xp (per stack, it does not consider the amount of ores in a stack)
@@ -103,6 +103,7 @@ full dev log:
 + fixed a bug with the guidebook where clicking on the return to topic button (➥ Building a Smeltery) brings you to the contents page instead
 + shifted the obdiam advancement after the upgrade advancement (from the build smeltery advancement)
 + updated the guidebook to reflect all the previous changes
++ updated for Minecraft 1.16.3
 
 
 

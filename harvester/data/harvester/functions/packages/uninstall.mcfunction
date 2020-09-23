@@ -22,12 +22,15 @@ tellraw @a [{"text":""},{"text":" -","color":"red"},{"text":" [Harvester] ","col
 kill @e[tag=Harvester]
 
 
+# remove persistent tags
+
+
+
 # randomizers
 # r2
-scoreboard objectives remove H_rand_2
+scoreboard objectives remove H_rand
 
 # timers
-scoreboard objectives remove H_sneak_time
 
 
 # disable pack

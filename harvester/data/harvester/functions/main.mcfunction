@@ -6,30 +6,28 @@
 #> -----------------------------------------------
 
 
-#> inventory_tag
-execute as @s run function harvester:modules/inventory_tag
+#> inventory check
+function harvester:modules/inventory/hoe
+function harvester:modules/inventory/seeds
 
-#> harvest_wheat
-execute as @s at @s if block ~ ~1 ~ minecraft:wheat[age=7] run function harvester:modules/harvest_wheat
+#> positioner > controller
+execute if entity @s[tag=H_1x1,x_rotation=0..90] if block ~ ~ ~ minecraft:farmland run function harvester:modules/harvest/positioner/1x1
+execute if entity @s[tag=H_1x1,x_rotation=0..90] unless block ~ ~ ~ minecraft:farmland positioned ~ ~-1 ~ run function harvester:modules/harvest/positioner/1x1
 
-#> harvest_potato
-execute as @s at @s if block ~ ~1 ~ minecraft:potatoes[age=7] run function harvester:modules/harvest_potato
+execute if entity @s[tag=H_3x3_star,x_rotation=0..90] if block ~ ~ ~ minecraft:farmland run function harvester:modules/harvest/positioner/3x3_star
+execute if entity @s[tag=H_3x3_star,x_rotation=0..90] unless block ~ ~ ~ minecraft:farmland positioned ~ ~-1 ~ run function harvester:modules/harvest/positioner/3x3_star
 
-#> harvest_carrot
-execute as @s at @s if block ~ ~1 ~ minecraft:carrots[age=7] run function harvester:modules/harvest_carrot
+execute if entity @s[tag=H_3x3,x_rotation=0..90] if block ~ ~ ~ minecraft:farmland run function harvester:modules/harvest/positioner/3x3
+execute if entity @s[tag=H_3x3,x_rotation=0..90] unless block ~ ~ ~ minecraft:farmland positioned ~ ~-1 ~ run function harvester:modules/harvest/positioner/3x3
 
-#> harvest_beetroot
-execute as @s at @s if block ~ ~1 ~ minecraft:beetroots[age=3] run function harvester:modules/harvest_beetroot
+execute if entity @s[tag=H_3x3_netherwart,x_rotation=0..90] if block ~ ~ ~ minecraft:farmland run function harvester:modules/harvest/positioner/3x3
+execute if entity @s[tag=H_3x3_netherwart,x_rotation=0..90] unless block ~ ~ ~ minecraft:farmland positioned ~ ~-1 ~ run function harvester:modules/harvest/positioner/3x3
 
-#> harvest_netherwart
-execute as @s at @s if block ~ ~1 ~ minecraft:nether_wart[age=3] run function harvester:modules/harvest_netherwart
+#sfx:sweep
+execute as @a[tag=H_success] at @s run function harvester:modules/effects/sweep
 
-
-
-
-
-
-
+# clear tags
+function harvester:modules/garbage_collection
 
 
 #> End of file

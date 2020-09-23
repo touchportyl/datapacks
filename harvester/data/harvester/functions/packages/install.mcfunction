@@ -24,11 +24,10 @@ tellraw @a [{"text":""},{"text":" +","color":"green"},{"text":" [Harvester] ","c
 # core variables
 
 # randomizers
-# r2
-scoreboard objectives add H_rand_2 dummy [{"text":"Randomizer (2) for Harvester","color":"green"}]
+# global
+scoreboard objectives add H_rand dummy [{"text":"Randomizer for Harvester","color":"green"}]
 
 # timers
-scoreboard objectives add H_sneak_time minecraft.custom:minecraft.sneak_time [{"text":"Sneak Detection for Harvester","color":"green"}]
 
 
 #> End of file
