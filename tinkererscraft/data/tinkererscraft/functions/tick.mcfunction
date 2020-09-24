@@ -13,9 +13,6 @@
 #> main
 execute if score $tc.version TP_version matches 20000 run function tinkererscraft:main
 
-#> api
-execute if score $api.tc.h TP_version matches 201 run function harvester:packages/api/api_tc
-
 
 #> End of file
 #> -----------

@@ -33,7 +33,14 @@ full dev log:
 + seed collection is now calculated individually for each block, harvesting 3 blocks will only remove 3 seeds (used to be: collect 2-5 seeds per harvest)
 + seeds have a 1 in 4 chance to not be used for planting (calculates for all plots of land per harvest)
 + increased the amount of xp given if seeds were not used for replanting (basically 1/4 chance to get double the xp)
-+ replaced the old advancement with [You Can Do That?!]
++ added an advancement [You Can Do That?!]
++ tweaked the advancement [A Better Harvester] for the updated Tinkerer's Craft advancement tree (used to be [A Better Hoe?!])
++ added basic api overrides for Tinkerer's Craft custom hoes
++ updated the item hot swapping system to loop itself every 10 ticks (thanks Pundus)
++ fixed a bug with the advancement [A Better Harvester] where it gave the advancement for non-hoe casted items
++ fixed a bug where some tags were not cleaned up properly due to load order
++ added garbage collection for api tags
+
 
 
 
@@ -43,8 +50,8 @@ full dev log:
 # todo
 
 add api features
-- irgol has a 1/2 chance to not use seeds and poisonous potatoes are replaced with normal potatoes
-- obdiam instantly cooks potatoes and grants an extra drop per plot harvested
+- irgol grants an extra drop per plot harvested and poisonous potatoes are replaced with normal potatoes
+- obdiam instantly cooks normal and poisonous potatoes
 
 
 

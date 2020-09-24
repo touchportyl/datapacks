@@ -13,8 +13,12 @@
 #> main
 execute if score $h.version TP_version matches 20000 as @a at @s if predicate harvester:player_checkers/is_sneaking align xz positioned ~0.5 ~ ~0.5 run function harvester:main
 
-#> main (with api catch)
-#execute if score $h.version TP_version matches 20000 if entity @a[nbt={SelectedItem:{id:"minecraft:netherite_hoe"}}] unless score $api.tc.h TP_version matches 201 if predicate harvester:player_checkers/is_sneaking run function harvester:main
+
+#> api
+execute if score $h.version TP_version matches 20000 if score $api.tc.h TP_version matches 201 as @a at @s if predicate harvester:player_checkers/is_sneaking align xz positioned ~0.5 ~ ~0.5 run function harvester:packages/api/main_tc
+
+#> update item (api)
+#execute if score $h.version TP_version matches 20000 if score $api.tc.h TP_version matches 201 as @e[tag=TC_casted,nbt={Item:{tag:{TC_Casted:1b,TC_Alloy:1b}}}] at @s run function harvester:packages/api/tinkererscraft/update_item
 
 
 # randomiser
