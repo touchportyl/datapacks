@@ -6,7 +6,7 @@
 #> -----------------------------------------------
 
 
-#> hoe (references: ../api/tinkererscraft/main_tc)
+#> hoe (references: ../packages/api/tinkererscraft/main_tc)
 # this code assigns tags based on the player's selected items
 
 
@@ -15,12 +15,11 @@ execute if entity @s[nbt={SelectedItem:{id:"minecraft:netherite_hoe",tag:{H_Harv
 
 
 # classify
+tag @a[tag=H_irgol] add H_3x3
 tag @a[tag=H_irgol] add H_api_3x3
-tag @a[tag=H_obdiam] add H_api_3x3_netherwart
 
-# remove bad tags
-tag @a[tag=H_gold] remove H_gold
-tag @a[tag=H_netherite] remove H_netherite
+tag @a[tag=H_obdiam] add H_3x3_netherwart
+tag @a[tag=H_obdiam] add H_api_3x3_netherwart
 
 
 #> End of file

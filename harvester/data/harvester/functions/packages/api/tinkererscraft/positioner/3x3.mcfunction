@@ -6,7 +6,7 @@
 #> -----------------------------------------------
 
 
-#> positioner (references: ../main)
+#> positioner (references: ../packages/api/main_tc)
 # this code positions the harvesting controller
 #
 # manually detect the 9 plots because it's simpler

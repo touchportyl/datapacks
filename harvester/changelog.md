@@ -40,7 +40,10 @@ full dev log:
 + fixed a bug with the advancement [A Better Harvester] where it gave the advancement for non-hoe casted items
 + fixed a bug where some tags were not cleaned up properly due to load order
 + added garbage collection for api tags
-
++ fixed the load order for api which was causing a lot of bugs
++ added more api features for irgol and obdiam tools
++ harvesting with irgol hoes now grants an extra drop per plot harvested and poisonous potatoes are replaced with normal potatoes
++ harvesting with obdiam hoes now instantly cooks normal and poisonous potatoes
 
 
 
@@ -49,9 +52,7 @@ full dev log:
 
 # todo
 
-add api features
-- irgol grants an extra drop per plot harvested and poisonous potatoes are replaced with normal potatoes
-- obdiam instantly cooks normal and poisonous potatoes
+
 
 
 
