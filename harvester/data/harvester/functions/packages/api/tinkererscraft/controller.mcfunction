@@ -14,7 +14,7 @@
 function harvester:packages/api/tinkererscraft/irgol
 
 #> obdiam
-function harvester:packages/api/tinkererscraft/obdiam
+execute if block ~ ~1 ~ minecraft:potatoes[age=7] run function harvester:packages/api/tinkererscraft/obdiam
 
 
 #> End of file

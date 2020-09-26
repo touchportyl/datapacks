@@ -44,7 +44,7 @@ full dev log:
 + added more api features for irgol and obdiam tools
 + harvesting with irgol hoes now grants an extra drop per plot harvested and poisonous potatoes are replaced with normal potatoes
 + harvesting with obdiam hoes now instantly cooks normal and poisonous potatoes
-
++ swapped the hardcoded item data swapper out for a for loop
 
 
 

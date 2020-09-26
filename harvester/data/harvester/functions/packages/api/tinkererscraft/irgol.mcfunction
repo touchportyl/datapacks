@@ -13,9 +13,14 @@
 #> wheat
 execute if block ~ ~1 ~ minecraft:wheat[age=7] run summon minecraft:item ~ ~1 ~ {Motion:[0.0,0.25,0.0],Item:{id:"minecraft:wheat",Count:1b},PickupDelay:10s}
 
+
 #> potato
 execute if block ~ ~1 ~ minecraft:potatoes[age=7] run summon minecraft:item ~ ~1 ~ {Motion:[0.0,0.25,0.0],Item:{id:"minecraft:potato",Count:1b},PickupDelay:10s}
-execute if block ~ ~1 ~ minecraft:potatoes[age=7] run data merge entity @e[name="Poisonous Potato",distance=..1,sort=nearest,limit=1] {Item:{id:"minecraft:potato"}}
+
+#> loop poisonous potato
+execute if block ~ ~1 ~ minecraft:potatoes[age=7] run tag @s add H_schedule_poisonous_potato
+execute if block ~ ~1 ~ minecraft:potatoes[age=7] run schedule function harvester:packages/api/tinkererscraft/loop/poisonous_potato 1t append
+
 
 #> carrot
 execute if block ~ ~1 ~ minecraft:carrots[age=7] run summon minecraft:item ~ ~1 ~ {Motion:[0.0,0.25,0.0],Item:{id:"minecraft:carrot",Count:1b},PickupDelay:10s}
