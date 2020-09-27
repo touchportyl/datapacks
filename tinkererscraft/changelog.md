@@ -40,6 +40,8 @@
 - Smelting support for nether gold ore (Added in v1.9)
 - Riptide now gives double the loot from the mob it kills (Added in v1.9)
 
+- Updated for 1.16.2 (Added in v1.9.1)
+
 
 # changelog v2.0.0
 
