@@ -15,7 +15,7 @@
 
 
 # set api version
-execute unless score $DD.api TP_version matches 101.. run scoreboard players set $DD.api TP_version 100
+execute unless score $dd.api TP_version matches 101.. run scoreboard players set $dd.api TP_version 100
 
 # install msg
 tellraw @a [{"text":""},{"text":" +","color":"green"},{"text":" [Dimensional Doors] ","color":"aqua","hoverEvent":{"action":"show_text","value":"The elegant solution to /sethome."}},{"text":"v2.0.0"},{"text":" installed successfully","color":"gray"}]

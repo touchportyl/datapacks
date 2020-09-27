@@ -34,6 +34,7 @@ full dev log:
 + updated the door ID variable to $dd.doorID.current to fit my standard (used to be DD_doorID.$current)
 + added a lot of code to prepare for an optimization update
 + fixed a major bug where the updater did not run
++ fixed more bugs regarding installation version values
 
 
 

@@ -11,8 +11,8 @@
 
 
 # set version
-scoreboard players reset $DD.version TP_version
-scoreboard players reset $DD.api TP_version
+scoreboard players reset $dd.version TP_version
+scoreboard players reset $dd.api TP_version
 #scoreboard players reset $api.<main_pack>.<other_pack> TP_version
 
 # uninstall msg

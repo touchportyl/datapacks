@@ -13,7 +13,7 @@
 #> version_checker
 scoreboard objectives add TP_version dummy [{"text":"Global Version","color":"white"}]
 execute unless score $global.version TP_version matches 116 run function dimensionaldoors:packages/version_checker/version_checker
-execute if score $global.version TP_version matches 116 unless score $DD.version TP_version matches 10000 run function dimensionaldoors:packages/install_checker
+execute if score $global.version TP_version matches 116 unless score $dd.version TP_version matches 20000 run function dimensionaldoors:packages/install_checker
 
 
 #> End of file
