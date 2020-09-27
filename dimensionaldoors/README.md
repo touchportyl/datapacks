@@ -1,4 +1,4 @@
-# Dimensional Doors v2.0.0 for Vanilla MC 1.16.X
+# Dimensional Doors v2.0.0 for Vanilla MC 1.15.X - 1.16.X
 - Code by [touchportal](https://github.com/touchportal/)
 - Help from [Pundus](https://github.com/pundus/)
 
@@ -19,6 +19,8 @@
 - Open the door and walk through
 
 # Future updates
+- Optimizations
+- Automatically perform a safe teleport if the warp location is deemed dangerous (into lava, off a cliff, or into a solid wall)
 - Pocket dimensions using iron doors
 - Suggest more!
 
