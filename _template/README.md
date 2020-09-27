@@ -1,4 +1,4 @@
-# Versioning Template v1.0.0 for Vanilla MC 1.12 - 1.16
+# Versioning Template v1.0.0 for Vanilla MC 1.12.X - 1.16.X
 - Code by [touchportal](https://github.com/touchportal/)
 
 # Features
@@ -9,6 +9,10 @@
 - Clean uninstall to remove persistent entities (ignores global objectives, currently doesn't remove custom items from inventories, chests, or floor)
 - API capability to add extra features only when both datapacks are installed
 
+# Officially Endorsed Datapacks
+- [Tinkerer's Craft](https://github.com/touchportal/tinkererscraft)
+- [Harvester Datapack](https://github.com/touchportal/harvester)
+
 # How to use
 - Be a datapack developer
 - Have basic coding knowledge
@@ -18,7 +22,9 @@
 
 # Future updates
 - Update to 1.17
-
 - Suggest more!
+
+# Changelog
+The changelog has gotten too long, you can find the full v2.0.0 changelog in changelog.md
 
 ---

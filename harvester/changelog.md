@@ -1,4 +1,13 @@
-# changelog v2.0
+# old changelogs
+- 3x3 Harvesting (Added in the v1.1 update)
+
+- Added an API hook to work smoothly with Tinkerer's Craft (Added in the v1.2 update)
+- Tested in the newest snapshot [20w21a] (Added in the v1.2 update)
+
+- Remove the offhand requirement for harvesting (Added in the v1.3 update)
+
+
+# changelog v2.0.0
 
 gameplay related changes:
 
@@ -8,6 +17,7 @@ gameplay related changes:
 + all hoes now have the harvesting feature, not just diamond ones
 + harvester now has in-built progression where the hoes harvest more land and crops as the materials improve
 + xp is given on replant
++ api now fully works when installed with Tinkerer's Craft
 
 
 full dev log:

@@ -1,20 +1,20 @@
-gamerule commandBlockOutput false
+#> -----------------------------------------------
+#> Dimensional Doors Datapack
+#> This code is protected by the GNU GPLv3 License
+#> © 2020 Portyl Studios
+#> https://portylstudios.com
+#> -----------------------------------------------
 
 
-# initialize
-
-scoreboard objectives remove DD_init
-scoreboard objectives add DD_init dummy [{"text":"Initialize Checker for Dimensional Doors","color":"light_purple"}]
+#> load
+# this code is run by minecraft:load
 
 
-#> dimensional door identification number
+#> version_checker
+scoreboard objectives add TP_version dummy [{"text":"Global Version","color":"white"}]
+execute unless score $global.version TP_version matches 116 run function dimensionaldoors:packages/version_checker/version_checker
+execute if score $global.version TP_version matches 116 unless score $DD.version TP_version matches 10000 run function dimensionaldoors:packages/install_checker
 
-scoreboard objectives add DD_doorID dummy
-execute unless score DD_doorID.$current DD_doorID matches 1.. run scoreboard players set DD_doorID.$current DD_doorID 1
 
-
-# loading
-
-tellraw @a [{"text":""},{"text":"   ➥","color":"red","hoverEvent":{"action":"show_text","value":"Created by touchportal!"}},{"text":" Loading"},{"text":" [Dimensional Doors] ","color":"aqua","hoverEvent":{"action":"show_text","value":"The elegant solution to /sethome."}},{"text":"v1.3"}]
-
-gamerule commandBlockOutput true
+#> End of file
+#> -----------

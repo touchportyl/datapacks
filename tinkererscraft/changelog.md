@@ -1,3 +1,46 @@
+# old changelogs
+- Smeltery structure (Added in v0.1-alpha)
+
+- Smeltable items (Iron, Gold, Obsidian) (Added in v0.5-beta)
+- Toggleable display (Added in v0.8-beta)
+
+- Full multiplayer support (Added in v1.0)
+
+- Support for smelting some ores (Added in v1.1)
+- Sounds and particles (Added in v1.1)
+
+- Support for smelting some blocks (Added in v1.2)
+- Cauldron System to produce blocks (Added in v1.2)
+- Smelting ores now give 2 ingots (Added in v1.2)
+
+- Anvil System to produce tools, nuggets, and ingots (Added in v1.3)
+- Tools produced are enchanted (Added in v1.3)
+
+- Changed the name to Tinkerer's Craft (Added in v1.4)
+- Support for custom alloys (Added in v1.4)
+- Irgol (Added in v1.4)
+- Obdiam (Added in v1.4)
+
+- Create an API system to hook other plugins to Tinkerer's Craft properly (Added in v1.5)
+- Custom enchant: Harvester (for Irgol and Obdiam hoes) - [Harvester Datapack](https://github.com/touchportal/harvester) (Added in v1.5)
+
+- Custom enchant: Lunge (for Irgol swords) - Sneak to get a burst of speed (Added in v1.6)
+
+- Lunge has been moved over to Iron Sword (Added in v1.7)
+- Custom enchant: Riptide (for Irgol swords) - The sword has a chance to kill a mob for you (Added in v1.7)
+- Custom quirk: Iron tools are Lightweight - Tools have the efficiency enchant (Added in v1.7)
+- Custom quirk: Obdiam tools are Heated - Auto smelt items on the floor near the player holding it (Added in v1.7)
+- Lots of bug fixes (Added in v1.7)
+
+- Added a guide book (Added in v1.8)
+- Guide book shows the smeltery structure when crouched (Added in v1.8)
+- Created advancements for doing things (Added in v1.8)
+- Fixed a bug where auto smelted stuff can smelt other stuff (Added in v1.8)
+
+- Smelting support for nether gold ore (Added in v1.9)
+- Riptide now gives double the loot from the mob it kills (Added in v1.9)
+
+
 # changelog v2.0.0
 
 most important change:
