@@ -14,7 +14,7 @@
 scoreboard players set $DD.version TP_version 20000
 
 # update msg
-execute if DD_doorID.$current DD_doorID matches 1.. run tellraw @a [{"text":""},{"text":" -","color":"red"},{"text":" Cleaning up","color":"gray"},{"text":" [Dimensional Doors] ","color":"aqua"},{"text":"v1.3"}]
+execute if score DD_doorID.$current DD_doorID matches 1.. run tellraw @a [{"text":""},{"text":" -","color":"red"},{"text":" Cleaning up","color":"gray"},{"text":" [Dimensional Doors] ","color":"aqua"},{"text":"v1.3"}]
 
 
 # port old values to new system
