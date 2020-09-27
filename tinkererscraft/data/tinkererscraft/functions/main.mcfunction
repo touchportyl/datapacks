@@ -21,8 +21,8 @@ execute as @e[tag=TC_smelting] at @s as @e[tag=TC_smeltery,distance=..2] at @s a
 
 #> slag
 execute as @e[tag=TC_slag] at @s run function tinkererscraft:modules/smelting/slag
-execute as @e[tag=TC_irgolreaction] at @s if score @s TC_lIrgol < @s TC_lCapacity run function tinkererscraft:modules/smelting/slag
-execute as @e[tag=TC_obdiamreaction] at @s if score @s TC_lObdiam < @s TC_lCapacity run function tinkererscraft:modules/smelting/slag
+execute as @e[tag=TC_irgolreaction] if score @s TC_lIrgol < @s TC_lCapacity as @e[tag=TC_slag] at @s run function tinkererscraft:modules/smelting/slag
+execute as @e[tag=TC_obdiamreaction] if score @s TC_lObdiam < @s TC_lCapacity as @e[tag=TC_slag] at @s run function tinkererscraft:modules/smelting/slag
 
 #> irgol
 execute as @e[tag=TC_irgolreaction] at @s unless score @s TC_lIrgol >= @s TC_lCapacity run function tinkererscraft:modules/smelting/reacting/irgol

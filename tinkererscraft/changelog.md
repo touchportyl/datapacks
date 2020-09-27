@@ -147,6 +147,7 @@ full dev log:
 + shifted the obdiam advancement after the upgrade advancement (from the build smeltery advancement)
 + updated the guidebook to reflect all the previous changes
 + updated for Minecraft 1.16.3
++ fixed a major bug where the wrong entity was being removed thus resulting in the smeltery committing self delete
 
 
 
