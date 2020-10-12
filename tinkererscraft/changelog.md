@@ -157,7 +157,9 @@ full dev log:
 # todo
 
 
-
+- cauldron water mechanic
+increase casting time for blocks
+filling a cauldron with water lowers the casting time for blocks but uses 1 water bottle per block
 
 
 

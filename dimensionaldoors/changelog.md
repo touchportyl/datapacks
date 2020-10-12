@@ -35,12 +35,27 @@ full dev log:
 + added a lot of code to prepare for an optimization update
 + fixed a major bug where the updater did not run
 + fixed more bugs regarding installation version values
++ fixed a bug where sound effects had no falloff
 
 
 
 # todo
 
+[bugs]
 
+- door 404
+open door
+stand on door
+close door
+(fall thru top half of door)
+
+
+[features]
+
+- unsafe teleport check
+if in front of door = air
+if
+tp player into door block instead
 
 
 
