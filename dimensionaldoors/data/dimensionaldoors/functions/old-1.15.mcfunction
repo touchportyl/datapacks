@@ -155,8 +155,8 @@ execute as @e[tag=DD_enter-] at @s run tp @s ^ ^ ^1
 
 
 #play teleport and closing door sound
-execute as @e[tag=DD_enter] at @s run playsound minecraft:item.chorus_fruit.teleport player @s ~ ~ ~ 1 1 1
-execute as @e[tag=DD_enter] at @s run playsound minecraft:block.wooden_door.close block @s ~ ~ ~ 1 1 1
+execute as @e[tag=DD_enter] at @s run playsound minecraft:item.chorus_fruit.teleport player @s ~ ~ ~ 1 1 0
+execute as @e[tag=DD_enter] at @s run playsound minecraft:block.wooden_door.close block @s ~ ~ ~ 1 1 0
 
 
 # door closer mechanism (1.15.2)
@@ -202,7 +202,7 @@ execute as @e[tag=DD_portal,tag=DD_close] at @s if block ~ ~ ~ minecraft:oak_doo
 #execute as @e[tag=DD_portal,tag=DD_close] at @s run kill @e[type=minecraft:item,name="Oak Door",limit=1,sort=nearest,nbt={Age:0s}]
 
 #door closing sound
-execute as @e[tag=DD_portal,tag=DD_close] at @s run playsound minecraft:block.wooden_door.close block @a ~ ~ ~ 1 1 1
+execute as @e[tag=DD_portal,tag=DD_close] at @s run playsound minecraft:block.wooden_door.close block @a ~ ~ ~ 1 1 0
 
 
 # pocket dimensions opener and closer mechanism (1.16-rc1)
@@ -212,8 +212,8 @@ execute as @e[tag=DD_portal,tag=DD_close] at @s run playsound minecraft:block.wo
 #execute as @e[tag=DD_portal_p] at @s unless entity @a[name=touchportal,distance=..2] run tag @s add DD_close
 
 #door sounds
-#execute as @e[tag=DD_portal_p,tag=DD_open] at @s if block ~ ~ ~ minecraft:iron_door[open=false,facing=north,hinge=left] run playsound minecraft:block.iron_door.open block @a ~ ~ ~ 1 1 1
-#execute as @e[tag=DD_portal_p,tag=DD_close] at @s if block ~ ~ ~ minecraft:iron_door[open=true,facing=north,hinge=left] run playsound minecraft:block.iron_door.close block @a ~ ~ ~ 1 1 1
+#execute as @e[tag=DD_portal_p,tag=DD_open] at @s if block ~ ~ ~ minecraft:iron_door[open=false,facing=north,hinge=left] run playsound minecraft:block.iron_door.open block @a ~ ~ ~ 1 1 0
+#execute as @e[tag=DD_portal_p,tag=DD_close] at @s if block ~ ~ ~ minecraft:iron_door[open=true,facing=north,hinge=left] run playsound minecraft:block.iron_door.close block @a ~ ~ ~ 1 1 0
 
 #open
 #execute as @e[tag=DD_portal_p,tag=DD_open] at @s if block ~ ~ ~ minecraft:iron_door[open=false,facing=north,hinge=left] run setblock ~ ~ ~ iron_door[open=true,facing=north,hinge=left,half=lower] destroy
