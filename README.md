@@ -1,5 +1,5 @@
 # touchportal's Datapacks
-All of the developmental versions for datapacks created by [touchportal](https:/github.com/touchportal) can be found here. The builds here are unfinished and are not game ready.
+All of the developmental versions for datapacks created by [touchportal](https:/github.com/touchportal) can be found here. The builds here are usually unfinished and are not game ready.
 
 This code is protected by the GNU GPLv3 License | © 2020 Portyl Studios https://portylstudios.com
 
@@ -9,7 +9,8 @@ This code is protected by the GNU GPLv3 License | © 2020 Portyl Studios https:/
 + [Tinkerer's Craft](https:/github.com/touchportal/tinkererscraft)
 + [Dimensional Doors](https:/github.com/touchportal/dimensionaldoors)
 + [Harvester](https:/github.com/touchportal/harvester)
-+ Speedrun Tools (Unreleased)
++ Vanilla Essentials (Unreleased)
++ Speedrun Tools (Deprecated, go use the one Sethbling made)
 
 ---
 
