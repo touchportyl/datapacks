@@ -13,6 +13,12 @@
 #> main
 execute if score $ve.version TP_version matches 10000 run function vanillaessentials:packages/main
 
+#> slow
+execute if score $ve.version TP_version matches 10000 run function vanillaessentials:packages/slow
+
+#> hooks
+execute if score $ve.version TP_version matches 10000 run function vanillaessentials:packages/hooks/listen
+
 
 #> End of file
 #> -----------

@@ -11,7 +11,6 @@
 
 execute as @a[tag=!VE_NoTrigger] run function vanillaessentials:triggers/enable
 
-execute as @a[scores={uninstall=1..}] run function vanillaessentials:triggers/uninstall
 execute as @a[scores={stats=1..}] run function vanillaessentials:triggers/stats
 execute as @a[scores={playtime=1..}] run function vanillaessentials:triggers/playtime
 execute as @a[scores={uptime=1..}] run function vanillaessentials:triggers/uptime

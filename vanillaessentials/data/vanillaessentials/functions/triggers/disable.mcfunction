@@ -10,11 +10,10 @@
 # turn off all triggers
 
 tag @s add VE_NoTrigger
-scoreboard players disable @s uninstall
-scoreboard players disable @s stats
-scoreboard players disable @s playtime
-scoreboard players disable @s uptime
-scoreboard players disable @s pathspeed
+scoreboard players reset @s stats
+scoreboard players reset @s playtime
+scoreboard players reset @s uptime
+scoreboard players reset @s pathspeed
 
 
 #> End of file

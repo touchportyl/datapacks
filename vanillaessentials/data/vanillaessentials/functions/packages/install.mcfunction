@@ -29,8 +29,10 @@ scoreboard objectives add TP_Hours dummy [{"text":"Global Time - Hours","color":
 scoreboard objectives add TP_Days dummy [{"text":"Global Time - Days","color":"white"}]
 scoreboard objectives add TP_Months dummy [{"text":"Global Time - Months","color":"white"}]
 
-# core triggers
+# hooks
 scoreboard objectives add uninstall trigger [{"text":"Global Trigger - Uninstall","color":"white"}]
+
+# triggers
 scoreboard objectives add stats trigger [{"text":"Global Trigger - Stats","color":"white"}]
 scoreboard objectives add playtime trigger [{"text":"Global Trigger - PlayTime","color":"white"}]
 scoreboard objectives add uptime trigger [{"text":"Global Trigger - UpTime","color":"white"}]

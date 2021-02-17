@@ -22,7 +22,6 @@ kill @e[tag=VanillaEssentials]
 
 
 # core triggers
-scoreboard objectives remove uninstall
 scoreboard objectives remove stats
 scoreboard objectives remove playtime
 scoreboard objectives remove uptime
@@ -43,9 +42,6 @@ scoreboard objectives remove VE_PathSpeed
 
 scoreboard objectives remove VE_Stats
 team remove VE_Stats
-
-# remove lingering tags
-tag @e remove VE_PathSpeed
 
 
 # disable pack

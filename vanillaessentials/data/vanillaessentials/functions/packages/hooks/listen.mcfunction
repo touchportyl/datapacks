@@ -6,14 +6,11 @@
 #> -----------------------------------------------
 
 
-#> enable
-# turn on all triggers
+#> listen
+# listen for the common triggers
 
-scoreboard players enable @s stats
-scoreboard players enable @s playtime
-scoreboard players enable @s uptime
-scoreboard players enable @s pathspeed
-
+scoreboard players enable @a uninstall
+execute as @a[scores={uninstall=1..}] run function vanillaessentials:packages/hooks/uninstall
 
 #> End of file
 #> -----------

@@ -17,8 +17,23 @@
 # - fake players should be named $ve.<name>
 
 
-# play time
-function vanillaessentials:modules/playtime/increment
+# player counter
+function vanillaessentials:modules/playercounter
+
+# sleep skip (deprecated)
+#function vanillaessentials:modules/sleepskip/detection
+
+# path speed
+execute as @a[scores={VE_PathSpeed=1}] run function vanillaessentials:modules/pathspeed/effect
+
+# creep away
+execute as @e[type=armor_stand,nbt={ArmorItems:[{},{},{},{id:"minecraft:creeper_head"}]}] at @s run function vanillaessentials:modules/creepaway
+
+# triggers
+function vanillaessentials:triggers/checker
+
+# hooks
+function vanillaessentials:packages/hooks/listen
 
 
 #> End of file
