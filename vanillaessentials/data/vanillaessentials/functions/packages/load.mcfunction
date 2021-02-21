@@ -10,8 +10,13 @@
 # this code is run by minecraft:load
 
 
-#> version_checker
+#> versioning system
 scoreboard objectives add TP_version dummy [{"text":"Global Version","color":"white"}]
+
+#> config
+function vanillaessentials:config
+
+#> version checker
 execute unless score $global.version TP_version matches 117 run function vanillaessentials:packages/version_checker/version_checker
 execute if score $global.version TP_version matches 117 unless score $ve.version TP_version matches 10000 run schedule function vanillaessentials:packages/install_checker 3s
 

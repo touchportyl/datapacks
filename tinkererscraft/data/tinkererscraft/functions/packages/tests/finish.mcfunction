@@ -6,12 +6,13 @@
 #> -----------------------------------------------
 
 
-#> api controller (references: ../load)
-# this code runs the api checkers
+#> finish
+# show test end
 
 
-#> harvester
-execute if score $tc.api TP_version matches 211 run schedule function tinkererscraft:packages/api/api_checker_h 1t append
+tellraw @a [{"text":"\n\n> "},{"score":{"name":"$tc.count","objective":"TC_temp_tests"}},{"text":" version tests finished.\n\n"}]
+scoreboard objectives remove TC_temp_tests
+reload
 
 
 #> End of file

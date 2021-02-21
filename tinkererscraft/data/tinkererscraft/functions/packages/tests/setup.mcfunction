@@ -6,10 +6,14 @@
 #> -----------------------------------------------
 
 
-#> uninstall
-# this code uninstalls Tinkerer's Craft
+#> setup
+# set up the environment to test
 
-tellraw @s [{"text":""},{"text":" +","color":"green"},{"text":" [Tinkerer's Craft] ","color":"aqua"},{"text":"uninstall cancelled","color":"gray"}]
+# config
+reload
+scoreboard players set $global.version.override TP_config 1
+scoreboard players set $tc.version.override TP_config 1
+scoreboard objectives add TC_temp_tests dummy
 
 
 #> End of file

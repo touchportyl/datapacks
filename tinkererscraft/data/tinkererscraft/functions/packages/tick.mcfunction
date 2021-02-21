@@ -6,12 +6,15 @@
 #> -----------------------------------------------
 
 
-#> api controller (references: ../load)
-# this code runs the api checkers
+#> tick
+# this code is run by minecraft:tick
 
 
-#> harvester
-execute if score $tc.api TP_version matches 211 run schedule function tinkererscraft:packages/api/api_checker_h 1t append
+#> main
+execute if score $tc.version TP_version matches 20100 run function tinkererscraft:packages/main
+
+#> hooks
+execute if score $tc.version TP_version matches 20100 run function tinkererscraft:packages/hooks/listen
 
 
 #> End of file

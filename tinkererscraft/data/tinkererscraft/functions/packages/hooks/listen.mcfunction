@@ -6,13 +6,11 @@
 #> -----------------------------------------------
 
 
-#> api controller (references: ../load)
-# this code runs the api checkers
+#> listen
+# listen for the common triggers
 
-
-#> harvester
-execute if score $tc.api TP_version matches 211 run schedule function tinkererscraft:packages/api/api_checker_h 1t append
-
+scoreboard players enable @a uninstall
+execute as @a[scores={uninstall=1..}] run function tinkererscraft:packages/hooks/uninstall
 
 #> End of file
 #> -----------

@@ -6,12 +6,14 @@
 #> -----------------------------------------------
 
 
-#> tick
-# this code is run by minecraft:tick
+#> test
 
 
-#> main
-execute if score $tc.version TP_version matches 20000 run function tinkererscraft:main
+tellraw @a {"text":"\n\n> Version test: 1.11\n"}
+scoreboard players set $global.version TP_version 111
+scoreboard players add $tc.count TC_temp_tests 1
+schedule function tinkererscraft:packages/version_checker/version_checker 2t
+tellraw @a {"text":""}
 
 
 #> End of file

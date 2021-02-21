@@ -6,12 +6,12 @@
 #> -----------------------------------------------
 
 
-#> api controller (references: ../load)
-# this code runs the api checkers
+#> 1.17
+# this code runs if the game is in 1.17
 
 
-#> harvester
-execute if score $tc.api TP_version matches 211 run schedule function tinkererscraft:packages/api/api_checker_h 1t append
+particle minecraft:glow_squid_ink ~ 0 ~ 0 0 0 1 1
+scoreboard players set $global.version TP_version 117
 
 
 #> End of file

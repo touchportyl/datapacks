@@ -23,7 +23,6 @@ kill @e[tag=TinkerersCraft]
 
 
 
-
 # randomizers
 # r6
 scoreboard objectives remove TC_rand_6

@@ -21,7 +21,7 @@ tellraw @a [{"text":""},{"text":" -","color":"red"},{"text":" [Vanilla Essential
 kill @e[tag=VanillaEssentials]
 
 
-# core triggers
+# triggers
 scoreboard objectives remove stats
 scoreboard objectives remove playtime
 scoreboard objectives remove uptime

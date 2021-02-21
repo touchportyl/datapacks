@@ -10,6 +10,11 @@
 # override default features
 
 
+# display debug messages
+# 0 = hide warning and error messages
+# 1 = show all messages
+scoreboard players set $DebugMessages TP_Config 1
+
 
 #> gamerules
 

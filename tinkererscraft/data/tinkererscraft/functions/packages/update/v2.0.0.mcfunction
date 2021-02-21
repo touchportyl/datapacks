@@ -11,7 +11,7 @@
 
 
 # update version
-scoreboard players set $tc.version TP_version 20000
+execute if score $tc.version.override TP_config matches 0 run scoreboard players set $tc.version TP_version 20000
 
 # display update msg if cleanup happens
 # TC_api_hash for v1.9 and v1.9.1 is set as 101
@@ -49,10 +49,6 @@ scoreboard objectives remove TP_Timer
 
 # remove tags
 tag @e[tag=TC_setzero] remove TC_setzero
-
-
-# install current version
-function tinkererscraft:packages/install
 
 
 #> End of file

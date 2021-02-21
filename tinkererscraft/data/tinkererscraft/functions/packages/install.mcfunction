@@ -15,14 +15,14 @@
 
 
 # set api version
-execute unless score $tc.api TP_version matches 201.. run scoreboard players set $tc.api TP_version 201
+execute unless score $tc.api TP_version matches 211.. run scoreboard players set $tc.api TP_version 211
 
 # install msg
-tellraw @a [{"text":""},{"text":" +","color":"green"},{"text":" [Tinkerer's Craft] ","color":"aqua","hoverEvent":{"action":"show_text","value":"As if the nether update wasn't enough."}},{"text":"v2.0.0"},{"text":" installed successfully","color":"gray"}]
+tellraw @a [{"text":""},{"text":" +","color":"green"},{"text":" [Tinkerer's Craft] ","color":"aqua","hoverEvent":{"action":"show_text","value":"As if the nether update wasn't enough."}},{"text":"v2.1.0"},{"text":" installed successfully","color":"gray"}]
 
 
-# core variables
-#scoreboard objectives add give trigger [{"text":"Global Item Giver","color":"white"}]
+# hooks
+scoreboard objectives add uninstall trigger [{"text":"Global Trigger - Uninstall","color":"white"}]
 
 # randomizers
 # r6
@@ -39,16 +39,20 @@ scoreboard objectives add TC_LungeTimer minecraft.custom:minecraft.sneak_time [{
 scoreboard objectives add TC_RiptideTimer dummy [{"text":"Riptide Timer","color":"gold"}]
 
 # calculation buffers
+scoreboard objectives add TC_bCopperOre dummy [{"text":"Copper Ore Buffer","color":"gold"}]
 scoreboard objectives add TC_bIronOre dummy [{"text":"Iron Ore Buffer","color":"gold"}]
 scoreboard objectives add TC_bGoldOre dummy [{"text":"Gold Ore Buffer","color":"gold"}]
+scoreboard objectives add TC_bCopper dummy [{"text":"Copper Buffer","color":"gold"}]
 scoreboard objectives add TC_bIron dummy [{"text":"Iron Buffer","color":"gold"}]
 scoreboard objectives add TC_bGold dummy [{"text":"Gold Buffer","color":"gold"}]
+scoreboard objectives add TC_bCopperBlock dummy [{"text":"Copper Block Buffer","color":"gold"}]
 scoreboard objectives add TC_bIronBlock dummy [{"text":"Iron Block Buffer","color":"gold"}]
 scoreboard objectives add TC_bGoldBlock dummy [{"text":"Gold Block Buffer","color":"gold"}]
 scoreboard objectives add TC_bObsidian dummy [{"text":"Obsidian Buffer","color":"gold"}]
 
 # storage
 scoreboard objectives add TC_lCapacity dummy [{"text":"Storage Capacity","color":"gold"}]
+scoreboard objectives add TC_lCopper dummy [{"text":"Amount of Liquid Copper stored","color":"gold"}]
 scoreboard objectives add TC_lIron dummy [{"text":"Amount of Liquid Iron stored","color":"gold"}]
 scoreboard objectives add TC_lGold dummy [{"text":"Amount of Liquid Gold stored","color":"gold"}]
 scoreboard objectives add TC_lObsidian dummy [{"text":"Amount of Liquid Obsidian stored","color":"gold"}]

@@ -22,6 +22,7 @@ tellraw @a [{"text":""},{"text":" +","color":"green"},{"text":" [Vanilla Essenti
 
 
 # core variables
+scoreboard objectives add TP_Config dummy [{"text":"Global Config","color":"white"}]
 scoreboard objectives add TP_Ticks dummy [{"text":"Global Time - Ticks","color":"white"}]
 scoreboard objectives add TP_Seconds dummy [{"text":"Global Time - Seconds","color":"white"}]
 scoreboard objectives add TP_Minutes dummy [{"text":"Global Time - Minutes","color":"white"}]
@@ -64,9 +65,6 @@ team add VE_Stats
 team modify VE_Stats color white
 scoreboard objectives setdisplay sidebar.team.white VE_Stats
 scoreboard players set Players VE_Stats 0
-
-# config
-function vanillaessentials:config
 
 
 #> End of file
