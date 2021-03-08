@@ -12,6 +12,7 @@
 
 # override other tags
 tag @s remove TC_outputnull
+tag @s remove TC_outputcopper
 tag @s remove TC_outputiron
 tag @s remove TC_outputobsidian
 tag @s remove TC_outputirgol

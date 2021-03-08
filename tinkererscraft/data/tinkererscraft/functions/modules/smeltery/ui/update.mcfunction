@@ -11,6 +11,7 @@
 
 
 #swap ore displays
+execute as @s[tag=TC_outputcopper] at @s positioned ^ ^0.6 ^1 run data modify entity @e[tag=TC_display,tag=TC_ore,distance=..1,limit=1] CustomName set value '{"text":"Copper","color":"gold"}'
 execute as @s[tag=TC_outputiron] at @s positioned ^ ^0.6 ^1 run data modify entity @e[tag=TC_display,tag=TC_ore,distance=..1,limit=1] CustomName set value '{"text":"Iron","color":"gray"}'
 execute as @s[tag=TC_outputgold] at @s positioned ^ ^0.6 ^1 run data modify entity @e[tag=TC_display,tag=TC_ore,distance=..1,limit=1] CustomName set value '{"text":"Gold","color":"yellow"}'
 execute as @s[tag=TC_outputobsidian] at @s positioned ^ ^0.6 ^1 run data modify entity @e[tag=TC_display,tag=TC_ore,distance=..1,limit=1] CustomName set value '{"text":"Obsidian","color":"dark_gray"}'
@@ -22,6 +23,7 @@ execute as @s[tag=TC_outputobdiam] at @s positioned ^ ^0.6 ^1 run data modify en
 setblock ^ ^1 ^2 minecraft:oak_sign replace
 
 #parse scoreboard on sign Text1
+execute as @s[tag=TC_outputcopper] at @s run data modify block ^ ^1 ^2 Text1 set value '{"score":{"name":"@e[tag=TC_smeltery,tag=TC_outputcopper,distance=..4,limit=1]","objective":"TC_lCopper"}}'
 execute as @s[tag=TC_outputiron] at @s run data modify block ^ ^1 ^2 Text1 set value '{"score":{"name":"@e[tag=TC_smeltery,tag=TC_outputiron,distance=..4,limit=1]","objective":"TC_lIron"}}'
 execute as @s[tag=TC_outputgold] at @s run data modify block ^ ^1 ^2 Text1 set value '{"score":{"name":"@e[tag=TC_smeltery,tag=TC_outputgold,distance=..4,limit=1]","objective":"TC_lGold"}}'
 execute as @s[tag=TC_outputobsidian] at @s run data modify block ^ ^1 ^2 Text1 set value '{"score":{"name":"@e[tag=TC_smeltery,tag=TC_outputobsidian,distance=..4,limit=1]","objective":"TC_lObsidian"}}'

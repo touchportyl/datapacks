@@ -17,13 +17,15 @@ execute if score $tc.version.override TP_config matches 0 run scoreboard players
 # ------
 
 # update old smelteries to support copper
-execute as @e[tag=TC_smeltery,scores={TC_lIron=..512,TC_lGold=..512,TC_lObsidian=..512,TC_lIrgol=..512,TC_lObdiam=..512}] unless score @s TC_lCapacity matches 256..4096 run scoreboard players set @s TC_lCopper 0
+execute as @e[tag=TC_smeltery] run scoreboard players set @s TC_lCopper 0
 
 
 # cleanup
 # -------
 
 # remove objectives
+scoreboard objectives remove TC_rand_6
+scoreboard objectives remove TC_rand_20
 
 # remove tags
 tag @e[tag=TC_setzero] remove TC_setzero

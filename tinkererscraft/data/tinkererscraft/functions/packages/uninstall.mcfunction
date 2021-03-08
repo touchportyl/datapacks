@@ -23,13 +23,11 @@ kill @e[tag=TinkerersCraft]
 
 
 
-# randomizers
-# r6
-scoreboard objectives remove TC_rand_6
-# r20
-scoreboard objectives remove TC_rand_20
+# randomizer
+scoreboard objectives remove TC_rand
 
 # timers
+scoreboard objectives remove TC_TextTimer
 scoreboard objectives remove TC_OutputTimer
 scoreboard objectives remove TC_SmeltingTimer
 scoreboard objectives remove TC_FlamingTimer
@@ -38,6 +36,7 @@ scoreboard objectives remove TC_LungeTimer
 scoreboard objectives remove TC_RiptideTimer
 
 # calculation buffers
+scoreboard objectives remove TC_bCopperOre
 scoreboard objectives remove TC_bIronOre
 scoreboard objectives remove TC_bGoldOre
 scoreboard objectives remove TC_bIron

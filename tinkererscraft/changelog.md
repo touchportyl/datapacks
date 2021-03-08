@@ -154,13 +154,14 @@ full dev log:
 
 
 # changelog v2.1.0
-
-
-
-+ display a help message when approaching a smeltery ("Break the glass block to change the smeltery output")
++ add crafting recipes for creating a smeltery in the early game
++ add support for smelting deepslate ores
 + add copper smelting
 + update UI menu to include copper
-+ 
++ changed normal ores to only create one unit of molten metal
++ display a help message when approaching a smeltery ("Break the glass block to change the smeltery output")
+
+
 + add copper tools
 + add steel (100 iron, 1 carbon catalyst)
 

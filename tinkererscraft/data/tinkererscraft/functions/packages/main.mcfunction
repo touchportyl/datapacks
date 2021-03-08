@@ -75,6 +75,9 @@ function tinkererscraft:modules/enchants/lunge
 #> riptide > controller
 function tinkererscraft:modules/enchants/riptide
 
+#> help
+function tinkererscraft:modules/smeltery/ui/help/display
+
 #> guidebook
 execute as @e[nbt={Item:{tag:{TC_GuideBook:1b}},OnGround:1b}] at @s run function tinkererscraft:modules/effects/guidebook
 

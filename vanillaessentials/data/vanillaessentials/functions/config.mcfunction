@@ -51,7 +51,7 @@ gamerule commandBlockOutput false
 #gamerule maxEntityCramming 24
 
 # 1.12
-gamerule doLimitedCrafting true
+#gamerule doLimitedCrafting false
 #gamerule maxCommandChainLength 65536
 #gamerule announceAdvancements true
 

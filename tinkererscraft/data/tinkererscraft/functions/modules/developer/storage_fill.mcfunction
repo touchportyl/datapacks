@@ -11,6 +11,7 @@
 
 
 # set values to max
+scoreboard players set @s TC_lCopper 4097
 scoreboard players set @s TC_lIron 4097
 scoreboard players set @s TC_lGold 4097
 scoreboard players set @s TC_lObsidian 4097

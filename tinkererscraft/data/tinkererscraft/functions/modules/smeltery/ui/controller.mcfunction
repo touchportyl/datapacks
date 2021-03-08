@@ -15,6 +15,9 @@
 # tutorial to iron
 function tinkererscraft:modules/smeltery/ui/null_iron
 
+# copper to iron
+function tinkererscraft:modules/smeltery/ui/copper_iron
+
 # iron to gold
 function tinkererscraft:modules/smeltery/ui/iron_gold
 
@@ -27,14 +30,14 @@ function tinkererscraft:modules/smeltery/ui/obsidian_irgol
 # irgol to obdiam
 function tinkererscraft:modules/smeltery/ui/irgol_obdiam
 
-# obdiam to iron
-function tinkererscraft:modules/smeltery/ui/obdiam_iron
+# obdiam to copper
+function tinkererscraft:modules/smeltery/ui/obdiam_copper
 
 #> update
 function tinkererscraft:modules/smeltery/ui/update
 
-# double run to loop around if iron is 0
-execute as @s[tag=TC_outputiron,scores={TC_lIron=0}] at @s run function tinkererscraft:modules/smeltery/ui/controller
+# double run to loop around if copper is 0
+execute as @s[tag=TC_outputcopper,scores={TC_lCopper=0}] at @s run function tinkererscraft:modules/smeltery/ui/controller
 
 
 #todo:gc

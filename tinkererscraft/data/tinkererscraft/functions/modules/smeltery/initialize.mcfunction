@@ -16,6 +16,7 @@
 
 
 # removes null values for the new objectives the smeltery has
+scoreboard players set @s TC_lCopper 0
 scoreboard players set @s TC_lIron 0
 scoreboard players set @s TC_lGold 0
 scoreboard players set @s TC_lObsidian 0

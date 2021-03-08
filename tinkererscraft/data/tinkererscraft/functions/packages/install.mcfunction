@@ -24,13 +24,16 @@ tellraw @a [{"text":""},{"text":" +","color":"green"},{"text":" [Tinkerer's Craf
 # hooks
 scoreboard objectives add uninstall trigger [{"text":"Global Trigger - Uninstall","color":"white"}]
 
-# randomizers
+# randomizer
+scoreboard objectives add TC_rand dummy [{"text":"Randomizer for Tinkerer's Craft","color":"gold"}]
+
 # r6
 scoreboard objectives add TC_rand_6 dummy [{"text":"Randomizer (6) for Tinkerer's Craft","color":"gold"}]
 # r20
 scoreboard objectives add TC_rand_20 dummy [{"text":"Randomizer (20) for Tinkerer's Craft","color":"gold"}]
 
 # timers
+scoreboard objectives add TC_TextTimer dummy [{"text":"Text Display Timer","color":"gold"}]
 scoreboard objectives add TC_OutputTimer dummy [{"text":"Output Timer","color":"gold"}]
 scoreboard objectives add TC_SmeltingTimer dummy [{"text":"Smelting Timer","color":"gold"}]
 scoreboard objectives add TC_FlamingTimer dummy [{"text":"Flaming Particle Timer","color":"gold"}]
