@@ -162,6 +162,8 @@ full dev log:
 + display a help message when approaching a smeltery ("Break the glass block to change the smeltery output")
 + irgol can only be created after a smeltery upgrade
 + obdiam can only be created after two smeltery upgrades
++ added new bug test for smelting items
++ fixed plenty of smelting bugs
 
 
 + add copper tools
