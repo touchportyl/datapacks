@@ -1,5 +1,5 @@
 #> -----------------------------------------------
-#> Tinkerer's Craft Datapack
+#> Tinkerer's_craft Datapack
 #> This code is protected by the GNU GPLv3 License
 #> © 2020 Portyl Studios
 #> https://portylstudios.com
@@ -20,66 +20,67 @@
 # - others
 
 # copper
-execute as @s[name="Copper Ore"] run tag @s add TC_copperore
-execute as @s[name="Copper Ingot"] run tag @s add TC_copper
+execute as @s[nbt={Item:{id:"minecraft:copper_ore"}}] run tag @s add TC_copperore
+execute if score $tc.smelting.copper.deepslate TP_config matches 1 as @s[nbt={Item:{id:"minecraft:deepslate_copper_ore"}}] run tag @s add TC_deepslatecopperore
+execute as @s[nbt={Item:{id:"minecraft:copper_ingot"}}] run tag @s add TC_copper
 
-execute as @s[name="Block of Copper"] run tag @s add TC_copperblock
-execute as @s[name="Exposed Copper"] run tag @s add TC_exposedcopperblock
-execute as @s[name="Weathered Copper"] run tag @s add TC_weatheredcopperblock
-execute as @s[name="Oxidised Copper"] run tag @s add TC_oxidisedcopperblock
-execute as @s[name="Waxed Block of Copper"] run tag @s add TC_copperblock
-execute as @s[name="Waxed Exposed Copper"] run tag @s add TC_exposedcopperblock
-execute as @s[name="Waxed Weathered Copper"] run tag @s add TC_weatheredcopperblock
+execute as @s[nbt={Item:{id:"minecraft:copper_block"}}] run tag @s add TC_copperblock
+execute as @s[nbt={Item:{id:"minecraft:exposed_copper"}}] run tag @s add TC_exposedcopperblock
+execute as @s[nbt={Item:{id:"minecraft:weathered_copper"}}] run tag @s add TC_weatheredcopperblock
+execute as @s[nbt={Item:{id:"minecraft:oxidized_copper"}}] run tag @s add TC_oxidizedcopperblock
+execute as @s[nbt={Item:{id:"minecraft:waxed_copper_block"}}] run tag @s add TC_copperblock
+execute as @s[nbt={Item:{id:"minecraft:waxed_exposed_copper"}}] run tag @s add TC_exposedcopperblock
+execute as @s[nbt={Item:{id:"minecraft:waxed_weathered_copper"}}] run tag @s add TC_weatheredcopperblock
 
-execute as @s[name="Cut Copper"] run tag @s add TC_cutcopper
-execute as @s[name="Exposed Cut Copper"] run tag @s add TC_exposedcutcopper
-execute as @s[name="Weathered Cut Copper"] run tag @s add TC_weatheredcutcopper
-execute as @s[name="Oxidised Cut Copper"] run tag @s add TC_oxidisedcutcopper
-execute as @s[name="Waxed Cut Copper"] run tag @s add TC_cutcopper
-execute as @s[name="Waxed Exposed Cut Copper"] run tag @s add TC_exposedcutcopper
-execute as @s[name="Waxed Weathered Cut Copper"] run tag @s add TC_weatheredcutcopper
+execute as @s[nbt={Item:{id:"minecraft:cut_copper"}}] run tag @s add TC_cutcopper
+execute as @s[nbt={Item:{id:"minecraft:exposed_cut_copper"}}] run tag @s add TC_exposedcutcopper
+execute as @s[nbt={Item:{id:"minecraft:weathered_cut_copper"}}] run tag @s add TC_weatheredcutcopper
+execute as @s[nbt={Item:{id:"minecraft:oxidized_cut_copper"}}] run tag @s add TC_oxidizedcutcopper
+execute as @s[nbt={Item:{id:"minecraft:waxed_cut_copper"}}] run tag @s add TC_cutcopper
+execute as @s[nbt={Item:{id:"minecraft:waxed_exposed_cut_copper"}}] run tag @s add TC_exposedcutcopper
+execute as @s[nbt={Item:{id:"minecraft:waxed_weathered_cut_copper"}}] run tag @s add TC_weatheredcutcopper
 
-execute as @s[name="Cut Copper Stairs"] run tag @s add TC_cutcopperstairs
-#execute as @s[name="Exposed Cut Copper Stairs"] run tag @s add TC_exposedcutcopperstairs
-#execute as @s[name="Weathered Cut Copper Stairs"] run tag @s add TC_weatheredcutcopperstairs
-#execute as @s[name="Oxidised Cut Copper Stairs"] run tag @s add TC_oxidisedcutcopperstairs
-execute as @s[name="Waxed Cut Copper Stairs"] run tag @s add TC_cutcopperstairs
-#execute as @s[name="Waxed Exposed Cut Copper Stairs"] run tag @s add TC_exposedcutcopperstairs
-#execute as @s[name="Waxed Weathered Cut Copper Stairs"] run tag @s add TC_weatheredcutcopperstairs
+execute as @s[nbt={Item:{id:"minecraft:cut_copper_stairs"}}] run tag @s add TC_cutcopperstairs
+#execute as @s[nbt={Item:{id:"minecraft:exposed_cut_copper_stairs"}}] run tag @s add TC_exposedcutcopperstairs
+#execute as @s[nbt={Item:{id:"minecraft:weathered_cut_copper_stairs"}}] run tag @s add TC_weatheredcutcopperstairs
+#execute as @s[nbt={Item:{id:"minecraft:oxidized_cut_copper_stairs"}}] run tag @s add TC_oxidizedcutcopperstairs
+execute as @s[nbt={Item:{id:"minecraft:waxed_cut_copper_stairs"}}] run tag @s add TC_cutcopperstairs
+#execute as @s[nbt={Item:{id:"minecraft:waxed_exposed_cut_copper_stairs"}}] run tag @s add TC_exposedcutcopperstairs
+#execute as @s[nbt={Item:{id:"minecraft:waxed_weathered_cut_copper_stairs"}}] run tag @s add TC_weatheredcutcopperstairs
 
-execute as @s[name="Cut Copper Slab"] run tag @s add TC_cutcopperslab
-#execute as @s[name="Exposed Cut Copper Slab"] run tag @s add TC_exposedcutcopperslab
-#execute as @s[name="Weathered Cut Copper Slab"] run tag @s add TC_weatheredcutcopperslab
-#execute as @s[name="Oxidised Cut Copper Slab"] run tag @s add TC_oxidisedcutcopperslab
-execute as @s[name="Waxed Cut Copper Slab"] run tag @s add TC_cutcopperslab
-#execute as @s[name="Waxed Exposed Cut Copper Slab"] run tag @s add TC_exposedcutcopperslab
-#execute as @s[name="Waxed Weathered Cut Copper Slab"] run tag @s add TC_weatheredcutcopperslab
+execute as @s[nbt={Item:{id:"minecraft:cut_copper_slab"}}] run tag @s add TC_cutcopperslab
+#execute as @s[nbt={Item:{id:"minecraft:exposed_cut_copper_slab"}}] run tag @s add TC_exposedcutcopperslab
+#execute as @s[nbt={Item:{id:"minecraft:weathered_cut_copper_slab"}}] run tag @s add TC_weatheredcutcopperslab
+#execute as @s[nbt={Item:{id:"minecraft:oxidized_cut_copper_slab"}}] run tag @s add TC_oxidizedcutcopperslab
+execute as @s[nbt={Item:{id:"minecraft:waxed_cut_copper_slab"}}] run tag @s add TC_cutcopperslab
+#execute as @s[nbt={Item:{id:"minecraft:waxed_exposed_cut_copper_slab"}}] run tag @s add TC_exposedcutcopperslab
+#execute as @s[nbt={Item:{id:"minecraft:waxed_weathered_cut_copper_slab"}}] run tag @s add TC_weatheredcutcopperslab
 
 # iron
-execute as @s[name="Iron Ore"] run tag @s add TC_ironore
-execute as @s[name="Deepslate Iron Ore"] run tag @s add TC_deepslateironore
-execute as @s[name="Iron Ingot"] run tag @s add TC_iron
-execute as @s[name="Block of Iron"] run tag @s add TC_ironblock
+execute as @s[nbt={Item:{id:"minecraft:iron_ore"}}] run tag @s add TC_ironore
+execute as @s[nbt={Item:{id:"minecraft:deepslate_iron_ore"}}] run tag @s add TC_deepslateironore
+execute as @s[nbt={Item:{id:"minecraft:iron_ingot"}}] run tag @s add TC_iron
+execute as @s[nbt={Item:{id:"minecraft:iron_block"}}] run tag @s add TC_ironblock
 
 # gold
-execute as @s[name="Gold Ore"] run tag @s add TC_goldore
-execute as @s[name="Deepslate Gold Ore"] run tag @s add TC_deepslategoldore
-execute as @s[name="Nether Gold Ore"] run tag @s add TC_nethergoldore
-execute as @s[name="Gold Ingot"] run tag @s add TC_gold
-execute as @s[name="Block of Gold"] run tag @s add TC_goldblock
+execute as @s[nbt={Item:{id:"minecraft:gold_ore"}}] run tag @s add TC_goldore
+execute as @s[nbt={Item:{id:"minecraft:deepslate_gold_ore"}}] run tag @s add TC_deepslategoldore
+execute if score $tc.smelting.gold.nether TP_config matches 1 as @s[nbt={Item:{id:"minecraft:nether_gold_ore"}}] run tag @s add TC_nethergoldore
+execute as @s[nbt={Item:{id:"minecraft:gold_ingot"}}] run tag @s add TC_gold
+execute as @s[nbt={Item:{id:"minecraft:gold_block"}}] run tag @s add TC_goldblock
 
 # obdisian
-execute as @s[name="Obsidian"] run tag @s add TC_obsidian
+execute as @s[nbt={Item:{id:"minecraft:obsidian"}}] run tag @s add TC_obsidian
 
 # reactants
-execute as @s[name="Redstone Dust"] run tag @s add TC_redstone
-execute as @s[name="Diamond"] run tag @s add TC_diamond
+execute as @s[nbt={Item:{id:"minecraft:redstone"}}] run tag @s add TC_redstone
+execute as @s[nbt={Item:{id:"minecraft:diamond"}}] run tag @s add TC_diamond
 
 # upgrade items
-execute as @s[name="Block of Netherite"] run tag @s add TC_netheriteblock
+execute as @s[nbt={Item:{id:"minecraft:netherite_block"}}] run tag @s add TC_netheriteblock
 
 # developer items
-execute as @s[name="Command Block"] run tag @s add TC_commandblock
+execute as @s[nbt={Item:{id:"minecraft:command_block"}}] run tag @s add TC_commandblock
 
 
 #> End of file

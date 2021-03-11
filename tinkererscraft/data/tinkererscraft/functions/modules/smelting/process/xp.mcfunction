@@ -16,19 +16,19 @@ execute if score @s TC_lCopper < @s TC_lCapacity at @s as @e[tag=TC_copper,dista
 execute if score @s TC_lCopper < @s TC_lCapacity at @s as @e[tag=TC_copperblock,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
 execute if score @s TC_lCopper < @s TC_lCapacity at @s as @e[tag=TC_exposedcopperblock,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
 execute if score @s TC_lCopper < @s TC_lCapacity at @s as @e[tag=TC_weatheredcopperblock,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
-execute if score @s TC_lCopper < @s TC_lCapacity at @s as @e[tag=TC_oxidisedcopperblock,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
+execute if score @s TC_lCopper < @s TC_lCapacity at @s as @e[tag=TC_oxidizedcopperblock,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
 execute if score @s TC_lCopper < @s TC_lCapacity at @s as @e[tag=TC_cutcopper,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
 execute if score @s TC_lCopper < @s TC_lCapacity at @s as @e[tag=TC_exposedcutcopper,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
 execute if score @s TC_lCopper < @s TC_lCapacity at @s as @e[tag=TC_weatheredcutcopper,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
-execute if score @s TC_lCopper < @s TC_lCapacity at @s as @e[tag=TC_oxidisedcutcopper,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
+execute if score @s TC_lCopper < @s TC_lCapacity at @s as @e[tag=TC_oxidizedcutcopper,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
 execute if score @s TC_lCopper < @s TC_lCapacity at @s as @e[tag=TC_cutcopperstairs,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
-execute if score @s TC_lCopper < @s TC_lCapacity at @s as @e[tag=TC_exposedcutcopperstairs,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
-execute if score @s TC_lCopper < @s TC_lCapacity at @s as @e[tag=TC_weatheredcutcopperstairs,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
-execute if score @s TC_lCopper < @s TC_lCapacity at @s as @e[tag=TC_oxidisedcutcopperstairs,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
+#execute if score @s TC_lCopper < @s TC_lCapacity at @s as @e[tag=TC_exposedcutcopperstairs,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
+#execute if score @s TC_lCopper < @s TC_lCapacity at @s as @e[tag=TC_weatheredcutcopperstairs,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
+#execute if score @s TC_lCopper < @s TC_lCapacity at @s as @e[tag=TC_oxidizedcutcopperstairs,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
 execute if score @s TC_lCopper < @s TC_lCapacity at @s as @e[tag=TC_cutcopperslab,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
-execute if score @s TC_lCopper < @s TC_lCapacity at @s as @e[tag=TC_exposedcutcopperslab,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
-execute if score @s TC_lCopper < @s TC_lCapacity at @s as @e[tag=TC_weatheredcutcopperslab,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
-execute if score @s TC_lCopper < @s TC_lCapacity at @s as @e[tag=TC_oxidisedcutcopperslab,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
+#execute if score @s TC_lCopper < @s TC_lCapacity at @s as @e[tag=TC_exposedcutcopperslab,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
+#execute if score @s TC_lCopper < @s TC_lCapacity at @s as @e[tag=TC_weatheredcutcopperslab,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
+#execute if score @s TC_lCopper < @s TC_lCapacity at @s as @e[tag=TC_oxidizedcutcopperslab,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}
 
 # iron
 execute if score @s TC_lIron < @s TC_lCapacity at @s as @e[tag=TC_ironore,distance=..2] run summon experience_orb ~ ~2 ~ {Age:5960,Health:1,Value:0}

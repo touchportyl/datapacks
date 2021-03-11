@@ -12,26 +12,36 @@
 
 # ore
 execute as @s at @s store result score @s TC_bCopper run data get entity @e[tag=TC_copperore,distance=..2,sort=nearest,limit=1] Item.Count
+execute if score $tc.smelting.double.ore TP_config matches 1 run scoreboard players operation @s[scores={TC_bCopper=1..}] TC_bCopper *= Two TC_NumberArray
+execute as @s at @s run function tinkererscraft:modules/smelting/process/push
+
+execute as @s at @s store result score @s TC_bCopper run data get entity @e[tag=TC_deepslatecopperore,distance=..2,sort=nearest,limit=1] Item.Count
+execute if score $tc.smelting.double.deepslate TP_config matches 1 run scoreboard players operation @s[scores={TC_bCopper=1..}] TC_bCopper *= Two TC_NumberArray
 execute as @s at @s run function tinkererscraft:modules/smelting/process/push
 
 # ingot
 execute as @s at @s store result score @s TC_bCopper run data get entity @e[tag=TC_copper,distance=..2,sort=nearest,limit=1] Item.Count
 execute as @s at @s run function tinkererscraft:modules/smelting/process/push
 
+
 # block
 # crafted using 4 ingots to make 1 block
 execute as @s at @s store result score @s TC_bCopper run data get entity @e[tag=TC_copperblock,distance=..2,sort=nearest,limit=1] Item.Count
 scoreboard players operation @s[scores={TC_bCopper=1..}] TC_bCopper *= Four TC_NumberArray
 execute as @s at @s run function tinkererscraft:modules/smelting/process/push
+
 execute as @s at @s store result score @s TC_bCopper run data get entity @e[tag=TC_exposedcopperblock,distance=..2,sort=nearest,limit=1] Item.Count
 scoreboard players operation @s[scores={TC_bCopper=1..}] TC_bCopper *= Three TC_NumberArray
 execute as @s at @s run function tinkererscraft:modules/smelting/process/push
+
 execute as @s at @s store result score @s TC_bCopper run data get entity @e[tag=TC_weatheredcopperblock,distance=..2,sort=nearest,limit=1] Item.Count
 scoreboard players operation @s[scores={TC_bCopper=1..}] TC_bCopper *= Three TC_NumberArray
 execute as @s at @s run function tinkererscraft:modules/smelting/process/push
-execute as @s at @s store result score @s TC_bCopper run data get entity @e[tag=TC_oxidisedcopperblock,distance=..2,sort=nearest,limit=1] Item.Count
+
+execute as @s at @s store result score @s TC_bCopper run data get entity @e[tag=TC_oxidizedcopperblock,distance=..2,sort=nearest,limit=1] Item.Count
 scoreboard players operation @s[scores={TC_bCopper=1..}] TC_bCopper *= Two TC_NumberArray
 execute as @s at @s run function tinkererscraft:modules/smelting/process/push
+
 
 # cut copper
 # crafted using 4 blocks to make 1 block
@@ -39,34 +49,45 @@ execute as @s at @s run function tinkererscraft:modules/smelting/process/push
 execute as @s at @s store result score @s TC_bCopper run data get entity @e[tag=TC_cutcopper,distance=..2,sort=nearest,limit=1] Item.Count
 scoreboard players operation @s[scores={TC_bCopper=1..}] TC_bCopper *= Three TC_NumberArray
 execute as @s at @s run function tinkererscraft:modules/smelting/process/push
+
 execute as @s at @s store result score @s TC_bCopper run data get entity @e[tag=TC_exposedcutcopper,distance=..2,sort=nearest,limit=1] Item.Count
 scoreboard players operation @s[scores={TC_bCopper=1..}] TC_bCopper *= Three TC_NumberArray
 execute as @s at @s run function tinkererscraft:modules/smelting/process/push
+
 execute as @s at @s store result score @s TC_bCopper run data get entity @e[tag=TC_weatheredcutcopper,distance=..2,sort=nearest,limit=1] Item.Count
 scoreboard players operation @s[scores={TC_bCopper=1..}] TC_bCopper *= Two TC_NumberArray
 execute as @s at @s run function tinkererscraft:modules/smelting/process/push
-execute as @s at @s store result score @s TC_bCopper run data get entity @e[tag=TC_oxidisedcutcopper,distance=..2,sort=nearest,limit=1] Item.Count
+
+execute as @s at @s store result score @s TC_bCopper run data get entity @e[tag=TC_oxidizedcutcopper,distance=..2,sort=nearest,limit=1] Item.Count
 scoreboard players operation @s[scores={TC_bCopper=1..}] TC_bCopper *= Two TC_NumberArray
 execute as @s at @s run function tinkererscraft:modules/smelting/process/push
+
 
 # copper stairs
 execute as @s at @s store result score @s TC_bCopper run data get entity @e[tag=TC_cutcopperstairs,distance=..2,sort=nearest,limit=1] Item.Count
 execute as @s at @s run function tinkererscraft:modules/smelting/process/push
+
 #execute as @s at @s store result score @s TC_bCopper run data get entity @e[tag=TC_exposedcutcopperstairs,distance=..2,sort=nearest,limit=1] Item.Count
 #execute as @s at @s run function tinkererscraft:modules/smelting/process/push
+
 #execute as @s at @s store result score @s TC_bCopper run data get entity @e[tag=TC_weatheredcutcopperstairs,distance=..2,sort=nearest,limit=1] Item.Count
 #execute as @s at @s run function tinkererscraft:modules/smelting/process/push
-#execute as @s at @s store result score @s TC_bCopper run data get entity @e[tag=TC_oxidisedcutcopperstairs,distance=..2,sort=nearest,limit=1] Item.Count
+
+#execute as @s at @s store result score @s TC_bCopper run data get entity @e[tag=TC_oxidizedcutcopperstairs,distance=..2,sort=nearest,limit=1] Item.Count
 #execute as @s at @s run function tinkererscraft:modules/smelting/process/push
+
 
 # copper slab
 execute as @s at @s store result score @s TC_bCopper run data get entity @e[tag=TC_cutcopperslab,distance=..2,sort=nearest,limit=1] Item.Count
 execute as @s at @s run function tinkererscraft:modules/smelting/process/push
+
 #execute as @s at @s store result score @s TC_bCopper run data get entity @e[tag=TC_exposedcutcopperslab,distance=..2,sort=nearest,limit=1] Item.Count
 #execute as @s at @s run function tinkererscraft:modules/smelting/process/push
+
 #execute as @s at @s store result score @s TC_bCopper run data get entity @e[tag=TC_weatheredcutcopperslab,distance=..2,sort=nearest,limit=1] Item.Count
 #execute as @s at @s run function tinkererscraft:modules/smelting/process/push
-#execute as @s at @s store result score @s TC_bCopper run data get entity @e[tag=TC_oxidisedcutcopperslab,distance=..2,sort=nearest,limit=1] Item.Count
+
+#execute as @s at @s store result score @s TC_bCopper run data get entity @e[tag=TC_oxidizedcutcopperslab,distance=..2,sort=nearest,limit=1] Item.Count
 #execute as @s at @s run function tinkererscraft:modules/smelting/process/push
 
 

@@ -12,5 +12,8 @@
 scoreboard players enable @a uninstall
 execute as @a[scores={uninstall=1..}] run function tinkererscraft:packages/hooks/uninstall
 
+scoreboard players enable @a tests
+execute as @a[scores={tests=1..}] run function tinkererscraft:packages/hooks/tests
+
 #> End of file
 #> -----------

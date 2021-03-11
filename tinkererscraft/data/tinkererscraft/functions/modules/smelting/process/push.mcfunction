@@ -15,6 +15,12 @@ scoreboard players operation @s[scores={TC_bIron=1..}] TC_lIron += @s TC_bIron
 scoreboard players operation @s[scores={TC_bGold=1..}] TC_lGold += @s TC_bGold
 scoreboard players operation @s[scores={TC_bObsidian=1..}] TC_lObsidian += @s TC_bObsidian
 
+# garbage collection
+scoreboard players reset @s TC_bCopper
+scoreboard players reset @s TC_bIron
+scoreboard players reset @s TC_bGold
+scoreboard players reset @s TC_bObsidian
+
 
 #> End of file
 #> -----------

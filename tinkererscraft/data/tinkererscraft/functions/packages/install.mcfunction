@@ -23,6 +23,7 @@ tellraw @a [{"text":""},{"text":" +","color":"green"},{"text":" [Tinkerer's Craf
 
 # hooks
 scoreboard objectives add uninstall trigger [{"text":"Global Trigger - Uninstall","color":"white"}]
+scoreboard objectives add tests trigger [{"text":"Global Trigger - Tests","color":"white"}]
 
 # randomizer
 scoreboard objectives add TC_rand dummy [{"text":"Randomizer for Tinkerer's Craft","color":"gold"}]

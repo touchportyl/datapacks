@@ -12,9 +12,15 @@
 
 # ore
 execute as @s at @s store result score @s TC_bGold run data get entity @e[tag=TC_goldore,distance=..2,sort=nearest,limit=1] Item.Count
+execute if score $tc.smelting.double.ore TP_config matches 1 run scoreboard players operation @s[scores={TC_bGold=1..}] TC_bGold *= Two TC_NumberArray
 execute as @s at @s run function tinkererscraft:modules/smelting/process/push
+
 execute as @s at @s store result score @s TC_bGold run data get entity @e[tag=TC_deepslategoldore,distance=..2,sort=nearest,limit=1] Item.Count
-scoreboard players operation @s[scores={TC_bGold=1..}] TC_bGold *= Two TC_NumberArray
+execute if score $tc.smelting.double.deepslate TP_config matches 1 run scoreboard players operation @s[scores={TC_bGold=1..}] TC_bGold *= Two TC_NumberArray
+execute as @s at @s run function tinkererscraft:modules/smelting/process/push
+
+execute as @s at @s store result score @s TC_bGold run data get entity @e[tag=TC_nethergoldore,distance=..2,sort=nearest,limit=1] Item.Count
+execute if score $tc.smelting.double.nethergold TP_config matches 1 run scoreboard players operation @s[scores={TC_bGold=1..}] TC_bGold *= Two TC_NumberArray
 execute as @s at @s run function tinkererscraft:modules/smelting/process/push
 
 # ingot

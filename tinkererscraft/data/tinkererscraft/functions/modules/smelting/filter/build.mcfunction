@@ -16,23 +16,24 @@
 
 # filter out items that will be building a smeltery
 execute as @e[tag=TC_copperore,tag=!TC_smelting] run tag @s add TC_buildsmeltery
+execute as @e[tag=TC_deepslatecopperore,tag=!TC_smelting] run tag @s add TC_buildsmeltery
 execute as @e[tag=TC_copper,tag=!TC_smelting] run tag @s add TC_buildsmeltery
 execute as @e[tag=TC_copperblock,tag=!TC_smelting] run tag @s add TC_buildsmeltery
 execute as @e[tag=TC_exposedcopperblock,tag=!TC_smelting] run tag @s add TC_buildsmeltery
 execute as @e[tag=TC_weatheredcopperblock,tag=!TC_smelting] run tag @s add TC_buildsmeltery
-execute as @e[tag=TC_oxidisedcopperblock,tag=!TC_smelting] run tag @s add TC_buildsmeltery
+execute as @e[tag=TC_oxidizedcopperblock,tag=!TC_smelting] run tag @s add TC_buildsmeltery
 execute as @e[tag=TC_cutcopper,tag=!TC_smelting] run tag @s add TC_buildsmeltery
 execute as @e[tag=TC_exposedcutcopper,tag=!TC_smelting] run tag @s add TC_buildsmeltery
 execute as @e[tag=TC_weatheredcutcopper,tag=!TC_smelting] run tag @s add TC_buildsmeltery
-execute as @e[tag=TC_oxidisedcutcopper,tag=!TC_smelting] run tag @s add TC_buildsmeltery
+execute as @e[tag=TC_oxidizedcutcopper,tag=!TC_smelting] run tag @s add TC_buildsmeltery
 execute as @e[tag=TC_cutcopperstairs,tag=!TC_smelting] run tag @s add TC_buildsmeltery
 #execute as @e[tag=TC_exposedcutcopperstairs,tag=!TC_smelting] run tag @s add TC_buildsmeltery
 #execute as @e[tag=TC_weatheredcutcopperstairs,tag=!TC_smelting] run tag @s add TC_buildsmeltery
-#execute as @e[tag=TC_oxidisedcutcopperstairs,tag=!TC_smelting] run tag @s add TC_buildsmeltery
+#execute as @e[tag=TC_oxidizedcutcopperstairs,tag=!TC_smelting] run tag @s add TC_buildsmeltery
 execute as @e[tag=TC_cutcopperslab,tag=!TC_smelting] run tag @s add TC_buildsmeltery
 #execute as @e[tag=TC_exposedcutcopperslab,tag=!TC_smelting] run tag @s add TC_buildsmeltery
 #execute as @e[tag=TC_weatheredcutcopperslab,tag=!TC_smelting] run tag @s add TC_buildsmeltery
-#execute as @e[tag=TC_oxidisedcutcopperslab,tag=!TC_smelting] run tag @s add TC_buildsmeltery
+#execute as @e[tag=TC_oxidizedcutcopperslab,tag=!TC_smelting] run tag @s add TC_buildsmeltery
 
 execute as @e[tag=TC_ironore,tag=!TC_smelting] run tag @s add TC_buildsmeltery
 execute as @e[tag=TC_deepslateironore,tag=!TC_smelting] run tag @s add TC_buildsmeltery

@@ -40,7 +40,7 @@ execute as @e[tag=TC_smelting] at @s run kill @s
 execute as @e[tag=TC_smeltery] at @s run function tinkererscraft:modules/smeltery/check
 
 #> ambient
-execute as @e[tag=TC_smeltery] at @s run function tinkererscraft:modules/effects/smeltery/ambient
+execute as @e[tag=TC_smeltery,tag=!TC_noeffects] at @s run function tinkererscraft:modules/effects/smeltery/ambient
 
 #> controller
 execute as @e[tag=TC_smeltery] at @s unless block ^ ^1 ^1 minecraft:black_stained_glass run function tinkererscraft:modules/smeltery/ui/controller
