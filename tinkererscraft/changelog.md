@@ -160,10 +160,14 @@ full dev log:
 + update UI menu to include copper
 + changed normal ores to only create one unit of molten metal
 + display a help message when approaching a smeltery ("Break the glass block to change the smeltery output")
++ irgol can only be created after a smeltery upgrade
++ obdiam can only be created after two smeltery upgrades
 
 
 + add copper tools
++ rebalance ores tools
 + add steel (100 iron, 1 carbon catalyst)
++ add steel tools
 
 
 

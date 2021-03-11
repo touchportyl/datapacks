@@ -49,6 +49,8 @@ scoreboard objectives add TC_bCopper dummy [{"text":"Copper Buffer","color":"gol
 scoreboard objectives add TC_bIron dummy [{"text":"Iron Buffer","color":"gold"}]
 scoreboard objectives add TC_bGold dummy [{"text":"Gold Buffer","color":"gold"}]
 scoreboard objectives add TC_bCopperBlock dummy [{"text":"Copper Block Buffer","color":"gold"}]
+scoreboard objectives add TC_bCopperStairs dummy [{"text":"Copper Stairs Buffer","color":"gold"}]
+scoreboard objectives add TC_bCopperSlab dummy [{"text":"Copper Slab Buffer","color":"gold"}]
 scoreboard objectives add TC_bIronBlock dummy [{"text":"Iron Block Buffer","color":"gold"}]
 scoreboard objectives add TC_bGoldBlock dummy [{"text":"Gold Block Buffer","color":"gold"}]
 scoreboard objectives add TC_bObsidian dummy [{"text":"Obsidian Buffer","color":"gold"}]

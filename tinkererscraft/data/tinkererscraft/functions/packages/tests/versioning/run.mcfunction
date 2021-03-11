@@ -21,16 +21,16 @@ tellraw @a [{"text":""},{"text":"\n\n\n ALERT","color":"dark_red","bold":"true",
 
 
 # setup
-function tinkererscraft:packages/tests/setup
+function tinkererscraft:packages/tests/versioning/setup
 
 # start tests
-execute if score $global.version.override TP_config matches 1 run schedule function tinkererscraft:packages/tests/schedule/global 3s
+execute if score $global.version.override TP_config matches 1 run schedule function tinkererscraft:packages/tests/versioning/schedule/global 3s
 
 # start tests after first test
-execute if score $tc.version.override TP_config matches 1 run schedule function tinkererscraft:packages/tests/schedule/tc 13s
+execute if score $tc.version.override TP_config matches 1 run schedule function tinkererscraft:packages/tests/versioning/schedule/tc 13s
 
 # finish tests
-schedule function tinkererscraft:packages/tests/finish 21s
+schedule function tinkererscraft:packages/tests/versioning/finish 21s
 
 
 #> End of file

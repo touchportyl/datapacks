@@ -10,8 +10,8 @@
 # this is the main controller that runs the entirety of tinkerers craft
 
 
-#> item detection > storage fill
-execute as @e[type=minecraft:item] at @s if block ~ ~-1 ~ minecraft:gilded_blackstone run function tinkererscraft:modules/smelting/item_detection
+#> detection > storage fill
+execute as @e[type=minecraft:item] at @s if block ~ ~-1 ~ minecraft:gilded_blackstone run function tinkererscraft:modules/smelting/detection
 
 #> build > initialize
 execute as @e[tag=TC_buildsmeltery] at @s align xyz unless entity @e[tag=TC_smeltery,distance=..15] run function tinkererscraft:modules/smeltery/build
