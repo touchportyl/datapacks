@@ -54,10 +54,7 @@ execute as @e[tag=TC_smeltery,tag=TC_anvil] at @s run function tinkererscraft:mo
 #> controller > fx & drain > (item to drain) > casting_item
 execute as @e[tag=TC_smeltery] at @s if block ^ ^ ^2 minecraft:lever[powered=true] run function tinkererscraft:modules/casting/pouring/controller
 
-#> casting_hazard
-execute as @e[tag=TC_smeltery] at @s if block ^ ^ ^2 minecraft:lever[powered=true] positioned ^ ^ ^2 run function tinkererscraft:modules/casting/hazard
-
-#> casting_recent
+#> casting recent
 execute as @e[tag=TC_justcasted] run function tinkererscraft:modules/casting/recent
 
 #> flaming > controller

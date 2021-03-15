@@ -19,16 +19,16 @@ execute as @a[tag=TC_temp_tests_player] at @s align xyz run summon minecraft:are
 execute at @e[tag=TC_temp_tests_smelting] align xyz run setblock ~0.5 ~-1 ~0.5 gilded_blackstone replace
 
 # set up config alerts
-scoreboard players set $tc.temp.doubler.ore.alert TC_temp_tests 0
-scoreboard players set $tc.temp.doubler.deepslate.alert TC_temp_tests 0
-scoreboard players set $tc.temp.doubler.nethergold.alert TC_temp_tests 0
+scoreboard players set $tc.doubler.ore.alert TC_temp_tests 0
+scoreboard players set $tc.doubler.deepslate.alert TC_temp_tests 0
+scoreboard players set $tc.doubler.nethergold.alert TC_temp_tests 0
 
 # progress notification
 tellraw @a [{"text":""},{"text":"\n> Setup complete. Running tests...","color":"gray"}]
 
 
 # start tests
-schedule function tinkererscraft:packages/tests/smelting/copper/ore 1s
+schedule function tinkererscraft:packages/tests/smelting/copper/ore 2t
 
 
 #> End of file

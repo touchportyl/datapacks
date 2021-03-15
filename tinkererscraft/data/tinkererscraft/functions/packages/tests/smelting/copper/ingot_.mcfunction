@@ -16,7 +16,7 @@ execute if score @e[tag=TC_temp_tests_smelting,sort=nearest,limit=1] TC_lCopper 
 scoreboard players set @e[tag=TC_temp_tests_smelting] TC_lCopper 0
 
 # schedule next
-schedule function tinkererscraft:packages/tests/smelting/copper/block 1s
+schedule function tinkererscraft:packages/tests/smelting/copper/block 2t
 
 
 #> End of file

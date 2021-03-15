@@ -16,7 +16,7 @@ execute if score @e[tag=TC_temp_tests_smelting,sort=nearest,limit=1] TC_lObsidia
 scoreboard players set @e[tag=TC_temp_tests_smelting] TC_lObsidian 0
 
 # schedule next
-schedule function tinkererscraft:packages/tests/smelting/obsidian/_finish 1s
+schedule function tinkererscraft:packages/tests/smelting/obsidian/_finish 2t
 
 
 #> End of file

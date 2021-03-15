@@ -46,6 +46,13 @@ scoreboard players set $tc.smelting.copper.deepslate TP_config 0
 scoreboard players set $tc.smelting.gold.nether TP_config 1
 
 
+### CASTING ###
+
+# enable casting of iron tools
+# 0 to disable
+# 1 to enable (default)
+scoreboard players set $tc.casting.iron TP_config 1
+
 
 ### DEBUGGING ###
 # Do not edit unless you know what you're doing!
