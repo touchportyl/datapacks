@@ -25,8 +25,11 @@ tellraw @a [{"text":""},{"text":" +","color":"green"},{"text":" [Tinkerer's Craf
 scoreboard objectives add uninstall trigger [{"text":"Global Trigger - Uninstall","color":"white"}]
 scoreboard objectives add tests trigger [{"text":"Global Trigger - Tests","color":"white"}]
 
+# tagwriter
+scoreboard objectives add TC_TagWriter dummy [{"text":"Tagwriter for Tinkerer's Craft","color":"gold"}]
+
 # randomizer
-scoreboard objectives add TC_rand dummy [{"text":"Randomizer for Tinkerer's Craft","color":"gold"}]
+scoreboard objectives add TC_Randomizer dummy [{"text":"Randomizer for Tinkerer's Craft","color":"gold"}]
 
 # r6
 scoreboard objectives add TC_rand_6 dummy [{"text":"Randomizer (6) for Tinkerer's Craft","color":"gold"}]

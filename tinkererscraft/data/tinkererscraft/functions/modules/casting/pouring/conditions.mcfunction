@@ -52,6 +52,9 @@ execute as @s[tag=TC_outputobdiam,tag=TC_anvil,tag=TC_pressureplate] run tag @s 
 #> stop
 execute as @e[tag=TC_stoppour] at @s if block ^ ^ ^2 minecraft:lever[powered=true] run function tinkererscraft:modules/casting/stop
 
+#> hazard
+execute at @s if block ^ ^ ^2 minecraft:lever[powered=true] positioned ^ ^ ^2 run function tinkererscraft:modules/casting/hazard
+
 
 #> End of file
 #> -----------

@@ -17,6 +17,7 @@ scoreboard players add @s TC_OutputTimer 1
 #> conditions
 execute as @s[scores={TC_OutputTimer=1..}] run function tinkererscraft:modules/casting/pouring/conditions
 
+
 # reset to remove from ui
 execute as @s[tag=TC_outputiron,scores={TC_lIron=-1}] run scoreboard players reset @s TC_lIron
 execute as @s[tag=TC_outputgold,scores={TC_lGold=-1}] run scoreboard players reset @s TC_lGold
@@ -33,11 +34,9 @@ execute as @s[tag=TC_cauldron] at @s run function tinkererscraft:modules/effects
 #> anvil
 execute as @s[tag=TC_anvil] at @s run function tinkererscraft:modules/effects/pouring/anvil
 
-#> drain
-function tinkererscraft:modules/casting/drain
 
-#> hazard
-execute at @s positioned ^ ^ ^2 run function tinkererscraft:modules/casting/hazard
+#> drain > custom_items
+function tinkererscraft:modules/casting/drain
 
 
 # update ui

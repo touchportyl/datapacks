@@ -165,6 +165,8 @@ full dev log:
 + added new bug test for smelting items
 + fixed plenty of smelting bugs
 
++ fix bug where hazard runs twice after summoning item, killing it
++ fix bug where the pouring amount doesn't reset when pouring is manually stopped
 
 + add copper tools
 + rebalance ores tools

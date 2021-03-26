@@ -11,7 +11,7 @@
 
 
 #sfx:clang
-playsound minecraft:block.anvil.place block @a ^ ^ ^2 0.5 2 0
+function tinkererscraft:modules/effects/pouring/stop
 
 # reset lever
 execute as @s at @s if block ^ ^ ^2 minecraft:lever[facing=north] run setblock ^ ^ ^2 minecraft:lever[facing=north,powered=false] replace

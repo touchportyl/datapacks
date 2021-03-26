@@ -22,9 +22,11 @@ tellraw @a [{"text":""},{"text":" -","color":"red"},{"text":" [Tinkerer's Craft]
 kill @e[tag=TinkerersCraft]
 
 
+# randomizer
+scoreboard objectives remove TC_TagWriter
 
 # randomizer
-scoreboard objectives remove TC_rand
+scoreboard objectives remove TC_Randomizer
 
 # timers
 scoreboard objectives remove TC_TextTimer
