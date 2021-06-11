@@ -1,0 +1,232 @@
+-- System to add new smeltable items --
+
+1. Set as smeltee
+- Check if it can create a new structure
+2. Set as smelting
+- Get count
+- Multiply by multiplier
+- Add to storage
+- Remove item
+
+
+
+-- Smeltery Exchange Rates --
+
+8 Iron Nugget <-- 1 Liquid Iron + 1 Clay (Item Frame on Anvil)
+8 Gold Nugget <-- 1 Liquid Gold + 1 Clay (Item Frame on Anvil)
+
+1 Iron Ingot --> 1 Liquid Iron (Thrown into Smeltery)
+1 Gold Ingot --> 1 Liquid Gold (Thrown into Smeltery)
+1 Iron Ingot <-- 1 Liquid Iron + 1 Brick (Item Frame on Anvil)
+1 Gold Ingot <-- 1 Liquid Gold + 1 Brick (Item Frame on Anvil)
+
+1 Block of Iron --> 9 Liquid Iron (Thrown into Smeltery)
+1 Block of Gold --> 9 Liquid Gold (Thrown into Smeltery)
+1 Block of Iron <-- 9 Liquid Iron (Cauldron)
+1 Block of Gold <-- 9 Liquid Gold (Cauldron)
+
+1 Weighted Pressure Plate (Heavy) <-- 1 Liquid Iron (Item Frame on Anvil)
+1 Weighted Pressure Plate (Light) <-- 1 Liquid Gold (Item Frame on Anvil)
+
+1 Iron Pickaxe <-- 3 Liquid Iron + 1 Wooden Pickaxe (Item Frame on Anvil)
+1 Gold Pickaxe <-- 3 Liquid Gold + 1 Wooden Pickaxe (Item Frame on Anvil)
+
+1 Iron Sword <-- 2 Liquid Iron + 1 Wooden Sword (Item Frame on Anvil)
+1 Gold Sword <-- 2 Liquid Gold + 1 Wooden Sword (Item Frame on Anvil)
+
+1 Iron Axe <-- 3 Liquid Iron + 1 Wooden Axe (Item Frame on Anvil)
+1 Gold Axe <-- 3 Liquid Gold + 1 Wooden Axe (Item Frame on Anvil)
+
+1 Iron Shovel <-- 1 Liquid Iron + 1 Wooden Shovel (Item Frame on Anvil)
+1 Gold Shovel <-- 1 Liquid Gold + 1 Wooden Shovel (Item Frame on Anvil)
+
+1 Iron Hoe <-- 2 Liquid Iron + 1 Wooden Hoe (Item Frame on Anvil)
+1 Gold Hoe <-- 2 Liquid Gold + 1 Wooden Hoe (Item Frame on Anvil)
+
+1 Obsidian --> 1 Liquid Obsidian (Thrown into Smeltery)
+1 Obsidian <-- 1 Liquid Obsidian (Cauldron)
+
+
+Custom Quirks
+[Iron - Lightweight tools]
+all items have unbreaking
+pickaxe, shovel, and axe has efficiency
+sword has lunge (TC_Lunge)
+
+[Gold - Shiny tools]
+all items have unbreaking
+all items have particle effects (TC_Shiny)
+items uses gold in the inventory to power  (TC_Powered)
+items have a chance to spawn with [Unique] enchantments (TC_generateunique)
+
+[Irgol - Prospector Tools]
+pickaxe has a chance to drop extra ores when mining ores (TC_Prospector)
+sword has looting
+sword has a chance to drop strength powerups when hitting enemies (TC_Prospector)
+axe has a chance to drop extra logs when breaking (TC_Prospector)
+shovel always drops flint instead of gravel (TC_Prospector)
+hoe has harvester (TC_Harvester)
+
+[Obdiam - Heated Tools]
+all items have fire aspect
+all items have particle effects (TC_Flaming)
+pickaxe, shovel, and sword auto smelts (TC_Heated)
+axe has a chance to turn chopped oak into dark oak, named burnt oak (TC_Heated)
+axe has a chance to turn chopped logs into charcoal (TC_Heated)
+hoe has harvester, which auto harvests nether wart as well (TC_Harvester_)
+
+
+Custom Enchantments
+
+[Common]
+Harvester (hoe)
+Lunge (sword)
+
+[Unique]
+Riptide (sword)
+
+
+
+
+--- FUTURE UPDATES ---
+
+
+----
+v1.6
+
+- Custom enchant: Lunge (for Irgol swords) - Sneak to get a burst of speed
+sneak 10t = speed1 jumpboost1 / sneak 20t = speed1 jumpboost2 / sneak 30t = speed3 jumpboost3
+
+- Custom enchant: Riptide (for Obdiam swords) - Chance to levitate low health targets and kill them instantly when dealing damage
+when attack, chance to tag enemy / tagged enemy levitation1, after 35t kill enemy
+
+playsound minecraft:entity.turtle.egg_crack master touchportal
+
+
+
+----
+v1.7
+
+- Custom enchant: Sweeping Edge X (for Irgol and Obdiam pickaxes) - Pickaxe mines 3x3x1
+find nearest item to player, align xyz, break blocks in a 3x3 around that item
+
+
+----
+v1.8
+- Custom enchant: Sweeping Edge X (for Irgol and Obdiam axes) - Auto tree chopper (Timber datapack)
+
+
+
+--- IDEAS ---
+
+
+## using scheduling to run repeated functions:
+
+
+execute as @e[blah] run schedule function [function] 1s
+
+inside function is-
+
+remove 1 from IRON score
+add 1 to TEMP score
+execute as @e if TEMP score is less than 9 schedule function [FUnction] 1s
+
+
+
+
+automated item name shower
+
+execute as @a at @s if entity @e[type=item,limit=1,sort=nearest,tag=!named,tag=!fuck,distance=..5] run tag @e[type=item,limit=1,sort=nearest,tag=!fuck,distance=..5] add fuck
+
+execute as @a at @s if entity @e[type=item,limit=1,sort=nearest,tag=!named,tag=fuck,distance=..5] run data modify block 0 0 0 Text1 set value '{"selector":"@e[type=item,limit=1,sort=nearest,tag=!named,tag=fuck]"}'
+
+execute as @a at @s run data modify entity @e[type=item,limit=1,sort=nearest,tag=!named,tag=fuck,distance=..5] CustomName set from block 0 0 0 Text1
+
+execute as @a at @s run data modify entity @e[type=item,limit=1,sort=nearest,tag=!named,tag=fuck,distance=..5] CustomNameVisible set value true
+
+execute as @a at @s run tag @e[type=item,limit=1,sort=nearest,tag=!named,tag=fuck,distance=..5] add named
+
+
+
+
+
+
+
+
+custom npc pathing
+
+-- step 1:
+build the path at y=1 out of stairs
+2 blocks at the ends
+example: o>>>>>>>>>>>>o
+
+-- step 2:
+spawn on first block
+idle timer 1..200
+
+-- step 3:
+when timer is up,
+stop and reset timer
+face stair direction
+start teleporting forward in very small increments
+check the block in front
+
+if half step,
+tp up half step properly
+
+if stair,
+tp up the stairs properly
+
+if air,
+check further down,
+if second block down is a fluid,
+end path early
+else if second block down cannot be stood on or is a fluid,
+end path early
+
+-- step 4:
+when path ends,
+teleport until centered on block
+teleport to center just in case
+make code that is the reverse direction of this
+
+
+
+--- custom pathfinding?
+
+wait I can just set the nibba to face me and walk forward
+only issue is it needs to propogate a path if it hits a wall
+so in a radius it looks for the closest air block
+would that do it?
+then if after 50 blocks it hasn't found the target go to the second closest air block
+and repeat
+
+
+
+
+
+
+
+
+
+
+
+when build furnace, give everyone in 15 blocks range the build_smeltery achievement
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-
