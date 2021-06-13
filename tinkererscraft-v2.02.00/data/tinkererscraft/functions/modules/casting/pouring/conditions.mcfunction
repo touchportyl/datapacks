@@ -15,6 +15,7 @@
 execute as @s[tag=TC_outputnull] run tag @s add TC_stoppour
 
 # stop if storage is empty
+execute as @s[tag=TC_outputcopper,scores={TC_lCopper=-1}] run tag @s add TC_stoppour
 execute as @s[tag=TC_outputiron,scores={TC_lIron=-1}] run tag @s add TC_stoppour
 execute as @s[tag=TC_outputgold,scores={TC_lGold=-1}] run tag @s add TC_stoppour
 execute as @s[tag=TC_outputobsidian,scores={TC_lObsidian=-1}] run tag @s add TC_stoppour

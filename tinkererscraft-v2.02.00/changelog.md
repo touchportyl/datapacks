@@ -160,7 +160,7 @@ full dev log:
 + changed normal ores to only create one unit of molten metal
 + irgol can only be created after a smeltery upgrade
 + obdiam can only be created after two smeltery upgrades
-+ now displays a help message when approaching a smeltery ("Break the glass block to change the smeltery output")
++ now displays a help message when approaching a smeltery ("Break the glass block to change the smeltery output!")
 + fixed bug where hazard runs twice after summoning item, killing it
 + added new bug test for smelting items
 + fixed plenty of smelting bugs
@@ -170,9 +170,13 @@ full dev log:
 + added smelting for raw copper, iron, and gold
 + added a limiter for liquid copper
 + updated the advancements to include copper
++ added a new layer of advancements when upgrading smelteries to show that new recipes are unlocked
+
 + add copper tools
+
 + updated the guidebook to reflect all the previous changes
 + updated for Minecraft 1.17
++ added unused code for a potential tagwriter system
 
 
 

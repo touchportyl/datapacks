@@ -33,6 +33,8 @@ execute if score @s TC_lCapacity matches 256..3840 run function tinkererscraft:m
 
 # advancement
 execute if score @s TC_lCapacity matches 256..3840 run advancement grant @a[distance=..7,sort=nearest,limit=1] only tinkererscraft:smeltery/capacity/upgrade
+execute if score @s TC_lCapacity matches 512 run advancement grant @a[distance=..7,sort=nearest,limit=1] until tinkererscraft:smelting/reacting/irgolupgrade
+execute if score @s TC_lCapacity matches 768 run advancement grant @a[distance=..7,sort=nearest,limit=1] until tinkererscraft:smelting/reacting/obdiamupgrade
 
 
 #> End of file

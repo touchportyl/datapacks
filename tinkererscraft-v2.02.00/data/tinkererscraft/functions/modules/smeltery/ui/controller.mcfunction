@@ -13,7 +13,7 @@
 
 
 # tutorial to iron
-function tinkererscraft:modules/smeltery/ui/null_iron
+function tinkererscraft:modules/smeltery/ui/null_copper
 
 # copper to iron
 function tinkererscraft:modules/smeltery/ui/copper_iron

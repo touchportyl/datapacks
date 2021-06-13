@@ -75,6 +75,9 @@ function tinkererscraft:modules/enchants/lunge
 #> riptide > controller
 function tinkererscraft:modules/enchants/riptide
 
+#> weathering > controller
+function tinkererscraft:modules/enchants/weathering
+
 #> help
 function tinkererscraft:modules/smeltery/ui/help/display
 

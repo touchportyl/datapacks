@@ -19,6 +19,7 @@ execute as @s[scores={TC_OutputTimer=1..}] run function tinkererscraft:modules/c
 
 
 # reset to remove from ui
+execute as @s[tag=TC_outputcopper,scores={TC_lCopper=-1}] run scoreboard players reset @s TC_lCopper
 execute as @s[tag=TC_outputiron,scores={TC_lIron=-1}] run scoreboard players reset @s TC_lIron
 execute as @s[tag=TC_outputgold,scores={TC_lGold=-1}] run scoreboard players reset @s TC_lGold
 execute as @s[tag=TC_outputobsidian,scores={TC_lObsidian=-1}] run scoreboard players reset @s TC_lObsidian

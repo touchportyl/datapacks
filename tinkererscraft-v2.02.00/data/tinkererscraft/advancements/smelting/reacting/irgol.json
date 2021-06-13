@@ -10,7 +10,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "tinkererscraft:smeltery/smeltery_built",
+  "parent": "tinkererscraft:smelting/reacting/irgolupgrade",
   "rewards": {
     "experience": 100
   },

@@ -16,6 +16,9 @@
 # - tools
 
 
+#> copper_block
+execute as @s[tag=TC_outputcopper,tag=TC_cauldron] at @s run function tinkererscraft:modules/casting/drain/copper/block
+
 #> iron_block
 execute as @s[tag=TC_outputiron,tag=TC_cauldron] at @s run function tinkererscraft:modules/casting/drain/iron/block
 
@@ -40,11 +43,30 @@ execute as @s[tag=TC_outputiron,tag=TC_anvil,tag=TC_nugget] at @s run function t
 execute as @s[tag=TC_outputgold,tag=TC_anvil,tag=TC_nugget] at @s run function tinkererscraft:modules/casting/drain/gold/nugget
 
 
+#> copper_ingot
+execute as @s[tag=TC_outputcopper,tag=TC_anvil,tag=TC_ingot] at @s run function tinkererscraft:modules/casting/drain/copper/ingot
+
 #> iron_ingot
 execute as @s[tag=TC_outputiron,tag=TC_anvil,tag=TC_ingot] at @s run function tinkererscraft:modules/casting/drain/iron/ingot
 
 #> gold_ingot
 execute as @s[tag=TC_outputgold,tag=TC_anvil,tag=TC_ingot] at @s run function tinkererscraft:modules/casting/drain/gold/ingot
+
+
+#> copper_pickaxe
+execute as @s[tag=TC_outputcopper,tag=TC_anvil,tag=TC_pickaxe] at @s run function tinkererscraft:modules/casting/drain/copper/pickaxe
+
+#> copper_sword
+execute as @s[tag=TC_outputcopper,tag=TC_anvil,tag=TC_sword] at @s run function tinkererscraft:modules/casting/drain/copper/sword
+
+#> copper_axe
+execute as @s[tag=TC_outputcopper,tag=TC_anvil,tag=TC_axe] at @s run function tinkererscraft:modules/casting/drain/copper/axe
+
+#> copper_shovel
+execute as @s[tag=TC_outputcopper,tag=TC_anvil,tag=TC_shovel] at @s run function tinkererscraft:modules/casting/drain/copper/shovel
+
+#> copper_hoe
+execute as @s[tag=TC_outputcopper,tag=TC_anvil,tag=TC_hoe] at @s run function tinkererscraft:modules/casting/drain/copper/hoe
 
 
 #> iron_pickaxe
