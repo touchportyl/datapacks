@@ -1,4 +1,4 @@
-# touchporyl's Datapacks
+# touchportyl's Datapacks
 All of the developmental versions for datapacks created by [touchportyl](https:/github.com/touchportyl) can be found here. The builds here are usually unfinished and are not game ready.
 
 This code is protected by the GNU GPLv3 License | © 2022 Portyl Studios https://portylstudios.com
