@@ -1,4 +1,4 @@
-tellraw @a[tag=debug] [{"text":"> taglinkeddoor-3.00.00.mcfunction","color":"gray"}]
+tellraw @a[tag=debug] [{"text":"> linkeddoor-3.00.00.mcfunction","color":"gray"}]
 
 # tag
 tag @s add DD_exit
@@ -13,8 +13,7 @@ forceload add ~ ~
 advancement grant @a[distance=..7] only dimensionaldoors:adventure/link_door
 
 # effects
-particle minecraft:sonic_boom ~ ~ ~ 0 0 0 0 1 normal
-playsound minecraft:block.conduit.attack.target block @a[distance=..100] ~ ~ ~ 1 1 0
+function dimensionaldoors:modules/effects/doorcreation-3.00.00
 
 # cleanup
 tag @s remove DD_new

@@ -4,7 +4,7 @@
 # 1.15.2
 
 # not working on
-# 1.16.2 / 1.19-pre1
+# 1.16.2 / 1.19
 
 execute at @s if block ~ ~ ~ minecraft:oak_door[open=true,facing=north,hinge=left] run setblock ~ ~ ~ minecraft:oak_door[open=false,facing=north,hinge=left] replace
 execute at @s if block ~ ~ ~ minecraft:oak_door[open=true,facing=south,hinge=left] run setblock ~ ~ ~ minecraft:oak_door[open=false,facing=south,hinge=left] replace

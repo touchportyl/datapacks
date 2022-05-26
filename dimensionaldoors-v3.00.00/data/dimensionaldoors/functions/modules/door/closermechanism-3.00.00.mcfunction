@@ -1,10 +1,10 @@
 # door closer mechanism
 
 # tested on versions
-# 1.16.2 / 1.19-pre1
+# 1.16.2 / 1.19
 
 # not working on
-# 
+#
 
 execute as @e[tag=DD_portal,tag=DD_close] at @s if block ~ ~ ~ minecraft:oak_door[open=true,facing=north,hinge=left] run setblock ~ ~ ~ oak_door[open=false,facing=north,hinge=left,half=lower] destroy
 execute as @e[tag=DD_portal,tag=DD_close] at @s run setblock ~ ~1 ~ oak_door[open=false,facing=north,hinge=left,half=upper] replace

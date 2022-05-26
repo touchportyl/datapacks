@@ -1,4 +1,4 @@
-tellraw @a[tag=debug] [{"text":"> tagnewdoor-3.00.00.mcfunction","color":"gray"}]
+tellraw @a[tag=debug] [{"text":"> newdoor-3.00.00.mcfunction","color":"gray"}]
 
 # tag
 tag @s add DD_entrance
@@ -15,8 +15,7 @@ forceload add ~ ~
 advancement grant @a[distance=..7] only dimensionaldoors:adventure/create_door
 
 # effects
-particle minecraft:sonic_boom ~ ~2 ~ 0 0 0 0 1 normal
-playsound minecraft:block.conduit.activate block @a[distance=..100] ~ ~ ~ 1 2 0
+function dimensionaldoors:modules/effects/doorcreation-3.00.00
 
 # cleanup
 tag @s remove DD_new
