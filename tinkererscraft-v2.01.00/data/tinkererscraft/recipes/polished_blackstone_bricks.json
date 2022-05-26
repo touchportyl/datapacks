@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:campfire_cooking",
+    "ingredient": {
+        "item": "minecraft:deepslate_bricks"
+    },
+    "result": "minecraft:polished_blackstone_bricks",
+    "experience": 0,
+    "cookingtime": 200
+}
