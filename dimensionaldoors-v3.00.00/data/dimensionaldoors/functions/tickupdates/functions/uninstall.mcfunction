@@ -32,5 +32,4 @@ scoreboard objectives remove DimensionalDoors
 
 
 # done
-scoreboard players operation FUNCTION$disablepack DimensionalDoors = BOOL$true DatapackManager
-scoreboard players operation DD$dirty DimensionalDoors = BOOL$true DatapackManager
+function dimensionaldoors:tickupdates/functions/disablepack

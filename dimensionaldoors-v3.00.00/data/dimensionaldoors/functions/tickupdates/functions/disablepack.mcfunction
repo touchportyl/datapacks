@@ -2,4 +2,4 @@
 function datapackmanager:tickupdates/alerts/datapackdisabled
 
 # disable pack
-datapack disable "file/dimensionaldoors-v3.00.00"
+datapack disable "file/dimensionaldoors-v3.00.00.zip"

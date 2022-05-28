@@ -1,7 +1,7 @@
 tellraw @a[tag=debug] [{"text":"DD > packages/closedoor-3.00.00.mcfunction","color":"gray"}]
 
 # play teleport and closing door sound
-execute as @s at @s run function dimensionaldoors:modules/teleporteffects-3.00.00
+execute as @s at @s run function dimensionaldoors:modules/effects/teleporteffects-3.00.00
 
 # door closing mechanism
 # INLINE VERSIONING
