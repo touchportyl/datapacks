@@ -11,9 +11,9 @@ This code is protected by the GNU GPLv3 License | © 2022 Portyl Studios https:/
 ---
 
 ## The release versions of the datapacks can be found here:
-+ [Tinkerer's Craft](https:/github.com/touchportyl/tinkererscraft)
-+ [Dimensional Doors](https:/github.com/touchportyl/dimensionaldoors) (last updated on 28th May 2022)
-+ [Harvester](https:/github.com/touchportyl/harvester)
++ [Tinkerer's Craft](https://github.com/touchportyl/tinkererscraft)
++ [Dimensional Doors](https://github.com/touchportyl/dimensionaldoors) (last updated on 28th May 2022)
++ [Harvester](https://github.com/touchportyl/harvester)
 + Vanilla Essentials (Unreleased)
 + Speedrun Tools (Deprecated, go use the one Sethbling made)
 
