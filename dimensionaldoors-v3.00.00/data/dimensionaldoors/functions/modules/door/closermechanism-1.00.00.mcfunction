@@ -1,7 +1,7 @@
 # door closer mechanism
 
 # tested on versions
-# 1.15.2
+# 1.14.4 / 1.15.2
 
 # not working on
 # 1.16.2 / 1.19

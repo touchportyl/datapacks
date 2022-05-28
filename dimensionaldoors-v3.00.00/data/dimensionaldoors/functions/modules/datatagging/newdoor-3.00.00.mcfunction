@@ -1,4 +1,4 @@
-tellraw @a[tag=debug] [{"text":"> newdoor-3.00.00.mcfunction","color":"gray"}]
+tellraw @a[tag=debug] [{"text":"DD > modules/datatagging/newdoor-3.00.00.mcfunction","color":"gray"}]
 
 # tag
 tag @s add DD_entrance
@@ -15,7 +15,8 @@ forceload add ~ ~
 advancement grant @a[distance=..7] only dimensionaldoors:adventure/create_door
 
 # effects
-function dimensionaldoors:modules/effects/doorcreation-3.00.00
+execute if score VERSION$minecraft.current DatapackManager matches 14..18 run function dimensionaldoors:modules/effects/doorcreation-2.00.00
+execute if score VERSION$minecraft.current DatapackManager matches 19..19 run function dimensionaldoors:modules/effects/doorcreation-3.00.00
 
 # cleanup
 tag @s remove DD_new
