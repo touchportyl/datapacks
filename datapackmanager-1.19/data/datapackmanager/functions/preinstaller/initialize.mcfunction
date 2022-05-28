@@ -1,4 +1,4 @@
-tellraw @a[tag=debug] [{"text":"> preinstaller/initialize.mcfunction","color":"gray"}]
+tellraw @a[tag=debug] [{"text":"DM > preinstaller/initialize.mcfunction","color":"gray"}]
 
 # create triggers
 #scoreboard objectives add uninstall trigger

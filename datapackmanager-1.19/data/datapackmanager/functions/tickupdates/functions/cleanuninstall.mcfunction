@@ -1,4 +1,4 @@
-tellraw @a[tag=debug] [{"text":"> tickupdates/functions/cleanuninstall.mcfunction","color":"gray"}]
+tellraw @a[tag=debug] [{"text":"DM > tickupdates/functions/cleanuninstall.mcfunction","color":"gray"}]
 
 # stop loops
 schedule clear datapackmanager:ticker/1s

@@ -1,4 +1,4 @@
-tellraw @a[tag=debug] [{"text":"> preinstaller/run.mcfunction","color":"gray"}]
+tellraw @a[tag=debug] [{"text":"DM > preinstaller/run.mcfunction","color":"gray"}]
 
 # create master scoreboard
 # WARNING: THIS COMMAND MUST RUN BEFORE ANYTHING ELSE

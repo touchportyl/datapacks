@@ -1,5 +1,6 @@
 execute if score DM$dirty DatapackManager = BOOL$true DatapackManager run function datapackmanager:tickupdates/update
 
+scoreboard players operation DM$noschedulecommand DatapackManager = BOOL$false DatapackManager
+
 # tick
-schedule clear datapackmanager:ticker/1s
-schedule function datapackmanager:ticker/1s 1s replace
+schedule function datapackmanager:ticker/1s 1s
