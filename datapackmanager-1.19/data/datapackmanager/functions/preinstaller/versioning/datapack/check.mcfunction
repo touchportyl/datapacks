@@ -1,4 +1,4 @@
-tellraw @a[tag=debug] [{"text":"> preinstaller/versioning/datapack/check.mcfunction","color":"gray"}]
+tellraw @a[tag=debug] [{"text":"DM > preinstaller/versioning/datapack/check.mcfunction","color":"gray"}]
 
 # set default
 execute unless score VERSION$datapack.latest DatapackManager matches 10000.. run scoreboard players set VERSION$datapack.latest DatapackManager 10000

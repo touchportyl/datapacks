@@ -1,4 +1,4 @@
-tellraw @a[tag=debug] [{"text":"> config.mcfunction","color":"gray"}]
+tellraw @a[tag=debug] [{"text":"DM > config.mcfunction","color":"gray"}]
 
 # WARNING: ONLY CHANGE THESE CONFIGURATION OPTIONS IF YOU KNOW WHAT YOU'RE DOING
 # CHANGING THESE SETTINGS COULD FORCE THE DATAPACK TO RUN COMMANDS THAT IT SHOULDN'T

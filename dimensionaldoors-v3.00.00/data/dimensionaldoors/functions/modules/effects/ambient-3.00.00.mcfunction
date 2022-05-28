@@ -8,4 +8,4 @@ execute as @e[tag=DD_portal,tag=DD_EW] at @s positioned ^ ^1.1 ^0.425 if block ~
 execute as @e[tag=DD_portal,tag=DD_EW] at @s positioned ^ ^1.1 ^0.425 if block ~ ~ ~ minecraft:oak_door[open=true] run particle minecraft:portal ~ ~ ~ 0.02 0.26 0.12 0.35 1 normal
 
 # linking conduit particles
-execute as @e[tag=DD_particleLink] at @s run particle minecraft:portal ~ ~0.45 ~ 0 0 0 0.1 1 normal
+execute as @e[tag=DD_particleLink] at @s run particle minecraft:portal ~ ~0.5 ~ 0 0 0 0.1 1 normal

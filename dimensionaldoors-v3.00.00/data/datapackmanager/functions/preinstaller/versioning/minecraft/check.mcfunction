@@ -1,7 +1,7 @@
-tellraw @a[tag=debug] [{"text":"> preinstaller/versioning/minecraft/check.mcfunction","color":"gray"}]
+tellraw @a[tag=debug] [{"text":"DM > preinstaller/versioning/minecraft/check.mcfunction","color":"gray"}]
 
-# set default
-execute unless score VERSION$minecraft.current DatapackManager matches 12.. run scoreboard players set VERSION$minecraft.current DatapackManager 12
+# reset every time to get the current version
+scoreboard players set VERSION$minecraft.current DatapackManager 12
 
 # check for all known versions
 execute unless score VERSION$minecraft.current DatapackManager matches 13.. run function datapackmanager:preinstaller/versioning/minecraft/versions/1.13
@@ -13,5 +13,5 @@ execute unless score VERSION$minecraft.current DatapackManager matches 18.. run 
 execute unless score VERSION$minecraft.current DatapackManager matches 19.. run function datapackmanager:preinstaller/versioning/minecraft/versions/1.19
 
 # throw error for unsupported versions
-execute unless score VERSION$minecraft.current DatapackManager < VERSION$minecraft.backward DatapackManager run function datapackmanager:preinstaller/minecraft/throw/notcompatible
-execute unless score VERSION$minecraft.current DatapackManager > VERSION$minecraft.forward DatapackManager run function datapackmanager:preinstaller/minecraft/throw/notcompatible
+execute if score VERSION$minecraft.current DatapackManager < VERSION$minecraft.backward DatapackManager run function datapackmanager:preinstaller/versioning/minecraft/throw/notcompatible
+execute if score VERSION$minecraft.current DatapackManager > VERSION$minecraft.forward DatapackManager run function datapackmanager:preinstaller/versioning/minecraft/throw/notcompatible

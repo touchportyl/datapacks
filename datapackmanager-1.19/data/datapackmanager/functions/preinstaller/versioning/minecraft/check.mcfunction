@@ -1,4 +1,4 @@
-tellraw @a[tag=debug] [{"text":"> preinstaller/versioning/minecraft/check.mcfunction","color":"gray"}]
+tellraw @a[tag=debug] [{"text":"DM > preinstaller/versioning/minecraft/check.mcfunction","color":"gray"}]
 
 # set default
 execute unless score VERSION$minecraft.current DatapackManager matches 12.. run scoreboard players set VERSION$minecraft.current DatapackManager 12
