@@ -1,0 +1,1 @@
+kill @e[tag=endermitescriptstandalone,tag=blinkingredstonelamp,distance=..2,sort=nearest,limit=1]
