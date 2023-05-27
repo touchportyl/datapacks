@@ -1,0 +1,17 @@
+{
+    "display": {
+        "title": "Harvester v3.01.00",
+        "description": "Harvest and replant crops efficiently with a hoe!",
+        "icon": {
+            "item": "minecraft:command_block"
+        },
+        "show_toast": false,
+        "announce_to_chat": false
+    },
+    "parent": "datapackmanager:root",
+    "criteria": {
+        "trigger": {
+            "trigger": "minecraft:tick"
+        }
+    }
+}

@@ -1,0 +1,1 @@
+summon armor_stand ~ ~ ~ {Tags:["endermitescriptstandalone","blinkingredstonelamp"],Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,DisabledSlots:4144959}

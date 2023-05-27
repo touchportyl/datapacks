@@ -1,0 +1,18 @@
+{
+    "display": {
+        "title": "endermitescript-v1.00.00",
+        "description": "The Endermite Script Standalone Datapack!",
+        "icon": {
+            "item": "minecraft:player_head",
+            "nbt": "{SkullOwner: 'touchportyl'}"
+        },
+        "show_toast": false,
+        "announce_to_chat": false
+    },
+    "parent": "global:root",
+    "criteria": {
+        "trigger": {
+            "trigger": "minecraft:tick"
+        }
+    }
+}
