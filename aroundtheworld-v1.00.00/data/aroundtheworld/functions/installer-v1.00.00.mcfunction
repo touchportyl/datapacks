@@ -1,5 +1,9 @@
 tellraw @a[tag=aw_debug] [{"text":"AW","color":"blue"},{"text":" > installer-v1.00.00.mcfunction","color":"gray"}]
 
+# set secret
+scoreboard players operation FLAG$secret AroundTheWorld = FLAG$secret DatapackManager
+
+
 
 # write your installation code here
 
@@ -7,6 +11,7 @@ tellraw @a[tag=aw_debug] [{"text":"AW","color":"blue"},{"text":" > installer-v1.
 # create bossbars
 # set variables
 # start datapack
+
 
 
 # notify

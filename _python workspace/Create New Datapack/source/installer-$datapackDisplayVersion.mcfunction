@@ -1,5 +1,9 @@
 tellraw @a[tag=$datapackID_lower_debug] [{"text":"$datapackID","color":"$datapackColor"},{"text":" > installer-$datapackDisplayVersion.mcfunction","color":"gray"}]
 
+# set secret
+scoreboard players operation FLAG$secret $datapackFullName = FLAG$secret DatapackManager
+
+
 
 # write your installation code here
 
@@ -7,6 +11,7 @@ tellraw @a[tag=$datapackID_lower_debug] [{"text":"$datapackID","color":"$datapac
 # create bossbars
 # set variables
 # start datapack
+
 
 
 # notify

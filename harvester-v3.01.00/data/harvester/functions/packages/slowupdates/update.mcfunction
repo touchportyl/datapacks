@@ -1,6 +1,7 @@
 tellraw @a[tag=hv_debug] [{"text":"HV","color":"gold"},{"text":" > packages/slowupdates/update.mcfunction","color":"gray"}]
 
 # alerts
+execute if score ALERT$configurationloaded Harvester = BOOL$true DatapackManager run function harvester:packages/alerts/configurationloaded
 execute if score ALERT$mcnotcompatible Harvester = BOOL$true DatapackManager run function harvester:packages/alerts/minecraftnotcompatible
 execute if score ALERT$installed Harvester = BOOL$true DatapackManager run function harvester:packages/alerts/installed
 
@@ -13,15 +14,16 @@ execute if score FUNCTION$uninstall Harvester = BOOL$true DatapackManager run fu
 
 
 # loops
-execute if score LOOP$tickers.2t.isLooping DatapackManager = BOOL$false DatapackManager run schedule clear harvester:packages/tickers/2t-v3.01.00
-execute if score LOOP$tickers.2t.isLooping DatapackManager = BOOL$true DatapackManager run schedule function harvester:packages/tickers/2t-v3.01.00 2t
+execute if score LOOP$tickers.2t.isLooping Harvester = BOOL$false DatapackManager run schedule clear harvester:packages/tickers/2t-v3.01.00
+execute if score LOOP$tickers.2t.isLooping Harvester = BOOL$true DatapackManager run schedule function harvester:packages/tickers/2t-v3.01.00 2t
 
-execute if score LOOP$tickers.1s.isLooping DatapackManager = BOOL$false DatapackManager run schedule clear harvester:packages/tickers/1s-v3.01.00
-execute if score LOOP$tickers.1s.isLooping DatapackManager = BOOL$true DatapackManager run schedule function harvester:packages/tickers/1s-v3.01.00 1s
+execute if score LOOP$tickers.1s.isLooping Harvester = BOOL$false DatapackManager run schedule clear harvester:packages/tickers/1s-v3.01.00
+execute if score LOOP$tickers.1s.isLooping Harvester = BOOL$true DatapackManager run schedule function harvester:packages/tickers/1s-v3.01.00 1s
 
 
 
 # cleanup
+scoreboard players operation ALERT$configurationloaded Harvester = BOOL$false DatapackManager
 scoreboard players operation ALERT$mcnotcompatible Harvester = BOOL$false DatapackManager
 scoreboard players operation ALERT$installed Harvester = BOOL$false DatapackManager
 

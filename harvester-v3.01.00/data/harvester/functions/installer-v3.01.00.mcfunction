@@ -1,5 +1,9 @@
 tellraw @a[tag=hv_debug] [{"text":"HV","color":"gold"},{"text":" > installer-v3.01.00.mcfunction","color":"gray"}]
 
+# set secret
+scoreboard players operation FLAG$secret Harvester = FLAG$secret DatapackManager
+
+
 
 # write your installation code here
 
@@ -7,6 +11,7 @@ tellraw @a[tag=hv_debug] [{"text":"HV","color":"gold"},{"text":" > installer-v3.
 # create bossbars
 # set variables
 # start datapack
+
 
 
 # notify

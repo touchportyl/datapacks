@@ -1,6 +1,7 @@
 tellraw @a[tag=$datapackID_lower_debug] [{"text":"$datapackID","color":"$datapackColor"},{"text":" > packages/slowupdates/update.mcfunction","color":"gray"}]
 
 # alerts
+execute if score ALERT$configurationloaded $datapackFullName = BOOL$true DatapackManager run function $datapackFullName_lower:packages/alerts/configurationloaded
 execute if score ALERT$mcnotcompatible $datapackFullName = BOOL$true DatapackManager run function $datapackFullName_lower:packages/alerts/minecraftnotcompatible
 execute if score ALERT$installed $datapackFullName = BOOL$true DatapackManager run function $datapackFullName_lower:packages/alerts/installed
 
@@ -13,15 +14,16 @@ execute if score FUNCTION$uninstall $datapackFullName = BOOL$true DatapackManage
 
 
 # loops
-execute if score LOOP$tickers.1t.isLooping DatapackManager = BOOL$false DatapackManager run schedule clear $datapackFullName_lower:packages/tickers/1t-$datapackDisplayVersion
-execute if score LOOP$tickers.1t.isLooping DatapackManager = BOOL$true DatapackManager run schedule function $datapackFullName_lower:packages/tickers/1t-$datapackDisplayVersion 1t
+execute if score LOOP$tickers.1t.isLooping $datapackFullName = BOOL$false DatapackManager run schedule clear $datapackFullName_lower:packages/tickers/1t-$datapackDisplayVersion
+execute if score LOOP$tickers.1t.isLooping $datapackFullName = BOOL$true DatapackManager run schedule function $datapackFullName_lower:packages/tickers/1t-$datapackDisplayVersion 1t
 
-execute if score LOOP$tickers.1s.isLooping DatapackManager = BOOL$false DatapackManager run schedule clear $datapackFullName_lower:packages/tickers/1s-$datapackDisplayVersion
-execute if score LOOP$tickers.1s.isLooping DatapackManager = BOOL$true DatapackManager run schedule function $datapackFullName_lower:packages/tickers/1s-$datapackDisplayVersion 1s
+execute if score LOOP$tickers.1s.isLooping $datapackFullName = BOOL$false DatapackManager run schedule clear $datapackFullName_lower:packages/tickers/1s-$datapackDisplayVersion
+execute if score LOOP$tickers.1s.isLooping $datapackFullName = BOOL$true DatapackManager run schedule function $datapackFullName_lower:packages/tickers/1s-$datapackDisplayVersion 1s
 
 
 
 # cleanup
+scoreboard players operation ALERT$configurationloaded $datapackFullName = BOOL$false DatapackManager
 scoreboard players operation ALERT$mcnotcompatible $datapackFullName = BOOL$false DatapackManager
 scoreboard players operation ALERT$installed $datapackFullName = BOOL$false DatapackManager
 

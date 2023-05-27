@@ -82,6 +82,7 @@ replacements = {
 # \data
 # \pack.mcmeta
 # \data\minecraft\tags\functions\load.json
+# \data\datapackmanager-1.19\functions\packages\versioning\throw\notcompatible.mcfunction
 
 # >>>\data\{datapackFullName_lower}
 # \advancements\{datapackFullName}.json
@@ -93,6 +94,7 @@ replacements = {
 # \installer.mcfunction
 
 # >>>\packages
+# \alerts\configurationloaded.mcfunction
 # \alerts\installed.mcfunction
 # \alerts\minecraftnotcompatible.mcfunction
 # \hooks
@@ -132,13 +134,12 @@ shutil.copytree(
 
 # \pack.mcmeta
 workingpath = datapackrootpath
-packfile = open(os.path.join(workingpath,'pack.mcmeta'), 'w')
 
-template_packmcmeta = '{{"pack": {{"pack_format": {0},"description": "{1}"}}}}'
-content = json.dumps(json.loads(template_packmcmeta.format(datapackPackVersion, datapackDescription)), indent=4)
+with open(os.path.join(workingpath,'pack.mcmeta'), 'w') as file:
+    template_packmcmeta = '{{"pack": {{"pack_format": {0},"description": "{1}"}}}}'
+    content = json.dumps(json.loads(template_packmcmeta.format(datapackPackVersion, datapackDescription)), indent=4)
+    file.write(content)
 
-packfile.write(content)
-packfile.close()
 
 # \data\minecraft\tags\functions\load.json
 workingpath = os.path.join(datapackrootpath,'data','minecraft','tags','functions')
@@ -150,6 +151,13 @@ CopyAndReplace(
     replacements
 )
 
+# \data\datapackmanager-1.19\functions\packages\versioning\throw\notcompatible.mcfunction
+
+CopyAndReplace(
+    os.path.join(sourcepath,f'datapackmanager-{datapackManagerDisplayVersion}','data',f'datapackmanager-{datapackManagerFullVersion}','functions','packages','versioning','throw','notcompatible.mcfunction'),
+    os.path.join(datapackrootpath,'data',f'datapackmanager-{datapackManagerFullVersion}','functions','packages','versioning','throw','notcompatible.mcfunction'),
+    replacements
+)
 
 
 # >>>\data\{datapackFullName_lower}
@@ -200,10 +208,17 @@ currentpath = os.path.join(currentpath,'packages')
 
 
 
+# \alerts\configurationloaded.mcfunction
 # \alerts\installed.mcfunction
 # \alerts\minecraftnotcompatible.mcfunction
 workingpath = os.path.join(currentpath,'alerts')
 CreatePath(workingpath)
+
+CopyAndReplace(
+    os.path.join(sourcepath,'packages','alerts','configurationloaded.mcfunction'),
+    os.path.join(workingpath,'configurationloaded.mcfunction'),
+    replacements
+)
 
 CopyAndReplace(
     os.path.join(sourcepath,'packages','alerts','installed.mcfunction'),

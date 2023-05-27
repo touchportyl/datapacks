@@ -1,5 +1,5 @@
 # run code every second
-function aroundtheworld:root/boundsdetection
+#function aroundtheworld:yourfunction
 
 # tick updates
 execute if score FLAG$dirty AroundTheWorld = BOOL$true DatapackManager run function aroundtheworld:packages/slowupdates/update
