@@ -1,0 +1,17 @@
+{
+    "display": {
+        "title": "$datapackDisplayName $datapackDisplayVersion",
+        "description": "$datapackDescription",
+        "icon": {
+            "item": "minecraft:command_block"
+        },
+        "show_toast": false,
+        "announce_to_chat": false
+    },
+    "parent": "datapackmanager:root",
+    "criteria": {
+        "trigger": {
+            "trigger": "minecraft:tick"
+        }
+    }
+}

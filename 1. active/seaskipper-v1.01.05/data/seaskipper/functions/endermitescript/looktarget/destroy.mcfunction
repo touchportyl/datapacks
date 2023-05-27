@@ -1,0 +1,1 @@
+kill @e[tag=seaskipper,tag=looktarget,distance=..2,sort=nearest,limit=1]

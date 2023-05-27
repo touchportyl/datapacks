@@ -1,0 +1,7 @@
+{
+    "replace": false,
+    "values": [
+        "datapackmanager-$datapackManagerFullVersion:packages/preinstaller/load",
+        "$datapackFullName_lower:packages/preinstaller/load"
+    ]
+}

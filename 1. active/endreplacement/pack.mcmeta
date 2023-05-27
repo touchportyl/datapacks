@@ -1,0 +1,6 @@
+{
+  "pack": {
+    "pack_format": 7,
+    "description": "Replaces the End dimension with a void world that has Overworld colors. Used together with Dimensional Doors to create a pocket Overworld."
+  }
+}
