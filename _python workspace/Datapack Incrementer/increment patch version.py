@@ -1,3 +1,3 @@
 from handler import IncrementVersion
 
-IncrementVersion()
+IncrementVersion(1)

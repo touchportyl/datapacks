@@ -1,0 +1,1 @@
+scoreboard players reset FLAG$first DatapackManager

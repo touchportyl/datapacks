@@ -15,4 +15,4 @@ execute if score VERSION$minecraft.current DatapackManager > VERSION$minecraft.f
 
 
 # throw error for all versions newer than the currently supported version
-execute if score VERSION$datapack.current $datapackFullName > VERSION$datapack.latest $datapackFullName run function $datapackFullName_lower:packages/versioning/throw/dpnotcompatible
+execute if score VERSION$datapack.current $datapackFullName < VERSION$datapack.latest $datapackFullName run function $datapackFullName_lower:packages/versioning/throw/dpnotcompatible

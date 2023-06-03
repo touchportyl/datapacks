@@ -14,10 +14,8 @@ execute if score FUNCTION$uninstall $datapackFullName = BOOL$true DatapackManage
 
 
 # loops
-execute if score LOOP$tickers.1t.isLooping $datapackFullName = BOOL$false DatapackManager run schedule clear $datapackFullName_lower:packages/tickers/1t-$datapackDisplayVersion
 execute if score LOOP$tickers.1t.isLooping $datapackFullName = BOOL$true DatapackManager run schedule function $datapackFullName_lower:packages/tickers/1t-$datapackDisplayVersion 1t
 
-execute if score LOOP$tickers.1s.isLooping $datapackFullName = BOOL$false DatapackManager run schedule clear $datapackFullName_lower:packages/tickers/1s-$datapackDisplayVersion
 execute if score LOOP$tickers.1s.isLooping $datapackFullName = BOOL$true DatapackManager run schedule function $datapackFullName_lower:packages/tickers/1s-$datapackDisplayVersion 1s
 
 

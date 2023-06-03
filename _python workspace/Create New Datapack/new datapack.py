@@ -6,7 +6,7 @@ from functions import CreatePath, CopyAndReplace
 
 # data to use when generating a new datapack
 # located in /config
-jsonconfig = "aroundtheworld"
+jsonconfig = "harvesterv2"
 
 
 
@@ -90,6 +90,7 @@ replacements = {
 # >>>\functions
 # \root
 # \effects
+# \compatibility
 # \config.mcfunction
 # \installer.mcfunction
 
@@ -184,8 +185,10 @@ currentpath = os.path.join(currentpath,'functions')
 
 # \root
 # \effects
+# \compatibility
 CreatePath(os.path.join(currentpath,'root'))
 CreatePath(os.path.join(currentpath,'effects'))
+CreatePath(os.path.join(currentpath,'compatibility'))
 
 # \config.mcfunction
 CopyAndReplace(

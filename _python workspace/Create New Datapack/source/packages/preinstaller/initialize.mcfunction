@@ -8,24 +8,24 @@ scoreboard objectives add $datapackFullName dummy [{"text":"$datapackDisplayName
 
 # load config
 scoreboard players operation FUNCTION$loadconfig $datapackFullName = BOOL$true DatapackManager
+
+# start tickers
+scoreboard players operation LOOP$tickers.1t.isLooping $datapackFullName = BOOL$true DatapackManager
+scoreboard players operation LOOP$tickers.1s.isLooping $datapackFullName = BOOL$true DatapackManager
+
 # force to run inline
 function $datapackFullName_lower:packages/slowupdates/update
 
-# check datapack version
-# don't need to check if the current config version is already the latest
-# updates only have to run if the current version is later than the latest
-execute unless score VERSION$datapack.current $datapackFullName = VERSION$datapack.latest $datapackFullName run function $datapackFullName_lower:packages/versioning/check
 
 # install
 # only install if hasn't been installed before
 execute unless score FLAG$secret $datapackFullName = FLAG$secret DatapackManager run function $datapackFullName_lower:installer-$datapackDisplayVersion
 
 
-
-# start tickers
-scoreboard players operation LOOP$tickers.1t.isLooping $datapackFullName = BOOL$true DatapackManager
-scoreboard players operation LOOP$tickers.1s.isLooping $datapackFullName = BOOL$true DatapackManager
-scoreboard players operation FLAG$dirty $datapackFullName = BOOL$true DatapackManager
+# check datapack version
+# don't need to check if the current config version is already the latest
+# updates only have to run if the current version is later than the latest
+execute unless score VERSION$datapack.current $datapackFullName = VERSION$datapack.latest $datapackFullName run function $datapackFullName_lower:packages/versioning/check
 
 
 

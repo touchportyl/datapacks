@@ -2,6 +2,7 @@ tellraw @a[tag=$datapackID_lower_debug] [{"text":"$datapackID","color":"$datapac
 
 # notify
 function datapackmanager-1.19:packages/alerts/datapackdisabled
+scoreboard players reset FLAG$first DatapackManager
 
 # disable pack
 datapack disable "file/$datapackFullName_lower-$datapackDisplayVersion.zip"

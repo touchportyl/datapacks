@@ -2,6 +2,7 @@ tellraw @a[tag=$datapackID_lower_debug] [{"text":"$datapackID","color":"$datapac
 
 # set secret
 scoreboard players operation FLAG$secret $datapackFullName = FLAG$secret DatapackManager
+scoreboard players operation VERSION$datapack.latest $datapackFullName = VERSION$datapack.current $datapackFullName
 
 
 
