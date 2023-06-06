@@ -1,13 +1,14 @@
 tellraw @a[tag=$datapackID_lower_debug] [{"text":"$datapackID","color":"$datapackColor"},{"text":" > packages/slowupdates/update.mcfunction","color":"gray"}]
 
 # alerts
-execute if score ALERT$configurationloaded $datapackFullName = BOOL$true DatapackManager run function $datapackFullName_lower:packages/alerts/configurationloaded
-execute if score ALERT$mcnotcompatible $datapackFullName = BOOL$true DatapackManager run function $datapackFullName_lower:packages/alerts/minecraftnotcompatible
+# ALERT$configurationloaded is run inline
+# ALERT$mcnotcompatible is run inline
+execute if score ALERT$dpbackcompatibility $datapackFullName = BOOL$true DatapackManager run function $datapackFullName_lower:packages/alerts/datapackbackwardscompatibility
 execute if score ALERT$installed $datapackFullName = BOOL$true DatapackManager run function $datapackFullName_lower:packages/alerts/installed
 
 # functions
-execute if score FUNCTION$clearschedules $datapackFullName = BOOL$true DatapackManager run function $datapackFullName_lower:packages/slowupdates/functions/clearschedules
-execute if score FUNCTION$disablepack $datapackFullName = BOOL$true DatapackManager run function $datapackFullName_lower:packages/slowupdates/functions/disablepack
+# FUNCTION$clearschedules must be run inline
+# FUNCTION$disablepack must be run inline
 execute if score FUNCTION$loadconfig $datapackFullName = BOOL$true DatapackManager run function $datapackFullName_lower:packages/slowupdates/functions/loadconfig
 execute if score FUNCTION$uninstall $datapackFullName = BOOL$true DatapackManager run function $datapackFullName_lower:packages/slowupdates/functions/uninstall
 
@@ -21,12 +22,9 @@ execute if score LOOP$tickers.1s.isLooping $datapackFullName = BOOL$true Datapac
 
 
 # cleanup
-scoreboard players operation ALERT$configurationloaded $datapackFullName = BOOL$false DatapackManager
-scoreboard players operation ALERT$mcnotcompatible $datapackFullName = BOOL$false DatapackManager
+scoreboard players operation ALERT$dpbackcompatibility $datapackFullName = BOOL$false DatapackManager
 scoreboard players operation ALERT$installed $datapackFullName = BOOL$false DatapackManager
 
-scoreboard players operation FUNCTION$clearschedules $datapackFullName = BOOL$false DatapackManager
-scoreboard players operation FUNCTION$disablepack $datapackFullName = BOOL$false DatapackManager
 scoreboard players operation FUNCTION$loadconfig $datapackFullName = BOOL$false DatapackManager
 scoreboard players operation FUNCTION$uninstall $datapackFullName = BOOL$false DatapackManager
 

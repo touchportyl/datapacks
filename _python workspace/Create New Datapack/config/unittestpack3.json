@@ -1,0 +1,10 @@
+{
+    "datapackDisplayName": "Unit Test Pack 3",
+    "datapackFullName": "UnitTestPack3",
+    "datapackID": "U3",
+    "datapackColor": "light_purple",
+    "datapackPackVersion": "15",
+    "datapackDescription": "Used for unit tests!",
+    "datapackDisplayVersion": "v1.00.00",
+    "datapackManagerDisplayVersion": "mc1.20.00"
+}

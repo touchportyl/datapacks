@@ -26,6 +26,7 @@ datapackColor: blue
 ###  9: 1.18.2
 ### 10: 1.19   – 1.19.3
 ### 12: 1.19.4
+### 15: 1.20
 datapackPackVersion: 12
 
 # description (used in pack.mcmeta)

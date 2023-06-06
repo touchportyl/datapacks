@@ -6,7 +6,7 @@ from functions import CreatePath, CopyAndReplace
 
 # data to use when generating a new datapack
 # located in /config
-jsonconfig = "harvesterv2"
+jsonconfig = "unittestpack1"
 
 
 
@@ -82,7 +82,7 @@ replacements = {
 # \data
 # \pack.mcmeta
 # \data\minecraft\tags\functions\load.json
-# \data\datapackmanager-1.19\functions\packages\versioning\throw\notcompatible.mcfunction
+# \data\datapackmanager-{datapackManagerDisplayVersion}\functions\packages\versioning\throw\notcompatible.mcfunction
 
 # >>>\data\{datapackFullName_lower}
 # \advancements\{datapackFullName}.json
@@ -96,6 +96,7 @@ replacements = {
 
 # >>>\packages
 # \alerts\configurationloaded.mcfunction
+# \alerts\datapackbackwardscompatibility.mcfunction
 # \alerts\installed.mcfunction
 # \alerts\minecraftnotcompatible.mcfunction
 # \hooks
@@ -212,6 +213,7 @@ currentpath = os.path.join(currentpath,'packages')
 
 
 # \alerts\configurationloaded.mcfunction
+# \alerts\datapackbackwardscompatibility.mcfunction
 # \alerts\installed.mcfunction
 # \alerts\minecraftnotcompatible.mcfunction
 workingpath = os.path.join(currentpath,'alerts')
@@ -220,6 +222,12 @@ CreatePath(workingpath)
 CopyAndReplace(
     os.path.join(sourcepath,'packages','alerts','configurationloaded.mcfunction'),
     os.path.join(workingpath,'configurationloaded.mcfunction'),
+    replacements
+)
+
+CopyAndReplace(
+    os.path.join(sourcepath,'packages','alerts','datapackbackwardscompatibility.mcfunction'),
+    os.path.join(workingpath,'datapackbackwardscompatibility.mcfunction'),
     replacements
 )
 

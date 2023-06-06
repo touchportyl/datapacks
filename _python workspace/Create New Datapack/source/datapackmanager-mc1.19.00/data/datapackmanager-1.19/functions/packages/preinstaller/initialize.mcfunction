@@ -1,9 +1,5 @@
 tellraw @a[tag=dm_debug] [{"text":"DM","color":"white"},{"text":" > packages/preinstaller/initialize.mcfunction","color":"gray"}]
 
-# win the race condition
-scoreboard players operation FLAG$first DatapackManager = BOOL$true DatapackManager
-# remember to set this back after 3 seconds
-
 # set constants
 scoreboard players set FLAG$secret DatapackManager 259240
 
@@ -48,8 +44,3 @@ execute if score VERSION$minecraft.current DatapackManager matches 14..19 run sc
 
 # custom notification
 execute if score VERSION$minecraft.current DatapackManager matches 14..19 run function datapackmanager-1.19:packages/alerts/minecraftversion
-
-
-
-# cleanup
-execute if score VERSION$minecraft.current DatapackManager matches 14..19 run function datapackmanager-1.19:compatibility/schedule/resetdmfirst

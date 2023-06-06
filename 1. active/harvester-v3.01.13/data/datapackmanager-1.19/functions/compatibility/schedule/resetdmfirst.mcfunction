@@ -1,1 +1,0 @@
-schedule function datapackmanager-1.19:packages/preinstaller/resetdmfirst 3s
