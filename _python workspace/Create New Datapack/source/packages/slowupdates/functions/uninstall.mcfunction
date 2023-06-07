@@ -1,7 +1,7 @@
 tellraw @a[tag=$datapackID_lower_debug] [{"text":"$datapackID","color":"$datapackColor"},{"text":" > packages/slowupdates/functions/uninstall.mcfunction","color":"gray"}]
 
 # stop loops
-function $datapackFullName_lower:slowupdates/functions/clearschedules
+function $datapackFullName_lower:packages/slowupdates/functions/clearschedules
 
 
 # replace custom items

@@ -1,0 +1,17 @@
+{
+    "display": {
+        "title": "Dimensional Doors v3.01.02",
+        "description": "Survival friendly method to transport players and animals over long distances and across dimensions!",
+        "icon": {
+            "item": "minecraft:end_portal_frame"
+        },
+        "show_toast": false,
+        "announce_to_chat": false
+    },
+    "parent": "datapackmanager:root",
+    "criteria": {
+        "trigger": {
+            "trigger": "minecraft:tick"
+        }
+    }
+}

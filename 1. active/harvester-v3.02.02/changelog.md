@@ -4,20 +4,20 @@ important changes:
 + even lesser lag
 + slightly improved hoes harvesting range
 + diamond hoes can harvest nether wart now
++ diamond hoes now harvest in a 5x5 star pattern
++ netherite hoes now harvest in a 5x5 pattern
++ no longer works with Tinkerer's Craft (wait for a TC update first!)
 
 
 full dev log:
 + ported over to the latest version of datapack manager
-+ buffed most of the hoes (by shifting the progression one material up)
++ buffed most of the hoes
 + slowed the detection from 1t to 2t
 + fixed plenty of porting bugs
 + fixed an oversight where netherite was not in 1.14 which made harvesting nether wart impossible since it was locked only to netherite hoes
 + updated compatibility support for 1.14 (no predicates)
 + updated for 1.20
-+ 
-+ 
-+ 
-+ 
++ temporarily disabled api/hooks
 
 
 

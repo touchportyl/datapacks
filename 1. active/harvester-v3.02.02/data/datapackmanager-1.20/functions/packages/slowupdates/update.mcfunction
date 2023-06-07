@@ -31,7 +31,6 @@ execute unless score VERSION$minecraft.current DatapackManager matches 14..20 ru
 # cleanup
 #scoreboard players operation ALERT$alertname DatapackManager = BOOL$false DatapackManager
 
-scoreboard players operation FUNCTION$initialize DatapackManager = BOOL$false DatapackManager
 scoreboard players operation FUNCTION$loadconfig DatapackManager = BOOL$false DatapackManager
 
 scoreboard players operation FLAG$dirty DatapackManager = BOOL$false DatapackManager

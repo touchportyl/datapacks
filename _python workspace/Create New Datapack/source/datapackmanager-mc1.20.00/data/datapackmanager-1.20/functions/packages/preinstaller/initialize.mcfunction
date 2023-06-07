@@ -1,5 +1,8 @@
 tellraw @a[tag=dm_debug] [{"text":"DM","color":"white"},{"text":" > packages/preinstaller/initialize.mcfunction","color":"gray"}]
 
+# init success
+scoreboard players operation FUNCTION$initialize DatapackManager = BOOL$false DatapackManager
+
 # set constants
 scoreboard players set FLAG$secret DatapackManager 259240
 

@@ -1,7 +1,7 @@
 tellraw @a[tag=aw_debug] [{"text":"AW","color":"blue"},{"text":" > packages/slowupdates/functions/uninstall.mcfunction","color":"gray"}]
 
 # stop loops
-function aroundtheworld:slowupdates/functions/clearschedules
+function aroundtheworld:packages/slowupdates/functions/clearschedules
 
 
 # replace custom items

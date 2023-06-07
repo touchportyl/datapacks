@@ -6,7 +6,7 @@ from functions import CreatePath, CopyAndReplace
 
 # data to use when generating a new datapack
 # located in /config
-jsonconfig = "unittestpack1"
+jsonconfig = "dimensionaldoors"
 
 
 
@@ -153,7 +153,7 @@ CopyAndReplace(
     replacements
 )
 
-# \data\datapackmanager-1.19\functions\packages\versioning\throw\notcompatible.mcfunction
+# \data\datapackmanager-$datapackManagerDisplayVersion\functions\packages\versioning\throw\notcompatible.mcfunction
 
 CopyAndReplace(
     os.path.join(sourcepath,f'datapackmanager-{datapackManagerDisplayVersion}','data',f'datapackmanager-{datapackManagerFullVersion}','functions','packages','versioning','throw','notcompatible.mcfunction'),

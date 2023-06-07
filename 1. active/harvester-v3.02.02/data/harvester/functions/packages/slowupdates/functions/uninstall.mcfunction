@@ -1,7 +1,7 @@
 tellraw @a[tag=hv_debug] [{"text":"HV","color":"gold"},{"text":" > packages/slowupdates/functions/uninstall.mcfunction","color":"gray"}]
 
 # stop loops
-function harvester:slowupdates/functions/clearschedules
+function harvester:packages/slowupdates/functions/clearschedules
 
 
 # replace custom items
