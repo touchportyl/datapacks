@@ -9,3 +9,6 @@ scoreboard players set VERSION$minecraft.forward DatapackManager 19
 
 scoreboard players operation VERSION$ignorecompatibility.backward DatapackManager = BOOL$false DatapackManager
 scoreboard players operation VERSION$ignorecompatibility.forward DatapackManager = BOOL$true DatapackManager
+
+# safe to assume until proven otherwise
+scoreboard players operation FLAG$noschedulecommand DatapackManager = BOOL$true DatapackManager

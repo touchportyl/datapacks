@@ -13,5 +13,5 @@ execute unless score VERSION$minecraft.current DatapackManager matches 18.. run 
 execute unless score VERSION$minecraft.current DatapackManager matches 19.. run function datapackmanager-1.19:packages/versioning/versions/1.19
 
 # throw error for unsupported versions
-execute if score VERSION$minecraft.current DatapackManager < VERSION$minecraft.backward DatapackManager if score VERSION$ignorecompatibility.backward DatapackManager = BOOL$false DatapackManager run function datapackmanager-1.19:packages/versioning/throw/mcnotcompatible
-execute if score VERSION$minecraft.current DatapackManager > VERSION$minecraft.forward DatapackManager if score VERSION$ignorecompatibility.forward DatapackManager = BOOL$false DatapackManager run function datapackmanager-1.19:packages/versioning/throw/mcnotcompatible
+execute if score VERSION$minecraft.current DatapackManager < VERSION$minecraft.backward DatapackManager if score VERSION$ignorecompatibility.backward DatapackManager = BOOL$false DatapackManager run function datapackmanager-1.19:packages/versioning/throw/notcompatible
+execute if score VERSION$minecraft.current DatapackManager > VERSION$minecraft.forward DatapackManager if score VERSION$ignorecompatibility.forward DatapackManager = BOOL$false DatapackManager run function datapackmanager-1.19:packages/versioning/throw/notcompatible

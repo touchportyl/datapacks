@@ -7,6 +7,8 @@ execute unless score VERSION$datapack.latest $datapackFullName matches 10000.. r
 #execute unless score VERSION$datapack.latest $datapackFullName matches 20000.. run function $datapackFullName_lower:packages/versioning/updates/v2.00.00
 #execute unless score VERSION$datapack.latest $datapackFullName matches 30000.. run function $datapackFullName_lower:packages/versioning/updates/v3.00.00
 
+#execute unless score VERSION$datapack.latest $datapackFullName matches 30001.. run scoreboard players set VERSION$datapack.latest $datapackFullName 30001
+
 
 # throw error for unsupported minecraft versions
 execute if score VERSION$minecraft.current DatapackManager < VERSION$minecraft.backward $datapackFullName if score VERSION$ignorecompatibility.backward $datapackFullName = BOOL$false DatapackManager run function $datapackFullName_lower:packages/versioning/throw/mcnotcompatible
@@ -15,4 +17,4 @@ execute if score VERSION$minecraft.current DatapackManager > VERSION$minecraft.f
 
 
 # throw error for all versions newer than the currently supported version
-execute if score VERSION$datapack.current $datapackFullName > VERSION$datapack.latest $datapackFullName run function $datapackFullName_lower:packages/versioning/throw/dpnotcompatible
+execute if score VERSION$datapack.current $datapackFullName < VERSION$datapack.latest $datapackFullName run function $datapackFullName_lower:packages/versioning/throw/dpnotcompatible

@@ -3,7 +3,7 @@ tellraw @a[tag=$datapackID_lower_debug] [{"text":"$datapackID","color":"$datapac
 # notify
 tellraw @a [{"text":"","color":"green","hoverEvent":{"action":"show_text","value":"Alert from $datapackDisplayName"}},{"text":" +"},{"text":" $datapackDisplayName ","color":"$datapackColor","bold":true,"hoverEvent":{"action":"show_text","value":"$datapackDescription"}},{"text":"$datapackDisplayVersion","color":"gray"},{"text":" > ","color":"white"},{"text":"$datapackDisplayName updated from v1.00.00 to v2.00.00"}]
 
-function datapackmanager-1.19:packages/effects/ui_jingle
+function datapackmanager-$datapackManagerFullVersion:packages/effects/ui_jingle
 
 # update
 scoreboard players set VERSION$datapack.latest $datapackFullName 20000

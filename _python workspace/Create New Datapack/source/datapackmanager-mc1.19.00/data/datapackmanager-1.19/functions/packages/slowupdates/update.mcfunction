@@ -1,15 +1,19 @@
 tellraw @a[tag=dm_debug] [{"text":"DM","color":"white"},{"text":" > packages/slowupdates/update.mcfunction","color":"gray"}]
 
+# initialize
+execute if score FUNCTION$initialize DatapackManager = BOOL$true DatapackManager if score VERSION$minecraft.forward DatapackManager matches ..19 run function datapackmanager-1.19:packages/preinstaller/initialize
+
 # alerts
-execute if score ALERT$configurationloaded DatapackManager = BOOL$true DatapackManager run function datapackmanager-1.19:packages/alerts/configurationloaded
-execute if score ALERT$dpbackcompatibility DatapackManager = BOOL$true DatapackManager run function datapackmanager-1.19:packages/alerts/datapackbackwardscompatibility
-execute if score ALERT$datapackdisabled DatapackManager = BOOL$true DatapackManager run function datapackmanager-1.19:packages/alerts/datapackdisabled
-execute if score ALERT$mcnotcompatible DatapackManager = BOOL$true DatapackManager run function datapackmanager-1.19:packages/alerts/minecraftnotcompatible
-execute if score ALERT$minecraftversion DatapackManager = BOOL$true DatapackManager run function datapackmanager-1.19:packages/alerts/minecraftversion
+# ALERT$configurationloaded is run inline
+# ALERT$datapackdisabled is run inline
+# ALERT$minecraftnotcompatible is run inline
+# ALERT$minecraftversion is run inline
 
 # functions
-execute if score FUNCTION$clearschedules DatapackManager = BOOL$true DatapackManager run function datapackmanager-1.19:packages/slowupdates/functions/clearschedules
+# FUNCTION$clearschedules must be run inline
 execute if score FUNCTION$loadconfig DatapackManager = BOOL$true DatapackManager run function datapackmanager-1.19:packages/slowupdates/functions/loadconfig
+# notify (special case here)
+execute if score FUNCTION$loadconfig DatapackManager = BOOL$true DatapackManager run function datapackmanager-1.19:packages/alerts/configurationloaded
 
 # triggers
 #execute as @a[scores={uninstall=1..}] run function datapackmanager-1.19:packages/slowupdates/triggers/uninstall
@@ -18,19 +22,16 @@ execute if score FUNCTION$loadconfig DatapackManager = BOOL$true DatapackManager
 
 
 # loops
-execute if score LOOP$tickers.1s.isLooping DatapackManager = BOOL$false DatapackManager run schedule clear datapackmanager-1.19:packages/tickers/1s
-execute if score LOOP$tickers.1s.isLooping DatapackManager = BOOL$true DatapackManager run schedule function datapackmanager-1.19:packages/tickers/1s 1s
+execute if score VERSION$minecraft.current DatapackManager matches 14..19 run function datapackmanager-1.19:compatibility/schedule/tickers
+# fallback: minecraft tick function will take over
+execute unless score VERSION$minecraft.current DatapackManager matches 14..19 run scoreboard players operation FLAG$noschedulecommand DatapackManager = BOOL$true DatapackManager
 
 
 
 # cleanup
-scoreboard players operation ALERT$configurationloaded DatapackManager = BOOL$false DatapackManager
-scoreboard players operation ALERT$dpbackcompatibility DatapackManager = BOOL$false DatapackManager
-scoreboard players operation ALERT$datapackdisabled DatapackManager = BOOL$false DatapackManager
-scoreboard players operation ALERT$mcnotcompatible DatapackManager = BOOL$false DatapackManager
-scoreboard players operation ALERT$minecraftversion DatapackManager = BOOL$false DatapackManager
+#scoreboard players operation ALERT$alertname DatapackManager = BOOL$false DatapackManager
 
-scoreboard players operation FUNCTION$clearschedules DatapackManager = BOOL$false DatapackManager
+scoreboard players operation FUNCTION$initialize DatapackManager = BOOL$false DatapackManager
 scoreboard players operation FUNCTION$loadconfig DatapackManager = BOOL$false DatapackManager
 
 scoreboard players operation FLAG$dirty DatapackManager = BOOL$false DatapackManager

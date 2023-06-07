@@ -2,4 +2,4 @@
 #function $datapackFullName_lower:yourfunction
 
 # tick
-schedule function $datapackFullName_lower:packages/tickers/1t-$datapackDisplayVersion 1t
+execute unless score LOOP$tickers.1t.isLooping $datapackFullName = BOOL$false DatapackManager run schedule function $datapackFullName_lower:packages/tickers/1t-$datapackDisplayVersion 1t

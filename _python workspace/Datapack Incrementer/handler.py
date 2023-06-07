@@ -25,11 +25,16 @@ def IncrementVersion(versionType = 1):
     versionCompressed_new = str(int(versionCompressed_old) + versionType)
 
     # 4. decompress the updated version
-    versionFull_new = 'v' + versionCompressed_new[0] + '.' + versionCompressed_new[1] + versionCompressed_new[2] + '.' + versionCompressed_new[3] + versionCompressed_new[4]
+    versionFull_new = f'v{versionCompressed_new[0]}.{versionCompressed_new[1]}{versionCompressed_new[2]}.{versionCompressed_new[3]}{versionCompressed_new[4]}'
+    #versionFull_new = 'v' + versionCompressed_new[0] + '.' + versionCompressed_new[1] + versionCompressed_new[2] + '.' + versionCompressed_new[3] + versionCompressed_new[4]
 
     # for each specific file in the datapack, replace with the new version number
     pathList = [
         f'data/{datapackFullName_lower}/advancements/{datapackFullName_lower}.json',
+        f'data/{datapackFullName_lower}/functions/alerts/configurationloaded.mcfunction',
+        f'data/{datapackFullName_lower}/functions/alerts/datapackbackwardscompatibility.mcfunction',
+        f'data/{datapackFullName_lower}/functions/alerts/installed.mcfunction',
+        f'data/{datapackFullName_lower}/functions/alerts/minecraftnotcompatible.mcfunction',
         f'data/{datapackFullName_lower}/functions/packages/slowupdates/functions/disablepack.mcfunction',
         f'data/{datapackFullName_lower}/functions/config.mcfunction',
         f'{targettxt}'
