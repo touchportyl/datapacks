@@ -3,12 +3,14 @@
 
 # Features
 - Additional utility for all hoes
-- Larger harvesting radius (up to 3x3 around you)
-- Replants automatically if you have seeds in your inventory
+- Larger harvesting radius (up to 5x5 around you)
+- Replants automatically if you have seeds in your inventory (grants xp as well!)
 - Has a 25% chance to not use seeds when replanting (useful for crops like carrots)
 - Only harvests fully grown crops
 - Sound effects and particles
-- Multiplayer support
+- Advancements
+- Server and multiplayer support
+- Supports Minecraft versions 1.14 to 1.20
 
 # How to use
 - Crouch walk by crops while holding a hoe
@@ -18,9 +20,6 @@
 
 # Future updates
 - Suggest more!
-
-# Changelog
-The changelog has gotten too long, you can find the full changelog in [changelog.md](https://github.com/touchportyl/harvester/blob/master/changelog.md)
 
 
 ---
