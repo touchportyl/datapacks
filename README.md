@@ -3,10 +3,10 @@ All of the developmental versions for datapacks created by [touchportyl](https:/
 
 There are 3 branches, each at different levels of completion.
 - master: Holds the latest release versions of everything.
-- dev: Holds the newest seemingly working version. Bugs should be minimal, contains unfinished features and breaking changes.
-- staging: Holds everything from bugs to unfinished features.
+- staging: Holds the newest seemingly working version. Bugs should be minimal, contains unfinished features and breaking changes.
+- dev: Holds everything from bugs to unfinished features.
 
-There are 4 folders sorting all my datapacks in various levels of progress.
+There are 5 folders sorting all my datapacks in various levels of progress.
 
 This code is protected by the GNU GPLv3 License | © 2023 Portyl Studios https://portylstudios.com/
 
