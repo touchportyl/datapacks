@@ -1,0 +1,7 @@
+{
+    "replace": false,
+    "values": [
+        "datapackmanager-1.20:packages/preinstaller/load",
+        "tinkererscraft:packages/preinstaller/load"
+    ]
+}

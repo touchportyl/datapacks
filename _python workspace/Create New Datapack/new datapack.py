@@ -6,7 +6,7 @@ from functions import CreatePath, CopyAndReplace
 
 # data to use when generating a new datapack
 # located in /config
-jsonconfig = "dimensionaldoors"
+jsonconfig = "tinkererscraft"
 
 
 
@@ -31,7 +31,7 @@ with open(os.path.join(workingpath,'config',f'{jsonconfig}.json')) as file:
 # datapack name
 datapackDisplayName = configData['datapackDisplayName']
 datapackFullName = configData['datapackFullName']
-datapackFullName_lower = datapackDisplayName.replace(" ", "").lower()
+datapackFullName_lower = datapackFullName.replace(" ", "").lower()
 
 # datapack id
 datapackID = configData['datapackID']
