@@ -11,3 +11,6 @@ scoreboard players set @s TC_lObdiam 4097
 #sfx:activate
 function tinkererscraft:effects/generic/activate
 
+
+# cleanup
+kill @e[tag=TC_commandblock,distance=..2]

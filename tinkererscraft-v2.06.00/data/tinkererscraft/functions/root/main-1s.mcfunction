@@ -12,6 +12,10 @@ execute as @e[tag=TC_smeltery] at @s run function tinkererscraft:root/smeltery/s
 function tinkererscraft:root/others/removegrindedtools
 
 
+#> particle effects
+# as of v2.06.00, it is now an infinite lava source
+execute as @e[tag=TC_smeltery] at @s unless block ^ ^ ^ minecraft:lava run function tinkererscraft:effects/smeltery/moltenmetal
+
 
 #> dev
 # instabuild

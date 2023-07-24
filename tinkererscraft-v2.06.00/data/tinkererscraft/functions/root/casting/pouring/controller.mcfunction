@@ -2,6 +2,10 @@
 # this runs every 2t (10 ticks per second)
 
 
+# check
+function tinkererscraft:root/casting/output/check
+
+
 # run a timer when pouring
 scoreboard players add @s TC_OutputTimer 1
 

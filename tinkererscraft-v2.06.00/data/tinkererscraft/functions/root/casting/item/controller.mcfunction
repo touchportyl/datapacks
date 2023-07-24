@@ -13,21 +13,22 @@
 # - TC_gen_casted (Add motion & casted lore)
 
 # material:
-# - TC_gen_item_iron
-# - TC_gen_item_gold
-# - TC_gen_item_irgol
-# - TC_gen_item_obdiam
+# - TC_gen_iron
+# - TC_gen_gold
+# - TC_gen_irgol
+# - TC_gen_obdiam
 
 # type:
-# - TC_gen_item_cauldroncasted
-# - TC_gen_item_anvilcasted
+# - TC_gen_cauldroncasted
+# - TC_gen_anvilcasted
+# - TC_gen_tool
 
-# tool type: (requires TC_gen_item_anvilcasted)
-# - TC_gen_item_pickaxe
-# - TC_gen_item_sword
-# - TC_gen_item_axe
-# - TC_gen_item_shovel
-# - TC_gen_item_hoe
+# tool type: (requires TC_gen_anvilcasted & TC_gen_tool)
+# - TC_gen_pickaxe
+# - TC_gen_sword
+# - TC_gen_axe
+# - TC_gen_shovel
+# - TC_gen_hoe
 
 # quirks:
 # - TC_gen_lightweight
@@ -41,12 +42,15 @@
 # - TC_gen_heated
 
 
-
 # create base items
 function tinkererscraft:root/casting/item/base
 
 # classifying tags
-function tinkererscraft:root/casting/item/smelterytagger
+function tinkererscraft:root/casting/item/tagger
 
 # writing tags to items
-execute as @e[tag=TC_gen_item] at @s run function tinkererscraft:root/casting/item/tagwriter
+execute as @s at @s positioned ^ ^ ^2 as @e[type=minecraft:item,tag=TC_gen_item,distance=..0.2,sort=nearest,limit=1] at @s run function tinkererscraft:root/casting/item/tagwriter
+
+
+# remove generate item tag
+execute as @s at @s positioned ^ ^ ^2 run tag @e[type=minecraft:item,tag=TC_gen_item,distance=..0.2,sort=nearest,limit=1] remove TC_gen_item

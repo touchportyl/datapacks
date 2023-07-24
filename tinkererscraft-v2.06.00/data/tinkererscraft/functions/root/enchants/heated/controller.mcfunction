@@ -1,16 +1,7 @@
-#> -----------------------------------------------
-#> Tinkerer's Craft Datapack
-#> This code is protected by the GNU GPLv3 License
-#> © 2020 Portyl Studios
-#> https://portylstudios.com
-#> -----------------------------------------------
+# controls the heated item's effects
 
 
-#> controller (references: ../root/enchants/heated)
-# this code controls the heated item's effects
-
-
-# heat up
+# heat up items near by
 execute as @e[tag=TC_isHeated] at @s as @e[type=minecraft:item,distance=..4] unless entity @s[nbt={Item:{tag:{TC_Heated:1b}}}] run scoreboard players add @s TC_SmeltingTimer 2
 
 # cool down
@@ -23,13 +14,14 @@ execute as @e[nbt={Item:{tag:{TC_Heated:1b}},OnGround:1b}] run function tinkerer
 execute as @e[nbt={Item:{tag:{TC_Heated:1b}}}] at @s if block ~ ~ ~ minecraft:water run particle minecraft:bubble_column_up ~ ~ ~ 0 0 0 0.1 1 force
 
 #pfx:heated
-execute as @e[scores={TC_SmeltingTimer=10..}] at @s run function tinkererscraft:modules/effects/heated
+execute as @e[scores={TC_SmeltingTimer=5..}] at @s run function tinkererscraft:effects/enchants/heated
 
 #> furnace vanilla
-execute as @e[scores={TC_SmeltingTimer=100}] unless entity @s[nbt={Item:{tag:{TC_Casted:1b}}}] run function tinkererscraft:root/enchants/heated/furnace_vanilla
+execute as @e[scores={TC_SmeltingTimer=50}] unless entity @s[nbt={Item:{tag:{TC_Casted:1b}}}] run function tinkererscraft:root/enchants/heated/furnace_vanilla
 
 # cap timer
-execute as @e[scores={TC_SmeltingTimer=100..}] unless entity @s[nbt={Item:{tag:{TC_Casted:1b}}}] run scoreboard players set @s TC_SmeltingTimer 35
+execute as @e[scores={TC_SmeltingTimer=50..}] unless entity @s[nbt={Item:{tag:{TC_Casted:1b}}}] run scoreboard players set @s TC_SmeltingTimer 20
 
-#todo:gc
+# cleanup
 tag @e remove TC_isHeated
+execute as @e[scores={TC_SmeltingTimer=0}] run scoreboard players reset @s TC_SmeltingTimer

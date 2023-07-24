@@ -1,13 +1,4 @@
-#> -----------------------------------------------
-#> Tinkerer's Craft Datapack
-#> This code is protected by the GNU GPLv3 License
-#> © 2020 Portyl Studios
-#> https://portylstudios.com
-#> -----------------------------------------------
-
-
-#> burn plants (references: ../root/enchants/heated/ground)
-# this code turns non-solid plants into dead bushes
+# turns non-solid plants into dead bushes
 
 
 # plants

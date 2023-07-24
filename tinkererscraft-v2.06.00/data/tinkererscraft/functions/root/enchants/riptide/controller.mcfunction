@@ -1,13 +1,4 @@
-#> -----------------------------------------------
-#> Tinkerer's Craft Datapack
-#> This code is protected by the GNU GPLv3 License
-#> © 2020 Portyl Studios
-#> https://portylstudios.com
-#> -----------------------------------------------
-
-
-#> controller (references: ../root/enchants/riptide)
-# this code controls the riptide item's effects
+# controls the riptide item's effects
 
 
 # start timer
@@ -20,9 +11,9 @@ particle minecraft:crit ~ ~0.5 ~ 0.5 0.4 0.5 0.1 2 force
 execute as @s[scores={TC_RiptideTimer=1}] at @s run effect give @s minecraft:levitation 2 3 true
 execute as @s[scores={TC_RiptideTimer=5}] at @s run playsound minecraft:block.conduit.attack.target player @a ~ ~ ~ 2 2 0
 
-execute as @s[scores={TC_RiptideTimer=15}] at @s run function tinkererscraft:modules/effects/riptide/slash
-execute as @s[scores={TC_RiptideTimer=20}] at @s run function tinkererscraft:modules/effects/riptide/slash
-execute as @s[scores={TC_RiptideTimer=23}] at @s run function tinkererscraft:modules/effects/riptide/slash
+execute as @s[scores={TC_RiptideTimer=15}] at @s run function tinkererscraft:effects/enchants/riptide/slash
+execute as @s[scores={TC_RiptideTimer=20}] at @s run function tinkererscraft:effects/enchants/riptide/slash
+execute as @s[scores={TC_RiptideTimer=23}] at @s run function tinkererscraft:effects/enchants/riptide/slash
 
 execute as @s[scores={TC_RiptideTimer=25}] at @s run playsound minecraft:block.conduit.deactivate player @a ~ ~ ~ 0.8 1 0
 execute as @s[scores={TC_RiptideTimer=35..}] at @s run particle minecraft:explosion ~ ~ ~ 0 0 0 0 1 force

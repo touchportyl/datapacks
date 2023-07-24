@@ -46,18 +46,15 @@ tag @s[nbt={Item:{id:"minecraft:raw_gold_block"}}] add TC_rawgoldblock
 
 #> step 2: filter out and execute on items in order
 # remember to kill items immediately after being processed
-# do it in this script to ensure linear processing
 
 #> filter + execute: dev command
 # instantly fills the smeltery to the brim with liquid metal
 # Note: does not force upgrade the smeltery
 execute as @e[tag=TC_commandblock] at @s as @e[tag=TC_smeltery,distance=..2] at @s run function tinkererscraft:root/others/instafill
-kill @e[tag=TC_commandblock]
 
 #> filter + execute: upgrade materials
 # upgrades the smeltery
 execute as @e[tag=TC_netheriteingot] at @s as @e[tag=TC_smeltery,distance=..2] at @s run function tinkererscraft:root/smeltery/capacity/upgrade
-kill @e[tag=TC_netheriteingot]
 
 
 #> filter: reactants
@@ -114,13 +111,13 @@ execute as @e[tag=TC_smelting] at @s as @e[tag=TC_smeltery,distance=..2] at @s a
 #kill @e[tag=TC_smelting]
 
 # cleanup
-kill @e[tag=TC_buildsmeltery]
+execute as @e[tag=TC_smeltery] at @s run kill @e[tag=TC_buildsmeltery,distance=..2]
 
 
 #> filter: slag
 # 'else' filter that will tag any other item that missed cleanup during smelting
-tag @e[tag=TC_smelting] add TC_slag
+execute as @e[tag=TC_smeltery] at @s run tag @e[tag=TC_smelting] add TC_slag
 
 #> execute: slag
 execute as @e[tag=TC_slag] at @s run function tinkererscraft:effects/smelting/slag
-kill @e[tag=TC_slag]
+execute as @e[tag=TC_smeltery] at @s run kill @e[tag=TC_slag,distance=..2]

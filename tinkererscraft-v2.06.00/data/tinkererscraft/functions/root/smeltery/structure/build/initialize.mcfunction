@@ -22,6 +22,9 @@ scoreboard players set @s TC_lCapacity 256
 execute as @s at @s positioned ^ ^0.8 ^1 run summon minecraft:area_effect_cloud ~ ~ ~ {Tags:["TinkerersCraft","TC_display","TC_number"],CustomName:'{"text":"Break"}',CustomNameVisible:1b,Age:-2147483648,Duration:-1,WaitTime:-2147483648,Particle:"minecraft:mycelium"}
 execute as @s at @s positioned ^ ^0.6 ^1 run summon minecraft:area_effect_cloud ~ ~ ~ {Tags:["TinkerersCraft","TC_display","TC_ore"],CustomName:'{"text":"Glass"}',CustomNameVisible:1b,Age:-2147483648,Duration:-1,WaitTime:-2147483648,Particle:"minecraft:mycelium"}
 
+# create lava
+setblock ^ ^ ^ minecraft:lava replace
+
 
 #sfx:startup
 function tinkererscraft:effects/smeltery/startup

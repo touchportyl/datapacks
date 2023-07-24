@@ -7,4 +7,4 @@ data modify block ^ ^1 ^2 is_waxed set value true
 data modify block ^ ^1 ^2 back_text.messages[0] set value '[{"text":"","color":"gray","italic":false},{"text":"Casted by "},{"selector":"@p"}]'
 
 # transfer parsed text into lore
-data modify entity @e[tag=TC_gen_casted,distance=..3,limit=1,sort=nearest] Item.tag.display.Lore append from block ^ ^1 ^2 back_text.messages[0]
+data modify entity @e[nbt={Item:{tag:{TC_Casted:true}}},distance=..3,limit=1,sort=nearest] Item.tag.display.Lore append from block ^ ^1 ^2 back_text.messages[0]

@@ -1,21 +1,17 @@
 # converts the setup in front of the smeltery into tags
 
-# tags:
-# - TC_cauldron
-# - TC_anvil
-
 
 # remove tags first
-tag @e[tag=TC_cauldron] remove TC_cauldron
-tag @e[tag=TC_anvil] remove TC_anvil
-tag @e[tag=TC_ingot] remove TC_ingot
-tag @e[tag=TC_nugget] remove TC_nugget
-tag @e[tag=TC_pickaxe] remove TC_pickaxe
-tag @e[tag=TC_sword] remove TC_sword
-tag @e[tag=TC_axe] remove TC_axe
-tag @e[tag=TC_shovel] remove TC_shovel
-tag @e[tag=TC_hoe] remove TC_hoe
-tag @e[tag=TC_pressureplate] remove TC_pressureplate
+tag @s[tag=TC_cauldron] remove TC_cauldron
+tag @s[tag=TC_anvil] remove TC_anvil
+tag @s[tag=TC_pressureplate] remove TC_pressureplate
+tag @s[tag=TC_nugget] remove TC_nugget
+tag @s[tag=TC_ingot] remove TC_ingot
+tag @s[tag=TC_pickaxe] remove TC_pickaxe
+tag @s[tag=TC_sword] remove TC_sword
+tag @s[tag=TC_axe] remove TC_axe
+tag @s[tag=TC_shovel] remove TC_shovel
+tag @s[tag=TC_hoe] remove TC_hoe
 
 
 #> update tags

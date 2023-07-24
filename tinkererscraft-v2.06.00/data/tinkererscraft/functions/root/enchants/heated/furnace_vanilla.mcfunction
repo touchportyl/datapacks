@@ -1,13 +1,4 @@
-#> -----------------------------------------------
-#> Tinkerer's Craft Datapack
-#> This code is protected by the GNU GPLv3 License
-#> © 2020 Portyl Studios
-#> https://portylstudios.com
-#> -----------------------------------------------
-
-
-#> furnace vanilla (references: ../root/enchants/heated/controller)
-# this contains a list of all the vanilla items that are smeltable in a furnace
+# contains a list of all the vanilla items that are smeltable in a furnace
 # updated for version 1.16.2
 #
 # note:

@@ -1,12 +1,4 @@
-#> -----------------------------------------------
-#> Tinkerer's Craft Datapack
-#> This code is protected by the GNU GPLv3 License
-#> © 2020 Portyl Studios
-#> https://portylstudios.com
-#> -----------------------------------------------
-
-#> loot_doubler (references: ../root/enchants/riptide/controller)
-# This contains a list of all the loot tables for entities
+# contains a list of all the loot tables for entities
 # Updated for 1.16.2
 #
 # Some entities are removed as they are bosses, minibosses, or possess teleporting abilities

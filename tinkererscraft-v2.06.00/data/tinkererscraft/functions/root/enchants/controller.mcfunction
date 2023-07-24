@@ -1,4 +1,5 @@
 # runs all the detection code
+# runs at 2t
 
 
 #> quirks
@@ -18,5 +19,5 @@ function tinkererscraft:root/enchants/heated
 # lunge
 function tinkererscraft:root/enchants/lunge
 
-# riptide
-function tinkererscraft:root/enchants/riptide
+# riptide relies on hurt detection which must be run on 1t
+#function tinkererscraft:root/enchants/riptide

@@ -27,3 +27,7 @@ execute if score @s TC_lCapacity matches 256..3840 run function tinkererscraft:e
 
 # advancement
 execute if score @s TC_lCapacity matches 256..3840 run advancement grant @a[distance=..7,sort=nearest,limit=1] only tinkererscraft:smeltery/capacity/upgrade
+
+
+# cleanup
+kill @e[tag=TC_netheriteingot,distance=..2]

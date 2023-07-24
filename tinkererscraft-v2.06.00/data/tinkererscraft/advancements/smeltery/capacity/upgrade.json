@@ -4,7 +4,7 @@
       "item": "minecraft:chest"
     },
     "title": "It's Too Small",
-    "description": "Upgrade a smeltery by smelting a netherite block",
+    "description": "Upgrade a smeltery by smelting a netherite ingot",
     "frame": "task",
     "show_toast": true,
     "announce_to_chat": true,

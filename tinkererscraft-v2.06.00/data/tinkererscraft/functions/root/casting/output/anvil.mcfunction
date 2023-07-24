@@ -1,8 +1,9 @@
 # sorts the anvil setup in front of the smeltery into the appropriate tags
+# pressure plate comes last because it's empty
 
 # tags:
-# - TC_ingot
 # - TC_nugget
+# - TC_ingot
 # - TC_pickaxe
 # - TC_sword
 # - TC_axe
