@@ -18,15 +18,15 @@
 execute as @e[tag=TC_smeltery,distance=..3,limit=1,sort=nearest] at @s run function tinkererscraft:root/casting/item/parseplayername
 
 # quirks
-data modify entity @s[nbt={Item:{tag:{TC_Lightweight:true}}}] Item.tag.display.Lore append value '{"text":" ➥ Lightweight","color":"gray","italic":false}'
-data modify entity @s[nbt={Item:{tag:{TC_Shiny:true}}}] Item.tag.display.Lore append value '{"text":" ➥ Shiny","color":"gray","italic":false}'
-data modify entity @s[nbt={Item:{tag:{TC_Prospector:true}}}] Item.tag.display.Lore append value '{"text":" ➥ Prospector","color":"gray","italic":false}'
-data modify entity @s[nbt={Item:{tag:{TC_Flaming:true}}}] Item.tag.display.Lore append value '{"text":" ➥ Flaming","color":"gray","italic":false}'
+data modify entity @s[nbt={Item:{tag:{TC_Lightweight:true}}}] Item.tag.display.Lore append value '{"text":" ➥ Lightweight","color":"gold","italic":false}'
+data modify entity @s[nbt={Item:{tag:{TC_Shiny:true}}}] Item.tag.display.Lore append value '{"text":" ➥ Shiny","color":"gold","italic":false}'
+data modify entity @s[nbt={Item:{tag:{TC_Prospector:true}}}] Item.tag.display.Lore append value '{"text":" ➥ Prospector","color":"gold","italic":false}'
+data modify entity @s[nbt={Item:{tag:{TC_Flaming:true}}}] Item.tag.display.Lore append value '{"text":" ➥ Flaming","color":"gold","italic":false}'
 
 # enchants
-data modify entity @s[nbt={Item:{tag:{TC_Lunge:true}}}] Item.tag.display.Lore append value '{"text":" ➥ Lunge","color":"gray","italic":false}'
-data modify entity @s[nbt={Item:{tag:{TC_Riptide:true}}}] Item.tag.display.Lore append value '{"text":" ➥ Riptide","color":"gray","italic":false}'
-data modify entity @s[nbt={Item:{tag:{TC_Heated:true}}}] Item.tag.display.Lore append value '{"text":" ➥ Heated","color":"gray","italic":false}'
+data modify entity @s[nbt={Item:{tag:{TC_Lunge:true}}}] Item.tag.display.Lore append value '{"text":" ➥ Lunge","color":"light_purple","italic":false}'
+data modify entity @s[nbt={Item:{tag:{TC_Riptide:true}}}] Item.tag.display.Lore append value '{"text":" ➥ Riptide","color":"light_purple","italic":false}'
+data modify entity @s[nbt={Item:{tag:{TC_Heated:true}}}] Item.tag.display.Lore append value '{"text":" ➥ Heated","color":"light_purple","italic":false}'
 
 
 

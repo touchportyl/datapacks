@@ -1,16 +1,24 @@
 # contains a list of all the vanilla items that are smeltable in a furnace
-# updated for version 1.16.2
-#
-# note:
-# cobblestone turns into stone, which turns into smooth stone
-# they have been placed on top in reverse order to prevent the cobble from instantly transforming into smooth stone
+# item_modifier in 1.17 doesn't work here because the item is on the ground
+
+#> updated for 1.20
+# https://minecraft.fandom.com/wiki/Smelting
+
+# categories
+# - food
+# - ores
+# - gear
+# - furnace only
 
 
 # special case
+# cobblestone turns into stone, which turns into smooth stone
+# they have been placed on top in reverse order to prevent the cobble from instantly transforming into smooth stone
 data modify entity @s[nbt={Item:{id:"minecraft:stone"}}] Item merge value {id:"minecraft:smooth_stone"}
 data modify entity @s[nbt={Item:{id:"minecraft:cobblestone"}}] Item merge value {id:"minecraft:stone"}
 
-# food items
+
+# food
 data modify entity @s[nbt={Item:{id:"minecraft:porkchop"}}] Item merge value {id:"minecraft:cooked_porkchop"}
 data modify entity @s[nbt={Item:{id:"minecraft:beef"}}] Item merge value {id:"minecraft:cooked_beef"}
 data modify entity @s[nbt={Item:{id:"minecraft:chicken"}}] Item merge value {id:"minecraft:cooked_chicken"}
@@ -21,15 +29,64 @@ data modify entity @s[nbt={Item:{id:"minecraft:mutton"}}] Item merge value {id:"
 data modify entity @s[nbt={Item:{id:"minecraft:rabbit"}}] Item merge value {id:"minecraft:cooked_rabbit"}
 data modify entity @s[nbt={Item:{id:"minecraft:kelp"}}] Item merge value {id:"minecraft:dried_kelp"}
 
-# blocks
-data modify entity @s[nbt={Item:{id:"minecraft:iron_ore"}}] Item merge value {id:"minecraft:iron_ingot"}
-data modify entity @s[nbt={Item:{id:"minecraft:gold_ore"}}] Item merge value {id:"minecraft:gold_ingot"}
+
+# ores
+data modify entity @s[nbt={Item:{id:"minecraft:raw_copper"}}] Item merge value {id:"minecraft:copper_ingot"}
+data modify entity @s[nbt={Item:{id:"minecraft:raw_iron"}}] Item merge value {id:"minecraft:iron_ingot"}
+data modify entity @s[nbt={Item:{id:"minecraft:raw_gold"}}] Item merge value {id:"minecraft:gold_ingot"}
 data modify entity @s[nbt={Item:{id:"minecraft:nether_gold_ore"}}] Item merge value {id:"minecraft:gold_ingot"}
 data modify entity @s[nbt={Item:{id:"minecraft:ancient_debris"}}] Item merge value {id:"minecraft:netherite_scrap"}
+
+# wasted ores
+data modify entity @s[nbt={Item:{id:"minecraft:copper_ore"}}] Item merge value {id:"minecraft:copper_ingot"}
+data modify entity @s[nbt={Item:{id:"minecraft:diamond_ore"}}] Item merge value {id:"minecraft:diamond"}
+data modify entity @s[nbt={Item:{id:"minecraft:gold_ore"}}] Item merge value {id:"minecraft:gold_ingot"}
+data modify entity @s[nbt={Item:{id:"minecraft:iron_ore"}}] Item merge value {id:"minecraft:iron_ingot"}
+data modify entity @s[nbt={Item:{id:"minecraft:lapis_ore"}}] Item merge value {id:"minecraft:lapis_lazuli"}
+data modify entity @s[nbt={Item:{id:"minecraft:redstone_ore"}}] Item merge value {id:"minecraft:redstone"}
+data modify entity @s[nbt={Item:{id:"minecraft:coal_ore"}}] Item merge value {id:"minecraft:coal"}
+data modify entity @s[nbt={Item:{id:"minecraft:emerald_ore"}}] Item merge value {id:"minecraft:emerald"}
+data modify entity @s[nbt={Item:{id:"minecraft:nether_quartz_ore"}}] Item merge value {id:"minecraft:nether_quartz"}
+
+
+#> gear
+
+# iron
+data modify entity @s[nbt={Item:{id:"minecraft:iron_sword"}}] Item merge value {id:"minecraft:iron_nugget"}
+data modify entity @s[nbt={Item:{id:"minecraft:iron_pickaxe"}}] Item merge value {id:"minecraft:iron_nugget"}
+data modify entity @s[nbt={Item:{id:"minecraft:iron_axe"}}] Item merge value {id:"minecraft:iron_nugget"}
+data modify entity @s[nbt={Item:{id:"minecraft:iron_shovel"}}] Item merge value {id:"minecraft:iron_nugget"}
+data modify entity @s[nbt={Item:{id:"minecraft:iron_hoe"}}] Item merge value {id:"minecraft:iron_nugget"}
+data modify entity @s[nbt={Item:{id:"minecraft:chainmail_helmet"}}] Item merge value {id:"minecraft:iron_nugget"}
+data modify entity @s[nbt={Item:{id:"minecraft:chainmail_chestplate"}}] Item merge value {id:"minecraft:iron_nugget"}
+data modify entity @s[nbt={Item:{id:"minecraft:chainmail_leggings"}}] Item merge value {id:"minecraft:iron_nugget"}
+data modify entity @s[nbt={Item:{id:"minecraft:chainmail_boots"}}] Item merge value {id:"minecraft:iron_nugget"}
+data modify entity @s[nbt={Item:{id:"minecraft:iron_helmet"}}] Item merge value {id:"minecraft:iron_nugget"}
+data modify entity @s[nbt={Item:{id:"minecraft:iron_chestplate"}}] Item merge value {id:"minecraft:iron_nugget"}
+data modify entity @s[nbt={Item:{id:"minecraft:iron_leggings"}}] Item merge value {id:"minecraft:iron_nugget"}
+data modify entity @s[nbt={Item:{id:"minecraft:iron_boots"}}] Item merge value {id:"minecraft:iron_nugget"}
+data modify entity @s[nbt={Item:{id:"minecraft:iron_horse_armor"}}] Item merge value {id:"minecraft:iron_nugget"}
+
+# gold
+data modify entity @s[nbt={Item:{id:"minecraft:golden_sword"}}] Item merge value {id:"minecraft:gold_nugget"}
+data modify entity @s[nbt={Item:{id:"minecraft:golden_pickaxe"}}] Item merge value {id:"minecraft:gold_nugget"}
+data modify entity @s[nbt={Item:{id:"minecraft:golden_axe"}}] Item merge value {id:"minecraft:gold_nugget"}
+data modify entity @s[nbt={Item:{id:"minecraft:golden_shovel"}}] Item merge value {id:"minecraft:gold_nugget"}
+data modify entity @s[nbt={Item:{id:"minecraft:golden_hoe"}}] Item merge value {id:"minecraft:gold_nugget"}
+data modify entity @s[nbt={Item:{id:"minecraft:golden_helmet"}}] Item merge value {id:"minecraft:gold_nugget"}
+data modify entity @s[nbt={Item:{id:"minecraft:golden_chestplate"}}] Item merge value {id:"minecraft:gold_nugget"}
+data modify entity @s[nbt={Item:{id:"minecraft:golden_leggings"}}] Item merge value {id:"minecraft:gold_nugget"}
+data modify entity @s[nbt={Item:{id:"minecraft:golden_boots"}}] Item merge value {id:"minecraft:gold_nugget"}
+data modify entity @s[nbt={Item:{id:"minecraft:golden_horse_armor"}}] Item merge value {id:"minecraft:gold_nugget"}
+
+
+# furnace only
 data modify entity @s[nbt={Item:{id:"minecraft:sand"}}] Item merge value {id:"minecraft:glass"}
 data modify entity @s[nbt={Item:{id:"minecraft:red_sand"}}] Item merge value {id:"minecraft:glass"}
+# cobblestone to stone (special case)
 data modify entity @s[nbt={Item:{id:"minecraft:sandstone"}}] Item merge value {id:"minecraft:smooth_sandstone"}
 data modify entity @s[nbt={Item:{id:"minecraft:red_sandstone"}}] Item merge value {id:"minecraft:smooth_red_sandstone"}
+# stone to smooth stone (special case)
 data modify entity @s[nbt={Item:{id:"minecraft:quartz_block"}}] Item merge value {id:"minecraft:smooth_quartz"}
 data modify entity @s[nbt={Item:{id:"minecraft:clay_ball"}}] Item merge value {id:"minecraft:brick"}
 data modify entity @s[nbt={Item:{id:"minecraft:netherrack"}}] Item merge value {id:"minecraft:nether_brick"}
@@ -80,39 +137,3 @@ data modify entity @s[nbt={Item:{id:"minecraft:stripped_dark_oak_wood"}}] Item m
 data modify entity @s[nbt={Item:{id:"minecraft:chorus_fruit"}}] Item merge value {id:"minecraft:popped_chorus_fruit"}
 data modify entity @s[nbt={Item:{id:"minecraft:wet_sponge"}}] Item merge value {id:"minecraft:sponge"}
 data modify entity @s[nbt={Item:{id:"minecraft:sea_pickle"}}] Item merge value {id:"minecraft:lime_dye"}
-
-# wasted ores
-data modify entity @s[nbt={Item:{id:"minecraft:diamond_ore"}}] Item merge value {id:"minecraft:diamond"}
-data modify entity @s[nbt={Item:{id:"minecraft:lapis_ore"}}] Item merge value {id:"minecraft:lapis_lazuli"}
-data modify entity @s[nbt={Item:{id:"minecraft:redstone_ore"}}] Item merge value {id:"minecraft:redstone"}
-data modify entity @s[nbt={Item:{id:"minecraft:coal_ore"}}] Item merge value {id:"minecraft:coal"}
-data modify entity @s[nbt={Item:{id:"minecraft:emerald_ore"}}] Item merge value {id:"minecraft:emerald"}
-data modify entity @s[nbt={Item:{id:"minecraft:nether_quartz_ore"}}] Item merge value {id:"minecraft:nether_quartz"}
-
-# iron items
-data modify entity @s[nbt={Item:{id:"minecraft:iron_sword"}}] Item merge value {id:"minecraft:iron_nugget"}
-data modify entity @s[nbt={Item:{id:"minecraft:iron_pickaxe"}}] Item merge value {id:"minecraft:iron_nugget"}
-data modify entity @s[nbt={Item:{id:"minecraft:iron_axe"}}] Item merge value {id:"minecraft:iron_nugget"}
-data modify entity @s[nbt={Item:{id:"minecraft:iron_shovel"}}] Item merge value {id:"minecraft:iron_nugget"}
-data modify entity @s[nbt={Item:{id:"minecraft:iron_hoe"}}] Item merge value {id:"minecraft:iron_nugget"}
-data modify entity @s[nbt={Item:{id:"minecraft:chainmail_helmet"}}] Item merge value {id:"minecraft:iron_nugget"}
-data modify entity @s[nbt={Item:{id:"minecraft:chainmail_chestplate"}}] Item merge value {id:"minecraft:iron_nugget"}
-data modify entity @s[nbt={Item:{id:"minecraft:chainmail_leggings"}}] Item merge value {id:"minecraft:iron_nugget"}
-data modify entity @s[nbt={Item:{id:"minecraft:chainmail_boots"}}] Item merge value {id:"minecraft:iron_nugget"}
-data modify entity @s[nbt={Item:{id:"minecraft:iron_helmet"}}] Item merge value {id:"minecraft:iron_nugget"}
-data modify entity @s[nbt={Item:{id:"minecraft:iron_chestplate"}}] Item merge value {id:"minecraft:iron_nugget"}
-data modify entity @s[nbt={Item:{id:"minecraft:iron_leggings"}}] Item merge value {id:"minecraft:iron_nugget"}
-data modify entity @s[nbt={Item:{id:"minecraft:iron_boots"}}] Item merge value {id:"minecraft:iron_nugget"}
-data modify entity @s[nbt={Item:{id:"minecraft:iron_horse_armor"}}] Item merge value {id:"minecraft:iron_nugget"}
-
-# gold items
-data modify entity @s[nbt={Item:{id:"minecraft:golden_sword"}}] Item merge value {id:"minecraft:gold_nugget"}
-data modify entity @s[nbt={Item:{id:"minecraft:golden_pickaxe"}}] Item merge value {id:"minecraft:gold_nugget"}
-data modify entity @s[nbt={Item:{id:"minecraft:golden_axe"}}] Item merge value {id:"minecraft:gold_nugget"}
-data modify entity @s[nbt={Item:{id:"minecraft:golden_shovel"}}] Item merge value {id:"minecraft:gold_nugget"}
-data modify entity @s[nbt={Item:{id:"minecraft:golden_hoe"}}] Item merge value {id:"minecraft:gold_nugget"}
-data modify entity @s[nbt={Item:{id:"minecraft:golden_helmet"}}] Item merge value {id:"minecraft:gold_nugget"}
-data modify entity @s[nbt={Item:{id:"minecraft:golden_chestplate"}}] Item merge value {id:"minecraft:gold_nugget"}
-data modify entity @s[nbt={Item:{id:"minecraft:golden_leggings"}}] Item merge value {id:"minecraft:gold_nugget"}
-data modify entity @s[nbt={Item:{id:"minecraft:golden_boots"}}] Item merge value {id:"minecraft:gold_nugget"}
-data modify entity @s[nbt={Item:{id:"minecraft:golden_horse_armor"}}] Item merge value {id:"minecraft:gold_nugget"}

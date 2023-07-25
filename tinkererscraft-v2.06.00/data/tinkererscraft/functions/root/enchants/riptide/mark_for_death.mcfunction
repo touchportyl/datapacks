@@ -1,20 +1,46 @@
 # marks entities for death by riptide
-#
-# list of entities that cannot be marked for death
-# - player
-# - area_effect_cloud
-# - armor_stand
-# - item_frame
-# - wither
-# - ender_dragon
-# - elder_guardian
-# - evoker
-# - enderman
-# - shulker
-# - giant
+
+#> mob list
+# https://minecraft.fandom.com/wiki/Mob#List_of_mobs
+
+# tags
+# - TC_riptide_vulnerable
+# - TC_markedfordeath
+# - TC_markedfordeath_
+
+
+#> tag entities
+
+# passive mobs
+
+# neutral mobs
+tag @e[type=minecraft:cave_spider,tag=!TC_riptide_vulnerable,distance=..15] add TC_riptide_vulnerable
+tag @e[type=minecraft:piglin,tag=!TC_riptide_vulnerable,distance=..15] add TC_riptide_vulnerable
+tag @e[type=minecraft:spider,tag=!TC_riptide_vulnerable,distance=..15] add TC_riptide_vulnerable
+tag @e[type=minecraft:zombified_piglin,tag=!TC_riptide_vulnerable,distance=..15] add TC_riptide_vulnerable
+
+# hostile mobs
+tag @e[type=minecraft:blaze,tag=!TC_riptide_vulnerable,distance=..15] add TC_riptide_vulnerable
+tag @e[type=minecraft:creeper,tag=!TC_riptide_vulnerable,distance=..15] add TC_riptide_vulnerable
+tag @e[type=minecraft:drowned,tag=!TC_riptide_vulnerable,distance=..15] add TC_riptide_vulnerable
+tag @e[type=minecraft:evoker,tag=!TC_riptide_vulnerable,distance=..15] add TC_riptide_vulnerable
+tag @e[type=minecraft:husk,tag=!TC_riptide_vulnerable,distance=..15] add TC_riptide_vulnerable
+tag @e[type=minecraft:piglin_brute,tag=!TC_riptide_vulnerable,distance=..15] add TC_riptide_vulnerable
+tag @e[type=minecraft:pillager,tag=!TC_riptide_vulnerable,distance=..15] add TC_riptide_vulnerable
+tag @e[type=minecraft:skeleton,tag=!TC_riptide_vulnerable,distance=..15] add TC_riptide_vulnerable
+tag @e[type=minecraft:stray,tag=!TC_riptide_vulnerable,distance=..15] add TC_riptide_vulnerable
+tag @e[type=minecraft:vindicator,tag=!TC_riptide_vulnerable,distance=..15] add TC_riptide_vulnerable
+tag @e[type=minecraft:witch,tag=!TC_riptide_vulnerable,distance=..15] add TC_riptide_vulnerable
+tag @e[type=minecraft:wither_skeleton,tag=!TC_riptide_vulnerable,distance=..15] add TC_riptide_vulnerable
+tag @e[type=minecraft:zombie,tag=!TC_riptide_vulnerable,distance=..15] add TC_riptide_vulnerable
+tag @e[type=minecraft:zombie_villager,tag=!TC_riptide_vulnerable,distance=..15] add TC_riptide_vulnerable
+
+
+# updates
+#execute as @s at @s if score VERSION$minecraft.current DatapackManager matches 21.. run function tinkererscraft:compatibility/enchants/riptide/mark_for_death-1.21
 
 
 # mark for death
-execute if score RAND$6 TinkerersCraft matches 1 as @s at @s run tag @e[type=!minecraft:player,type=!minecraft:area_effect_cloud,type=!minecraft:armor_stand,type=!minecraft:item_frame,type=!minecraft:wither,type=!minecraft:ender_dragon,type=!minecraft:elder_guardian,type=!minecraft:evoker,type=!minecraft:enderman,type=!minecraft:shulker,type=!minecraft:giant,tag=!TC_markedfordeath,tag=!TC_markedfordeath_,distance=..15,sort=random,limit=1] add TC_markedfordeath
+execute if score RAND$6 TinkerersCraft matches 1 as @s at @s run tag @e[tag=TC_riptide_vulnerable,tag=!TC_markedfordeath,tag=!TC_markedfordeath_,sort=random,limit=1] add TC_markedfordeath
 
-execute if score RAND$6 TinkerersCraft matches 2.. as @s at @s run tag @e[type=!minecraft:player,type=!minecraft:area_effect_cloud,type=!minecraft:armor_stand,type=!minecraft:item_frame,type=!minecraft:wither,type=!minecraft:ender_dragon,type=!minecraft:elder_guardian,type=!minecraft:evoker,type=!minecraft:enderman,type=!minecraft:shulker,type=!minecraft:giant,tag=!TC_markedfordeath,tag=!TC_markedfordeath_,distance=..15,sort=random,limit=1] add TC_markedfordeath_
+execute if score RAND$6 TinkerersCraft matches 2.. as @s at @s run tag @e[tag=TC_riptide_vulnerable,tag=!TC_markedfordeath,tag=!TC_markedfordeath_,sort=random,limit=1] add TC_markedfordeath_

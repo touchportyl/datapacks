@@ -12,8 +12,8 @@ execute as @e[tag=TC_smeltery,tag=TC_anvil] at @s run function tinkererscraft:ro
 execute as @e[tag=TC_smeltery] at @s if block ^ ^ ^2 minecraft:lever[powered=true] positioned ^ ^ ^2 run function tinkererscraft:root/casting/hazard
 
 
-#> guidebook hologram
-execute if score VERSION$minecraft.current DatapackManager matches 17..20 run function tinkererscraft:root/guide/hologram
+#> guidebook visualization
+execute if score VERSION$minecraft.current DatapackManager matches 17..20 run function tinkererscraft:root/guide/visualization
 
 
 #> particle effects

@@ -15,6 +15,6 @@ function tinkererscraft:root/enchants/riptide
 
 
 
-#> guidebook hologram
+#> guidebook visualization
 # falling blocks disappear after 1t in 1.16, so it must run in the 1t function
-execute if score VERSION$minecraft.current DatapackManager matches 16 run function tinkererscraft:root/guide/hologram
+execute if score VERSION$minecraft.current DatapackManager matches 16 run function tinkererscraft:root/guide/visualization

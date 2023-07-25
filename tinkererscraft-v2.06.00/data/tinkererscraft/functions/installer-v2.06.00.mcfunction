@@ -9,6 +9,9 @@ scoreboard players operation FLAG$secret TinkerersCraft = FLAG$secret DatapackMa
 
 #> create scoreboards
 
+# give
+scoreboard objectives add TC_Give trigger [{"text":"Give Trigger","color":"gold"}]
+
 # timers
 scoreboard objectives add TC_OutputTimer dummy [{"text":"Output Timer","color":"gold"}]
 scoreboard objectives add TC_SmeltingTimer dummy [{"text":"Smelting Timer","color":"gold"}]
