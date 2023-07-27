@@ -46,9 +46,11 @@ execute as @e[tag=TC_obdiamreaction] at @s run kill @e[tag=TC_diamond,distance=.
 
 # irgol
 execute as @e[tag=TC_irgolreaction] at @s unless score @s TC_lIrgol >= @s TC_lCapacity run function tinkererscraft:root/smelting/reacting/irgol
+execute as @e[tag=TC_irgolreaction] at @s if score @s TC_lIrgol >= @s TC_lCapacity run function tinkererscraft:root/smeltery/capacity/irgol
 
 # obdiam
 execute as @e[tag=TC_obdiamreaction] at @s unless score @s TC_lObdiam >= @s TC_lCapacity run function tinkererscraft:root/smelting/reacting/obdiam
+execute as @e[tag=TC_obdiamreaction] at @s if score @s TC_lObdiam >= @s TC_lCapacity run function tinkererscraft:root/smeltery/capacity/obdiam
 
 
 #> filter: items that are being smelted by a smeltery
