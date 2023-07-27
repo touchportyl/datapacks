@@ -4,7 +4,7 @@ from re import findall
 
 # regex
 # add more tags
-regex = r'\b[A-Z]{2}_\w*'
+regex = r'\b[A-Z]{2}_\w+'
 
 # datapack to extract tags from
 targettxt = join(dirname(abspath(__file__)),'target.txt')
