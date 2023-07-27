@@ -10,8 +10,6 @@ scoreboard players set VERSION$datapack.latest TinkerersCraft 20600
 scoreboard players set $tc.version TP_version 20000
 
 # cleanup
-
-# old version
 scoreboard players reset $tc.version TP_version
 scoreboard players reset $tc.api TP_version
 scoreboard players reset $api.tc.h TP_version
