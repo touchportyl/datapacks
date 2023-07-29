@@ -1,0 +1,1 @@
+playsound minecraft:entity.generic.explode player @a[distance=..15] ~ ~ ~ 1 2 0

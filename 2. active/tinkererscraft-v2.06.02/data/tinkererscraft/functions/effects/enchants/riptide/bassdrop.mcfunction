@@ -1,0 +1,1 @@
+playsound minecraft:block.conduit.deactivate player @a[distance=..15] ~ ~ ~ 0.8 1 0

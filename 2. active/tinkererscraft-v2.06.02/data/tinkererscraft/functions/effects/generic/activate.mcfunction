@@ -1,0 +1,1 @@
+playsound minecraft:block.conduit.activate block @a[distance=..16] ~ ~ ~ 1 2 0

@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:book"
+    },
+    "title": "Tinkerer's Craft",
+    "description": "You found a bastion and discovered the secrets of smelting!",
+    "frame": "task",
+    "background": "minecraft:textures/block/polished_blackstone_bricks.png",
+    "show_toast": false,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "rewards": {
+    "function": "tinkererscraft:root/guide/book"
+  },
+  "criteria": {
+    "found_bastion": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "feature": "bastion_remnant"
+        }
+      }
+    }
+  }
+}
