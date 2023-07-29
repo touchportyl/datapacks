@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:gold_ingot"
+    },
+    "title": "Mixed Reactions",
+    "description": "Produce Irgol by using a redstone catalyst, causing 2 iron and 3 gold to react!",
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "tinkererscraft:smeltery/smeltery_built",
+  "rewards": {
+    "experience": 100
+  },
+  "criteria": {
+    "impossible": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}
