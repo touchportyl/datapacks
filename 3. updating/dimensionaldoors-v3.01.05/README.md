@@ -27,6 +27,7 @@ Find the config file here:
 ```
 - CONFIG$destroyexplosively: Toggle entity and environmental damage upon destroying a dimensional door (default: true)
 - CONFIG$performance: Lowers the amount of particles displayed (default: false)
+- CONFIG$disableparticles: Disables all particles (default: false)
 
 # Future updates
 - Add support for linking other door materials (like spruce and bamboo)

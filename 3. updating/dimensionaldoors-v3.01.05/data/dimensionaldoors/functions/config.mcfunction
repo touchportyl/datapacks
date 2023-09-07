@@ -14,6 +14,12 @@ scoreboard players operation CONFIG$destroyexplosively DimensionalDoors = BOOL$t
 # leave this on true if the particles cause lag
 scoreboard players operation CONFIG$performance DimensionalDoors = BOOL$false DatapackManager
 
+#> toggle particles (default: false)
+# this option disables all particles displayed by dimensional doors
+# there is no way to visibly tell if a door is a dimensional door when this option is set to true
+# leave this on true if the particles cause lag
+scoreboard players operation CONFIG$disableparticles DimensionalDoors = BOOL$false DatapackManager
+
 
 # enables the hooks system which allows this datapack to communicate with other datapacks
 # setting it to BOOL$false will disable any possible multi-datapack functionality

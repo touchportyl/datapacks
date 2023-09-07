@@ -1,7 +1,7 @@
 # run code every tick (20 times a second)
 
 # effect range = 32
-execute at @e[tag=DD_portal] if entity @a[distance=..32] run function dimensionaldoors:effects/ambience/door
+execute if score CONFIG$disableparticles DimensionalDoors = BOOL$false DatapackManager at @e[tag=DD_portal] if entity @a[distance=..32] run function dimensionaldoors:effects/ambience/door
 
 execute as @e[tag=DD_particleLink] at @s run function dimensionaldoors:effects/ambience/linkedconduit
 
