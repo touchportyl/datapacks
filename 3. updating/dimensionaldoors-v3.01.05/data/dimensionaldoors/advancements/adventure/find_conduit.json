@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:conduit"
+    },
+    "title": "Quantum Conduits",
+    "description": "Find a conduit",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:adventure/root",
+  "rewards": {
+    "experience": 20
+  },
+  "criteria": {
+    "find_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:conduit"
+          }
+        ]
+      }
+    }
+  }
+}
