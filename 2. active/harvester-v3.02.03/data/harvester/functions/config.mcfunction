@@ -14,12 +14,12 @@ scoreboard players operation CONFIG$hooks.isEnabled Harvester = BOOL$false Datap
 # CHANGING THESE SETTINGS COULD FORCE THE DATAPACK TO RUN COMMANDS THAT IT SHOULDN'T
 
 # set the datapack's current version
-scoreboard players set VERSION$datapack.current Harvester 30202
+scoreboard players set VERSION$datapack.current Harvester 30203
 
 # set the backward and forward compatible minecraft versions
 scoreboard players set VERSION$minecraft.backward Harvester 14
-scoreboard players set VERSION$minecraft.forward Harvester 19
+scoreboard players set VERSION$minecraft.forward Harvester 20
 
 # special override to run this datapack on other versions
 scoreboard players operation VERSION$ignorecompatibility.backward Harvester = BOOL$false DatapackManager
-scoreboard players operation VERSION$ignorecompatibility.forward Harvester = BOOL$false DatapackManager
+scoreboard players operation VERSION$ignorecompatibility.forward Harvester = BOOL$true DatapackManager

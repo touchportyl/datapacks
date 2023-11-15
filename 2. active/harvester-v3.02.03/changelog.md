@@ -1,3 +1,9 @@
+# changelog v3.02.03
+
++ fixed a few oversights with versioning settings
+
+
+
 # changelog v3.02.02
 
 important changes:
