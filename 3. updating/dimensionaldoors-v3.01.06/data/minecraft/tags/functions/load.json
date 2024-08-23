@@ -1,7 +1,0 @@
-{
-    "replace": false,
-    "values": [
-        "datapackmanager-1.20:packages/preinstaller/load",
-        "dimensionaldoors:packages/preinstaller/load"
-    ]
-}

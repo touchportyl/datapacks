@@ -1,6 +1,7 @@
 # initialize
 execute if score EVENT$initialize DatapackManager = BOOL$true DatapackManager run function datapackmanager-1.21:root/core/initialize
 
+
 # triggers
 execute as @a[scores={dm_help=1..}] at @s run function datapackmanager-1.21:root/commands/help
 execute as @a[scores={dm_info=1..}] at @s run function datapackmanager-1.21:root/commands/info
@@ -12,5 +13,11 @@ scoreboard players reset @a dm_help
 scoreboard players reset @a dm_info
 scoreboard players reset @a dm_version
 
+scoreboard players enable @a dm_help
+scoreboard players enable @a dm_info
+scoreboard players enable @a dm_version
+
+
 # cleanup
+scoreboard players reset TICK$1s DatapackManager
 scoreboard players operation FLAG$dirty DatapackManager = BOOL$false DatapackManager
