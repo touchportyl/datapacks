@@ -6,6 +6,7 @@ function datapackmanager-1.21:packages/effects/ui/jingle
 # update
 scoreboard players set VERSION$datapack.latest DimensionalDoors 30200
 
-
+# add new tags to existing oak doors
+tag @e[tag=DD_portal,tag=DD_oak] add DD_particle_C
 
 # cleanup

@@ -1,5 +1,3 @@
-tellraw @a[tag=dd_debug] [{"text":"DD","color":"light_purple"},{"text":" > root/create/createnewdoor.mcfunction","color":"gray"}]
-
 # advanced door detection and creation of data tagged entity
 execute as @s at @s run function dimensionaldoors:root/create/datatagging/summon/door
 

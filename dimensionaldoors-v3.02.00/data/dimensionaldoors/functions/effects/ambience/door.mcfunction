@@ -20,53 +20,21 @@
 # minecraft:underwater -> when closed, +20 particles per tick
 # minecraft:underwater -> when open, +100 particles per tick
 
+# particle a, b, c, and d are for the different types of closed doors, based on how much is shown through the door window
+# a - full door
+# b - half door
+# c - 1/3 door
+# d - no effect
 
 
-# oak door
+# ambient particles
+execute if entity @s[tag=DD_NS] positioned ^ ^1.1 ^0.425 run particle minecraft:portal ~ ~ ~ 0.12 0.26 0.02 0.35 1 force
+execute if entity @s[tag=DD_EW] positioned ^ ^1.1 ^0.425 run particle minecraft:portal ~ ~ ~ 0.02 0.26 0.12 0.35 1 force
 
-# north south direction
+# open door
+execute positioned ^ ^1.1 ^0.425 if block ~ ~ ~ #minecraft:doors[open=true] run function dimensionaldoors:effects/ambience/door/open
 
-# minecraft:portal
-execute as @e[tag=DD_portal,tag=DD_NS] at @s positioned ^ ^1.1 ^0.425 if block ~ ~ ~ minecraft:oak_door run particle minecraft:portal ~ ~ ~ 0.12 0.26 0.02 0.35 1 force
-
-execute if score CONFIG$performance DimensionalDoors = BOOL$false DatapackManager as @e[tag=DD_portal,tag=DD_NS] at @s positioned ^ ^1.1 ^0.425 if block ~ ~ ~ minecraft:oak_door[open=true] run particle minecraft:portal ~ ~ ~ 0.12 0.26 0.02 0.7 2 normal
-
-
-# minecraft:underwater
-execute as @e[tag=DD_portal,tag=DD_NS] at @s positioned ^ ^1.7 ^0.425 if block ~ ~ ~ minecraft:oak_door[open=false] run particle minecraft:underwater ~ ~ ~ 0.12 0.11 0.02 0 10 force
-
-execute if score VERSION$minecraft.current DatapackManager matches 14..15 as @e[tag=DD_portal,tag=DD_NS] at @s positioned ^ ^1.7 ^0.425 if block ~ ~ ~ minecraft:oak_door[open=false] run particle minecraft:underwater ~ ~ ~ 0.12 0.11 0.02 0 70 normal
-
-execute if score CONFIG$performance DimensionalDoors = BOOL$false DatapackManager as @e[tag=DD_portal,tag=DD_NS] at @s positioned ^ ^1.7 ^0.425 if block ~ ~ ~ minecraft:oak_door[open=false] run particle minecraft:underwater ~ ~ ~ 0.12 0.11 0.02 0 20 normal
-
-
-# minecraft:underwater
-execute as @e[tag=DD_portal,tag=DD_NS] at @s positioned ^ ^1.1 ^0.425 if block ~ ~ ~ minecraft:oak_door[open=true] run particle minecraft:underwater ~ ~ ~ 0.12 0.26 0.02 0 50 force
-
-execute if score VERSION$minecraft.current DatapackManager matches 14..15 as @e[tag=DD_portal,tag=DD_NS] at @s positioned ^ ^1.1 ^0.425 if block ~ ~ ~ minecraft:oak_door[open=true] run particle minecraft:underwater ~ ~ ~ 0.12 0.26 0.02 0 300 normal
-
-execute if score CONFIG$performance DimensionalDoors = BOOL$false DatapackManager as @e[tag=DD_portal,tag=DD_NS] at @s positioned ^ ^1.1 ^0.425 if block ~ ~ ~ minecraft:oak_door[open=true] run particle minecraft:underwater ~ ~ ~ 0.12 0.26 0.02 0 100 normal
-
-
-# east west direction
-
-# minecraft:portal
-execute as @e[tag=DD_portal,tag=DD_EW] at @s positioned ^ ^1.1 ^0.425 if block ~ ~ ~ minecraft:oak_door run particle minecraft:portal ~ ~ ~ 0.02 0.26 0.12 0.35 1 force
-
-execute if score CONFIG$performance DimensionalDoors = BOOL$false DatapackManager as @e[tag=DD_portal,tag=DD_EW] at @s positioned ^ ^1.1 ^0.425 if block ~ ~ ~ minecraft:oak_door[open=true] run particle minecraft:portal ~ ~ ~ 0.02 0.26 0.12 0.7 2 normal
-
-
-# minecraft:underwater
-execute as @e[tag=DD_portal,tag=DD_EW] at @s positioned ^ ^1.7 ^0.425 if block ~ ~ ~ minecraft:oak_door[open=false] run particle minecraft:underwater ~ ~ ~ 0.02 0.11 0.12 0 10 force
-
-execute if score VERSION$minecraft.current DatapackManager matches 14..15 as @e[tag=DD_portal,tag=DD_EW] at @s positioned ^ ^1.7 ^0.425 if block ~ ~ ~ minecraft:oak_door[open=false] run particle minecraft:underwater ~ ~ ~ 0.02 0.11 0.12 0 70 normal
-
-execute if score CONFIG$performance DimensionalDoors = BOOL$false DatapackManager as @e[tag=DD_portal,tag=DD_EW] at @s positioned ^ ^1.7 ^0.425 if block ~ ~ ~ minecraft:oak_door[open=false] run particle minecraft:underwater ~ ~ ~ 0.02 0.11 0.12 0 20 normal
-
-
-# minecraft:underwater
-execute as @e[tag=DD_portal,tag=DD_EW] at @s positioned ^ ^1.1 ^0.425 if block ~ ~ ~ minecraft:oak_door[open=true] run particle minecraft:underwater ~ ~ ~ 0.02 0.26 0.12 0 50 force
-
-execute if score VERSION$minecraft.current DatapackManager matches 14..15 as @e[tag=DD_portal,tag=DD_EW] at @s positioned ^ ^1.1 ^0.425 if block ~ ~ ~ minecraft:oak_door[open=true] run particle minecraft:underwater ~ ~ ~ 0.02 0.26 0.12 0 300 normal
-
-execute if score CONFIG$performance DimensionalDoors = BOOL$false DatapackManager as @e[tag=DD_portal,tag=DD_EW] at @s positioned ^ ^1.1 ^0.425 if block ~ ~ ~ minecraft:oak_door[open=true] run particle minecraft:underwater ~ ~ ~ 0.02 0.26 0.12 0 100 normal
+# closed door
+execute if block ~ ~ ~ #minecraft:doors[open=false] if entity @s[tag=DD_particle_A] run function dimensionaldoors:effects/ambience/door/a
+execute if block ~ ~ ~ #minecraft:doors[open=false] if entity @s[tag=DD_particle_B] run function dimensionaldoors:effects/ambience/door/b
+execute if block ~ ~ ~ #minecraft:doors[open=false] if entity @s[tag=DD_particle_C] run function dimensionaldoors:effects/ambience/door/c

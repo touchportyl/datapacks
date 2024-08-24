@@ -1,5 +1,5 @@
 # tag if the door doesn't exist
-execute as @e[tag=DD_portal] at @s unless block ~ ~ ~ minecraft:oak_door run tag @s add DD_destroy
+execute as @e[tag=DD_portal] at @s unless block ~ ~ ~ #minecraft:doors run tag @s add DD_destroy
 
 
 # tag any corresponding doors that are linked to doors queued for destruction

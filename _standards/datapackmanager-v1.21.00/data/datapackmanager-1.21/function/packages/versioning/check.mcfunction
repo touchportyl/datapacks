@@ -5,6 +5,10 @@ scoreboard players remove VERSION$minecraft.current DatapackManager 1
 # check for all known versions
 execute unless score VERSION$minecraft.current DatapackManager matches 21.. run function datapackmanager-1.21:packages/versioning/versions/1.21
 
+# nbt changes in 1.20.3
+scoreboard players operation FLAG$nbt.version.old DatapackManager = BOOL$false DatapackManager
+scoreboard players operation FLAG$nbt.version.1.20.3 DatapackManager = BOOL$true DatapackManager
+
 # throw warnings/errors for unsupported versions
 execute if score VERSION$minecraft.current DatapackManager < VERSION$minecraft.backward DatapackManager run function datapackmanager-1.21:packages/alerts/minecraftnotcompatible
 execute if score VERSION$minecraft.current DatapackManager > VERSION$minecraft.forward DatapackManager run function datapackmanager-1.21:packages/alerts/minecraftunknownversion

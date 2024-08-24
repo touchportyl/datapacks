@@ -1,18 +1,17 @@
-tellraw @a[tag=dd_debug] [{"text":"DD","color":"light_purple"},{"text":" > root/closermechanism/main.mcfunction","color":"gray"}]
-
 # play teleport and closing door sound
 # this is for the door that just closed
-execute as @s at @s run function dimensionaldoors:effects/teleporteffects
+execute unless score @s DimensionalDoors matches 5.. run function dimensionaldoors:effects/teleporteffects
+execute if block ~ ~ ~ #minecraft:doors[powered=false] run function dimensionaldoors:effects/doorclose
 
 
 # door closing mechanism
-# INLINE VERSIONING
-# Minecraft 1.14 - 1.15
-execute if score VERSION$minecraft.current DatapackManager matches 14..15 as @s at @s run function dimensionaldoors:root/closermechanism/v1/oakdoor
-# Minecraft 1.16 - 1.20
-execute if score VERSION$minecraft.current DatapackManager matches 16..20 as @s at @s run function dimensionaldoors:root/closermechanism/v2/oakdoor
-# no fallback
+# do not close the door if it is powered
 
+# Minecraft 1.14 - 1.15
+execute if score VERSION$minecraft.current DatapackManager matches 14..15 if block ~ ~ ~ #minecraft:doors[powered=false] run function dimensionaldoors:root/closermechanism/v1
+
+# Minecraft 1.16 - 1.20
+execute if score VERSION$minecraft.current DatapackManager matches 16..20 if block ~ ~ ~ #minecraft:doors[powered=false] run function dimensionaldoors:root/closermechanism/v2
 
 
 # cleanup
