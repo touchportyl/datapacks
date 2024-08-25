@@ -1,2 +1,2 @@
 # create listener
-function portyltrident:packages/preinstaller/listener
+schedule function portyltrident:packages/preinstaller/listener 1s

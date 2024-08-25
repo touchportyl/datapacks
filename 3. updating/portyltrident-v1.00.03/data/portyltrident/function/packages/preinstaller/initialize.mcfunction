@@ -5,12 +5,9 @@ scoreboard objectives add PortylTrident dummy
 # notify
 tellraw @a [{"text":"","color":"gray"},{"text":" + ","color":"green"},{"text":"Portyl Trident","color":"white"},{"text":" >","color":"white"},{"text":" Initialized."}]
 
-# load config
-function portyltrident:config
-
 # install
 # only install if hasn't been installed before
-execute unless score FLAG$secret PortylTrident = FLAG$secret DatapackManager run function portyltrident:root/core/installer-v1.00.00
+execute unless score FLAG$secret PortylTrident = FLAG$secret DatapackManager run function portyltrident:root/core/installer
 scoreboard players operation FLAG$secret PortylTrident = FLAG$secret DatapackManager
 
 # check datapack version
@@ -18,12 +15,14 @@ scoreboard players operation FLAG$secret PortylTrident = FLAG$secret DatapackMan
 # updates only have to run if the current version is later than the latest
 execute unless score VERSION$datapack.current PortylTrident = VERSION$datapack.latest PortylTrident run function portyltrident:packages/versioning/check
 
-
-# start datapack
-schedule clear portyltrident:root/1t
-schedule function portyltrident:root/1t 1s
-
-
 # hooks
 execute if score CONFIG$hooks.isEnabled PortylTrident = BOOL$true DatapackManager run function portyltrident:packages/hooks/enable
 execute if score CONFIG$hooks.isEnabled PortylTrident = BOOL$false DatapackManager run function portyltrident:packages/hooks/disable
+
+# start loops
+function portyltrident:root/loops/main/start
+function portyltrident:root/loops/listeners/start
+function portyltrident:root/loops/commandhandler/start
+
+# increment the datapack counter
+function datapackmanager-1.21:root/datapackcounter/increment

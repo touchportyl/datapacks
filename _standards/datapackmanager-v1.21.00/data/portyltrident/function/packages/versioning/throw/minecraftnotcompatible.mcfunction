@@ -1,2 +1,0 @@
-function datapackmanager-1.21:packages/alerts/minecraftnotcompatible
-function portyltrident:root/core/disable
