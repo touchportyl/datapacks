@@ -1,0 +1,18 @@
+{
+  "display": {
+    "title": "portyltrident-v1.00.04",
+    "description": "The mythical Portyl Trident!",
+    "icon": {
+      "item": "minecraft:trident",
+      "id": "minecraft:trident"
+    },
+    "show_toast": false,
+    "announce_to_chat": false
+  },
+  "parent": "datapackmanager:root",
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}

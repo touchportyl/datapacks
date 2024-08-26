@@ -2,6 +2,6 @@
   "replace": false,
   "values": [
     "datapackmanager-1.21:root/core/load",
-    "portyltrident:packages/preinstaller/load"
+    "mydatapack:packages/preinstaller/load"
   ]
 }

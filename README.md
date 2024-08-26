@@ -19,5 +19,5 @@ This code is protected by the GNU GPLv3 License | © 2024 Portyl Studios https:/
 
 ---
 
-## Datapack Management System
-[The Datapack Framework](https://portylstudios.notion.site/The-Datapack-Framework-d913361385c8484ba97a97f07c75bb39?pvs=4) has been updated. Supports Minecraft 1.13 to 1.21.
+## Datapack Manager
+[The Datapack Framework](https://portylstudios.notion.site/The-Datapack-Framework-d913361385c8484ba97a97f07c75bb39?pvs=4) has been updated. Supports Minecraft 1.14 to 1.21.

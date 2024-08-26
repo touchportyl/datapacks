@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "datapackmanager-1.21:root/core/load"
+    "datapackmanager-1.21:root/core/load",
+    "mydatapack:packages/preinstaller/load"
   ]
 }
