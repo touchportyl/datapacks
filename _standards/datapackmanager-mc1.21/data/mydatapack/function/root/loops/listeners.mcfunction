@@ -4,11 +4,11 @@
 
 
 # command config
-execute if score EVENT$command.config DatapackManager = BOOL$true DatapackManager unless score EVENT$command.config MyDatapack = BOOL$true DatapackManager run tag @a[tag=DM_command_config] add PT_command_config
+execute if score EVENT$command.config DatapackManager = BOOL$true DatapackManager unless score EVENT$command.config MyDatapack = BOOL$true DatapackManager run tag @a[tag=DM_command_config] add MD_command_config
 execute if score EVENT$command.config DatapackManager = BOOL$true DatapackManager unless score EVENT$command.config MyDatapack = BOOL$true DatapackManager run scoreboard players operation EVENT$command.config MyDatapack = BOOL$true DatapackManager
 
 # command uninstall
-execute if score EVENT$command.uninstall DatapackManager = BOOL$true DatapackManager unless score EVENT$command.uninstall MyDatapack = BOOL$true DatapackManager run tag @a[tag=DM_command_uninstall] add PT_command_uninstall
+execute if score EVENT$command.uninstall DatapackManager = BOOL$true DatapackManager unless score EVENT$command.uninstall MyDatapack = BOOL$true DatapackManager run tag @a[tag=DM_command_uninstall] add MD_command_uninstall
 execute if score EVENT$command.uninstall DatapackManager = BOOL$true DatapackManager unless score EVENT$command.uninstall MyDatapack = BOOL$true DatapackManager run scoreboard players operation EVENT$command.uninstall MyDatapack = BOOL$true DatapackManager
 
 

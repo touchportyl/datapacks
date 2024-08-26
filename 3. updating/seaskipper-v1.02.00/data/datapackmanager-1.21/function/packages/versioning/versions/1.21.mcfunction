@@ -1,2 +1,2 @@
-particle minecraft:trial_spawner_detection ~ 0 ~ 0 0 0 1 1
+execute if block ~ ~ ~ minecraft:copper_door
 scoreboard players set VERSION$minecraft.current DatapackManager 21

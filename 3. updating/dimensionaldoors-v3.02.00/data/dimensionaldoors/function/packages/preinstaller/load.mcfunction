@@ -1,2 +1,2 @@
 # create listener
-function dimensionaldoors:packages/preinstaller/listen
+schedule function dimensionaldoors:packages/preinstaller/listener 1s

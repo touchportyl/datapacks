@@ -8,7 +8,6 @@ execute as @e[tag=DD_door404] run tag @s remove DD_enter+
 
 
 # blow up entrance if link thrown into entrance
-# CONFIG: can be disabled
 execute if score FLAG$nbt.version.old DatapackManager = BOOL$true DatapackManager as @e[type=minecraft:item,tag=DD_door404,name="Conduit",nbt={Item:{tag:{DD_Linked:1b}}}] at @s as @e[tag=DD_portal,limit=1,sort=nearest] run tag @s add DD_destroy
 
 # special case for 1.20.3 to 1.20.6

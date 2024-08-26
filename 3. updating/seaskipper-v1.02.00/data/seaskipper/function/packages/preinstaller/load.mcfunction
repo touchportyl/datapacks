@@ -1,2 +1,2 @@
 # create listener
-function seaskipper:packages/preinstaller/listener
+schedule function seaskipper:packages/preinstaller/listener 1s

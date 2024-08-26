@@ -12,6 +12,12 @@ execute unless score VERSION$minecraft.current DatapackManager matches 19.. run 
 execute unless score VERSION$minecraft.current DatapackManager matches 20.. run function datapackmanager-1.21:packages/versioning/versions/1.20
 execute unless score VERSION$minecraft.current DatapackManager matches 21.. run function datapackmanager-1.21:packages/versioning/versions/1.21
 
+# special case to differentiate [1.20 to 1.20.2] and [1.20.3 to 1.20.5]
+# nbt changes in 1.20.3
+scoreboard players operation FLAG$nbt.version.old DatapackManager = BOOL$true DatapackManager
+scoreboard players operation FLAG$nbt.version.1.20.3 DatapackManager = BOOL$false DatapackManager
+execute if score VERSION$minecraft.current DatapackManager matches 20.. run function datapackmanager-1.21:packages/versioning/versions/1.20.3
+
 # throw warnings/errors for unsupported versions
 execute if score VERSION$minecraft.current DatapackManager < VERSION$minecraft.backward DatapackManager run function datapackmanager-1.21:packages/alerts/minecraftnotcompatible
 execute if score VERSION$minecraft.current DatapackManager > VERSION$minecraft.forward DatapackManager run function datapackmanager-1.21:packages/alerts/minecraftunknownversion

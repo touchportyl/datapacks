@@ -1,5 +1,6 @@
 # cleanup old variables
 scoreboard players reset FLAG$noschedulecommand DatapackManager
+scoreboard players reset FLAG$dirty DatapackManager
 
 scoreboard players reset LOOP$tickers.1s.isLooping DatapackManager
 

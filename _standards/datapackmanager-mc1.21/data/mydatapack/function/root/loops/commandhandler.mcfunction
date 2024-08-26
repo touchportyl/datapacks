@@ -2,10 +2,10 @@
 
 
 # config command
-execute if score EVENT$command.config MyDatapack = BOOL$true DatapackManager as @a[tag=PT_command_config] at @s run function mydatapack:root/events/command/config
+execute if score EVENT$command.config MyDatapack = BOOL$true DatapackManager as @a[tag=MD_command_config] at @s run function mydatapack:root/events/command/config
 
 # uninstall command
-execute if score EVENT$command.uninstall MyDatapack = BOOL$true DatapackManager as @a[tag=PT_command_uninstall] at @s run function mydatapack:root/events/command/uninstall
+execute if score EVENT$command.uninstall MyDatapack = BOOL$true DatapackManager as @a[tag=MD_command_uninstall] at @s run function mydatapack:root/events/command/uninstall
 
 
 # loop

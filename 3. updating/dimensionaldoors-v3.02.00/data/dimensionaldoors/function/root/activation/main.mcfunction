@@ -32,6 +32,8 @@ execute as @e[tag=DD_enter,tag=!DD_door404] at @s run tp @s ^ ^ ^1
 # play teleport and closing door sound
 execute as @e[tag=DD_enter,tag=!DD_door404] at @e[tag=DD_portal,sort=nearest,limit=1] run function dimensionaldoors:effects/teleporteffects
 
+# set warp cooldown (in seconds)
+scoreboard players add @e[tag=DD_enter] DD_warpcooldown 1
 
 
 # clear cache

@@ -1,0 +1,1 @@
+scoreboard players remove COUNT$datapacks DatapackManager 1
