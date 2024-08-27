@@ -1,0 +1,17 @@
+{
+  "display": {
+    "title": "seaskipper-v1.02.00",
+    "description": "The Seaskipper fast travel system from Wynncraft brought into Vanilla Minecraft!",
+    "icon": {
+      "id": "minecraft:oak_boat"
+    },
+    "show_toast": false,
+    "announce_to_chat": false
+  },
+  "parent": "datapackmanager:root",
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}

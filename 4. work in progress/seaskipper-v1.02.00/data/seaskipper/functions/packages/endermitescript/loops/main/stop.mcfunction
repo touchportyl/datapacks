@@ -1,0 +1,1 @@
+scoreboard players operation LOOP$es.main.isActive Seaskipper = BOOL$false DatapackManager

@@ -1,0 +1,1 @@
+tp @s ~ ~ ~ facing entity @e[tag=Seaskipper,tag=SS_looktarget,distance=..4,limit=1,sort=nearest]

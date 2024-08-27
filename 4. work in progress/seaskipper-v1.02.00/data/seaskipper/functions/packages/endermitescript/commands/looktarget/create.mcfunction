@@ -1,0 +1,3 @@
+function seaskipper:packages/endermitescript/root/success
+
+summon armor_stand ~ ~ ~ {Tags:["Seaskipper","SS_looktarget"],Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,DisabledSlots:4144959}

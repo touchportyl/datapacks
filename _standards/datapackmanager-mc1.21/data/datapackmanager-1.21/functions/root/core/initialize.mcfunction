@@ -23,6 +23,13 @@ scoreboard objectives add dm_version trigger
 scoreboard objectives add dm_config trigger
 scoreboard objectives add dm_uninstall trigger
 
+# reset
+scoreboard players reset @a dm_help
+scoreboard players reset @a dm_info
+scoreboard players reset @a dm_version
+scoreboard players reset @a dm_config
+scoreboard players reset @a dm_uninstall
+
 
 # custom notification
 execute if score FLAG$isActive DatapackManager = BOOL$true DatapackManager as @a at @s run function datapackmanager-1.21:packages/alerts/minecraftversion
