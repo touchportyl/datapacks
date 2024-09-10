@@ -1,5 +1,6 @@
 tag @s remove DD_command_config
 scoreboard players reset EVENT$command.config DimensionalDoors
+scoreboard players operation EVENT$command.config.handled DimensionalDoors = BOOL$true DatapackManager
 
 tellraw @s [{"text":" "},{"text":"Dimensional Doors","color":"light_purple","bold":true},{"text":"\n"}]
 

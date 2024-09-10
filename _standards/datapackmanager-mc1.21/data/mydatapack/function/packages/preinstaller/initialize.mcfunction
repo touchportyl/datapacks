@@ -7,6 +7,10 @@ execute unless score FLAG$secret MyDatapack = FLAG$secret DatapackManager run fu
 scoreboard players operation FLAG$secret MyDatapack = FLAG$secret DatapackManager
 
 # start loops
+function mydatapack:root/loops/main/stop
+function mydatapack:root/loops/eventlisteners/stop
+function mydatapack:root/loops/eventhandlers/stop
+
 function mydatapack:root/loops/main/start
-function mydatapack:root/loops/listeners/start
-function mydatapack:root/loops/commandhandler/start
+function mydatapack:root/loops/eventlisteners/start
+function mydatapack:root/loops/eventhandlers/start

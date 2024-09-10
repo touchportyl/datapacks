@@ -7,6 +7,10 @@ execute unless score FLAG$secret PortylTrident = FLAG$secret DatapackManager run
 scoreboard players operation FLAG$secret PortylTrident = FLAG$secret DatapackManager
 
 # start loops
+function portyltrident:root/loops/main/stop
+function portyltrident:root/loops/listeners/stop
+function portyltrident:root/loops/commandhandler/stop
+
 function portyltrident:root/loops/main/start
 function portyltrident:root/loops/listeners/start
 function portyltrident:root/loops/commandhandler/start

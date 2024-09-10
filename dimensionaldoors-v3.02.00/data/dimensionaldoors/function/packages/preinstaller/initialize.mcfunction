@@ -7,6 +7,11 @@ execute unless score FLAG$secret DimensionalDoors = FLAG$secret DatapackManager 
 scoreboard players operation FLAG$secret DimensionalDoors = FLAG$secret DatapackManager
 
 # start loops
+function dimensionaldoors:root/loops/main/stop
+function dimensionaldoors:root/loops/slowmain/stop
+function dimensionaldoors:root/loops/listeners/stop
+function dimensionaldoors:root/loops/commandhandler/stop
+
 function dimensionaldoors:root/loops/main/start
 function dimensionaldoors:root/loops/slowmain/start
 function dimensionaldoors:root/loops/listeners/start
