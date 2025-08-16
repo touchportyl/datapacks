@@ -1,0 +1,1 @@
+scoreboard players reset EVENT$initialize.copy DatapackManager
