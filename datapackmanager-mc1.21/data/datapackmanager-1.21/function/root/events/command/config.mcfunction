@@ -4,4 +4,4 @@ tellraw @s [{"text":"","color":"gray","hoverEvent":{"action":"show_text","value"
 function datapackmanager-1.21:packages/effects/ui/jingle
 
 # send event
-function datapackmanager-1.21:root/events/commands/config/send
+function datapackmanager-1.21:root/events/command/config/send
