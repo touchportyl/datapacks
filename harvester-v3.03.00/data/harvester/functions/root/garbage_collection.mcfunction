@@ -24,5 +24,4 @@ tag @a remove HV_netherwart
 tag @a remove HV_success
 
 
-# compatibility
-execute if score VERSION$minecraft.current DatapackManager matches 14 run scoreboard players reset @a HV_sneak_time
+scoreboard players reset @a HV_sneak_time

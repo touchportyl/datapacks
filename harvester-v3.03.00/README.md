@@ -18,6 +18,9 @@
 # Officially Endorsed Datapacks (These datapacks unlock bonus features for Harvester)
 - [Tinkerer's Craft](https://github.com/touchportyl/tinkererscraft)
 
+# Known Issues
+- Hook for Tinkerer's Craft is currently broken
+
 # Future updates
 - Suggest more!
 

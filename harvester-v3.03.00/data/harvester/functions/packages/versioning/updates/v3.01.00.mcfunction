@@ -3,7 +3,7 @@ tellraw @a[tag=hv_debug] [{"text":"HV","color":"gold"},{"text":" > packages/vers
 # notify
 tellraw @a [{"text":"","color":"gold","hoverEvent":{"action":"show_text","value":"Alert from Harvester"}},{"text":" +"},{"text":" Harvester ","color":"gold","bold":true,"hoverEvent":{"action":"show_text","value":"Harvest and replant crops efficiently with a hoe!"}},{"text":"v3.02.03","color":"gray"},{"text":" > ","color":"white"},{"text":"Harvester updated from v2.0 to v3.01.00"}]
 
-function datapackmanager-1.20:packages/effects/ui_jingle
+function datapackmanager-1.21:packages/effects/ui_jingle
 
 # update
 scoreboard players set VERSION$datapack.latest Harvester 30100

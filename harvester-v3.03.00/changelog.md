@@ -1,6 +1,7 @@
 # changelog v3.03.00
 
 + support up to 1.21.8
++ updated datapack manager (1.20 -> 1.21)
 
 
 
