@@ -10,7 +10,8 @@ function harvester:root/inventory/seeds
 execute if entity @s[x_rotation=0..90] run function harvester:root/positioner/filter
 
 # check if sneaking
-execute as @a[scores={HV_sneak_time=1..}] at @s align xz positioned ~0.5 ~ ~0.5 run function harvester:root/inventory/hoe
+execute if score VERSION$minecraft.current.minor DatapackManager matches 14 as @a[scores={HV_sneak_time=1..}] at @s align xz positioned ~0.5 ~ ~0.5 run function harvester:root/inventory/hoe
+execute unless score VERSION$minecraft.current.minor DatapackManager matches 14 run function harvester:compatibility/predicates/is_sneaking
 
 # sweep effect once only after the function finishes
 execute as @a[tag=HV_success] at @s run function harvester:effects/sweep
