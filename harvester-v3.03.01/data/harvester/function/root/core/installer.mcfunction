@@ -6,4 +6,8 @@ scoreboard players operation VERSION$datapack.latest Harvester = $h.version TP_v
 
 # load the default config
 function harvester:defaultconfig
+
 function harvester:packages/configtriggers/create
+
+# create objectives
+scoreboard objectives add HV_damagetool dummy {"text":"Harvester: Damage Tool"}

@@ -7,8 +7,12 @@ execute unless score VERSION$minecraft.current.minor DatapackManager matches 14 
 # sweep effect once only after the function finishes
 execute as @a[tag=HV_success] at @s run function harvester:effects/sweep
 
+# damage tool
+# this runs at the end because we want to ensure all other actions are completed first
+execute if score CONFIG$toolbreaking Harvester = BOOL$true DatapackManager as @a[tag=HV_success] at @s run function harvester:root/damagetool
+
 # gc
-function harvester:root/garbage_collection
+execute as @a at @s run function harvester:root/garbage_collection
 
 
 # simple "not so random-iser" for next loop
