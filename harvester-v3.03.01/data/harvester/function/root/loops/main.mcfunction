@@ -9,7 +9,8 @@ execute as @a[tag=HV_success] at @s run function harvester:effects/sweep
 
 # damage tool
 # this runs at the end because we want to ensure all other actions are completed first
-execute if score CONFIG$toolbreaking Harvester = BOOL$true DatapackManager as @a[tag=HV_success] at @s run function harvester:root/damagetool
+execute if score CONFIG$toolbreaking Harvester = BOOL$true DatapackManager as @a[gamemode=survival,tag=HV_success] at @s run function harvester:root/damagetool
+execute if score CONFIG$toolbreaking Harvester = BOOL$true DatapackManager as @a[gamemode=adventure,tag=HV_success] at @s run function harvester:root/damagetool
 
 # gc
 execute as @a at @s run function harvester:root/garbage_collection
