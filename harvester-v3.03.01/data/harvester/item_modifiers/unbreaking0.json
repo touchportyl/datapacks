@@ -1,0 +1,30 @@
+{
+  "function": "minecraft:set_damage",
+  "damage": {
+    "type": "minecraft:score",
+    "target": "this",
+    "score": "HV_damagetool",
+    "scale": 0.000001
+  },
+  "add": false,
+  "conditions": [
+    {
+      "condition": "minecraft:inverted",
+      "term": {
+        "condition": "minecraft:entity_properties",
+        "entity": "this",
+        "predicate": {
+          "equipment": {
+            "mainhand": {
+              "enchantments": [
+                {
+                  "enchantment": "minecraft:unbreaking"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ]
+}

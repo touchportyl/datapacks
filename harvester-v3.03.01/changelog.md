@@ -1,7 +1,7 @@
 # changelog v3.03.01
 
-+ added hoe durability damage on harvest
-+ added config for xp gain and hoe damage (Suggested by Gaebuh on GitHub https://github.com/touchportyl/harvester/issues/4)
++ added hoe durability damage on harvest for MC 1.17+
++ added config options for xp gain and hoe damage (Suggested by Gaebuh on GitHub https://github.com/touchportyl/harvester/issues/4)
 
 
 # changelog v3.03.00
