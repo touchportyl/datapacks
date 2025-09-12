@@ -1,5 +1,4 @@
-# notify
-tellraw @a [{"text":"","color":"gray"},{"text":" + ","color":"green"},{"text":"My Datapack","color":"white"},{"text":" >","color":"white"},{"text":" Updated from v1.00.00 to v1.01.00."}]
+tellraw @a[tag=md_debug] [{"text":"MD","color":"white"},{"text":" > packages/versioning/updates/v1.01.00.mcfunction","color":"gray"}]
 
 function datapackmanager-1.21:packages/effects/ui/jingle
 

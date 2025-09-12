@@ -1,3 +1,3 @@
-# change BOOL$true to BOOL$false and vice versa to change the functionality of the datapack
-
-# no configuration options
+# default config
+scoreboard players operation CONFIG$confignameone MyDatapack = BOOL$true DatapackManager
+scoreboard players operation CONFIG$confignametwo MyDatapack = BOOL$false DatapackManager

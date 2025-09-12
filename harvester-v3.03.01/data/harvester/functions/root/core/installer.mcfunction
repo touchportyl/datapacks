@@ -10,4 +10,6 @@ function harvester:defaultconfig
 function harvester:packages/configtriggers/create
 
 # create objectives
+# 16 letter limit for objective names
+# XX_XXXXXXXXXXXXX
 scoreboard objectives add HV_damagetool dummy {"text":"Harvester: Damage Tool","color":"gold"}
