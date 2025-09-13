@@ -14,7 +14,7 @@ There are 6 folders sorting all my code in various levels of progress.
 - Concepts: Unfinished conceptual datapacks
 - Archived: Old code for reference whenever needed
 
-This code is protected by the GNU GPLv3 License | © 2024 Portyl Studios https://portylstudios.com/
+This code is protected by the GNU GPLv3 License | © 2025 Portyl Studios https://portylstudios.com/
 
 ---
 
