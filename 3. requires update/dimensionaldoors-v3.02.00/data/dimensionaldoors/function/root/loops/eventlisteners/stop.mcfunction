@@ -1,0 +1,1 @@
+scoreboard players operation LOOP$eventlisteners.isActive DimensionalDoors = BOOL$false DatapackManager

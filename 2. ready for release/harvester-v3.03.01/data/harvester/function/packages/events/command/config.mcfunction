@@ -1,6 +1,6 @@
 # update state
-tag @s remove MD_command_config
-execute unless entity @a[tag=MD_command_config] run scoreboard players operation EVENT$command.config.handled Harvester = BOOL$true DatapackManager
+tag @s remove DM_command_config
+execute unless entity @a[tag=DM_command_config] run scoreboard players operation EVENT$command.config.handled Harvester = BOOL$true DatapackManager
 
 execute as @s run function harvester:packages/configtriggers/enable
 

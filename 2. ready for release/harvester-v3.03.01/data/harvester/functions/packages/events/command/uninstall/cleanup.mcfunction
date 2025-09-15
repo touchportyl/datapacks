@@ -1,2 +1,2 @@
-tag @a remove MD_command_uninstall
+tag @a remove DM_command_uninstall
 scoreboard players reset EVENT$command.uninstall Harvester

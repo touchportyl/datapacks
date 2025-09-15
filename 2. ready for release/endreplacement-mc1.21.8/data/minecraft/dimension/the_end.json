@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:the_end",
+  "generator": {
+    "settings": {
+      "layers": [
+        {
+          "block": "minecraft:void_air",
+          "height": 1
+        }
+      ],
+      "biome": "minecraft:plains"
+    },
+    "type": "minecraft:flat"
+  }
+}

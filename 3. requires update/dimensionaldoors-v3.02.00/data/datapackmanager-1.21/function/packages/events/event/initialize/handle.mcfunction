@@ -1,0 +1,1 @@
+scoreboard players set EVENT$initialize.handled DatapackManager 1

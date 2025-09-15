@@ -1,363 +1,487 @@
-import tkinter as tk
-from tkinter import ttk, filedialog, messagebox
-import configparser
 import re
 import os
-import threading
-import time
+import tkinter as tk
+from tkinter import filedialog, ttk, font as tk_font
+from configparser import ConfigParser
+from pathlib import Path
+from threading import Thread, Lock
 
-class CodeParserApp(tk.Tk):
-    """
-    A GUI application for parsing code files based on regex signatures
-    defined in a configuration file.
-    """
+class TagParserApp(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("Tag Parser v0.1-beta")
-        self.geometry("1600x900")
-        self.center_window()
-
-        self.config_patterns = {}
-        self.parsing_thread = None
-        self.user_config_path = 'user_settings.ini'
+        self.title("Tag Parser")
         
-        # Regex for standard tag format: THINGONE$thingtwo.three.four ThingFive
-        # This regex is more specific to avoid capturing extra characters.
-        self.statistics_pattern = re.compile(r'([A-Z0-9]+)\$([^"\s]+)\s?([^\s]+)?')
-        
-        # Regex for JSON tag format: {"name":"THINGONE$thingtwo.three.four","objective":"ThingFive"}
-        self.statistics_json_pattern = re.compile(r'"name":"([A-Z0-9]+)\$([^"]+)","objective":"([^"]+)"')
+        # Define window dimensions
+        window_width = 1600
+        window_height = 900
 
-        self.create_widgets()
-        self.load_user_settings()
-
-    def center_window(self):
-        """Centers the main application window on the screen."""
-        self.update_idletasks()
-        width = self.winfo_width()
-        height = self.winfo_height()
+        # Get screen dimensions
         screen_width = self.winfo_screenwidth()
         screen_height = self.winfo_screenheight()
-        x = (screen_width // 2) - (width // 2)
-        y = (screen_height // 2) - (height // 2)
-        self.geometry(f'{width}x{height}+{x}+{y}')
 
-    def create_widgets(self):
-        """Builds all the main GUI components."""
-        main_frame = ttk.Frame(self, padding="10")
-        main_frame.pack(fill=tk.BOTH, expand=True)
+        # Calculate center position
+        center_x = int((screen_width - window_width) / 2)
+        center_y = int((screen_height - window_height) / 2)
 
-        # Directory and Config file selection
-        input_frame = ttk.LabelFrame(main_frame, text="Input", padding="10")
-        input_frame.pack(fill=tk.X, pady=(0, 10))
+        # Set window size and position
+        self.geometry(f'{window_width}x{window_height}+{center_x}+{center_y}')
 
-        # Directory Path
-        ttk.Label(input_frame, text="Code Directory:").grid(row=0, column=0, sticky="w", padx=5, pady=5)
-        self.dir_path_entry = ttk.Entry(input_frame, width=50)
-        self.dir_path_entry.grid(row=0, column=1, sticky="ew", padx=5, pady=5)
-        ttk.Button(input_frame, text="Browse", command=self.browse_directory).grid(row=0, column=2, padx=5, pady=5)
+        self.config = ConfigParser()
+        self.settings_file_path = self.get_settings_path()
+        self.load_settings()
         
-        # Config File Path
-        ttk.Label(input_frame, text="Config File:").grid(row=1, column=0, sticky="w", padx=5, pady=5)
-        self.config_path_entry = ttk.Entry(input_frame, width=50)
-        self.config_path_entry.grid(row=1, column=1, sticky="ew", padx=5, pady=5)
-        ttk.Button(input_frame, text="Browse", command=self.browse_config_file).grid(row=1, column=2, padx=5, pady=5)
+        # Apply a modern style to the UI
+        style = ttk.Style(self)
+        style.theme_use('clam')
+        style.configure('TButton', font=(None, 10, 'bold'), borderwidth=1, relief="raised")
+        style.map('TButton',
+            foreground=[('active', 'black')],
+            background=[('active', 'cyan'), ('pressed', 'blue')])
+        style.configure('Custom.TButton', background='lightgreen', foreground='black', borderwidth=2)
+        style.configure("Treeview", font=(None, 9))
+        style.configure("Treeview.Heading", font=(None, 10, 'bold'))
 
-        input_frame.grid_columnconfigure(1, weight=1)
+        self.notebook = ttk.Notebook(self)
+        self.notebook.pack(expand=True, fill="both", padx=10, pady=10)
+
+        self.parser_frame = ParserFrame(self, self.config)
+        self.settings_frame = SettingsFrame(self.notebook, self.config, self.parser_frame)
+
+        self.notebook.add(self.parser_frame, text="Parser")
+        self.notebook.add(self.settings_frame, text="Settings")
+    
+        self.parser_frame.load_path_from_settings()
+
+    def get_settings_path(self):
+        temp_config = ConfigParser()
+        script_dir_ini = Path(__file__).resolve().parent / "tag_parser_settings.ini"
+        temp_config.read(script_dir_ini)
         
-        # Action button and status label
-        action_frame = ttk.Frame(main_frame, padding="10")
-        action_frame.pack(fill=tk.X, pady=(0, 10))
+        saved_path = temp_config.get("Settings", "save_path", fallback="")
+        if saved_path and os.path.isdir(saved_path):
+            return Path(saved_path) / "tag_parser_settings.ini"
+        else:
+            return script_dir_ini
 
-        self.parse_button = ttk.Button(action_frame, text="Start Parsing", command=self.start_parsing)
-        self.parse_button.pack(side=tk.LEFT, padx=(0, 10))
+    def load_settings(self):
+        try:
+            self.config.read(self.settings_file_path)
+            if "Settings" not in self.config:
+                self.config.add_section("Settings")
+                self.config.set("Settings", "save_path", str(self.settings_file_path.parent))
+        except Exception as e:
+            print(f"Could not load settings from {self.settings_file_path}: {e}")
 
-        self.status_label = ttk.Label(action_frame, text="Ready.")
-        self.status_label.pack(side=tk.LEFT, fill=tk.X, expand=True)
+class SettingsFrame(ttk.Frame):
+    def __init__(self, parent, config, parser_frame):
+        super().__init__(parent)
+        self.config = config
+        self.parser_frame = parser_frame
 
-        # Tabbed notebook for results
-        self.notebook = ttk.Notebook(main_frame)
-        self.notebook.pack(fill=tk.BOTH, expand=True)
+        self.label = ttk.Label(self, text="Settings Folder Location:")
+        self.label.pack(pady=(20, 5))
 
-    def load_user_settings(self):
-        """Loads the last used directory and config file paths from a settings file."""
-        user_config = configparser.ConfigParser()
-        if os.path.exists(self.user_config_path):
-            user_config.read(self.user_config_path)
-            if 'Settings' in user_config:
-                dir_path = user_config['Settings'].get('last_directory', '')
-                config_path = user_config['Settings'].get('last_config_file', '')
-                
-                if dir_path:
-                    self.dir_path_entry.insert(0, dir_path)
-                if config_path:
-                    self.config_path_entry.insert(0, config_path)
+        self.entry_var = tk.StringVar(value=self.config.get("Settings", "save_path", fallback=""))
+        self.path_entry = ttk.Entry(self, textvariable=self.entry_var, width=50)
+        self.path_entry.pack(pady=5)
+        self.path_entry.config(state='readonly')
 
-    def save_user_settings(self):
-        """Saves the current directory and config file paths to a settings file."""
-        user_config = configparser.ConfigParser()
-        user_config['Settings'] = {
-            'last_directory': self.dir_path_entry.get(),
-            'last_config_file': self.config_path_entry.get()
-        }
-        with open(self.user_config_path, 'w') as f:
-            user_config.write(f)
+        self.browse_button = ttk.Button(self, text="Browse", command=self.browse_path)
+        self.browse_button.pack(pady=5)
 
-    def browse_directory(self):
-        """Opens a dialog to select the code directory."""
-        initial_dir = self.dir_path_entry.get() or os.getcwd()
+        self.status_label = ttk.Label(self, text="")
+        self.status_label.pack(pady=5)
+
+    def browse_path(self):
+        initial_dir = self.config.get("Settings", "save_path", fallback=str(Path(__file__).resolve().parent))
+        if not os.path.isdir(initial_dir):
+            initial_dir = str(Path(__file__).resolve().parent)
+
         directory = filedialog.askdirectory(initialdir=initial_dir)
         if directory:
-            self.dir_path_entry.delete(0, tk.END)
-            self.dir_path_entry.insert(0, directory)
-            self.save_user_settings()
+            self.entry_var.set(directory)
+            self.save_settings(directory)
+            self.status_label.config(text=f"Settings path updated to {directory}", foreground="green")
+            self.master.settings_file_path = Path(directory) / "tag_parser_settings.ini"
 
-    def browse_config_file(self):
-        """Opens a dialog to select the configuration file."""
-        initial_dir = os.path.dirname(self.config_path_entry.get()) or os.getcwd()
-        file_path = filedialog.askopenfilename(initialdir=initial_dir, defaultextension=".ini", filetypes=[("INI files", "*.ini"), ("All files", "*.*")])
-        if file_path:
-            self.config_path_entry.delete(0, tk.END)
-            self.config_path_entry.insert(0, file_path)
-            self.save_user_settings()
-            
-    def start_parsing(self):
-        """
-        Initiates the parsing process in a separate thread to prevent
-        the GUI from freezing.
-        """
-        self.parse_button.config(state=tk.DISABLED)
-        self.status_label.config(text="Parsing...")
+    def save_settings(self, directory):
+        self.config.set("Settings", "save_path", directory)
+        self.config.set("Settings", "target_path", self.parser_frame.target_path_var.get())
         
-        # Destroy existing tabs before starting a new parse
-        for tab in self.notebook.winfo_children():
-            tab.destroy()
+        settings_file = Path(directory) / "tag_parser_settings.ini"
+        try:
+            with open(settings_file, "w") as config_file:
+                self.config.write(config_file)
+        except Exception as e:
+            self.status_label.config(text=f"Error saving settings: {e}", foreground="red")
+
+class DatapackFrame(ttk.Frame):
+    def __init__(self, parent, config):
+        super().__init__(parent)
+        self.config = config
+        self.notebook = ttk.Notebook(self)
+        self.notebook.pack(expand=True, fill="both")
+        self.datapack_notebooks = {} # Dictionary to hold internal notebooks
+        self.internal_notebooks = {} # Dictionary to hold tag type notebooks
+        self.trees = {} # Dictionary to hold Treeview widgets for each tab
+
+    def get_or_create_datapack_tab(self, datapack_name):
+        if datapack_name in self.datapack_notebooks:
+            return self.datapack_notebooks[datapack_name]
+        
+        # Create a new frame for the top-level datapack tab
+        datapack_frame = ttk.Frame(self.notebook)
+        
+        # Create a nested notebook inside the datapack tab
+        nested_notebook = ttk.Notebook(datapack_frame)
+        nested_notebook.pack(expand=True, fill="both")
+        
+        self.notebook.add(datapack_frame, text=datapack_name)
+        self.datapack_notebooks[datapack_name] = nested_notebook
+        return nested_notebook
+
+    def get_or_create_internal_tab(self, datapack_name, internal_name):
+        datapack_notebook = self.get_or_create_datapack_tab(datapack_name)
+        
+        if (datapack_name, internal_name) in self.internal_notebooks:
+            return self.internal_notebooks[(datapack_name, internal_name)]
+        
+        # Create a new frame for the internal tab
+        internal_frame = ttk.Frame(datapack_notebook)
+        
+        # Create a second nested notebook for tag types
+        tag_notebook = ttk.Notebook(internal_frame)
+        tag_notebook.pack(expand=True, fill="both")
+        
+        datapack_notebook.add(internal_frame, text=internal_name)
+        self.internal_notebooks[(datapack_name, internal_name)] = tag_notebook
+        return tag_notebook
+
+    def get_or_create_tag_tab(self, datapack_name, internal_name, tag_type):
+        tag_notebook = self.get_or_create_internal_tab(datapack_name, internal_name)
+        
+        if (datapack_name, internal_name, tag_type) in self.trees:
+            return self.trees[(datapack_name, internal_name, tag_type)]
+        
+        # Create a new frame for the tag type tab
+        tag_frame = ttk.Frame(tag_notebook)
+        
+        # Create a Treeview in the new tag type tab
+        tree = ttk.Treeview(tag_frame, columns=("Tag", "File", "Line #", "Full Line"), show="headings")
+        tree.heading("Tag", text="Tag")
+        tree.heading("File", text="File")
+        tree.heading("Line #", text="Line #")
+        tree.heading("Full Line", text="Full Line")
+        
+        # Create scrollbars for this treeview
+        v_scrollbar = ttk.Scrollbar(tag_frame, orient="vertical", command=tree.yview)
+        h_scrollbar = ttk.Scrollbar(tag_frame, orient="horizontal", command=tree.xview)
+        tree.configure(yscrollcommand=v_scrollbar.set, xscrollcommand=h_scrollbar.set)
+        
+        v_scrollbar.pack(side="right", fill="y")
+        h_scrollbar.pack(side="bottom", fill="x")
+        tree.pack(side="left", expand=True, fill="both")
+
+        tag_notebook.add(tag_frame, text=tag_type)
+        self.trees[(datapack_name, internal_name, tag_type)] = tree
+        return tree
+
+class ParserFrame(ttk.Frame):
+    def __init__(self, parent, config):
+        super().__init__(parent)
+        self.config = config
+        self.target_path_var = tk.StringVar()
+        self.is_parsing = False
+        self.parsing_thread = None
+        self.data_lock = Lock()
+        self.max_widths = {}
+        self.found_tags_queue = []
+        
+        # Bind events for dynamic resizing
+        self.master.bind("<Shift-MouseWheel>", self._on_shift_scroll)
+        self.after_idle(self._bind_tab_change_events)
+
+        path_frame = ttk.Frame(self)
+        path_frame.pack(fill="x", padx=10, pady=10)
+
+        ttk.Label(path_frame, text="Target Folder:").pack(side="left")
+        self.path_entry = ttk.Entry(path_frame, textvariable=self.target_path_var, width=60)
+        self.path_entry.pack(side="left", expand=True, fill="x", padx=(5, 0))
+        self.browse_button = ttk.Button(path_frame, text="Browse", command=self.browse_folder)
+        self.browse_button.pack(side="left", padx=(5, 0))
+
+        # Button frame for Parse and Cancel
+        button_frame = ttk.Frame(self)
+        button_frame.pack(pady=5)
+        self.parse_button = ttk.Button(button_frame, text="Parse", command=self._start_parsing_thread, style='Custom.TButton')
+        self.parse_button.pack(side="left", padx=5)
+        self.cancel_button = ttk.Button(button_frame, text="Cancel", command=self._cancel_parsing, state='disabled')
+        self.cancel_button.pack(side="left", padx=5)
+
+        self.status_label = ttk.Label(self, text="")
+        self.status_label.pack(pady=5)
+        
+        # Create a Frame to hold the Datapack tabs
+        self.datapack_frame = DatapackFrame(self, self.config)
+        self.datapack_frame.pack(expand=True, fill="both", padx=10, pady=10)
+
+    def _bind_tab_change_events(self):
+        """Binds to notebook tab change events to trigger resizing."""
+        self.datapack_frame.notebook.bind("<<NotebookTabChanged>>", self._on_tab_change)
+
+    def _on_tab_change(self, event):
+        """Callback to resize columns when a tab changes."""
+        # Find the currently active Treeview in the three-layered notebook structure
+        active_datapack_tab_id = self.datapack_frame.notebook.select()
+        
+        # Check if a tab is actually selected. If not, do nothing.
+        if not active_datapack_tab_id:
+            return
+
+        active_datapack_tab_text = self.datapack_frame.notebook.tab(active_datapack_tab_id, "text")
+        
+        # This is the correct way to bind nested tabs
+        if active_datapack_tab_text in self.datapack_frame.datapack_notebooks:
+            active_datapack_notebook = self.datapack_frame.datapack_notebooks.get(active_datapack_tab_text)
+            active_datapack_notebook.bind("<<NotebookTabChanged>>", self._on_tab_change_nested)
             
-        self.parsing_thread = threading.Thread(target=self.parse_files)
+            # The rest of the logic remains the same
+            active_internal_tab_id = active_datapack_notebook.select()
+            active_internal_tab_text = active_datapack_notebook.tab(active_internal_tab_id, "text")
+            
+            if (active_datapack_tab_text, active_internal_tab_text) in self.datapack_frame.internal_notebooks:
+                active_tag_notebook = self.datapack_frame.internal_notebooks.get((active_datapack_tab_text, active_internal_tab_text))
+                active_tag_tab_id = active_tag_notebook.select()
+                active_tag_tab_text = active_tag_notebook.tab(active_tag_tab_id, "text")
+                
+                active_tree = self.datapack_frame.trees.get((active_datapack_tab_text, active_internal_tab_text, active_tag_tab_text))
+                
+                if active_tree:
+                    self._resize_columns(active_tree)
+
+    def _on_tab_change_nested(self, event):
+        """Helper for nested tab changes."""
+        # Get the notebook that triggered the event
+        notebook = event.widget
+        
+        # Get the ID of the selected tab
+        active_tab_id = notebook.select()
+        active_tab_text = notebook.tab(active_tab_id, "text")
+
+        # Find the tree associated with this new tab
+        for (datapack, internal, tag_type), tree in self.datapack_frame.trees.items():
+            if tag_type == active_tab_text and tree.winfo_parent() == notebook.children[notebook.tab(active_tab_id, "text").lower()]:
+                 self._resize_columns(tree)
+                 break
+
+    def _on_shift_scroll(self, event):
+        """Increase horizontal scroll speed with Shift + MouseWheel."""
+        # Find the currently active Treeview in the three-layered notebook structure
+        active_datapack_tab_id = self.datapack_frame.notebook.select()
+        active_datapack_tab_text = self.datapack_frame.notebook.tab(active_datapack_tab_id, "text")
+        
+        if active_datapack_tab_text in self.datapack_frame.datapack_notebooks:
+            active_datapack_notebook = self.datapack_frame.datapack_notebooks.get(active_datapack_tab_text)
+            active_internal_tab_id = active_datapack_notebook.select()
+            active_internal_tab_text = active_datapack_notebook.tab(active_internal_tab_id, "text")
+
+            if (active_datapack_tab_text, active_internal_tab_text) in self.datapack_frame.internal_notebooks:
+                active_tag_notebook = self.datapack_frame.internal_notebooks.get((active_datapack_tab_text, active_internal_tab_text))
+                active_tag_tab_id = active_tag_notebook.select()
+                active_tag_tab_text = active_tag_notebook.tab(active_tag_tab_id, "text")
+                
+                active_tree = self.datapack_frame.trees.get((active_datapack_tab_text, active_internal_tab_text, active_tag_tab_text))
+                
+                if active_tree:
+                    scroll_speed = 10 
+                    direction = -int(event.delta / 120) * scroll_speed
+                    active_tree.xview_scroll(direction, "units")
+
+    def _resize_columns(self, tree):
+        """Dynamically resizes columns to fit contents."""
+        if not tree:
+            return
+        
+        default_font = tk_font.Font()
+        # Get all column headings and their current IDs
+        columns = tree["columns"]
+        
+        # Add a small buffer to prevent cutting off text
+        buffer = 15
+        
+        for col in columns:
+            # Measure heading text
+            heading_width = default_font.measure(tree.heading(col, "text")) + buffer
+            max_width = heading_width
+            
+            # Find max width of all items in column
+            for item in tree.get_children():
+                try:
+                    item_width = default_font.measure(str(tree.item(item, 'values')[tree['columns'].index(col)])) + buffer
+                    if item_width > max_width:
+                        max_width = item_width
+                except IndexError:
+                    # Catch the case where an empty row exists
+                    pass
+            
+            tree.column(col, width=max_width, stretch=False)
+
+    def browse_folder(self):
+        initial_dir = self.target_path_var.get()
+        if not os.path.isdir(initial_dir):
+            initial_dir = None
+        folder_path = filedialog.askdirectory(initialdir=initial_dir)
+        if folder_path:
+            self.target_path_var.set(folder_path)
+            self.save_path_to_settings()
+
+    def save_path_to_settings(self):
+        if "Settings" not in self.config:
+            self.config.add_section("Settings")
+        self.config.set("Settings", "target_path", self.target_path_var.get())
+        settings_folder = self.config.get("Settings", "save_path", fallback=str(Path(__file__).resolve().parent))
+        settings_file = Path(settings_folder) / "tag_parser_settings.ini"
+        try:
+            with open(settings_file, "w") as config_file:
+                self.config.write(config_file)
+        except Exception as e:
+            print(f"Error saving parser path: {e}")
+
+    def load_path_from_settings(self):
+        saved_path = self.config.get("Settings", "target_path", fallback="")
+        if saved_path and os.path.isdir(saved_path):
+            self.target_path_var.set(saved_path)
+
+    def _start_parsing_thread(self):
+        target_path = self.target_path_var.get()
+        if not target_path or not os.path.isdir(target_path):
+            self.status_label.config(text="Error: Please select a valid folder.", foreground="red")
+            return
+        
+        self.is_parsing = True
+        
+        # Clear existing tabs
+        for tab in self.datapack_frame.notebook.tabs():
+            self.datapack_frame.notebook.forget(tab)
+        self.datapack_frame.datapack_notebooks = {}
+        self.datapack_frame.internal_notebooks = {}
+        self.datapack_frame.trees = {}
+
+        with self.data_lock:
+            self.found_tags_queue = []
+            self.max_widths = {}
+        
+        self.status_label.config(text="Parsing started...", foreground="blue")
+        
+        self.parse_button.config(text="Parsing...", state="disabled")
+        self.cancel_button.config(state="normal")
+        self.browse_button.config(state="disabled")
+
+        self.parsing_thread = Thread(target=self._threaded_parsing_task, args=(target_path,))
         self.parsing_thread.daemon = True
         self.parsing_thread.start()
 
-    def load_config(self):
-        """
-        Loads and compiles regex patterns from the specified INI file.
-        Returns a dictionary of compiled regex objects.
-        """
-        config = configparser.ConfigParser()
-        config_file_path = self.config_path_entry.get()
+    def _cancel_parsing(self):
+        self.is_parsing = False
+        self.status_label.config(text="Parsing cancelled by user.", foreground="red")
+        self.cancel_button.config(state="disabled")
+        self.parse_button.config(text="Parse", state="normal")
+        self.browse_button.config(state="normal")
 
-        if not os.path.exists(config_file_path):
-            messagebox.showerror("Error", f"Configuration file not found: {config_file_path}")
-            return None
+    def _get_tag_type(self, tag):
+        if "$" in tag:
+            # Find the part before the first '$', capitalize it, and return
+            parts = tag.split('$')
+            if parts[0]:
+                return parts[0].capitalize()
+        elif re.match(r'[A-Z]{2}_', tag):
+            return "Player Tags"
+        return "Misc"
 
-        try:
-            config.read(config_file_path)
-            self.config_patterns = {section: re.compile(config[section].get('regex', ''))
-                                    for section in config.sections() if config[section].get('regex')}
-            return self.config_patterns
-        except Exception as e:
-            messagebox.showerror("Error", f"Failed to parse config file: {e}")
-            return None
-
-    def create_tabs(self, all_matches):
-        """Creates a tab and Treeview for each regex signature."""
-        self.treeviews = {}
+    def _threaded_parsing_task(self, target_path):
+        pattern = r'[A-Z]{2}_[a-zA-Z0-9_]+|[A-Z]+\$[a-zA-Z0-9.]+'
+        matches_found = False
         
-        # Create tabs for each regex signature
-        for signature, matches in all_matches.items():
-            tab_frame = ttk.Frame(self.notebook, padding="10")
-            # Add the count to the tab title
-            self.notebook.add(tab_frame, text=f"{signature} ({len(matches)})")
+        # List of folders to ignore
+        ignored_folders = ['advancements', 'functions', 'predicates', 'item_modifiers', 'recipes', 'loot_tables', 'tags']
 
-            # Updated column headings for the table
-            tree = ttk.Treeview(tab_frame, columns=("Match", "File", "Line #", "Line"), show="headings")
-            tree.heading("Match", text="Match")
-            tree.heading("File", text="File")
-            tree.heading("Line #", text="Line #")
-            tree.heading("Line", text="Line")
+        for root, dirs, files in os.walk(target_path):
+            # Modify dirs in-place to prune unwanted directories
+            dirs[:] = [d for d in dirs if d not in ignored_folders]
 
-            # Adjust column widths
-            tree.column("Match", width=120, anchor="w")
-            tree.column("File", width=250, anchor="w")
-            tree.column("Line #", width=60, anchor="center")
-            tree.column("Line", width=400, anchor="w")
-
-            tree.pack(fill=tk.BOTH, expand=True)
-
-            # Scrollbars
-            vsb = ttk.Scrollbar(tab_frame, orient="vertical", command=tree.yview)
-            hsb = ttk.Scrollbar(tab_frame, orient="horizontal", command=tree.xview)
-            tree.configure(yscrollcommand=vsb.set, xscrollcommand=hsb.set)
-            vsb.pack(side="right", fill="y")
-            hsb.pack(side="bottom", fill="x")
-
-            self.treeviews[signature] = tree
-
-        # Create the new Statistics tab
-        stats_tab_frame = ttk.Frame(self.notebook, padding="10")
-        self.notebook.add(stats_tab_frame, text="Statistics")
-        self.stats_treeview = ttk.Treeview(stats_tab_frame)
-        self.stats_treeview.pack(fill=tk.BOTH, expand=True)
-
-        self.update() # Update the GUI to show tabs
-
-    def parse_files(self):
-        """
-        Walks the specified directory and searches for regex matches.
-        Collects and sorts all matches before displaying them.
-        """
-        dir_path = self.dir_path_entry.get()
-        if not os.path.isdir(dir_path):
-            messagebox.showerror("Error", "Invalid directory path.")
-            self.reset_ui()
-            return
-
-        self.load_config()
-        
-        all_matches = {signature: [] for signature in self.config_patterns.keys()}
-        statistics_data = {}
-        thing_five_map = {}
-        total_files = sum(len(files) for _, _, files in os.walk(dir_path))
-        files_processed = 0
-
-        for root, _, files in os.walk(dir_path):
-            for file_name in files:
-                files_processed += 1
-                self.status_label.config(text=f"Parsing: {files_processed}/{total_files} files...")
+            for file in files:
+                if not self.is_parsing:
+                    return
                 
-                file_path = os.path.join(root, file_name)
+                relative_path = os.path.relpath(os.path.join(root, file), target_path)
                 
-                # Format file path to be relative to the selected code directory
-                display_file_path = os.path.relpath(file_path, dir_path)
+                datapack_name = "Other"
+                internal_name = "Misc"
 
+                # Check if the path contains 'data'
+                if 'data' in relative_path.split(os.sep):
+                    parts = Path(relative_path).parts
+                    try:
+                        data_index = parts.index('data')
+                        if data_index > 0:
+                            datapack_name = parts[data_index - 1]
+                        if len(parts) > data_index + 1:
+                            internal_name = parts[data_index + 1]
+                    except ValueError:
+                        pass # Path does not contain 'data'
+
+                file_path = os.path.join(root, file)
                 try:
-                    with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
-                        for line_num, line in enumerate(f, 1):
-                            # Skip lines that are comments
+                    with open(file_path, "r", encoding="utf-8") as f:
+                        for line_number, line in enumerate(f, start=1):
+                            if not self.is_parsing:
+                                return
                             if line.strip().startswith('#'):
                                 continue
-
-                            # Flag to prevent double-counting of JSON matches
-                            json_match_found = False
-                                
-                            # Search for generic pattern for statistics (JSON format) first
-                            for match in self.statistics_json_pattern.finditer(line):
-                                thing_one = match.group(1)
-                                thing_path = match.group(2)
-                                thing_five = match.group(3)
-                                
-                                # Use the objective as the definitive top-level key
-                                if thing_five not in statistics_data:
-                                    statistics_data[thing_five] = {}
-
-                                current_level = statistics_data[thing_five]
-                                path_parts = thing_path.split('.')
-                                
-                                if not path_parts:
-                                    path_parts.append("unspecified")
-
-                                if thing_one not in current_level:
-                                    current_level[thing_one] = {}
-                                
-                                current_level = current_level[thing_one]
-
-                                for part in path_parts:
-                                    if part not in current_level:
-                                        current_level[part] = {"count": 0}
-                                    current_level[part]["count"] += 1
-                                    current_level = current_level[part]
-
-                                json_match_found = True
                             
-                            # Only search for the old pattern if no JSON matches were found on the line
-                            if not json_match_found:
-                                for match in self.statistics_pattern.finditer(line):
-                                    thing_one = match.group(1)
-                                    thing_path = match.group(2)
-                                    thing_five = match.group(3)
-                                    
-                                    # Use a placeholder for the top-level group if not present
-                                    if not thing_five:
-                                        thing_five = thing_five_map.get(thing_one, "Uncategorized")
-                                    else:
-                                        thing_five_map[thing_one] = thing_five
-                                    
-                                    if thing_five not in statistics_data:
-                                        statistics_data[thing_five] = {}
-
-                                    # Build the nested dictionary structure
-                                    current_level = statistics_data[thing_five]
-                                    path_parts = thing_path.split('.')
-                                    
-                                    # Ensure at least one part for the hierarchy
-                                    if not path_parts:
-                                        path_parts.append("unspecified")
-
-                                    if thing_one not in current_level:
-                                        current_level[thing_one] = {}
-                                    
-                                    current_level = current_level[thing_one]
-
-                                    # Recursively build the hierarchy based on path_parts
-                                    for part in path_parts:
-                                        if part not in current_level:
-                                            current_level[part] = {"count": 0}
-                                        current_level[part]["count"] += 1
-                                        current_level = current_level[part]
-
-                            # Search for specific patterns from the config file
-                            for signature, pattern in self.config_patterns.items():
-                                for match in pattern.finditer(line):
-                                    all_matches[signature].append((display_file_path, line_num, line.strip(), match.group(0)))
+                            found_tags = re.findall(pattern, line)
+                            if found_tags:
+                                matches_found = True
+                                with self.data_lock:
+                                    for tag in found_tags:
+                                        tag_type = self._get_tag_type(tag)
+                                        full_line = line.strip()
+                                        self.found_tags_queue.append((datapack_name, internal_name, tag_type, tag, relative_path, line_number, full_line))
                                         
-                except IOError as e:
-                    print(f"Error reading file {file_path}: {e}")
                 except Exception as e:
-                    print(f"An unexpected error occurred: {e}")
-
-        # Now that all matches are found, create the tabs with the counts
-        self.create_tabs(all_matches)
+                    print(f"Could not read {file_path}: {e}")
         
-        # Sort and populate tables
-        for signature, matches in all_matches.items():
-            # Sort by file path (index 0) and then line number (index 1)
-            matches.sort(key=lambda x: (x[0], x[1]))
-            
-            tree = self.treeviews[signature]
-            for match in matches:
-                # The values are: match, file, line #, line
-                tree.insert("", "end", values=(match[3], match[0], match[1], match[2]))
+        self.after(0, lambda: self._parsing_finished(matches_found))
 
-        # Populate the statistics tab
-        self.populate_statistics_tab(statistics_data)
+    def _parsing_finished(self, matches_found):
+        # Sort queued data to ensure consistent tab creation order
+        self.found_tags_queue.sort(key=lambda x: (x[0], x[1], x[2]))
+
+        # Create all tabs and insert data
+        for item in self.found_tags_queue:
+            datapack_name, internal_name, tag_type, tag, relative_path, line_number, full_line = item
+            
+            # The get_or_create methods handle the logic to prevent duplicates
+            tree = self.datapack_frame.get_or_create_tag_tab(datapack_name, internal_name, tag_type)
+            
+            if tree:
+                # Insert the data into the correct Treeview
+                tree.insert("", "end", values=(tag, relative_path, line_number, full_line))
+
+        # Iterate over all created trees to resize them
+        for tree in self.datapack_frame.trees.values():
+            self._resize_columns(tree)
+
+        self.parse_button.config(text="Parse", state="normal")
+        self.cancel_button.config(state="disabled")
+        self.browse_button.config(state="normal")
+        self.is_parsing = False
         
-        self.status_label.config(text=f"Parsing complete. Found {sum(len(tree.get_children()) for tree in self.treeviews.values())} matches.")
-        self.reset_ui()
-
-    def populate_statistics_tab(self, data):
-        """Populates the statistics Treeview with hierarchical data."""
-        self.stats_treeview.delete(*self.stats_treeview.get_children())
-        
-        def insert_nodes(parent_id, node_data):
-            total_count = 0
-            if "count" in node_data:
-                return node_data["count"]
-            
-            for key, value in sorted(node_data.items()):
-                node_id = self.stats_treeview.insert(parent_id, "end", text=key)
-                child_count = insert_nodes(node_id, value)
-                self.stats_treeview.item(node_id, text=f"{key} ({child_count})")
-                total_count += child_count
-            
-            return total_count
-
-        insert_nodes("", data)
-
-    def reset_ui(self):
-        """Resets the UI state after parsing is complete."""
-        self.parse_button.config(state=tk.NORMAL)
-        # Ensure this is called in the main thread
-        self.after(100, lambda: self.status_label.config(text="Done."))
+        if matches_found:
+            self.status_label.config(text="Parsing complete.", foreground="green")
+        else:
+            self.status_label.config(text="No matches found.", foreground="orange")
 
 if __name__ == "__main__":
-    app = CodeParserApp()
+    app = TagParserApp()
     app.mainloop()
