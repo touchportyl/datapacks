@@ -14,6 +14,8 @@ There are 6 folders sorting all my code in various levels of progress.
 - Concepts: Unfinished conceptual datapacks
 - Archived: Old code for reference whenever needed
 
+Use the Datapack Manager Tool to speed up certain common actions and help with debugging.
+
 This code is protected by the GNU GPLv3 License | © 2025 Portyl Studios https://portylstudios.com/
 
 ---

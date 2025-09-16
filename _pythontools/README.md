@@ -3,14 +3,12 @@
 
 # Features
 - Create, manage, and package datapacks for release.
+- Debug efficiently by checking all the common tags in one place (eg. CONFIG$configname, or MD_scoreboardname)
 
 # Known Issues
-- None
+- Ugly
 
 # Future updates
-- Support for parsing config tags (z_md_*)
-- Automatically manage datapacks (list all packs, versions, and move them across folders).
-- Merge folder zipper into this tool.
 - Merge datapack bootstrapper into this tool.
 - Tool for automatically installing newer versions of datapack manager into old packs.
 - Suggestions welcome!
