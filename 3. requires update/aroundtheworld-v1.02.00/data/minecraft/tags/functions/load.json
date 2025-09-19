@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "datapackmanager-1.21:root/core/load",
+    "aroundtheworld:packages/preinstaller/load"
+  ]
+}

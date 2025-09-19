@@ -1,0 +1,1 @@
+scoreboard players operation LOOP$eventlisteners.isActive AroundTheWorld = BOOL$false DatapackManager

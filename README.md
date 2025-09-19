@@ -27,5 +27,21 @@ This code is protected by the GNU GPLv3 License | © 2025 Portyl Studios https:/
 
 ---
 
+## Reserved Datapack Tags
+- [DM] Datapack Manager
+- [MD] My Datapack (Reserved for templates)
+- [HV] Harvester
+- [DD] Dimensional Doors
+- [TC] Tinkerer's Craft
+- [AW] Around The World
+- [PT] Portyl Trident
+- [SS] Seaskipper
+- [ES] Endermite Script
+- [VE] Vanilla Essentials
+- [VC] Villager Chat
+- [ST] Speedrun Timer
+
+---
+
 ## Datapack Manager
 [The Datapack Framework](https://portylstudios.notion.site/The-Datapack-Framework-d913361385c8484ba97a97f07c75bb39?pvs=4) has been updated. Supports Minecraft 1.14 to 1.21.
