@@ -1,1 +1,0 @@
-scoreboard players operation LOOP$configtriggers.isActive Harvester = BOOL$false DatapackManager

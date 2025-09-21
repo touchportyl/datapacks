@@ -1,0 +1,1 @@
+scoreboard players operation LOOP$configtriggers.isActive PortylTrident = BOOL$false DatapackManager

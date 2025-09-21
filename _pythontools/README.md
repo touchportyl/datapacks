@@ -9,7 +9,6 @@
 - Ugly
 
 # Future updates
-- Merge datapack bootstrapper into this tool.
 - Tool for automatically installing newer versions of datapack manager into old packs.
 - Suggestions welcome!
 

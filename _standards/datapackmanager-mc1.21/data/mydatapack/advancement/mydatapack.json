@@ -1,7 +1,7 @@
 {
   "display": {
-    "title": "mydatapack-v1.00.00",
-    "description": "Made by touchportyl!",
+    "title": "My Datapack v1.00.00",
+    "description": "A template made by touchportyl!",
     "icon": {
       "item": "minecraft:player_head",
       "nbt": "{SkullOwner: 'touchportyl'}",

@@ -3,10 +3,10 @@ execute unless score VERSION$datapack.latest MyDatapack matches 10000.. run scor
 scoreboard players operation FLAG$isActive MyDatapack = BOOL$true DatapackManager
 
 # update from latest to current version
-#execute unless score VERSION$datapack.latest MyDatapack matches 10100.. run function mydatapack:packages/versioning/updates/v3.01.00
+#execute unless score VERSION$datapack.latest MyDatapack matches 10100.. run function mydatapack:packages/versioning/updates/v1.01.00
 
 # set minor version
-#execute unless score VERSION$datapack.latest MyDatapack matches 10003.. run scoreboard players set VERSION$datapack.latest MyDatapack 10003
+#execute unless score VERSION$datapack.latest MyDatapack matches 10103.. run scoreboard players set VERSION$datapack.latest MyDatapack 10103
 
 
 # throw error for unsupported minecraft versions

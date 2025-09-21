@@ -1,0 +1,23 @@
+{
+  "display": {
+    "title": "Dimensional Doors",
+    "description": "Use a dimensional door",
+    "icon": {
+      "item": "minecraft:end_portal_frame",
+      "id": "minecraft:end_portal_frame"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "dimensionaldoors:adventure/link_door",
+  "rewards": {
+    "experience": 100
+  },
+  "criteria": {
+    "impossible": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

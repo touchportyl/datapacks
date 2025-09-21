@@ -1,1 +1,0 @@
-execute if score CONFIG$harvestxp Harvester = BOOL$true DatapackManager at @s run summon experience_orb ~ ~ ~ {Age:5960,Health:1,Value:1}

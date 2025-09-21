@@ -2,12 +2,6 @@
 scoreboard players operation VERSION$minecraft.current DatapackManager = VERSION$minecraft.backward DatapackManager
 scoreboard players remove VERSION$minecraft.current DatapackManager 1
 
-# special case to differentiate [1.20 to 1.20.2] and [1.20.3 to 1.20.5]
-# check for nbt changes in 1.20.3
-scoreboard players operation FLAG$nbt.version.old DatapackManager = BOOL$true DatapackManager
-scoreboard players operation FLAG$nbt.version.1.20.3 DatapackManager = BOOL$false DatapackManager
-
-
 # check for all supported versions
 execute unless score VERSION$minecraft.current DatapackManager matches 11404.. run function datapackmanager-1.21:packages/versioning/versions/1.14.4
 execute unless score VERSION$minecraft.current DatapackManager matches 11502.. run function datapackmanager-1.21:packages/versioning/versions/1.15.2
@@ -17,9 +11,12 @@ execute unless score VERSION$minecraft.current DatapackManager matches 11802.. r
 execute unless score VERSION$minecraft.current DatapackManager matches 11904.. run function datapackmanager-1.21:packages/versioning/versions/1.19.4
 execute unless score VERSION$minecraft.current DatapackManager matches 12002.. run function datapackmanager-1.21:packages/versioning/versions/1.20.2
 execute unless score VERSION$minecraft.current DatapackManager matches 12003.. run function datapackmanager-1.21:packages/versioning/versions/1.20.3
+execute unless score VERSION$minecraft.current DatapackManager matches 12005.. run function datapackmanager-1.21:packages/versioning/versions/1.20.5
+execute unless score VERSION$minecraft.current DatapackManager matches 12102.. run function datapackmanager-1.21:packages/versioning/versions/1.21.2
 execute unless score VERSION$minecraft.current DatapackManager matches 12104.. run function datapackmanager-1.21:packages/versioning/versions/1.21.4
 execute unless score VERSION$minecraft.current DatapackManager matches 12105.. run function datapackmanager-1.21:packages/versioning/versions/1.21.5
 execute unless score VERSION$minecraft.current DatapackManager matches 12106.. run function datapackmanager-1.21:packages/versioning/versions/1.21.6
+execute unless score VERSION$minecraft.current DatapackManager matches 12107.. run function datapackmanager-1.21:packages/versioning/versions/1.21.7
 
 
 # throw warnings/errors for unsupported versions

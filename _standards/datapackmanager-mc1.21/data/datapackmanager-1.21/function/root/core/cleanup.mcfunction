@@ -1,6 +1,8 @@
 # cleanup old variables
 scoreboard players reset FLAG$noschedulecommand DatapackManager
 scoreboard players reset FLAG$dirty DatapackManager
+scoreboard players reset FLAG$nbt.version.old DatapackManager
+scoreboard players reset FLAG$nbt.version.1.20.3 DatapackManager
 
 scoreboard players reset LOOP$tickers.1s.isLooping DatapackManager
 

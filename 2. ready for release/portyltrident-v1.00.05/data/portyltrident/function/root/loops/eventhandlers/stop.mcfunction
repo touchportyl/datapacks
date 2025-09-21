@@ -1,0 +1,1 @@
+scoreboard players operation LOOP$eventhandlers.isActive PortylTrident = BOOL$false DatapackManager

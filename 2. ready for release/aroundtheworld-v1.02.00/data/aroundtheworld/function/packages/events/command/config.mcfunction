@@ -1,0 +1,21 @@
+# update state
+tag @s remove AW_command_config
+execute unless entity @a[tag=AW_command_config] run scoreboard players operation EVENT$command.config.handled AroundTheWorld = BOOL$true DatapackManager
+
+execute as @s run function aroundtheworld:packages/configtriggers/enable
+
+tellraw @s [{"text":" "},{"text":"Around The World","color":"white","bold":true},{"text":"\n"}]
+
+tellraw @s [{"text":" "},{"text":"Nothing to configure.","color":"gray"}]
+
+
+# config name one [CONFIG$confignameone]
+#execute if score CONFIG$confignameone AroundTheWorld = BOOL$false DatapackManager run tellraw @s [{"text":" "},{"text":"Config Name One","color":"white","hoverEvent":{"action":"show_text","contents":[{"text":""},{"text":"Description for config name one"}]},"hover_event":{"action":"show_text","value":[{"text":""},{"text":"Description for config name one"}]}},{"text":"  "},{"text":"[✔]","color":"gray","hoverEvent":{"action":"show_text","contents":[{"text":""},{"text":"Enable"}]},"hover_event":{"action":"show_text","value":[{"text":""},{"text":"Enable"}]},"clickEvent":{"action":"run_command","value":"/trigger z_aw_001_t"},"click_event":{"action":"run_command","command":"/trigger z_aw_001_t"}},{"text":"  "},{"text":"[✘]","color":"red","hoverEvent":{"action":"show_text","contents":[{"text":""},{"text":"Already disabled"}]},"hover_event":{"action":"show_text","value":[{"text":""},{"text":"Already disabled"}]}}]
+#execute if score CONFIG$confignameone AroundTheWorld = BOOL$true DatapackManager run tellraw @s [{"text":" "},{"text":"Config Name One","color":"white","hoverEvent":{"action":"show_text","contents":[{"text":""},{"text":"Description for config name one"}]},"hover_event":{"action":"show_text","value":[{"text":""},{"text":"Description for config name one"}]}},{"text":"  "},{"text":"[✔]","color":"green","hoverEvent":{"action":"show_text","contents":[{"text":""},{"text":"Already enabled"}]},"hover_event":{"action":"show_text","value":[{"text":""},{"text":"Already enabled"}]}},{"text":"  "},{"text":"[✘]","color":"gray","hoverEvent":{"action":"show_text","contents":[{"text":""},{"text":"Disable"}]},"hover_event":{"action":"show_text","value":[{"text":""},{"text":"Disable"}]},"clickEvent":{"action":"run_command","value":"/trigger z_aw_001_f"},"click_event":{"action":"run_command","command":"/trigger z_aw_001_f"}}]
+
+
+# config name two [CONFIG$confignametwo]
+#execute if score CONFIG$confignametwo AroundTheWorld = BOOL$false DatapackManager run tellraw @s [{"text":" "},{"text":"Config Name Two","color":"white","hoverEvent":{"action":"show_text","contents":[{"text":""},{"text":"Description for config name two"}]},"hover_event":{"action":"show_text","value":[{"text":""},{"text":"Description for config name two"}]}},{"text":"  "},{"text":"[✔]","color":"gray","hoverEvent":{"action":"show_text","contents":[{"text":""},{"text":"Enable"}]},"hover_event":{"action":"show_text","value":[{"text":""},{"text":"Enable"}]},"clickEvent":{"action":"run_command","value":"/trigger z_aw_002_t"},"click_event":{"action":"run_command","command":"/trigger z_aw_002_t"}},{"text":"  "},{"text":"[✘]","color":"red","hoverEvent":{"action":"show_text","contents":[{"text":""},{"text":"Already disabled"}]},"hover_event":{"action":"show_text","value":[{"text":""},{"text":"Already disabled"}]}}]
+#execute if score CONFIG$confignametwo AroundTheWorld = BOOL$true DatapackManager run tellraw @s [{"text":" "},{"text":"Config Name Two","color":"white","hoverEvent":{"action":"show_text","contents":[{"text":""},{"text":"Description for config name two"}]},"hover_event":{"action":"show_text","value":[{"text":""},{"text":"Description for config name two"}]}},{"text":"  "},{"text":"[✔]","color":"green","hoverEvent":{"action":"show_text","contents":[{"text":""},{"text":"Already enabled"}]},"hover_event":{"action":"show_text","value":[{"text":""},{"text":"Already enabled"}]}},{"text":"  "},{"text":"[✘]","color":"gray","hoverEvent":{"action":"show_text","contents":[{"text":""},{"text":"Disable"}]},"hover_event":{"action":"show_text","value":[{"text":""},{"text":"Disable"}]},"clickEvent":{"action":"run_command","value":"/trigger z_aw_002_f"},"click_event":{"action":"run_command","command":"/trigger z_aw_002_f"}}]
+
+tellraw @s [{"text":" "}]
