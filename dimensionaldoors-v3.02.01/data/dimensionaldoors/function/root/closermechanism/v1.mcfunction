@@ -6,3 +6,9 @@ execute if block ~ ~ ~ minecraft:birch_door run function dimensionaldoors:root/c
 execute if block ~ ~ ~ minecraft:jungle_door run function dimensionaldoors:root/closermechanism/v1/jungle
 execute if block ~ ~ ~ minecraft:acacia_door run function dimensionaldoors:root/closermechanism/v1/acacia
 execute if block ~ ~ ~ minecraft:dark_oak_door run function dimensionaldoors:root/closermechanism/v1/darkoak
+
+# newer door versions
+function dimensionaldoors:root/closermechanism/v1/1.16
+function dimensionaldoors:root/closermechanism/v1/1.19
+function dimensionaldoors:root/closermechanism/v1/1.20
+function dimensionaldoors:root/closermechanism/v1/1.21
