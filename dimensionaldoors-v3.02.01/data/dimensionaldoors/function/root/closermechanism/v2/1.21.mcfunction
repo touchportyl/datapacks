@@ -8,3 +8,6 @@ execute if block ~ ~ ~ minecraft:waxed_copper_door run function dimensionaldoors
 execute if block ~ ~ ~ minecraft:waxed_exposed_copper_door run function dimensionaldoors:root/closermechanism/v2/waxedexposedcopper
 execute if block ~ ~ ~ minecraft:waxed_weathered_copper_door run function dimensionaldoors:root/closermechanism/v2/waxedweatheredcopper
 execute if block ~ ~ ~ minecraft:waxed_oxidized_copper_door run function dimensionaldoors:root/closermechanism/v2/waxedoxidizedcopper
+
+# 1.21.4 pale oak door (Winter Drop)
+execute if block ~ ~ ~ minecraft:pale_oak_door run function dimensionaldoors:root/closermechanism/v2/paleoak
