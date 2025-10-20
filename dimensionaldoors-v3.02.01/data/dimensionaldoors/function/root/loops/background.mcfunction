@@ -9,8 +9,8 @@ execute if entity @a[advancements={dimensionaldoors:adventure/find_conduit=true}
 execute as @e[tag=DD_portal] at @s run function dimensionaldoors:root/closermechanism/autoclose
 
 # tick down warp cooldown
-execute as @e if score @s DD_warpcooldown matches 1.. run scoreboard players remove @e DD_warpcooldown 1
-execute as @e if score @s DD_warpcooldown matches ..0 run scoreboard players reset @e DD_warpcooldown
+execute as @e if score @s DD_warpcooldown matches 1.. run scoreboard players remove @s DD_warpcooldown 1
+execute as @e if score @s DD_warpcooldown matches ..0 run scoreboard players reset @s DD_warpcooldown
 
 
 # loop

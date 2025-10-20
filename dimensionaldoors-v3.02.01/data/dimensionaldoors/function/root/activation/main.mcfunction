@@ -5,7 +5,7 @@ advancement grant @a[tag=DD_enter] only dimensionaldoors:adventure/dimensional_d
 function dimensionaldoors:effects/warppoint
 
 # tag close
-execute as @e[tag=DD_enter] at @s run tag @e[tag=DD_portal,sort=nearest,limit=1] add DD_close
+execute as @e[tag=DD_enter] at @s run tag @e[tag=DD_portal,distance=..2,sort=nearest,limit=1] add DD_close
 
 
 # warp direction detection
@@ -30,7 +30,7 @@ execute as @e[tag=DD_door404] at @s run function dimensionaldoors:effects/portal
 execute as @e[tag=DD_enter,tag=!DD_door404] at @s run tp @s ^ ^ ^1
 
 # play teleport and closing door sound
-execute as @e[tag=DD_enter,tag=!DD_door404] at @e[tag=DD_portal,sort=nearest,limit=1] run function dimensionaldoors:effects/teleporteffects
+execute as @e[tag=DD_enter,tag=!DD_door404] at @e[tag=DD_portal,distance=..2,sort=nearest,limit=1] run function dimensionaldoors:effects/teleporteffects
 
 # set warp cooldown (in seconds)
 scoreboard players add @e[tag=DD_enter] DD_warpcooldown 1

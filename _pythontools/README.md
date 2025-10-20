@@ -1,4 +1,4 @@
-# Datapack Manager Tool for Vanilla MC 1.21.8
+# Datapack Manager Tool for Vanilla MC 1.21.10
 - Code by [touchportyl](https://github.com/touchportyl/)
 
 # Features

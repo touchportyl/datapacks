@@ -14,7 +14,7 @@ execute if score VERSION$minecraft.current.minor DatapackManager matches 14..15 
 execute if score VERSION$minecraft.current.minor DatapackManager matches 16..20 if block ~ ~ ~ #minecraft:doors[powered=false] run function dimensionaldoors:root/closermechanism/v2
 
 # Minecraft 1.21 ++
-execute if score VERSION$minecraft.current DatapackManager matches 12100.. if block ~ ~ ~ #minecraft:doors[powered=false] run function dimensionaldoors:root/closermechanism/v1
+execute if score VERSION$minecraft.current.minor DatapackManager matches 21.. if block ~ ~ ~ #minecraft:doors[powered=false] run function dimensionaldoors:root/closermechanism/v1
 
 # cleanup
 tag @s remove DD_close

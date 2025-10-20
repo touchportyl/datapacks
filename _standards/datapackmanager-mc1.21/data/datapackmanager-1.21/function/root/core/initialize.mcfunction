@@ -8,7 +8,7 @@ function datapackmanager-1.21:root/core/cleanup
 
 # set the backward and forward compatible minecraft versions
 scoreboard players set VERSION$minecraft.backward DatapackManager 11404
-scoreboard players set VERSION$minecraft.forward DatapackManager 12108
+scoreboard players set VERSION$minecraft.forward DatapackManager 12110
 
 # check minecraft version
 function datapackmanager-1.21:packages/versioning/check

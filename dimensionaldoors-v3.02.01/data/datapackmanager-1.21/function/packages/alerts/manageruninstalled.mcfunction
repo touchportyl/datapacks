@@ -1,4 +1,4 @@
 # notify
-tellraw @s [{"text":"","color":"gold","hoverEvent":{"action":"show_text","value":"Alert from Datapack Manager"},"hover_event":{"action":"show_text","value":"Alert from Datapack Manager"}},{"text":" +"},{"text":" Datapack Manager ","color":"white","bold":true,"hoverEvent":{"action":"show_text","value":"Structured and standardized for all!"},"hover_event":{"action":"show_text","value":"Structured and standardized for all!"}},{"text":"mc1.21","color":"gray"},{"text":" > ","color":"white"},{"text":"There are no more datapacks managed by Datapack Manager. Uninstalling..."}]
+tellraw @a[tag=DM_admin] [{"text":"","color":"gold","hoverEvent":{"action":"show_text","value":"Alert from Datapack Manager"},"hover_event":{"action":"show_text","value":"Alert from Datapack Manager"}},{"text":" +"},{"text":" Datapack Manager ","color":"white","bold":true,"hoverEvent":{"action":"show_text","value":"Structured and standardized for all!"},"hover_event":{"action":"show_text","value":"Structured and standardized for all!"}},{"text":"mc1.21","color":"gray"},{"text":" > ","color":"white"},{"text":"There are no more datapacks managed by Datapack Manager. Uninstalling..."}]
 
-function datapackmanager-1.21:packages/effects/ui/jingle
+execute as @a[tag=DM_admin] at @s run function datapackmanager-1.21:packages/effects/ui/jingle

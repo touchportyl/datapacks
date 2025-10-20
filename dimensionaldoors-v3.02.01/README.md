@@ -1,4 +1,4 @@
-# Dimensional Doors v3.02.01 for Vanilla MC 1.14.X - 1.21.X
+# Dimensional Doors v3.02.01 for Vanilla MC 1.14 - 1.21.10
 - Code by [touchportyl](https://github.com/touchportyl/)
 - Help from [Pundus](https://github.com/pundus/)
 
@@ -12,7 +12,7 @@
 - Advancements for progression
 - Configuration menu with easy toggles
 - Full server & multiplayer support
-- Compatible with MC 1.14 to 1.21
+- Compatible with MC 1.14 to 1.21.10
 
 # How to use
 - Place a door down

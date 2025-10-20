@@ -8,13 +8,14 @@ from configparser import ConfigParser
 from pathlib import Path
 from threading import Thread, Lock
 import json
+import difflib
+import hashlib
 
 class DatapackManagerApp(tk.Tk):
   """
   Main application for the Datapack Manager Tool.
-  Built for Minecraft version 1.21.8.
   """
-  VERSION = "mc1.21.8"
+  VERSION = "mc1.21.10"
   
   def __init__(self):
     super().__init__()
@@ -1896,6 +1897,106 @@ class FrameworkUpdaterFrame(ttk.Frame):
       self.logger.log("Updater paths saved to settings")
     except Exception as e:
       self.logger.log(f"Error saving updater paths to settings: {e}", log_type='error')
+      
+  def compare_files(self, template_file, target_file):
+    """Compare two files and return diff information"""
+    try:
+      # First check if files exist and have different sizes/modification times
+      if not template_file.exists():
+        return {'status': 'missing_template', 'details': 'Template file does not exist'}
+      if not target_file.exists():
+        return {'status': 'missing_target', 'details': 'Target file does not exist'}
+        
+      # Quick check with file hashes for binary equivalence
+      def get_file_hash(filepath):
+        hash_md5 = hashlib.md5()
+        with open(filepath, "rb") as f:
+          for chunk in iter(lambda: f.read(4096), b""):
+            hash_md5.update(chunk)
+        return hash_md5.hexdigest()
+        
+      template_hash = get_file_hash(template_file)
+      target_hash = get_file_hash(target_file)
+      
+      if template_hash == target_hash:
+        return {'status': 'identical', 'details': 'Files are identical'}
+        
+      # Files are different, check if they're text files for diff
+      try:
+        with open(template_file, 'r', encoding='utf-8') as f:
+          template_lines = f.readlines()
+        with open(target_file, 'r', encoding='utf-8') as f:
+          target_lines = f.readlines()
+          
+        # Generate a simple diff summary
+        diff = list(difflib.unified_diff(
+          target_lines, template_lines,
+          fromfile=f'target/{target_file.name}',
+          tofile=f'template/{template_file.name}',
+          lineterm='', n=3
+        ))
+        
+        if diff:
+          # Count changes
+          additions = sum(1 for line in diff if line.startswith('+') and not line.startswith('+++'))
+          deletions = sum(1 for line in diff if line.startswith('-') and not line.startswith('---'))
+          return {
+            'status': 'different',
+            'details': f'+{additions} -{deletions} lines',
+            'diff_lines': len(diff)
+          }
+        else:
+          return {'status': 'identical', 'details': 'Files are identical'}
+          
+      except UnicodeDecodeError:
+        # Binary file, just report as different
+        template_size = template_file.stat().st_size
+        target_size = target_file.stat().st_size
+        return {
+          'status': 'different_binary',
+          'details': f'Binary files differ (template: {template_size}B, target: {target_size}B)'
+        }
+        
+    except Exception as e:
+      return {'status': 'error', 'details': f'Error comparing files: {e}'}
+      
+  def analyze_folder_differences(self, template_folder, target_folder):
+    """Analyze differences between template and target folders"""
+    differences = {
+      'identical': 0,
+      'different': 0,
+      'missing_in_target': 0,
+      'different_files': [],
+      'missing_files': []
+    }
+    
+    try:
+      # Get all files in template folder
+      template_files = {f.relative_to(template_folder): f for f in template_folder.rglob('*') if f.is_file()}
+      target_files = {f.relative_to(target_folder): f for f in target_folder.rglob('*') if f.is_file()}
+      
+      # Compare files that exist in template
+      for rel_path, template_file in template_files.items():
+        if rel_path in target_files:
+          target_file = target_files[rel_path]
+          comparison = self.compare_files(template_file, target_file)
+          
+          if comparison['status'] == 'identical':
+            differences['identical'] += 1
+          else:
+            differences['different'] += 1
+            differences['different_files'].append({
+              'path': str(rel_path),
+              'comparison': comparison
+            })
+        else:
+          differences['missing_in_target'] += 1
+          differences['missing_files'].append(str(rel_path))
+          
+    except Exception as e:
+      self.logger.log(f"Error analyzing folder differences: {e}", log_type='error')
+      
+    return differences
     
   def setup_ui(self):
     """Setup the user interface for the updater tab"""
@@ -2064,9 +2165,57 @@ class FrameworkUpdaterFrame(ttk.Frame):
       
       self.preview_text.insert(tk.END, f"Framework folders to update ({len(folders_to_update)}):\n")
       self.preview_text.insert(tk.END, "=" * 50 + "\n")
+      
+      # Analyze differences for each folder
+      total_different_files = 0
+      total_identical_files = 0
+      total_missing_files = 0
+      
       for rel_path, template_folder, target_folder in folders_to_update:
-        file_count = sum(1 for _ in template_folder.rglob('*') if _.is_file())
-        self.preview_text.insert(tk.END, f"  {rel_path} - {file_count} files\n")
+        self.preview_text.insert(tk.END, f"\n{rel_path}:\n")
+        
+        # Analyze folder differences
+        differences = self.analyze_folder_differences(template_folder, target_folder)
+        
+        total_different_files += differences['different']
+        total_identical_files += differences['identical']
+        total_missing_files += differences['missing_in_target']
+        
+        # Display summary
+        if differences['different'] > 0:
+          self.preview_text.insert(tk.END, f"  ⚠️  {differences['different']} files to update\n")
+        if differences['missing_in_target'] > 0:
+          self.preview_text.insert(tk.END, f"  ➕ {differences['missing_in_target']} files to add\n")
+        if differences['identical'] > 0:
+          self.preview_text.insert(tk.END, f"  ✅ {differences['identical']} files already up-to-date\n")
+          
+        # Show details for different files (limit to avoid overwhelming output)
+        if differences['different_files']:
+          shown_files = differences['different_files'][:5]  # Show max 5 files
+          for file_info in shown_files:
+            status_symbol = "🔄" if file_info['comparison']['status'] == 'different' else "⚠️"
+            self.preview_text.insert(tk.END, f"    {status_symbol} {file_info['path']} - {file_info['comparison']['details']}\n")
+          
+          if len(differences['different_files']) > 5:
+            remaining = len(differences['different_files']) - 5
+            self.preview_text.insert(tk.END, f"    ... and {remaining} more files\n")
+            
+        # Show missing files (limit to avoid overwhelming output)
+        if differences['missing_files']:
+          shown_missing = differences['missing_files'][:3]  # Show max 3 files
+          for missing_file in shown_missing:
+            self.preview_text.insert(tk.END, f"    ➕ {missing_file} (new)\n")
+          
+          if len(differences['missing_files']) > 3:
+            remaining = len(differences['missing_files']) - 3
+            self.preview_text.insert(tk.END, f"    ... and {remaining} more new files\n")
+      
+      # Add summary
+      if folders_to_update:
+        self.preview_text.insert(tk.END, f"\nSUMMARY:\n")
+        self.preview_text.insert(tk.END, f"Files to update: {total_different_files}\n")
+        self.preview_text.insert(tk.END, f"Files to add: {total_missing_files}\n")
+        self.preview_text.insert(tk.END, f"Files up-to-date: {total_identical_files}\n")
         
       if folders_missing_in_template:
         self.preview_text.insert(tk.END, f"\nFolders missing in template ({len(folders_missing_in_template)}):\n")
