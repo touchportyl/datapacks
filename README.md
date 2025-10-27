@@ -7,12 +7,14 @@ There are 2 main branches, each at different levels of completion.
 New dev branches can be created from staging which holds everything from bugs to unfinished features.
 
 There are 6 folders sorting all my code in various levels of progress.
-- Released: Contains .zip files that are released publicly
-- Ready for release: Working datapacks that are fully updated to the latest version
-- Requires update: Working datapacks that requires an update
-- Work in progress: Datapacks that are currently being worked on
-- Concepts: Unfinished conceptual datapacks
-- Archived: Old code for reference whenever needed
+- Released: Contains all the working datapacks that have been released publicly.
+- Ready for release: Working datapacks that are fully updated to the latest version, but have not been released publicly yet.
+- Requires update: Already working datapacks that requires an update to the latest version of Minecraft.
+- Work in progress: Datapacks that don't work and are currently being worked on.
+- Concepts: Unfinished conceptual datapacks in early stage testing.
+- Archived: Old code for reference whenever needed.
+
+A 7th non-numbered folder has been added for storing all distributables, aptly named "dist", which contains .zip files that are released publicly.
 
 Use the Datapack Manager Tool to speed up certain common actions and help with debugging.
 
