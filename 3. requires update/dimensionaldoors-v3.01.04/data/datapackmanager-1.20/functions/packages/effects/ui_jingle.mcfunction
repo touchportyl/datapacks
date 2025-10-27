@@ -1,1 +1,0 @@
-execute as @a at @s run playsound minecraft:entity.player.levelup player @s ~ ~ ~ 1 2 1

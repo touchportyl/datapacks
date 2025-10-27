@@ -1,0 +1,1 @@
+particle minecraft:item{"item":"minecraft:copper_hoe"} ~ ~1.35 ~ 0 0 0 0.12 7 normal

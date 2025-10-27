@@ -1,0 +1,1 @@
+execute as @a at @s if predicate harvester:player_checkers/is_sneaking align xz positioned ~0.5 ~ ~0.5 run function harvester:root/inventory/hoe
