@@ -783,6 +783,33 @@ class DatapackExplorerFrame(ttk.Frame):
                                           command=self.display_filtered_datapacks)
     self.archived_checkbox.pack(side="left", padx=(5, 0))
 
+    # --- Two-row tab filter area ---
+    # Top row: folder/stage filters (e.g., released, work in progress, archived)
+    # Second row: datapack filters (group by display title / same-name grouping)
+    self.current_stage_filter = None  # None or stage key string (lowercase), 'all' means no stage filter
+    self.current_datapack_filter = None  # None or normalized key for datapack grouping
+    self.datapack_choice_to_key = {}  # maps dropdown label -> normalized key
+
+    self.tabs_frame = ttk.Frame(self)
+    self.tabs_frame.pack(fill="x", padx=10, pady=(5, 0))
+
+    # Stage notebook (top row)
+    self.stage_notebook = ttk.Notebook(self.tabs_frame)
+    self.stage_notebook.pack(fill="x")
+    # Ensure there's always an 'All' tab
+    all_stage_frame = ttk.Frame(self.stage_notebook)
+    self.stage_notebook.add(all_stage_frame, text="All")
+    self.stage_notebook.bind("<<NotebookTabChanged>>", lambda e: self._on_stage_tab_changed(e))
+
+    # Datapack selector (second row) - replace tabs with a dropdown for grouping
+    dp_select_frame = ttk.Frame(self.tabs_frame)
+    dp_select_frame.pack(fill="x")
+    ttk.Label(dp_select_frame, text="Datapack:").pack(side="left")
+    self.datapack_choice_var = tk.StringVar()
+    self.datapack_combo = ttk.Combobox(dp_select_frame, textvariable=self.datapack_choice_var, state="readonly", values=["All"])
+    self.datapack_combo.pack(side="left", fill="x", expand=True, padx=(5, 0))
+    self.datapack_combo.bind("<<ComboboxSelected>>", lambda e: self._on_datapack_selected(e))
+
     # --- Scrollable frame for datapack list ---
     self.canvas = tk.Canvas(self, borderwidth=0)
     self.scrollbar = ttk.Scrollbar(self, orient="vertical", command=self.canvas.yview)
@@ -887,6 +914,11 @@ class DatapackExplorerFrame(ttk.Frame):
     self.all_datapack_info.sort(key=lambda x: (x['status_tag'] != 'active', x['display_title'].lower()))
     
     # Display filtered results
+    # Build datapack tabs (second row) and then display
+    try:
+      self._build_datapack_tabs()
+    except Exception:
+      pass
     self.display_filtered_datapacks()
 
   def display_filtered_datapacks(self):
@@ -899,11 +931,27 @@ class DatapackExplorerFrame(ttk.Frame):
       tk.Label(self.datapack_list_frame, text="No datapacks found in the selected directory.", font=(None, 12)).pack(pady=10)
       return
     
-    # Filter datapacks based on archived checkbox
+    # Filter datapacks based on archived checkbox, stage notebook and datapack notebook
     filtered_datapacks = []
     for info in self.all_datapack_info:
+      # archived checkbox still overrides
       if info['status_tag'] == 'archived' and not self.show_archived_var.get():
-        continue  # Skip archived if not showing them
+        continue
+
+      # Stage filter (top notebook)
+      if self.current_stage_filter:
+        # Normalize stage key and info status
+        sel = self.current_stage_filter.lower()
+        info_status = (info.get('status_tag') or '').lower()
+        if sel != info_status:
+          continue
+
+      # Datapack filter (second notebook): compare using normalized key
+      if self.current_datapack_filter:
+        title_norm = re.sub(r'[^A-Za-z]+', '', info.get('display_title', '')).lower()
+        if title_norm != self.current_datapack_filter:
+          continue
+
       filtered_datapacks.append(info)
     
     if not filtered_datapacks:
@@ -914,6 +962,118 @@ class DatapackExplorerFrame(ttk.Frame):
     # Display filtered datapacks
     for info in filtered_datapacks:
       self._display_datapack_info(info)
+
+  # --- New: two-row tab support and callbacks ---
+  def _build_stage_tabs(self):
+    """Populate the top stage notebook based on detected stage_folders."""
+    # Clear existing tabs
+    for tab_id in list(self.stage_notebook.tabs()):
+      self.stage_notebook.forget(tab_id)
+
+    # Always have 'All' first
+    all_frame = ttk.Frame(self.stage_notebook)
+    self.stage_notebook.add(all_frame, text="All")
+
+    # Add detected stages sorted by their numeric prefix in the folder name (e.g., '1. released')
+    def _extract_number(folder_name):
+      m = re.match(r'^(\d+)\.', folder_name.strip())
+      if m:
+        return int(m.group(1))
+      return 9999
+
+    # stage_folders maps stage_key -> folder_name (e.g., 'released' -> '1. released')
+    items = list(self.stage_folders.items())
+    items.sort(key=lambda kv: _extract_number(kv[1]))
+    for stage_key, folder_name in items:
+      frame = ttk.Frame(self.stage_notebook)
+      # Use folder display (without the numeric prefix) for nicer tab labels when possible
+      label = re.sub(r'^\d+\.\s*', '', folder_name).title() if folder_name else stage_key.title()
+      self.stage_notebook.add(frame, text=label)
+
+    # Reset filter
+    self.current_stage_filter = None
+    self.stage_notebook.select(0)
+
+  def _build_datapack_tabs(self):
+    """Populate the datapack dropdown with grouped names.
+
+    Groups are created by normalizing display titles to letters-only lowercase.
+    """
+    def _normalize(name):
+      return re.sub(r'[^A-Za-z]+', '', (name or '')).lower()
+
+    groups = {}
+    if self.all_datapack_info:
+      for info in self.all_datapack_info:
+        title = info.get('display_title', '')
+        key = _normalize(title)
+        groups.setdefault(key, []).append(title)
+
+    # Build choices list for the combobox (start with 'All')
+    # Display the human-readable extracted display title as the dropdown label
+    # while mapping that label back to the normalized key used for filtering.
+    choices = ['All']
+    self.datapack_choice_to_key = {}
+
+    for key in sorted(groups.keys()):
+      # Choose a representative display title for this group (first occurrence)
+      rep_title = groups[key][0] if groups.get(key) else key
+
+      # Strip common version suffixes from the representative title so the
+      # dropdown shows the extracted name without the version. Handle cases
+      # like:
+      #   - 'My Datapack [v1.02.00]'
+      #   - 'MyDatapack-v1.02.00' or 'MyDatapack v1.02.00'
+      rep_clean = rep_title
+      # Remove bracketed version: [v1.02.00] or [1.02.00]
+      rep_clean = re.sub(r"\s*\[v?\d+\.\d+\.\d+\]$", "", rep_clean)
+      # Remove hyphen/space/underscore version suffix: -v1.02.00 or v1.02.00
+      rep_clean = re.sub(r"[-_\s]*v?\d+\.\d+\.\d+$", "", rep_clean)
+      rep_clean = rep_clean.strip()
+
+      # Use the cleaned representative title for display but map back to the
+      # normalized key for filtering.
+      display_label = rep_clean if rep_clean else key
+      choices.append(display_label)
+      self.datapack_choice_to_key[display_label] = key
+
+    try:
+      self.datapack_combo['values'] = choices
+      self.datapack_choice_var.set('All')
+    except Exception:
+      # If the combobox isn't available (rare), quietly continue
+      pass
+
+    self.current_datapack_filter = None
+
+  def _on_stage_tab_changed(self, event):
+    try:
+      widget = event.widget
+      tab_id = widget.select()
+      tab_text = widget.tab(tab_id, 'text')
+      if tab_text.lower() == 'all':
+        self.current_stage_filter = None
+      else:
+        # normalize to match keys in stage_folders
+        self.current_stage_filter = tab_text.lower()
+      self.display_filtered_datapacks()
+    except Exception:
+      pass
+
+  def _on_datapack_selected(self, event):
+    try:
+      choice = self.datapack_choice_var.get()
+      if choice == 'All' or not choice:
+        self.current_datapack_filter = None
+      else:
+        # Map the displayed choice back to the normalized key
+        norm = self.datapack_choice_to_key.get(choice)
+        if not norm:
+          norm = re.sub(r'[^A-Za-z]+', '', choice).lower()
+        self.current_datapack_filter = norm
+      self.display_filtered_datapacks()
+    except Exception:
+      pass
   def _process_datapack_info(self, datapack_path):
     """Process a single datapack and return its information dictionary."""
     # Get the full folder name, e.g., 'DimensionalDoors-v3.01.04'
@@ -1098,8 +1258,8 @@ class DatapackExplorerFrame(ttk.Frame):
       # The Status dropdown (excluding 'released' since that's handled by the release button)
       status_var = tk.StringVar(value=info['status_tag'])
       
-      # Use dynamically detected stage folders for dropdown values, excluding 'released' and 'active'
-      dropdown_values = [k for k in self.stage_folders.keys() if k not in ['released', 'active']]
+      # Use dynamically detected stage folders for dropdown values, excluding 'active'
+      dropdown_values = [k for k in self.stage_folders.keys() if k not in ['active']]
       # Remove 'archived' if not showing archived datapacks
       if not self.show_archived_var.get() and 'archived' in dropdown_values:
         dropdown_values = [v for v in dropdown_values if v != 'archived']
@@ -1179,6 +1339,11 @@ class DatapackExplorerFrame(ttk.Frame):
             self.stage_folders['archived'] = item
       
       self.logger.log(f"Detected stage folders: {list(self.stage_folders.keys())}", log_type='info')
+      # Build the top stage tabs now that we know stage folders
+      try:
+        self._build_stage_tabs()
+      except Exception:
+        pass
       
     except Exception as e:
       self.logger.log(f"Error detecting stage folders: {e}", log_type='error')
@@ -1191,6 +1356,10 @@ class DatapackExplorerFrame(ttk.Frame):
         'concepts': '5. concepts',
         'archived': '6. archived'
       }
+      try:
+        self._build_stage_tabs()
+      except Exception:
+        pass
 
   def _move_datapack_to_folder(self, datapack_path, new_status):
     """Move a datapack to the appropriate development stage folder."""
