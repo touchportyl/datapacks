@@ -9,7 +9,7 @@
 - Ugly
 
 # Future updates
-- Tool for automatically installing newer versions of datapack manager into old packs.
+- Tool for automatically installing newer versions of datapack manager into old packs. (partially done)
 - Suggestions welcome!
 
 
