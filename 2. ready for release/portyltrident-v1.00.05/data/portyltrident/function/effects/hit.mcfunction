@@ -1,5 +1,5 @@
 particle explosion_emitter ~ ~ ~ 0 0 0 0 1 force
-particle flash ~ ~ ~ 0 0 0 0 1 force
+particle flash{color:[1,1,1,1]} ~ ~ ~ 0 0 0 0 1 force
 
 particle firework ~ ~1 ~ 1 1 1 0.5 100 force
 particle electric_spark ~ ~1 ~ 3 3 3 1 100 force

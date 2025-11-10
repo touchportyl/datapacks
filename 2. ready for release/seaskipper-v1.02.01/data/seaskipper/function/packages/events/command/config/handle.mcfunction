@@ -1,0 +1,1 @@
+scoreboard players set EVENT$command.config.handled DatapackManager 1

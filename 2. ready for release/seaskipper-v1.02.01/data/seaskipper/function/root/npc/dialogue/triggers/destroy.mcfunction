@@ -1,0 +1,5 @@
+# destroy triggers
+scoreboard objectives remove z_ss_dlg_0001
+scoreboard objectives remove z_ss_dlg_0002
+scoreboard objectives remove z_ss_dlg_0003
+scoreboard objectives remove z_ss_dlg_0004
