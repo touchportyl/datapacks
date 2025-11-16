@@ -1,1 +1,0 @@
-function datapackmanager-1.21:packages/alerts/minecraftversion

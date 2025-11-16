@@ -1,5 +1,5 @@
 # notify
-tellraw @a [{"text":"","color":"gray"},{"text":" + ","color":"green"},{"text":"Around The World","color":"white"},{"text":" >","color":"white"},{"text":" Initialized."}]
+tellraw @a [{"text":"","color":"gray"},{"text":" + ","color":"green"},{"text":"Around The World","color":"aqua"},{"text":" >","color":"white"},{"text":" Initialized."}]
 
 # install
 # only install if hasn't been installed before

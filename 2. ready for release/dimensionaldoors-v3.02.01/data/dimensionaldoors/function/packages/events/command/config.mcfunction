@@ -4,7 +4,7 @@ execute unless entity @a[tag=DD_command_config] run scoreboard players operation
 
 execute as @s run function dimensionaldoors:packages/configtriggers/enable
 
-tellraw @s [{"text":" "},{"text":"Dimensional Doors","color":"white","bold":true},{"text":"\n"}]
+tellraw @s [{"text":" "},{"text":"Dimensional Doors","color":"light_purple","bold":true},{"text":"\n"}]
 
 #tellraw @s [{"text":" "},{"text":"Nothing to configure.","color":"gray"}]
 

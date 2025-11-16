@@ -1,1 +1,0 @@
-scoreboard players operation LOOP$eventlisteners.isActive Harvester = BOOL$false DatapackManager

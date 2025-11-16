@@ -1,6 +1,6 @@
 # create master scoreboard
 # WARNING: THIS COMMAND MUST RUN BEFORE ANYTHING ELSE
-scoreboard objectives add AroundTheWorld dummy
+scoreboard objectives add AroundTheWorld dummy [{"text":"Around The World","color":"aqua"}]
 
 # increment the datapack counter
 function datapackmanager-1.21:root/datapackcounter/increment

@@ -14,7 +14,7 @@ scoreboard objectives add DD_warpcooldown dummy [{"text":"Warp Cooldown","color"
 
 # create config triggers
 function dimensionaldoors:packages/configtriggers/create
-scoreboard players operation CONFIG$disableparticles DimensionalDoors = BOOL$false DatapackManager
+scoreboard players operation CONFIG$disableparticles DimensionalDoors = CONFIG$performance DimensionalDoors
 
 
 

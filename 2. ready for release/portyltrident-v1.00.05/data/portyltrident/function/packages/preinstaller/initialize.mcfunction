@@ -1,5 +1,5 @@
 # notify
-tellraw @a [{"text":"","color":"gray"},{"text":" + ","color":"green"},{"text":"Portyl Trident","color":"white"},{"text":" >","color":"white"},{"text":" Initialized."}]
+tellraw @a [{"text":"","color":"gray"},{"text":" + ","color":"green"},{"text":"Portyl Trident","color":"light_purple"},{"text":" >","color":"white"},{"text":" Initialized."}]
 
 # install
 # only install if hasn't been installed before

@@ -1,6 +1,6 @@
 # create master scoreboard
 # WARNING: THIS COMMAND MUST RUN BEFORE ANYTHING ELSE
-scoreboard objectives add PortylTrident dummy
+scoreboard objectives add PortylTrident dummy [{"text":"Portyl Trident","color":"light_purple"}]
 
 # increment the datapack counter
 function datapackmanager-1.21:root/datapackcounter/increment

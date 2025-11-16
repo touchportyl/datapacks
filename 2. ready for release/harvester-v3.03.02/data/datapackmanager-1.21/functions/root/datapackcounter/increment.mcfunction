@@ -1,1 +1,0 @@
-scoreboard players add COUNT$datapacks DatapackManager 1

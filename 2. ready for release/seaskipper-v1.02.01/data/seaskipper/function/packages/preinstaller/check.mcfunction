@@ -1,6 +1,6 @@
 # create master scoreboard
 # WARNING: THIS COMMAND MUST RUN BEFORE ANYTHING ELSE
-scoreboard objectives add Seaskipper dummy
+scoreboard objectives add Seaskipper dummy [{"text":"Seaskipper","color":"aqua"}]
 
 # increment the datapack counter
 function datapackmanager-1.21:root/datapackcounter/increment

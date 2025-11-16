@@ -1,5 +1,5 @@
 # notify
-tellraw @a [{"text":"","color":"gray"},{"text":" + ","color":"green"},{"text":"Dimensional Doors","color":"white"},{"text":" >","color":"white"},{"text":" Installed."}]
+tellraw @a [{"text":"","color":"gray"},{"text":" + ","color":"green"},{"text":"Dimensional Doors","color":"light_purple"},{"text":" >","color":"white"},{"text":" Installed."}]
 
 # load the default config
 function dimensionaldoors:defaultconfig

@@ -1,6 +1,6 @@
 # create master scoreboard
 # WARNING: THIS COMMAND MUST RUN BEFORE ANYTHING ELSE
-scoreboard objectives add DimensionalDoors dummy
+scoreboard objectives add DimensionalDoors dummy [{"text":"Dimensional Doors","color":"light_purple"}]
 
 # increment the datapack counter
 function datapackmanager-1.21:root/datapackcounter/increment

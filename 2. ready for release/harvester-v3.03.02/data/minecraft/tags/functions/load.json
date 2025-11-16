@@ -1,7 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "datapackmanager-1.21:root/core/load",
-    "harvester:packages/preinstaller/load"
-  ]
-}
