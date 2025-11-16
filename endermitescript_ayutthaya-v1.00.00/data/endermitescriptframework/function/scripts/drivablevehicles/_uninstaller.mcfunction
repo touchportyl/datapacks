@@ -1,0 +1,5 @@
+scoreboard objectives remove ESF_vehicleID
+scoreboard objectives remove ESF_vSpeed
+scoreboard objectives remove ESF_vSpeed_
+scoreboard objectives remove ESF_vTurnAngle
+scoreboard objectives remove ESF_vTurnAngle_

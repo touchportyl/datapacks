@@ -1,0 +1,6 @@
+function endermitescriptframework:scripts/trafficlight/_unload
+
+function endermitescriptframework:scripts/trafficlight/loops/straight/1
+function endermitescriptframework:scripts/trafficlight/loops/x/1
+
+function endermitescriptframework:scripts/trafficlight/loops/blinker

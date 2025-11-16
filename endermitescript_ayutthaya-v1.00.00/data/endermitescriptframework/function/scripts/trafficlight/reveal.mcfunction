@@ -1,0 +1,2 @@
+execute as @e[tag=trafficlight,distance=..10] at @s run particle firework ~ ~0.5 ~ 0 0 0 0.2 100
+execute as @e[tag=trafficlight,distance=..10] at @s run playsound entity.experience_orb.pickup master @a[distance=..10] ~ ~0.5 ~ 1 1 0

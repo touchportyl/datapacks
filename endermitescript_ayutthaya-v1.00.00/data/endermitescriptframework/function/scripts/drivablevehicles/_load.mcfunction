@@ -1,0 +1,8 @@
+function endermitescriptframework:scripts/drivablevehicles/_unload
+
+# register new vehicles here
+function endermitescriptframework:scripts/drivablevehicles/vehicles/ground/cabriolet/config
+function endermitescriptframework:scripts/drivablevehicles/vehicles/ground/cruzer/config
+
+function endermitescriptframework:scripts/drivablevehicles/loops/update
+function endermitescriptframework:scripts/drivablevehicles/loops/update_3t

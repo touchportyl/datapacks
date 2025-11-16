@@ -1,0 +1,2 @@
+schedule clear endermitescriptframework:scripts/blinkingredstonelamp/loops/lit
+schedule clear endermitescriptframework:scripts/blinkingredstonelamp/loops/unlit

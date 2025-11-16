@@ -1,0 +1,2 @@
+scoreboard players operation ESF$tmp ESF_vehicleID = @s ESF_vehicleID
+execute as @e[tag=vehicle_seat,tag=has_uid] if score @s ESF_vehicleID = ESF$tmp ESF_vehicleID at @s if score @s ESF_vSpeed_ matches ..-1 run function endermitescriptframework:scripts/drivablevehicles/movement/ground/backward_step

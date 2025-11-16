@@ -1,0 +1,8 @@
+# lock parts to root — dispatch per root
+execute as @e[tag=cabriolet_root,tag=has_uid] at @s run function endermitescriptframework:scripts/drivablevehicles/vehicles/ground/cabriolet/lock_parts_to_root
+
+# lock interaction to seat — dispatch per seat
+execute as @e[tag=cabriolet_seat,tag=has_uid] at @s run function endermitescriptframework:scripts/drivablevehicles/vehicles/ground/cabriolet/lock_interactions_to_seat
+
+# lock root to seat — dispatch per seat (root follows seat)
+execute as @e[tag=cabriolet_seat,tag=has_uid] at @s run function endermitescriptframework:scripts/drivablevehicles/vehicles/ground/cabriolet/lock_root_to_seat

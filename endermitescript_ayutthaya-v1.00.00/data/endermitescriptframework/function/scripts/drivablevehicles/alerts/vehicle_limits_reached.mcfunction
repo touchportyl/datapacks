@@ -1,0 +1,1 @@
+tellraw @s [{"text":"[!] ","color":"red"},{"text":"Endermite Script Framework","color":"light_purple"},{"text":" >","color":"white"},{"text":" Vehicle limit reached!"}]
