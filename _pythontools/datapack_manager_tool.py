@@ -1508,6 +1508,20 @@ class DatapackExplorerFrame(ttk.Frame):
       
       self.logger.log(f"Successfully created: '{zip_base_name}.zip'", log_type='success')
 
+      # After successfully creating the release archive, attempt to trim
+      # cloned folders (those with 's' suffix) from the datapack so we
+      # don't leave temporary cloned folders behind. Use the internal
+      # method to avoid prompting the user again.
+      try:
+        trimmed = self._perform_folder_trimming(datapack_path)
+        if trimmed:
+          self.logger.log("Trimmed cloned folders after release.", log_type='info')
+        else:
+          self.logger.log("No cloned folders found to trim after release.", log_type='info')
+      except Exception as e:
+        self.logger.log(f"Error trimming cloned folders after release: {e}", log_type='error')
+
+
     except Exception as e:
       self.logger.log(f"Error during zipping: {e}", log_type='error')
       
