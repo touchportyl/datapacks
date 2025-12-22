@@ -1,0 +1,1 @@
+execute as @a[tag=RE_locked] at @s run function racetotheend:playerlock/unlock

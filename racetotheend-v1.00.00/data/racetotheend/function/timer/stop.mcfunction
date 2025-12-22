@@ -1,0 +1,1 @@
+schedule clear racetotheend:timer/update

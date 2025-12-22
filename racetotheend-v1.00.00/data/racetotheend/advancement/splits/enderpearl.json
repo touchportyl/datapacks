@@ -1,0 +1,28 @@
+{
+  "display": {
+    "title": "Collect Ender Pearls",
+    "description": "Obtain an Ender Pearl through any means.",
+    "icon": {
+      "id": "minecraft:ender_pearl"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "racetotheend:splits/bastion",
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:ender_pearl"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "function": "racetotheend:splits/enderpearl"
+  }
+}

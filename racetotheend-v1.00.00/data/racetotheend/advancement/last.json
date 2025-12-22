@@ -1,0 +1,23 @@
+{
+  "display": {
+    "title": "Thanks for playing!",
+    "description": "This datapack was created by touchportyl.",
+    "icon": {
+      "id": "minecraft:player_head",
+      "components": {
+        "minecraft:profile": {
+          "name": "touchportyl"
+        }
+      }
+    },
+    "frame": "challenge",
+    "show_toast": false,
+    "announce_to_chat": false
+  },
+  "parent": "racetotheend:splits/killdragon",
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}

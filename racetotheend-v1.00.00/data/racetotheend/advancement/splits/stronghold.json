@@ -1,0 +1,21 @@
+{
+  "display": {
+    "title": "Locate the Stronghold",
+    "description": "Find the Stronghold in the Overworld by using an Eye of Ender.",
+    "icon": {
+      "id": "minecraft:ender_eye"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "racetotheend:splits/blazerod",
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:used_ender_eye"
+    }
+  },
+  "rewards": {
+    "function": "racetotheend:splits/stronghold"
+  }
+}

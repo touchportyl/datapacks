@@ -1,0 +1,23 @@
+{
+  "display": {
+    "title": "Entered Overworld",
+    "description": "Detects when the player enters the Overworld.",
+    "icon": {
+      "id": "minecraft:grass_block"
+    },
+    "show_toast": false,
+    "announce_to_chat": false
+  },
+  "parent": "racetotheend:root",
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "minecraft:overworld"
+      }
+    }
+  },
+  "rewards": {
+    "function": "racetotheend:dimensiontracker/triggers/overworld"
+  }
+}

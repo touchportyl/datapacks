@@ -1,0 +1,23 @@
+{
+  "display": {
+    "title": "Entered The End",
+    "description": "Detects when the player enters the End.",
+    "icon": {
+      "id": "minecraft:end_portal_frame"
+    },
+    "show_toast": false,
+    "announce_to_chat": false
+  },
+  "parent": "racetotheend:root",
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "minecraft:the_end"
+      }
+    }
+  },
+  "rewards": {
+    "function": "racetotheend:dimensiontracker/triggers/the_end"
+  }
+}

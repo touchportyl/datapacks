@@ -1,0 +1,24 @@
+{
+  "display": {
+    "title": "Enter the End",
+    "description": "Activate the End Portal and enter the End dimension.",
+    "icon": {
+      "id": "minecraft:end_portal_frame"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "racetotheend:splits/stronghold",
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "minecraft:the_end"
+      }
+    }
+  },
+  "rewards": {
+    "function": "racetotheend:splits/end"
+  }
+}

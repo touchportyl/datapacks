@@ -1,0 +1,18 @@
+{
+  "display": {
+    "title": "Race to the End",
+    "description": "Be the first to reach the End and get the last hit on the Ender Dragon to win!",
+    "icon": {
+      "id": "minecraft:dragon_head"
+    },
+    "background": "minecraft:block/stone_bricks",
+    "frame": "challenge",
+    "show_toast": false,
+    "announce_to_chat": false
+  },
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}

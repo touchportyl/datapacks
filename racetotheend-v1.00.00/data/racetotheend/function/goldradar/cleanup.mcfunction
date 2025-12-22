@@ -1,0 +1,1 @@
+execute as @e[tag=RE_goldradar] at @s run function racetotheend:goldradar/despawn

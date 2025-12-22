@@ -1,0 +1,1 @@
+playsound minecraft:block.note_block.pling master @s ~ ~ ~ 0.4 0.6 0.4

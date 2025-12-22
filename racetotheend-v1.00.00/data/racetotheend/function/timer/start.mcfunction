@@ -1,0 +1,1 @@
+schedule function racetotheend:timer/update 1t

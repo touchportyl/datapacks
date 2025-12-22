@@ -1,0 +1,26 @@
+{
+  "display": {
+    "title": "Slay the Ender Dragon",
+    "description": "Get the last hit on the Ender Dragon to win!",
+    "icon": {
+      "id": "minecraft:dragon_head"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "racetotheend:splits/end",
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:ender_dragon"
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "racetotheend:splits/killdragon"
+  }
+}

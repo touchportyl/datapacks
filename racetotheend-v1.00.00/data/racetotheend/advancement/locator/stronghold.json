@@ -1,0 +1,20 @@
+{
+  "display": {
+    "title": "Ender Eye Used",
+    "description": "Detects when an Ender Eye is used.",
+    "icon": {
+      "id": "minecraft:ender_eye"
+    },
+    "show_toast": false,
+    "announce_to_chat": false
+  },
+  "parent": "racetotheend:root",
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:used_ender_eye"
+    }
+  },
+  "rewards": {
+    "function": "racetotheend:locator/stronghold/trigger"
+  }
+}

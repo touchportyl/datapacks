@@ -1,0 +1,18 @@
+{
+  "display": {
+    "title": "Start",
+    "description": "The run has begun! Good luck!",
+    "icon": {
+      "id": "minecraft:grass_block"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "racetotheend:root",
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

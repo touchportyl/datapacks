@@ -1,0 +1,28 @@
+{
+  "display": {
+    "title": "Collect Blaze Rods",
+    "description": "Obtain a Blaze Rod from a Blaze in a Nether Fortress.",
+    "icon": {
+      "id": "minecraft:blaze_rod"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "racetotheend:splits/fortress",
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:blaze_rod"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "function": "racetotheend:splits/blazerod"
+  }
+}
