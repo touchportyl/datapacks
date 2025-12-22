@@ -1,0 +1,11 @@
+# timer
+scoreboard players add @s AroundTheWorld 1
+
+# move 1 step
+execute if score @s AroundTheWorld >= CONFIG$generation.delay AroundTheWorld as @s at @s run function aroundtheworld:root/generate/step_border
+
+# display actionbar - show /138 for sections 0 and 2, /75 for sections 1 and 3
+execute if score TRACKER$borders.section AroundTheWorld matches 0 run title @s actionbar [{"text":"","color":"gold"},{"text":"- ["},{"score":{"name":"@s","objective":"AroundTheWorld"}},{"text":"/"},{"score":{"name":"CONFIG$generation.delay","objective":"AroundTheWorld"}},{"text":"] ["},{"score":{"name":"TRACKER$borders.section","objective":"AroundTheWorld"},"bold":true},{"text":"/4] ["},{"score":{"name":"TRACKER$borders.step","objective":"AroundTheWorld"},"bold":true},{"text":"/138] -"}]
+execute if score TRACKER$borders.section AroundTheWorld matches 1 run title @s actionbar [{"text":"","color":"gold"},{"text":"- ["},{"score":{"name":"@s","objective":"AroundTheWorld"}},{"text":"/"},{"score":{"name":"CONFIG$generation.delay","objective":"AroundTheWorld"}},{"text":"] ["},{"score":{"name":"TRACKER$borders.section","objective":"AroundTheWorld"},"bold":true},{"text":"/4] ["},{"score":{"name":"TRACKER$borders.step","objective":"AroundTheWorld"},"bold":true},{"text":"/75] -"}]
+execute if score TRACKER$borders.section AroundTheWorld matches 2 run title @s actionbar [{"text":"","color":"gold"},{"text":"- ["},{"score":{"name":"@s","objective":"AroundTheWorld"}},{"text":"/"},{"score":{"name":"CONFIG$generation.delay","objective":"AroundTheWorld"}},{"text":"] ["},{"score":{"name":"TRACKER$borders.section","objective":"AroundTheWorld"},"bold":true},{"text":"/4] ["},{"score":{"name":"TRACKER$borders.step","objective":"AroundTheWorld"},"bold":true},{"text":"/138] -"}]
+execute if score TRACKER$borders.section AroundTheWorld matches 3 run title @s actionbar [{"text":"","color":"gold"},{"text":"- ["},{"score":{"name":"@s","objective":"AroundTheWorld"}},{"text":"/"},{"score":{"name":"CONFIG$generation.delay","objective":"AroundTheWorld"}},{"text":"] ["},{"score":{"name":"TRACKER$borders.section","objective":"AroundTheWorld"},"bold":true},{"text":"/4] ["},{"score":{"name":"TRACKER$borders.step","objective":"AroundTheWorld"},"bold":true},{"text":"/75] -"}]
