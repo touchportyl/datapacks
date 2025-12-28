@@ -1,5 +1,3 @@
-# default gamerules for Minecraft 1.21.11
-
 gamerule minecraft:advance_time true
 gamerule minecraft:advance_weather true
 gamerule minecraft:allow_entering_nether_using_portals true
@@ -43,7 +41,7 @@ gamerule minecraft:random_tick_speed 3
 gamerule minecraft:reduced_debug_info false
 gamerule minecraft:respawn_radius 0
 gamerule minecraft:send_command_feedback true
-gamerule minecraft:show_advancement_messages true
+gamerule minecraft:show_advancement_messages false
 gamerule minecraft:show_death_messages true
 gamerule minecraft:spawn_mobs true
 gamerule minecraft:spawn_monsters true

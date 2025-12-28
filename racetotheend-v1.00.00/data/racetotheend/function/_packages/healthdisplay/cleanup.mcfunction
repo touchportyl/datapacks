@@ -1,0 +1,1 @@
+scoreboard objectives remove RE_Health

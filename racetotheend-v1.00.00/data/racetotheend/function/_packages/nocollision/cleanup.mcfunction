@@ -1,0 +1,1 @@
+team remove RE_NoCollision

@@ -1,0 +1,1 @@
+scoreboard objectives add RE_LockTimer dummy [{"text":"Race To The End: Player Lock Timer","color":"light_purple"}]

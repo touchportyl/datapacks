@@ -1,28 +1,38 @@
 scoreboard objectives add RaceToTheEnd dummy [{"text":"Race To The End","color":"light_purple"}]
 
-scoreboard objectives add RE_Ranking dummy [{"text":"Race to the End: Ranking Points","color":"light_purple"}]
+# default game states
+execute unless score GAME$lobby RaceToTheEnd matches 0..1 run scoreboard players operation GAME$lobby RaceToTheEnd = BOOL$false RaceToTheEnd
+execute unless score GAME$active RaceToTheEnd matches 0..1 run scoreboard players operation GAME$active RaceToTheEnd = BOOL$false RaceToTheEnd
+execute unless score GAME$stopped RaceToTheEnd matches 0..1 run scoreboard players operation GAME$stopped RaceToTheEnd = BOOL$false RaceToTheEnd
 
-scoreboard objectives add RE_SplitCount dummy [{"text":"- Race to the End -","bold":true}]
-scoreboard objectives setdisplay sidebar RE_SplitCount
+# feedback
+tellraw @a [{"text":" ","color":"gray"},{"text":"Race to the End","color":"light_purple"},{"text":" > "},{"text":"Datapack loaded!","color":"white"}]
+execute as @a at @s run function racetotheend:_packages/effects/notification
 
-scoreboard objectives add RE_Nether dummy [{"text":"Race To The End: Split - Enter the Nether","color":"light_purple"}]
-scoreboard objectives add RE_Bastion dummy [{"text":"Race To The End: Split - Find a Bastion","color":"light_purple"}]
-scoreboard objectives add RE_EnderPearl dummy [{"text":"Race To The End: Split - Collect Ender Pearls","color":"light_purple"}]
-scoreboard objectives add RE_Fortress dummy [{"text":"Race To The End: Split - Find a Nether Fortress","color":"light_purple"}]
-scoreboard objectives add RE_BlazeRod dummy [{"text":"Race To The End: Split - Get a Blaze Rod","color":"light_purple"}]
-scoreboard objectives add RE_Stronghold dummy [{"text":"Race To The End: Split - Locate the Stronghold","color":"light_purple"}]
-scoreboard objectives add RE_End dummy [{"text":"Race To The End: Split - Activate the End Portal","color":"light_purple"}]
-scoreboard objectives add RE_KillDragon dummy [{"text":"Race To The End: Split - Slay the Enderdragon","color":"light_purple"}]
+# special case for handling game
+execute if score GAME$active RaceToTheEnd = BOOL$true RaceToTheEnd run return run tellraw @a [{"text":" ","color":"gray"},{"text":"Race to the End","color":"light_purple"},{"text":" > "},{"text":"Game is active! /reload may break things.","color":"white"}]
 
-scoreboard objectives add RE_LockTimer dummy [{"text":"Race To The End: Player Lock Timer","color":"light_purple"}]
+# load common constants
+function racetotheend:constants
 
-scoreboard objectives add RE_Health health [{"text":"Race To The End: Health","color":"light_purple"}]
-scoreboard objectives setdisplay list RE_Health
+# setup packages
+function racetotheend:_packages/healthdisplay/setup
+function racetotheend:_packages/nocollision/setup
 
+# setup modules
+function racetotheend:beddetection/setup
+function racetotheend:death/setup
 function racetotheend:dimensiontracker/setup
+#function racetotheend:goldradar/setup
+function racetotheend:playerlock/setup
+function racetotheend:ranking/setup
+function racetotheend:splits/setup
+function racetotheend:locator/setup
 
+# restart loops
 function racetotheend:stoploops
 function racetotheend:startloops
 
-tellraw @a [{"text":" ","color":"gray"},{"text":"Race to the End","color":"light_purple"},{"text":" > "},{"text":"Datapack loaded!","color":"white"}]
-execute as @a at @s run function racetotheend:_packages/effects/notification
+# special case for handling lobby
+execute if score GAME$lobby RaceToTheEnd = BOOL$true RaceToTheEnd run function racetotheend:game/lobby/cleanup
+execute if score GAME$lobby RaceToTheEnd = BOOL$true RaceToTheEnd run schedule function racetotheend:game/lobby/create 1t

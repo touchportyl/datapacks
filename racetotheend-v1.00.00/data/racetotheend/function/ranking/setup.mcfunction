@@ -1,0 +1,1 @@
+scoreboard objectives add RE_Ranking dummy [{"text":"Race to the End: Ranking Points","color":"light_purple"}]

@@ -1,0 +1,1 @@
+function racetotheend:game/lobby/music/tracks/_common {trackID:lava_chicken,trackName:"Hyper Potions - Lava Chicken",trackDurationInSeconds:135}

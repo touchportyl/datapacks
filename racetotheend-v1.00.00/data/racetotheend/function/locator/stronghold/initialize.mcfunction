@@ -5,7 +5,6 @@ scoreboard players set VAR$loop.limit RE_locator 1024
 scoreboard players set VAR$loop.counter RE_locator 0
 
 # tag caster
-tag @a remove RE_locator_caster
 tag @s add RE_locator_caster
 
 # save caster location
@@ -20,8 +19,5 @@ tag @n[type=minecraft:eye_of_ender,distance=..1] add RE_eye
 execute store result score VAR$distance RE_locator run locate structure minecraft:stronghold
 scoreboard players operation VAR$ticker RE_locator = VAR$distance RE_locator
 
-# skip to short range locator
-execute if score VAR$distance RE_locator matches ..95 run return run schedule function racetotheend:locator/stronghold/precise/start 1t
-
-# start long range locator
-execute if score VAR$distance RE_locator matches 96.. run schedule function racetotheend:locator/stronghold/range/start 2t
+# start locator
+schedule function racetotheend:locator/stronghold/range/start 5t

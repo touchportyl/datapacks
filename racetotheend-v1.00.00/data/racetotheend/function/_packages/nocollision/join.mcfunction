@@ -1,0 +1,1 @@
+team join RE_NoCollision @s

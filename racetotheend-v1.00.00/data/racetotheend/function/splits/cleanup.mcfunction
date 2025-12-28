@@ -1,0 +1,10 @@
+scoreboard objectives remove RE_SplitCount
+
+scoreboard objectives remove RE_Nether
+scoreboard objectives remove RE_Bastion
+scoreboard objectives remove RE_EnderPearl
+scoreboard objectives remove RE_Fortress
+scoreboard objectives remove RE_BlazeRod
+scoreboard objectives remove RE_Stronghold
+scoreboard objectives remove RE_End
+scoreboard objectives remove RE_KillDragon

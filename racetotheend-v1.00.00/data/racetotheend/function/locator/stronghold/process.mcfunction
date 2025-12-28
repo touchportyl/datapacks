@@ -13,12 +13,10 @@ execute store result score VAR$overworld.y RE_locator run data get entity @n[tag
 execute store result score VAR$overworld.z RE_locator run data get entity @n[tag=RE_probe] Pos[2] 1
 
 # calculate nether coordinates
-scoreboard players set VAR$nether.scale RE_locator 8
-
 scoreboard players operation VAR$nether.x RE_locator = VAR$overworld.x RE_locator
-scoreboard players operation VAR$nether.x RE_locator /= VAR$nether.scale RE_locator
+scoreboard players operation VAR$nether.x RE_locator /= CONST$nether.scale RaceToTheEnd
 scoreboard players operation VAR$nether.y RE_locator = VAR$overworld.y RE_locator
 scoreboard players operation VAR$nether.z RE_locator = VAR$overworld.z RE_locator
-scoreboard players operation VAR$nether.z RE_locator /= VAR$nether.scale RE_locator
+scoreboard players operation VAR$nether.z RE_locator /= CONST$nether.scale RaceToTheEnd
 scoreboard players operation VAR$distance.nether RE_locator = VAR$distance RE_locator
-scoreboard players operation VAR$distance.nether RE_locator /= VAR$nether.scale RE_locator
+scoreboard players operation VAR$distance.nether RE_locator /= CONST$nether.scale RaceToTheEnd

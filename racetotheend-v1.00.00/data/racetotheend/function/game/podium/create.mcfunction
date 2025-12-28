@@ -1,6 +1,4 @@
-# look for the dragon egg at 0 ~ 0 and build the podium using that as the reference point
-execute in minecraft:the_end positioned 0 0 0 run function racetotheend:game/podium/positioner
-execute as @n[tag=RE_podium] at @s run function racetotheend:game/podium/build
-
-# spawn the 3 podium players with names
-#data modify entity @n[type=minecraft:mannequin] profile.id set from entity touchportyl UUID
+# build the podium using the bed marker as the reference point
+execute as @n[tag=RE_bed_marker] at @s run summon minecraft:marker ~ ~ ~ {Tags:["RaceToTheEnd","RE_podium","RE_podium_root"]}
+kill @e[tag=RE_bed_marker]
+execute as @n[tag=RE_podium_root] at @s run function racetotheend:game/podium/create_

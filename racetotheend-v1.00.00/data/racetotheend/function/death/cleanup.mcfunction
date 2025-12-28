@@ -1,0 +1,3 @@
+scoreboard objectives remove RE_DeathTrigger
+scoreboard objectives remove RE_DeathTimer
+scoreboard objectives remove RE_TotalDeaths

@@ -10,6 +10,6 @@ execute if score TIMER$seconds RaceToTheEnd matches 60.. run scoreboard players 
 execute if score TIMER$minutes RaceToTheEnd matches 60.. run scoreboard players add TIMER$hours RaceToTheEnd 1
 execute if score TIMER$minutes RaceToTheEnd matches 60.. run scoreboard players set TIMER$minutes RaceToTheEnd 0
 
-execute if score GAME$active RaceToTheEnd matches 1 as @a run function racetotheend:timer/actionbar
+execute as @a run function racetotheend:timer/actionbar
 
 schedule function racetotheend:timer/update 1t

@@ -1,0 +1,5 @@
+execute at @e[tag=RE_firework_spawner,sort=random,limit=1] run summon minecraft:firework_rocket ~ ~1 ~ {LifeTime:0,FireworksItem:{components:{"minecraft:fireworks":{explosions:[{shape:"burst",colors:[8073150],has_trail:1b}],flight_duration:1b}},count:1,id:"minecraft:firework_rocket"}}
+execute at @e[tag=RE_firework_spawner,sort=random,limit=1] run summon minecraft:firework_rocket ~ ~1 ~ {LifeTime:5,FireworksItem:{components:{"minecraft:fireworks":{explosions:[{shape:"large_ball",colors:[3847130]}],flight_duration:1b}},count:1,id:"minecraft:firework_rocket"}}
+execute at @e[tag=RE_firework_spawner,sort=random,limit=1] run summon minecraft:firework_rocket ~ ~1 ~ {LifeTime:15,FireworksItem:{components:{"minecraft:fireworks":{explosions:[{shape:"star",colors:[16777215]}],flight_duration:1b}},count:1,id:"minecraft:firework_rocket"}}
+
+function racetotheend:game/podium/fireworks/randomizelocation

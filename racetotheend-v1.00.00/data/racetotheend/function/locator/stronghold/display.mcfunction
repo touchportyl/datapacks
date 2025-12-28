@@ -1,7 +1,9 @@
+# not used, for displaying in chat in finish.mcfunction
+
 tellraw @a[tag=RE_locator_caster] [{"text":"Stronghold: [","color":"yellow"},{"score":{"name":"VAR$overworld.x","objective":"RE_locator"},"color":"green"},{"text":", "},{"score":{"name":"VAR$overworld.y","objective":"RE_locator"},"color":"green"},{"text":", "},{"score":{"name":"VAR$overworld.z","objective":"RE_locator"},"color":"green"},{"text":"] Distance: "},{"score":{"name":"VAR$distance","objective":"RE_locator"},"color":"green"}]
 
 tellraw @a[tag=RE_locator_caster] [{"text":"Nether Coords: [","color":"yellow"},{"score":{"name":"VAR$nether.x","objective":"RE_locator"},"color":"green"},{"text":", "},{"score":{"name":"VAR$nether.y","objective":"RE_locator"},"color":"green"},{"text":", "},{"score":{"name":"VAR$nether.z","objective":"RE_locator"},"color":"green"},{"text":"] Distance: "},{"score":{"name":"VAR$distance.nether","objective":"RE_locator"},"color":"green"}]
 
 # error deviation for debugging
-#execute if score VAR$distance.error RE_locator matches 1 run tellraw @a[tag=RE_locator_caster] [{"text":"Locator error margin: ","color":"red"},{"score":{"name":"VAR$distance.error","objective":"RE_locator"}},{"text":" block"}]
-#execute if score VAR$distance.error RE_locator matches 2.. run tellraw @a[tag=RE_locator_caster] [{"text":"Locator error margin: ","color":"red"},{"score":{"name":"VAR$distance.error","objective":"RE_locator"}},{"text":" blocks"}]
+execute if score VAR$distance.error RE_locator matches 1 run tellraw @a[tag=RE_locator_caster] [{"text":"Locator error margin: ","color":"red"},{"score":{"name":"VAR$distance.error","objective":"RE_locator"}},{"text":" block"}]
+execute if score VAR$distance.error RE_locator matches 2.. run tellraw @a[tag=RE_locator_caster] [{"text":"Locator error margin: ","color":"red"},{"score":{"name":"VAR$distance.error","objective":"RE_locator"}},{"text":" blocks"}]

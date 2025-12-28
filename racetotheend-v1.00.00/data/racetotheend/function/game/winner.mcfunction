@@ -11,13 +11,8 @@ data remove storage racetotheend:temp announcer
 # End the game
 function racetotheend:game/stop
 
-# Calculate stats
-function racetotheend:stats/display
+# Tag winner
+tag @s add RE_winner
 
 # Create the podium
-function racetotheend:game/podium/create
-
-# tp all players to the podium, spread them out, and force them to look at the first place mannequin
-
-# start playing victory music and effects
-execute at @n[tag=RE_podium] run playsound minecraft:music_disc.relic master @a ~ ~ ~ 1 1 1
+schedule function racetotheend:game/podium/create 5t

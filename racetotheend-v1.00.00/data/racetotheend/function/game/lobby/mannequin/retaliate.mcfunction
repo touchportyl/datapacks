@@ -1,0 +1,2 @@
+execute as @a[tag=RE_lobby_mannequin_retaliation_target] at @s run function racetotheend:game/lobby/mannequin/retaliate_
+execute if entity @a[tag=RE_lobby_mannequin_retaliation_target] run schedule function racetotheend:game/lobby/mannequin/retaliate 1t

@@ -1,5 +1,3 @@
-# default gamerules for Minecraft 1.21.11
-
 gamerule minecraft:advance_time true
 gamerule minecraft:advance_weather true
 gamerule minecraft:allow_entering_nether_using_portals true

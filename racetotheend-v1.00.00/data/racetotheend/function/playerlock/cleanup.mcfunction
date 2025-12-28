@@ -1,0 +1,2 @@
+function racetotheend:playerlock/unlockall
+scoreboard objectives remove RE_LockTimer

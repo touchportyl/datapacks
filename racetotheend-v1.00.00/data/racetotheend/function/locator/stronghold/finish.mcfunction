@@ -1,8 +1,11 @@
 # process results
 function racetotheend:locator/stronghold/process
 
+execute as @n[tag=RE_locator_caster] at @s run function racetotheend:locator/stronghold/bossbar/set
+
 # display score if accurate
-execute if score VAR$distance.error RE_locator matches 0..1 run function racetotheend:locator/stronghold/display
+#execute if score VAR$distance.error RE_locator matches 0..1 run function racetotheend:locator/stronghold/display
+execute if score VAR$distance.error RE_locator matches 0..1 as @n[tag=RE_locator_caster] run function racetotheend:locator/stronghold/bossbar/update
 
 # return player to cast location
 tp @n[tag=RE_locator_caster] @n[tag=RE_cast_location]

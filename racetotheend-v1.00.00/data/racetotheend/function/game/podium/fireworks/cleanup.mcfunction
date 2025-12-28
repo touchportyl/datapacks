@@ -1,0 +1,1 @@
+kill @e[tag=RE_firework_spawner]

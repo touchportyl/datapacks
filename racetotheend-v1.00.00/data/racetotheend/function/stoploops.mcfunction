@@ -1,3 +1,23 @@
+schedule clear racetotheend:countdown/death/ticker
+schedule clear racetotheend:countdown/game/reset
+schedule clear racetotheend:countdown/game/ticker
+schedule clear racetotheend:game/start_
+schedule clear racetotheend:game/lobby/cleanup_
+schedule clear racetotheend:game/lobby/music/first
+schedule clear racetotheend:game/lobby/create_
+schedule clear racetotheend:game/lobby/update
+schedule clear racetotheend:game/lobby/music/particles
+schedule clear racetotheend:game/lobby/music/next
+schedule clear racetotheend:locator/stronghold/range/start
+schedule clear racetotheend:locator/stronghold/range/process
+schedule clear racetotheend:locator/stronghold/range/tick
+schedule clear racetotheend:locator/stronghold/finish
+
 schedule clear racetotheend:timer/update
 schedule clear racetotheend:goldradar/update
 schedule clear racetotheend:playerlock/update
+schedule clear racetotheend:locator/update
+schedule clear racetotheend:perks/update
+schedule clear racetotheend:death/update
+schedule clear racetotheend:beddetection/update
+schedule clear racetotheend:game/podium/update

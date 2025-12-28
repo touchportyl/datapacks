@@ -1,0 +1,17 @@
+# bed place tracking scoreboards
+scoreboard objectives add RE_placedbed1 minecraft.used:minecraft.black_bed
+scoreboard objectives add RE_placedbed2 minecraft.used:minecraft.blue_bed
+scoreboard objectives add RE_placedbed3 minecraft.used:minecraft.brown_bed
+scoreboard objectives add RE_placedbed4 minecraft.used:minecraft.cyan_bed
+scoreboard objectives add RE_placedbed5 minecraft.used:minecraft.gray_bed
+scoreboard objectives add RE_placedbed6 minecraft.used:minecraft.green_bed
+scoreboard objectives add RE_placedbed7 minecraft.used:minecraft.light_blue_bed
+scoreboard objectives add RE_placedbed8 minecraft.used:minecraft.light_gray_bed
+scoreboard objectives add RE_placedbed9 minecraft.used:minecraft.lime_bed
+scoreboard objectives add RE_placedbed10 minecraft.used:minecraft.magenta_bed
+scoreboard objectives add RE_placedbed11 minecraft.used:minecraft.orange_bed
+scoreboard objectives add RE_placedbed12 minecraft.used:minecraft.pink_bed
+scoreboard objectives add RE_placedbed13 minecraft.used:minecraft.purple_bed
+scoreboard objectives add RE_placedbed14 minecraft.used:minecraft.red_bed
+scoreboard objectives add RE_placedbed15 minecraft.used:minecraft.white_bed
+scoreboard objectives add RE_placedbed16 minecraft.used:minecraft.yellow_bed

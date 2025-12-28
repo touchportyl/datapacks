@@ -1,0 +1,18 @@
+scoreboard objectives remove RE_placedbed1
+scoreboard objectives remove RE_placedbed2
+scoreboard objectives remove RE_placedbed3
+scoreboard objectives remove RE_placedbed4
+scoreboard objectives remove RE_placedbed5
+scoreboard objectives remove RE_placedbed6
+scoreboard objectives remove RE_placedbed7
+scoreboard objectives remove RE_placedbed8
+scoreboard objectives remove RE_placedbed9
+scoreboard objectives remove RE_placedbed10
+scoreboard objectives remove RE_placedbed11
+scoreboard objectives remove RE_placedbed12
+scoreboard objectives remove RE_placedbed13
+scoreboard objectives remove RE_placedbed14
+scoreboard objectives remove RE_placedbed15
+scoreboard objectives remove RE_placedbed16
+
+kill @e[tag=RE_bed_marker]

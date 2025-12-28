@@ -1,0 +1,2 @@
+bossbar remove racetotheend:locator/fortress
+scoreboard objectives remove RE_fortressdist

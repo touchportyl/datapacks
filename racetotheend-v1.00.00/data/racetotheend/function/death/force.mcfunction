@@ -1,0 +1,1 @@
+scoreboard players set @s RE_DeathTrigger 1

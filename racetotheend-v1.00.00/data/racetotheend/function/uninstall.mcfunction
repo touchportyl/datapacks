@@ -1,29 +1,5 @@
-function racetotheend:goldradar/cleanup
-function racetotheend:playerlock/unlockall
-function racetotheend:locator/cleanup
-function racetotheend:dimensiontracker/cleanup
-function racetotheend:
+execute if score GAME$lobby RaceToTheEnd matches 1 run function racetotheend:game/lobby/cleanup
+execute if score GAME$active RaceToTheEnd matches 1 run function racetotheend:game/stop
 
-function racetotheend:stoploops
-
-scoreboard objectives remove RE_SplitCount
-
-scoreboard objectives remove RE_Nether
-scoreboard objectives remove RE_Bastion
-scoreboard objectives remove RE_EnderPearl
-scoreboard objectives remove RE_Fortress
-scoreboard objectives remove RE_BlazeRod
-scoreboard objectives remove RE_Stronghold
-scoreboard objectives remove RE_End
-scoreboard objectives remove RE_KillDragon
-
-scoreboard objectives remove RE_LockTimer
-
-scoreboard objectives remove RE_Ranking
-
-scoreboard objectives remove RaceToTheEnd
-
-function racetotheend:_packages/gamerules/1.21.11
-
-tellraw @a [{"text":" ","color":"gray"},{"text":"Race to the End","color":"light_purple"},{"text":" > "},{"text":"Datapack uninstalled!","color":"white"}]
-execute as @a at @s run function racetotheend:_packages/effects/notification
+# deferred uninstall to allow ongoing functions to end cleanly
+schedule function racetotheend:uninstall_ 2t

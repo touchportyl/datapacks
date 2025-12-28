@@ -6,9 +6,9 @@
       "id": "minecraft:ender_eye"
     },
     "show_toast": false,
-    "announce_to_chat": false
+    "announce_to_chat": false,
+    "hidden": true
   },
-  "parent": "racetotheend:root",
   "criteria": {
     "trigger": {
       "trigger": "minecraft:used_ender_eye"

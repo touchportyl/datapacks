@@ -1,0 +1,16 @@
+scoreboard players reset @s RE_placedbed1
+scoreboard players reset @s RE_placedbed2
+scoreboard players reset @s RE_placedbed3
+scoreboard players reset @s RE_placedbed4
+scoreboard players reset @s RE_placedbed5
+scoreboard players reset @s RE_placedbed6
+scoreboard players reset @s RE_placedbed7
+scoreboard players reset @s RE_placedbed8
+scoreboard players reset @s RE_placedbed9
+scoreboard players reset @s RE_placedbed10
+scoreboard players reset @s RE_placedbed11
+scoreboard players reset @s RE_placedbed12
+scoreboard players reset @s RE_placedbed13
+scoreboard players reset @s RE_placedbed14
+scoreboard players reset @s RE_placedbed15
+scoreboard players reset @s RE_placedbed16
