@@ -38,4 +38,4 @@ kill @a
 
 # schedule next step
 # allow a delay for kill to process
-schedule function racetotheend:game/start__ 1t
+schedule function racetotheend:game/start__ 20t

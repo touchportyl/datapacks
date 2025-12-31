@@ -8,5 +8,8 @@ execute as @a[tag=RE_in_lobby] run effect give @s minecraft:saturation 1 255 tru
 # particles
 execute at @n[tag=RE_podium_root] run particle minecraft:firework ~ ~20 ~ 100 100 100 0 1000 force @a
 
+# remove dragon egg
+execute at @n[tag=RE_podium_root] positioned ~ ~3 ~ if block ~ ~ ~ minecraft:dragon_egg run setblock ~ ~ ~ minecraft:air replace
+
 # loop
 schedule function racetotheend:game/podium/update 28t

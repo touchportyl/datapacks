@@ -5,7 +5,7 @@ function racetotheend:game/podium/fireworks/cleanup
 
 stopsound @a record
 
-schedule clear racetotheend:game/podium/update
+#schedule clear racetotheend:game/podium/update
 
 execute at @n[tag=RE_podium_root] run fill ~4 ~-3 ~4 ~-4 100 ~-4 minecraft:air replace
 execute at @n[tag=RE_podium_root] run fill ~ ~-3 ~ ~ ~-1 ~ minecraft:bedrock replace

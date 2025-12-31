@@ -18,3 +18,5 @@ function racetotheend:locator/cleanup
 function racetotheend:dimensiontracker/cleanup
 
 function racetotheend:_packages/gamerules/lobby
+
+function racetotheend:startloops
