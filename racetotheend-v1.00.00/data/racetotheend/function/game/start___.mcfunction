@@ -15,3 +15,6 @@ scoreboard players operation GAME$active RaceToTheEnd = BOOL$true RaceToTheEnd
 
 # unlock all players
 function racetotheend:playerlock/unlockall
+
+# grant advancement for assist mode players
+execute as @a[tag=RE_assist] at @s run advancement grant @s only racetotheend:splits/assist

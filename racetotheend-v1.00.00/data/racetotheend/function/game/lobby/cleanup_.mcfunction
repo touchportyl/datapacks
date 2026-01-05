@@ -11,6 +11,7 @@ tp @a[tag=RE_in_lobby] ~ ~ ~
 spawnpoint @a[tag=RE_in_lobby] ~ ~ ~
 tag @a[tag=RE_in_lobby] remove RE_in_lobby
 
+tag @a[tag=RE_lobby_mannequin_retaliation_target] remove RE_lobby_mannequin_retaliation_target
 scoreboard objectives remove RE_NPCAnger
 
 scoreboard players operation GAME$lobby RaceToTheEnd = BOOL$false RaceToTheEnd

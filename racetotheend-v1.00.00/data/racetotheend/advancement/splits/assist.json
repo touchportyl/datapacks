@@ -1,0 +1,21 @@
+{
+  "display": {
+    "title": "Assisted Run",
+    "description": "This is an assisted run! You will receive special gear and effects to help you survive.",
+    "icon": {
+      "id": "minecraft:stone_sword"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "racetotheend:root",
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "function": "racetotheend:assist/trigger"
+  }
+}

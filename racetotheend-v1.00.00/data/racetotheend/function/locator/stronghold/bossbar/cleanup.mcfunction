@@ -1,5 +1,5 @@
-bossbar remove racetotheend:locator/stronghold
-bossbar remove racetotheend:locator/stronghold_nether
+#bossbar remove racetotheend:locator/stronghold
+#bossbar remove racetotheend:locator/stronghold_nether
 
 scoreboard objectives remove RE_sh_o_x
 scoreboard objectives remove RE_sh_o_y

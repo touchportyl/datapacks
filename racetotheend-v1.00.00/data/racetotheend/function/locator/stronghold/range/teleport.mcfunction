@@ -9,4 +9,4 @@ execute if score VAR$ticker RE_locator matches 1.. run return run function racet
 # spawn probe marker
 execute as @n[tag=RE_locator_caster] at @s align xyz run summon minecraft:marker ~ ~ ~ {Tags:["RaceToTheEnd","RE_probe"]}
 
-schedule function racetotheend:locator/stronghold/finish 1t
+schedule function racetotheend:locator/stronghold/finish 10t

@@ -11,4 +11,4 @@ setblock ~ ~2 ~ minecraft:light[level=15]
 setblock ~ ~3 ~ minecraft:barrier
 
 # setup interaction
-summon minecraft:interaction ~ ~1.5 ~ {Tags:["RaceToTheEnd","RE_lobby","RE_lobby_mannequin_interaction"],width:0.8f,height:2f,response:1b}
+summon minecraft:interaction ~ ~1 ~ {Tags:["RaceToTheEnd","RE_lobby","RE_lobby_mannequin_interaction"],width:1.1f,height:1.6f,response:1b}

@@ -21,3 +21,4 @@ schedule clear racetotheend:perks/update
 schedule clear racetotheend:death/update
 schedule clear racetotheend:beddetection/update
 schedule clear racetotheend:game/podium/update
+schedule clear racetotheend:commands/update

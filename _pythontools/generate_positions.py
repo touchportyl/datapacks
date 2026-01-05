@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 
-inner_r = 4
+inner_r = 1
 outer_r = 7
 
 inner_r_sq = inner_r ** 2

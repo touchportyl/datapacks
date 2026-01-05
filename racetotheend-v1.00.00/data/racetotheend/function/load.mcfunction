@@ -20,6 +20,7 @@ function racetotheend:_packages/healthdisplay/setup
 function racetotheend:_packages/nocollision/setup
 
 # setup modules
+function racetotheend:commands/setup
 function racetotheend:beddetection/setup
 function racetotheend:death/setup
 function racetotheend:dimensiontracker/setup

@@ -16,5 +16,7 @@ execute as @n[tag=RE_locator_caster,tag=RE_old_gamemode_creative] run gamemode c
 execute as @n[tag=RE_locator_caster,tag=RE_old_gamemode_spectator] run gamemode spectator @s
 execute as @n[tag=RE_locator_caster,tag=RE_old_gamemode_adventure] run gamemode adventure @s
 
+tag @n[tag=RE_locator_caster] add RE_stronghold_found
+
 # cleanup
 function racetotheend:locator/stronghold/cleanup

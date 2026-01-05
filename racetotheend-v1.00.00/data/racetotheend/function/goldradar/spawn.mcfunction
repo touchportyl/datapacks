@@ -1,4 +1,4 @@
-execute if entity @e[tag=RaceToTheEnd,tag=RE_goldradar,distance=..1] run return fail
+execute positioned ~0.5 ~ ~0.5 if entity @e[tag=RaceToTheEnd,tag=RE_goldradar,distance=..0.1] run return fail
 
 summon minecraft:shulker ~ ~ ~ {Health:1,Glowing:1b,Invulnerable:1b,NoAI:1b,NoGravity:1b,PersistenceRequired:1b,Silent:1b,Tags:["RaceToTheEnd","RE_goldradar","RE_new"],attributes:[{id:max_health,base:1f}]}
 

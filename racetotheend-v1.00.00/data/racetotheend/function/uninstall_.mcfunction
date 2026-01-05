@@ -1,5 +1,6 @@
 function racetotheend:stoploops
 
+function racetotheend:commands/cleanup
 function racetotheend:beddetection/cleanup
 function racetotheend:death/cleanup
 function racetotheend:dimensiontracker/cleanup
