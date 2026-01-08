@@ -1,1 +1,1 @@
-title @a times 15t 30t 0t
+title @s times 15t 30t 0t
