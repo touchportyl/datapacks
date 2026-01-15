@@ -1,5 +1,6 @@
 function racetotheend:locator/stronghold/cleanup
 scoreboard objectives add RE_locator dummy {"text":"Race to the End: Locator Helper"}
+scoreboard players operation VAR$isActive RE_locator = BOOL$true RaceToTheEnd
 
 scoreboard players set VAR$loop.limit RE_locator 1024
 scoreboard players set VAR$loop.counter RE_locator 0

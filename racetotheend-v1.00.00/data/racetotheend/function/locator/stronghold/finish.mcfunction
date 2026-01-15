@@ -18,5 +18,8 @@ execute as @n[tag=RE_locator_caster,tag=RE_old_gamemode_adventure] run gamemode 
 
 tag @n[tag=RE_locator_caster] add RE_stronghold_found
 
+# grant advancement
+advancement grant @a[tag=RE_locator_caster] only racetotheend:splits/stronghold
+
 # cleanup
 function racetotheend:locator/stronghold/cleanup

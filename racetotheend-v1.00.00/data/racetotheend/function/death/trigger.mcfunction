@@ -9,10 +9,9 @@ execute if score GAME$active RaceToTheEnd = BOOL$false RaceToTheEnd run return f
 execute unless score @s RE_SplitCount matches 1.. run return fail
 
 # defer the lock to allow minecraft to update properly
-tag @s add RE_locked
+tag @s add RE_deferredlock
 schedule function racetotheend:playerlock/deferredlock 10t replace
 
 # set the death countdown timer
 scoreboard players set VAR$respawntime RE_DeathTimer 100
 scoreboard players operation @s RE_DeathTimer = VAR$respawntime RE_DeathTimer
-function racetotheend:countdown/death/start {t:5}

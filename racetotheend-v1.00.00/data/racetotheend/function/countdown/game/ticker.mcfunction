@@ -12,4 +12,4 @@ execute if score VAR$countdown RaceToTheEnd matches 0 run schedule function race
 
 # countdown
 scoreboard players remove VAR$countdown RaceToTheEnd 1
-execute if score VAR$countdown RaceToTheEnd matches 0.. run schedule function racetotheend:countdown/game/ticker 1s replace
+execute if score VAR$countdown RaceToTheEnd matches 0.. run schedule function racetotheend:countdown/game/ticker 1s
