@@ -1,47 +1,92 @@
-# Harvester v3.03.02 for Vanilla MC 1.14 - 1.21.10
+# Race to the End v1.00.00 for Vanilla MC 1.21.11
 - Code by [touchportyl](https://github.com/touchportyl/)
 
+# Overview
+Race to the End is a casual, single-world speedrunning datapack that transforms any freshly generated world into a structured, multiplayer-friendly race. It provides in-game guidance for key structures, automatic perfect travel, and quality-of-life features, all built around a clear win condition: the player who lands the final hit on the Ender Dragon wins.
+
+# IMPORTANT NOTE BEFORE PLAYING
+Aside from directly damaging the Ender Dragon with a weapon, bow, or crossbow, the only speedrun strategy explicitly supported by this datapack is the standard one-cycle (placing a bed in the usual position above the central bedrock pillar). Beds placed in this location will automatically explode.
+
+Zero-cycles, end crystal explosion kills, and other alternative strategies will not credit the kill to any player.
+If the dragon is defeated using one of these unsupported methods, the datapack will effectively be soft-locked, as no winner can be determined. In this case, the outcome of the run should be manually discussed and agreed upon by the players.
+
+# Developer's Comments
+This datapack is designed to feel like running the Any% Glitchless Random Seed (1.21.11) category, while intentionally removing much of the technical overhead. It is not legal for official speedrun submissions and is not intended to replace MCSR Ranked or specialized practice datapacks.
+
+Instead, the goal is to significantly lower the barrier to entry for Minecraft speedrunning by turning it into a shared, social experience. Players can compete in the same world without needing to memorize bastion routes, master boat eye perfect travel, or rely on external tools like Ninjabrain Bot. This datapack is built for casual players who want the excitement of speedrunning without the steep learning curve.
+
 # Features
-- Expands utility for all hoes
-- Harvest radius up to 5x5 around the player
-- Auto-replants crops if seeds are in your inventory (grants XP)
-- 25% seed refund chance when replanting (great for carrots and similar crops)
-- Only harvests fully grown crops
-- [MC 1.19.4+] Hoes take durability damage when harvesting
-- Includes sound effects and particles
-- Advancements for progression
-- Configuration menu with easy toggles
-- Clean uninstall process
-- Full server & multiplayer support
-- Compatible with MC 1.14 to 1.21.10
+- Competitive race-style gameplay focused on killing the Ender Dragon
+- Dynamic actionbar display:
+  - Current time
+  - Distance to nearest Bastion and Fortress
+  - Stronghold coordinates and distance (converts to Nether units in the Nether)
+- Advancements to track all your splits, with global announcements when hitting a split
+- Players respawn automatically after 5 seconds with half health and hunger
+- Gold block radar in the Nether to help find hidden gold blocks in Bastions
+- Automatic perfect travel when throwing an Eye of Ender
+- Silverfish near the Stronghold glow to help locate the End Portal faster
+- Beds automatically explode when placed in the standard one-cycle position above the central bedrock pillar
+- Designed for multiplayer servers, but can be played solo for practice
+- Winning splits are displayed at the end of the run
+- Lobby system with a custom jukebox
 
-# How to use
-- Crouch-walk near crops with a hoe in your main hand to harvest and replant
+# How to Play
+- Run `/trigger RE_lobby` to create the lobby
+- Run `/trigger RE_start` once all players are ready to start the game
+- Race to progress through the game
+- The **player who lands the final hit on the Ender Dragon wins**
 
-# Permissions
-- Run `/tag <username> add DM_admin` to give admin permissions to the user
+# Assist Mode
+Enable Assist Mode to make the run more forgiving:
+- Toggle with `/trigger RE_assist`
+- Removes the half health & hunger penalty on death
+- Grants permanent Speed I and Resistance II
+- Players spawn with a starter kit:
+  - Stone Pickaxe
+  - Stone Sword
+  - Shield
+  - 8 Cooked Beef
 
-# Configuration
-- Run `/trigger dm_config` to open the in-game config menu
-- Toggle settings with ✔ (enabled) or ✘ (disabled)
+# Game Rules (Quick Guide)
+- KeepInventory: **ON**
+- Difficulty: **Normal**
+- PvP: **Disabled**
+- Respawn delay: **5 seconds**
+- Respawn stats: **Half health & hunger** (unless Assist Mode is enabled)
 
-# Datapack Manager
-- This datapack uses a framework to handle versioning and updates.
-## Commands
-- `/trigger dm_help` -> Displays this help message.
-- `/trigger dm_info` -> Displays information about Datapack Manager.
-- `/trigger dm_version` -> Displays the current minecraft version.
-- `/trigger dm_config` [DM_admin] -> Displays config options for all supported datapacks.
-- `/trigger dm_uninstall` [DM_admin] -> Display UI for uninstalling supported datapacks.
+# Splits & Progression
+The datapack tracks run progression using defined splits:
 
-# Officially Endorsed Datapacks (These datapacks unlock bonus features for Harvester)
-- [Tinkerer's Craft](https://github.com/touchportyl/tinkererscraft)
+| Title | Description |
+|------|------------|
+| Start | The run has begun! Good luck! |
+| Enter the Nether | Build a Nether portal and enter the Nether |
+| Find a Bastion | Locate and enter a Bastion Remnant |
+| Collect Ender Pearls | Obtain an Ender Pearl |
+| Find a Fortress | Locate and enter a Nether Fortress |
+| Collect Blaze Rods | Obtain a Blaze Rod |
+| Locate the Stronghold | Find the Stronghold using an Eye of Ender |
+| Enter the End | Activate the End Portal and enter the End |
+| Slay the Ender Dragon | Get the final hit to win |
+
+# Important Commands
+- `/trigger RE_lobby` -> Creates the lobby
+- `/trigger RE_start` -> Starts the game (from lobby or directly)
+- `/trigger RE_stop` -> Permanently stops the run and voids the world
+- `/trigger RE_assist` -> Toggles Assist Mode
 
 # Known Issues
-- Hook for Tinkerer's Craft is currently broken
+- Minecraft's `/locate` may not always return the closest Bastion or Fortress  
+  - If distances jump suddenly, continue in the same direction
+- Stronghold locator may occasionally return:
+  - `[0, 0, 0]`
+  - An incorrect Y-value
+  - **Distance is always accurate**
+- Strongholds can generate below Y=0, preventing direct perfect travel portal placement
 
-# Future updates
+# Future Updates
+- Additional race modifiers and configurations
+- Spectator mode
+- Admin/host mode
 - Suggestions welcome!
-
-
----
