@@ -1,6 +1,12 @@
 {
   "pack": {
     "pack_format": 94.1,
-    "description": "Be the first to reach the End and get the last hit on the Ender Dragon to win!"
+    "description": "Be the first to reach the End and get the last hit on the Ender Dragon to win!",
+    "min_format": 94.1,
+    "max_format": 94.1,
+    "supported_formats": {
+      "min_inclusive": 94.1,
+      "max_inclusive": 94.1
+    }
   }
 }
