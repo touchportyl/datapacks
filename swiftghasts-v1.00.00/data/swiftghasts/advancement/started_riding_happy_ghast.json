@@ -1,0 +1,17 @@
+{
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:started_riding",
+      "conditions": {
+        "player": {
+          "vehicle": {
+            "type": "minecraft:happy_ghast"
+          }
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "swiftghasts:hook/started_riding_happy_ghast"
+  }
+}
