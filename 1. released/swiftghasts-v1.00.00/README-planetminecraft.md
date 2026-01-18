@@ -1,15 +1,13 @@
-[h2]Swift Ghasts v1.00.00 for Vanilla MC 1.21.6 - 1.21.11[/h2]
-[list]
+[h2]Swift Ghasts v1.00.00 for Vanilla MC 1.21.6 - 1.21.11[/h2][list]
 [*]Code by [url=https://github.com/touchportyl/]touchportyl[/url][/*]
 [/list]
-
-[h2]Overview[/h2]
+[h2]Overview
+[/h2]
 Swift Ghasts is a lightweight quality-of-life datapack that increases the flying speed of Happy Ghasts, making aerial travel faster and more responsive. It is designed to feel natural within vanilla gameplay while removing the sluggishness of default Happy Ghast movement.
 
 The datapack makes no changes to AI behavior, combat, or spawning logic - it simply boosts flight speed in a clean, multiplayer-safe way.
 
-[h2]Features[/h2]
-[list]
+[h2]Features[/h2][list]
 [*]Increases Happy Ghast flying speed[/*]
 [*]Attribute-based implementation (no NBT hacks)[/*]
 [*]Fully vanilla and multiplayer-safe[/*]
@@ -18,15 +16,11 @@ The datapack makes no changes to AI behavior, combat, or spawning logic - it sim
 [*]Minimal performance impact[/*]
 [*]Clean uninstall script that removes everything the datapack modified[/*]
 [/list]
-
-[h2]How to use[/h2]
-[list]
+[h2]How to use[/h2][list]
 [*]Ride on any Happy Ghast.[/*]
 [*]Use movement keys and feel the ghast accelerate past its usual speed![/*]
 [/list]
-
-[h2]Config[/h2]
-[list]
+[h2]Config[/h2][list]
 [*]Maximum Speed (default speed for ghasts are 500)[code]/scoreboard players set VAR$speed.max SwiftGhasts 1000[/code][/*]
 [*]Forward Acceleration[code]/scoreboard players set VAR$speed.control.forward SwiftGhasts 10[/code][/*]
 [*]Backward Acceleration[code]/scoreboard players set VAR$speed.control.backward SwiftGhasts 2[/code][/*]
@@ -34,9 +28,7 @@ The datapack makes no changes to AI behavior, combat, or spawning logic - it sim
 [*]Upward Acceleration[code]/scoreboard players set VAR$speed.control.up SwiftGhasts 5[/code][/*]
 [*]Deceleration[code]/scoreboard players set VAR$speed.control.deceleration SwiftGhasts 20[/code][/*]
 [/list]
-
-[h2]Future Updates[/h2]
-[list]
+[h2]Future Updates[/h2][list]
 [*]Suggestions welcome![/*]
 [/list]
 [hr]

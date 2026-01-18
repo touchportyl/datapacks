@@ -9,7 +9,7 @@ scoreboard players set BOOL$true SwiftGhasts 1
 scoreboard players set VAR$speed.default SwiftGhasts 500
 
 # apply default config if not already installed
-execute unless score players get FLAG$defaultconfig SwiftGhasts = BOOL$true SwiftGhasts run function swiftghasts:defaultconfig
+execute unless score FLAG$defaultconfig SwiftGhasts = BOOL$true SwiftGhasts run function swiftghasts:defaultconfig
 
 # restart loops
 function swiftghasts:stoploops
