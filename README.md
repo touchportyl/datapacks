@@ -18,7 +18,7 @@ A 7th non-numbered folder has been added for storing all distributables, aptly n
 
 Use the Datapack Manager Tool to speed up certain common actions and help with debugging.
 
-This code is protected by the GNU GPLv3 License | © 2025 Portyl Studios https://portylstudios.com/
+This code is protected by the GNU GPLv3 License | © 2026 Portyl Studios https://portylstudios.com/
 
 ---
 
@@ -29,7 +29,7 @@ This code is protected by the GNU GPLv3 License | © 2025 Portyl Studios https:/
 
 ---
 
-## Reserved Datapack Tags
+## Reserved Datapack Tags (676 unique possibilities)
 - [DM] Datapack Manager
 - [MD] My Datapack (Reserved for templates)
 - [HV] Harvester
@@ -39,9 +39,11 @@ This code is protected by the GNU GPLv3 License | © 2025 Portyl Studios https:/
 - [PT] Portyl Trident
 - [SS] Seaskipper
 - [ES] Endermite Script
+- [RE] Race to the End
+- [SG] Swift Ghasts
+
 - [VE] Vanilla Essentials
 - [VC] Villager Chat
-- [ST] Speedrun Timer
 
 ---
 
