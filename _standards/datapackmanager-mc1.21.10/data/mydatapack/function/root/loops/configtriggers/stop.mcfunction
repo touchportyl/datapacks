@@ -1,0 +1,1 @@
+scoreboard players operation LOOP$configtriggers.isActive MyDatapack = BOOL$false DatapackManager

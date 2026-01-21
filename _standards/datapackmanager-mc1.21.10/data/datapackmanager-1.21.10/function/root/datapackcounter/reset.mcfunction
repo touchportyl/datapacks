@@ -1,0 +1,1 @@
+scoreboard players set COUNT$datapacks DatapackManager 0

@@ -1,0 +1,1 @@
+scoreboard players operation LOOP$main.isActive MyDatapack = BOOL$false DatapackManager
