@@ -11,6 +11,10 @@ scoreboard players set VAR$speed.default SwiftGhasts 500
 # apply default config if not already installed
 execute unless score FLAG$defaultconfig SwiftGhasts = BOOL$true SwiftGhasts run function swiftghasts:defaultconfig
 
+# run versioning system
+scoreboard players set VERSION$expected SwiftGhasts 10001
+function swiftghasts:versioning/check
+
 # restart loops
 function swiftghasts:stoploops
 function swiftghasts:startloops
