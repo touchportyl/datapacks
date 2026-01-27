@@ -1,0 +1,1 @@
+schedule clear swiftghasts:update

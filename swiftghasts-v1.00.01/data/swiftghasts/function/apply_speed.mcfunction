@@ -1,0 +1,1 @@
+$attribute @s minecraft:flying_speed base set $(speed)

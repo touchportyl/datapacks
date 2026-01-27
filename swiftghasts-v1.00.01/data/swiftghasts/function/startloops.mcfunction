@@ -1,0 +1,1 @@
+schedule function swiftghasts:update 1t

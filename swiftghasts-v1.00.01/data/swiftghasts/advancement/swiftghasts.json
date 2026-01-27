@@ -1,0 +1,18 @@
+{
+  "display": {
+    "title": "Swift Ghasts v1.00.01",
+    "description": "Increases Happy Ghast flight speed for faster, smoother travel!",
+    "icon": {
+      "item": "minecraft:red_harness",
+      "id": "minecraft:red_harness"
+    },
+    "show_toast": false,
+    "announce_to_chat": false
+  },
+  "parent": "datapackmanager:root",
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}
