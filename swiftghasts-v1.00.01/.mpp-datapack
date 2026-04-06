@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "lastOpened": "2026-04-06T00:58:06.388Z",
+  "name": "Swift Ghasts",
+  "packVersion": "1.00.01",
+  "id": "SG",
+  "author": "touchportyl",
+  "description": "Increases Happy Ghast flight speed for faster, smoother travel!",
+  "packFormatVersionMin": 80,
+  "packFormatVersionMax": 94.1,
+  "tags": [
+    "ready for release"
+  ]
+}

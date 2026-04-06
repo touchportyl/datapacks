@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "lastOpened": "2026-04-06T01:31:44.225Z",
+  "name": "Seaskipper",
+  "packVersion": "1.02.01",
+  "id": "SS",
+  "author": "touchportyl",
+  "description": "The Seaskipper fast travel system from Wynncraft brought into Vanilla Minecraft!",
+  "packFormatVersionMin": 69,
+  "packFormatVersionMax": 69,
+  "tags": ["ready for release"]
+}

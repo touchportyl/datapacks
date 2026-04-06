@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "lastOpened": "2026-04-06T01:28:00.741Z",
+  "name": "End Replacement",
+  "packVersion": "1.21.10",
+  "id": "ER",
+  "author": "touchportyl",
+  "description": "Replaces the End dimension with a void world that has Overworld colors. Used together with Dimensional Doors to create a pocket Overworld.",
+  "packFormatVersionMin": 81,
+  "packFormatVersionMax": 81,
+  "tags": [
+    "ready for release",
+    "worldgen"
+  ]
+}

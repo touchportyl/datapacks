@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "lastOpened": "2026-04-06T01:32:41.073Z",
+  "name": "Race To The End",
+  "packVersion": "1.00.00",
+  "id": "RE",
+  "author": "touchportyl",
+  "description": "Be the first to reach the End and get the last hit on the Ender Dragon to win!",
+  "packFormatVersionMin": 94.1,
+  "packFormatVersionMax": 94.1,
+  "tags": ["requires update"]
+}

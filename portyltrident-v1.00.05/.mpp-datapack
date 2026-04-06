@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "lastOpened": "2026-04-06T01:29:58.770Z",
+  "name": "Portyl Trident",
+  "packVersion": "1.00.05",
+  "id": "PT",
+  "author": "touchportyl",
+  "description": "The mythical Portyl Trident!",
+  "packFormatVersionMin": 71,
+  "packFormatVersionMax": 71,
+  "tags": ["ready for release"]
+}

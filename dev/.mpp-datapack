@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "lastOpened": "2026-04-06T00:58:06.432Z",
+  "name": "dev",
+  "packVersion": "1.00.00",
+  "id": "DV",
+  "author": "touchportyl",
+  "description": "For testing purposes",
+  "packFormatVersionMin": 61,
+  "packFormatVersionMax": 61,
+  "tags": [
+    "dev",
+    "testing"
+  ]
+}

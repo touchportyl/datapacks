@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "lastOpened": "2026-04-06T01:24:02.574Z",
+  "name": "Endermite Script - Ayutthaya",
+  "packVersion": "1.00.00",
+  "id": "ES",
+  "author": "touchportyl",
+  "description": "The Endermite Script Framework for Ayutthaya!",
+  "packFormatVersionMin": 69,
+  "packFormatVersionMax": 69,
+  "tags": ["ready for release"]
+}
