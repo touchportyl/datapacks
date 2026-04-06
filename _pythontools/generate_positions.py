@@ -1,3 +1,5 @@
+# Generates coordinates for a Minecraft function in a spherical shell around the player. The generated commands are saved to a text file, and the user is prompted for confirmation before generation. Change the inner and outer radius and the command template as needed.
+
 import tkinter as tk
 from tkinter import messagebox
 
