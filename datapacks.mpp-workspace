@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastOpened": "2026-04-06T10:30:27.256Z",
+  "lastOpened": "2026-04-08T05:05:47.415Z",
   "preferences": {
     "openTabs": {
       "openedFiles": [],
@@ -23,6 +23,10 @@
       "aroundtheworld-v1.03.00": [],
       "aroundtheworld-v1.02.00": [],
       "endreplacement-mc1.21.10": []
+    },
+    "explorerTagFilter": {
+      "selectedTags": [],
+      "matchAny": true
     }
   },
   "datapacks": [
