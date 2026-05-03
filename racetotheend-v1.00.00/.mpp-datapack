@@ -7,6 +7,10 @@
   "author": "touchportyl",
   "description": "Be the first to reach the End and get the last hit on the Ender Dragon to win!",
   "packFormatVersionMin": 94.1,
-  "packFormatVersionMax": 94.1,
-  "tags": ["requires update"]
+  "packFormatVersionMax": 101.1,
+  "tags": [
+    "requires update"
+  ],
+  "minecraftVersion": "26.1.2",
+  "unknownTagsLintMode": "warning"
 }

@@ -1,4 +1,4 @@
-# Swift Ghasts v1.00.01 for Vanilla MC 1.21.6 - 1.21.11
+# Swift Ghasts v1.00.01 for Vanilla MC 1.21.6 - 26.1.2
 - Code by [touchportyl](https://github.com/touchportyl/)
 
 # Overview

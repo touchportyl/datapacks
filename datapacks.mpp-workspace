@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastOpened": "2026-04-08T05:05:47.415Z",
+  "lastOpened": "2026-05-03T06:14:21.983Z",
   "preferences": {
     "openTabs": {
       "openedFiles": [],
@@ -9,12 +9,29 @@
     "autoSave": true,
     "explorerExpandedPaths": {
       "racetotheend-v1.00.00": [
+        "racetotheend-v1.00.00/data/racetotheend",
         "racetotheend-v1.00.00/data",
-        "racetotheend-v1.00.00"
+        "racetotheend-v1.00.00/data/racetotheend/function",
+        "racetotheend-v1.00.00/data/racetotheend/function/locator/bastion"
       ],
-      "swiftghasts-v1.00.01": [],
-      "dev": [],
-      "harvester-v3.03.02": [],
+      "swiftghasts-v1.00.01": [
+        "swiftghasts-v1.00.01/data",
+        "swiftghasts-v1.00.01",
+        "swiftghasts-v1.00.01/data/swiftghasts/function/versioning/updater",
+        "swiftghasts-v1.00.01/data/swiftghasts",
+        "swiftghasts-v1.00.01/data/swiftghasts/function/hook"
+      ],
+      "dev": [
+        "dev/data"
+      ],
+      "harvester-v3.03.02": [
+        "harvester-v3.03.02/data",
+        "harvester-v3.03.02/data/harvester",
+        "harvester-v3.03.02/data/harvester/function",
+        "harvester-v3.03.02/data/harvester/function/packages",
+        "harvester-v3.03.02/data/harvester/function/packages/versioning",
+        "harvester-v3.03.02/data/harvester/function/packages/versioning/updates"
+      ],
       "swiftghasts-v1.00.00": [],
       "dimensionaldoors-v3.02.01": [],
       "endermitescript_ayutthaya-v1.00.00": [],
@@ -27,6 +44,17 @@
     "explorerTagFilter": {
       "selectedTags": [],
       "matchAny": true
+    },
+    "inspectorSectionExpanded": {
+      "context:bindings": false,
+      "context:holders": false,
+      "context:tags": false,
+      "context:variables": false,
+      "context:scoreboards": false,
+      "metadata:pack-format": false,
+      "metadata:core": false,
+      "metadata:details": false,
+      "metadata:diagnostics": true
     }
   },
   "datapacks": [

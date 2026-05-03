@@ -8,5 +8,9 @@
   "description": "The mythical Portyl Trident!",
   "packFormatVersionMin": 71,
   "packFormatVersionMax": 71,
-  "tags": ["ready for release"]
+  "tags": [
+    "ready for release"
+  ],
+  "minecraftVersion": "26.1.2",
+  "unknownTagsLintMode": "warning"
 }

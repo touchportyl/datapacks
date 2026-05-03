@@ -11,5 +11,7 @@
   "tags": [
     "ready for release",
     "worldgen"
-  ]
+  ],
+  "minecraftVersion": "26.1.2",
+  "unknownTagsLintMode": "warning"
 }

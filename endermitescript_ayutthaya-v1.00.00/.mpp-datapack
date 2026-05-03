@@ -8,5 +8,9 @@
   "description": "The Endermite Script Framework for Ayutthaya!",
   "packFormatVersionMin": 69,
   "packFormatVersionMax": 69,
-  "tags": ["ready for release"]
+  "tags": [
+    "ready for release"
+  ],
+  "minecraftVersion": "26.1.2",
+  "unknownTagsLintMode": "warning"
 }

@@ -11,5 +11,7 @@
   "tags": [
     "dev",
     "testing"
-  ]
+  ],
+  "minecraftVersion": "26.1.2",
+  "unknownTagsLintMode": "warning"
 }

@@ -7,8 +7,11 @@
   "author": "touchportyl",
   "description": "Increases Happy Ghast flight speed for faster, smoother travel!",
   "packFormatVersionMin": 80,
-  "packFormatVersionMax": 94.1,
+  "packFormatVersionMax": 101.1,
   "tags": [
     "ready for release"
-  ]
+  ],
+  "minecraftVersion": "26.1.2",
+  "unknownTagsLintMode": "warning",
+  "ignoredUnknownTags": []
 }

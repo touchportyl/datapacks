@@ -8,5 +8,9 @@
   "description": "The world is now round with this datapack. Travel in a straight line and find yourself back where you started!",
   "packFormatVersionMin": 15,
   "packFormatVersionMax": 94.1,
-  "tags": ["ready for release"]
+  "tags": [
+    "ready for release"
+  ],
+  "minecraftVersion": "26.1.2",
+  "unknownTagsLintMode": "warning"
 }

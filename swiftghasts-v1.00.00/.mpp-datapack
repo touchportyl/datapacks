@@ -10,5 +10,7 @@
   "packFormatVersionMax": 94.1,
   "tags": [
     "released"
-  ]
+  ],
+  "minecraftVersion": "26.1.2",
+  "unknownTagsLintMode": "warning"
 }
