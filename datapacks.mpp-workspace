@@ -1,10 +1,19 @@
 {
   "version": 1,
-  "lastOpened": "2026-05-03T06:14:21.983Z",
+  "lastOpened": "2026-05-03T08:21:19.977Z",
   "preferences": {
     "openTabs": {
-      "openedFiles": [],
-      "activeFile": null
+      "openedFiles": [
+        {
+          "datapackDir": "racetotheend-v1.00.00",
+          "relativePath": ".mpp-datapack"
+        },
+        {
+          "datapackDir": "racetotheend-v1.00.00",
+          "relativePath": "pack.mcmeta"
+        }
+      ],
+      "activeFile": "racetotheend-v1.00.00|pack.mcmeta"
     },
     "autoSave": true,
     "explorerExpandedPaths": {
@@ -12,11 +21,11 @@
         "racetotheend-v1.00.00/data/racetotheend",
         "racetotheend-v1.00.00/data",
         "racetotheend-v1.00.00/data/racetotheend/function",
-        "racetotheend-v1.00.00/data/racetotheend/function/locator/bastion"
+        "racetotheend-v1.00.00/data/racetotheend/function/locator/bastion",
+        "racetotheend-v1.00.00"
       ],
       "swiftghasts-v1.00.01": [
         "swiftghasts-v1.00.01/data",
-        "swiftghasts-v1.00.01",
         "swiftghasts-v1.00.01/data/swiftghasts/function/versioning/updater",
         "swiftghasts-v1.00.01/data/swiftghasts",
         "swiftghasts-v1.00.01/data/swiftghasts/function/hook"
@@ -35,7 +44,9 @@
       "swiftghasts-v1.00.00": [],
       "dimensionaldoors-v3.02.01": [],
       "endermitescript_ayutthaya-v1.00.00": [],
-      "portyltrident-v1.00.05": [],
+      "portyltrident-v1.00.05": [
+        "portyltrident-v1.00.05/data"
+      ],
       "seaskipper-v1.02.01": [],
       "aroundtheworld-v1.03.00": [],
       "aroundtheworld-v1.02.00": [],
