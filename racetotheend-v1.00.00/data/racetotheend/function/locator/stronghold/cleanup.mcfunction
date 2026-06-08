@@ -8,3 +8,5 @@ kill @n[tag=RE_probe]
 kill @n[tag=RE_cast_location]
 
 scoreboard objectives remove RE_locator
+
+tag @a[tag=RE_stronghold_found] remove RE_stronghold_found

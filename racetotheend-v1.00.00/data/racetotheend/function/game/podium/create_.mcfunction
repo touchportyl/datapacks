@@ -13,6 +13,9 @@ execute as @a at @s run tp @s ~ ~ ~ facing entity @n[tag=RE_podium_mannequin]
 execute as @a at @s run spawnpoint @s ~ ~ ~
 execute as @a at @s run function racetotheend:_packages/effects/teleport
 
+# force gamemode
+gamemode adventure @a
+
 # start fireworks
 function racetotheend:game/podium/fireworks/setup
 

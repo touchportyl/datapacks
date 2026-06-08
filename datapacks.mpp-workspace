@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastOpened": "2026-05-03T08:21:19.977Z",
+  "lastOpened": "2026-06-06T02:16:30.736Z",
   "preferences": {
     "openTabs": {
       "openedFiles": [
@@ -11,9 +11,61 @@
         {
           "datapackDir": "racetotheend-v1.00.00",
           "relativePath": "pack.mcmeta"
+        },
+        {
+          "datapackDir": "racetotheend-v1.00.00",
+          "relativePath": "data/racetotheend/function/stats/splits.mcfunction"
+        },
+        {
+          "datapackDir": "racetotheend-v1.00.00",
+          "relativePath": "data/racetotheend/function/stats/splits_.mcfunction"
+        },
+        {
+          "datapackDir": "racetotheend-v1.00.00",
+          "relativePath": "data/racetotheend/function/commands/cleanup.mcfunction"
+        },
+        {
+          "datapackDir": "racetotheend-v1.00.00",
+          "relativePath": "data/racetotheend/function/commands/setup.mcfunction"
+        },
+        {
+          "datapackDir": "racetotheend-v1.00.00",
+          "relativePath": "data/racetotheend/function/commands/reset.mcfunction"
+        },
+        {
+          "datapackDir": "racetotheend-v1.00.00",
+          "relativePath": "data/racetotheend/function/commands/update.mcfunction"
+        },
+        {
+          "datapackDir": "racetotheend-v1.00.00",
+          "relativePath": "data/racetotheend/function/game/reset.mcfunction"
+        },
+        {
+          "datapackDir": "racetotheend-v1.00.00",
+          "relativePath": "data/racetotheend/function/game/podium/update.mcfunction"
+        },
+        {
+          "datapackDir": "racetotheend-v1.00.00",
+          "relativePath": "data/racetotheend/function/game/podium/create_.mcfunction"
+        },
+        {
+          "datapackDir": "racetotheend-v1.00.00",
+          "relativePath": "data/racetotheend/function/stats/all.mcfunction"
+        },
+        {
+          "datapackDir": "racetotheend-v1.00.00",
+          "relativePath": "data/racetotheend/function/game/podium/create.mcfunction"
+        },
+        {
+          "datapackDir": "racetotheend-v1.00.00",
+          "relativePath": "data/racetotheend/function/uninstall_.mcfunction"
+        },
+        {
+          "datapackDir": "racetotheend-v1.00.00",
+          "relativePath": "data/racetotheend/function/uninstall.mcfunction"
         }
       ],
-      "activeFile": "racetotheend-v1.00.00|pack.mcmeta"
+      "activeFile": "racetotheend-v1.00.00|data/racetotheend/function/uninstall_.mcfunction"
     },
     "autoSave": true,
     "explorerExpandedPaths": {
@@ -21,8 +73,13 @@
         "racetotheend-v1.00.00/data/racetotheend",
         "racetotheend-v1.00.00/data",
         "racetotheend-v1.00.00/data/racetotheend/function",
-        "racetotheend-v1.00.00/data/racetotheend/function/locator/bastion",
-        "racetotheend-v1.00.00"
+        "racetotheend-v1.00.00",
+        "racetotheend-v1.00.00/data/racetotheend/function/_packages/conversion",
+        "racetotheend-v1.00.00/data/racetotheend/function/locator",
+        "racetotheend-v1.00.00/data/racetotheend/function/game",
+        "racetotheend-v1.00.00/data/racetotheend/function/game/podium",
+        "racetotheend-v1.00.00/data/racetotheend/function/stats",
+        "racetotheend-v1.00.00/data/racetotheend/function/locator/stronghold"
       ],
       "swiftghasts-v1.00.01": [
         "swiftghasts-v1.00.01/data",

@@ -2,3 +2,5 @@ scoreboard objectives remove RE_lobby
 scoreboard objectives remove RE_start
 scoreboard objectives remove RE_stop
 scoreboard objectives remove RE_assist
+scoreboard objectives remove RE_stats
+scoreboard objectives remove RE_splits

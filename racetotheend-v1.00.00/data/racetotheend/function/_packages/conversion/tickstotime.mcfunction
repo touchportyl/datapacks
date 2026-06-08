@@ -48,16 +48,24 @@ $execute store result storage $(output_storage) $(output_path).minutes int 1 run
 $execute store result storage $(output_storage) $(output_path).seconds int 1 run scoreboard players get TIMER$seconds CV_time
 $execute store result storage $(output_storage) $(output_path).ticks int 1 run scoreboard players get TIMER$ticks CV_time
 
-# create storage flags for leading zeros
-$execute if score TIMER$minutes CV_time matches 0..9 run data modify storage $(output_storage) $(output_path).minutesZero set value "0"
+# Create storage flags for leading zeros
+$execute if score TIMER$minutes CV_time matches 0..9 run data modify storage $(output_storage) $(output_path).minutesZero set value 0
 $execute unless score TIMER$minutes CV_time matches 0..9 run data modify storage $(output_storage) $(output_path).minutesZero set value ""
-$execute if score TIMER$seconds CV_time matches 0..9 run data modify storage $(output_storage) $(output_path).secondsZero set value "0"
+$execute if score TIMER$seconds CV_time matches 0..9 run data modify storage $(output_storage) $(output_path).secondsZero set value 0
 $execute unless score TIMER$seconds CV_time matches 0..9 run data modify storage $(output_storage) $(output_path).secondsZero set value ""
-$execute if score TIMER$ticks CV_time matches 0..9 run data modify storage $(output_storage) $(output_path).ticksZero set value "0"
+$execute if score TIMER$ticks CV_time matches 0..9 run data modify storage $(output_storage) $(output_path).ticksZero set value 0
 $execute unless score TIMER$ticks CV_time matches 0..9 run data modify storage $(output_storage) $(output_path).ticksZero set value ""
-
-# Debugging
-#$tellraw @a [{"text":"\n "},{"text":"Conversion: Ticks to Time Debug Output","underlined":true},{"text":"\n"},{"text":"\n | Input Ticks: "},{"nbt":"$(input_path)","storage":"$(input_storage)","color":"yellow"},{"text":"\n | Hours: "},{"nbt":"$(output_path).hours","storage":"$(output_storage)","color":"yellow"},{"text":"\n | Minutes: "},{"nbt":"$(output_path).minutesZero","storage":"$(output_storage)","color":"yellow"},{"nbt":"$(output_path).minutes","storage":"$(output_storage)","color":"yellow"},{"text":"\n | Seconds: "},{"nbt":"$(output_path).secondsZero","storage":"$(output_storage)","color":"yellow"},{"nbt":"$(output_path).seconds","storage":"$(output_storage)","color":"yellow"},{"text":"\n | Ticks: "},{"nbt":"$(output_path).ticksZero","storage":"$(output_storage)","color":"yellow"},{"nbt":"$(output_path).ticks","storage":"$(output_storage)","color":"yellow"},{"text":"\n"}]
 
 # Cleanup: remove temporary objective
 scoreboard objectives remove CV_time
+
+# Comment out to display debug text
+return 0
+
+# Debugging
+$data modify storage $(output_storage) $(output_path).input_path set value "$(input_path)"
+$data modify storage $(output_storage) $(output_path).input_storage set value "$(input_storage)"
+$data modify storage $(output_storage) $(output_path).output_path set value "$(output_path)"
+$data modify storage $(output_storage) $(output_path).output_storage set value "$(output_storage)"
+
+$function racetotheend:_packages/conversion/tickstotime_ with storage $(output_storage) $(output_path)
