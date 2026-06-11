@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "lastOpened": "2026-06-11T00:39:38.799Z",
+  "name": "Datapack Manager mc26.1",
+  "packVersion": "1.00.00",
+  "minecraftVersion": "26.1.2",
+  "id": "DM",
+  "author": "touchportyl",
+  "description": "A template made by touchportyl!",
+  "packFormatVersionMin": 15,
+  "packFormatVersionMax": 101.1,
+  "tags": []
+}

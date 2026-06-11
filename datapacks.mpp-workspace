@@ -1,71 +1,19 @@
 {
   "version": 1,
-  "lastOpened": "2026-06-06T02:16:30.736Z",
+  "lastOpened": "2026-06-10T23:37:16.227Z",
   "preferences": {
     "openTabs": {
       "openedFiles": [
         {
-          "datapackDir": "racetotheend-v1.00.00",
+          "datapackDir": "datapackmanager-mc1.21",
           "relativePath": ".mpp-datapack"
         },
         {
-          "datapackDir": "racetotheend-v1.00.00",
-          "relativePath": "pack.mcmeta"
-        },
-        {
-          "datapackDir": "racetotheend-v1.00.00",
-          "relativePath": "data/racetotheend/function/stats/splits.mcfunction"
-        },
-        {
-          "datapackDir": "racetotheend-v1.00.00",
-          "relativePath": "data/racetotheend/function/stats/splits_.mcfunction"
-        },
-        {
-          "datapackDir": "racetotheend-v1.00.00",
-          "relativePath": "data/racetotheend/function/commands/cleanup.mcfunction"
-        },
-        {
-          "datapackDir": "racetotheend-v1.00.00",
-          "relativePath": "data/racetotheend/function/commands/setup.mcfunction"
-        },
-        {
-          "datapackDir": "racetotheend-v1.00.00",
-          "relativePath": "data/racetotheend/function/commands/reset.mcfunction"
-        },
-        {
-          "datapackDir": "racetotheend-v1.00.00",
-          "relativePath": "data/racetotheend/function/commands/update.mcfunction"
-        },
-        {
-          "datapackDir": "racetotheend-v1.00.00",
-          "relativePath": "data/racetotheend/function/game/reset.mcfunction"
-        },
-        {
-          "datapackDir": "racetotheend-v1.00.00",
-          "relativePath": "data/racetotheend/function/game/podium/update.mcfunction"
-        },
-        {
-          "datapackDir": "racetotheend-v1.00.00",
-          "relativePath": "data/racetotheend/function/game/podium/create_.mcfunction"
-        },
-        {
-          "datapackDir": "racetotheend-v1.00.00",
-          "relativePath": "data/racetotheend/function/stats/all.mcfunction"
-        },
-        {
-          "datapackDir": "racetotheend-v1.00.00",
-          "relativePath": "data/racetotheend/function/game/podium/create.mcfunction"
-        },
-        {
-          "datapackDir": "racetotheend-v1.00.00",
-          "relativePath": "data/racetotheend/function/uninstall_.mcfunction"
-        },
-        {
-          "datapackDir": "racetotheend-v1.00.00",
-          "relativePath": "data/racetotheend/function/uninstall.mcfunction"
+          "datapackDir": "datapackmanager-mc26.1",
+          "relativePath": ".mpp-datapack"
         }
       ],
-      "activeFile": "racetotheend-v1.00.00|data/racetotheend/function/uninstall_.mcfunction"
+      "activeFile": "datapackmanager-mc26.1|.mpp-datapack"
     },
     "autoSave": true,
     "explorerExpandedPaths": {
@@ -73,7 +21,6 @@
         "racetotheend-v1.00.00/data/racetotheend",
         "racetotheend-v1.00.00/data",
         "racetotheend-v1.00.00/data/racetotheend/function",
-        "racetotheend-v1.00.00",
         "racetotheend-v1.00.00/data/racetotheend/function/_packages/conversion",
         "racetotheend-v1.00.00/data/racetotheend/function/locator",
         "racetotheend-v1.00.00/data/racetotheend/function/game",
@@ -92,11 +39,13 @@
       ],
       "harvester-v3.03.02": [
         "harvester-v3.03.02/data",
-        "harvester-v3.03.02/data/harvester",
         "harvester-v3.03.02/data/harvester/function",
         "harvester-v3.03.02/data/harvester/function/packages",
-        "harvester-v3.03.02/data/harvester/function/packages/versioning",
-        "harvester-v3.03.02/data/harvester/function/packages/versioning/updates"
+        "harvester-v3.03.02/data/harvester/function/packages/versioning/updates",
+        "harvester-v3.03.02/data/datapackmanager-1.21",
+        "harvester-v3.03.02/data/datapackmanager-1.21/function",
+        "harvester-v3.03.02/data/datapackmanager-1.21/function/packages",
+        "harvester-v3.03.02/data/datapackmanager-1.21/function/root"
       ],
       "swiftghasts-v1.00.00": [],
       "dimensionaldoors-v3.02.01": [],
@@ -107,7 +56,20 @@
       "seaskipper-v1.02.01": [],
       "aroundtheworld-v1.03.00": [],
       "aroundtheworld-v1.02.00": [],
-      "endreplacement-mc1.21.10": []
+      "endreplacement-mc1.21.10": [],
+      "datapackmanager-mc1.21": [
+        "datapackmanager-mc1.21/data"
+      ],
+      "datapackmanager-mc26.1": [
+        "datapackmanager-mc26.1/data",
+        "datapackmanager-mc26.1/data/datapackmanager-1.21",
+        "datapackmanager-mc26.1/data/datapackmanager-26.1",
+        "datapackmanager-mc26.1/data/datapackmanager-26.1/function",
+        "datapackmanager-mc26.1/data/datapackmanager-26.1/function/root",
+        "datapackmanager-mc26.1/data/datapackmanager-26.1/function/packages",
+        "datapackmanager-mc26.1/data/datapackmanager-26.1/function/packages/versioning",
+        "datapackmanager-mc26.1/data/datapackmanager-26.1/function/packages/versioning/versions"
+      ]
     },
     "explorerTagFilter": {
       "selectedTags": [],
@@ -127,6 +89,8 @@
   },
   "datapacks": [
     "racetotheend-v1.00.00",
+    "datapackmanager-mc1.21",
+    "datapackmanager-mc26.1",
     "swiftghasts-v1.00.01",
     "dev",
     "harvester-v3.03.02",

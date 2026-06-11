@@ -1,0 +1,1 @@
+scoreboard players operation EVENT$initialize.copy DatapackManager = EVENT$initialize DatapackManager
