@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastOpened": "2026-06-10T23:37:16.227Z",
+  "lastOpened": "2026-07-05T23:59:26.357Z",
   "preferences": {
     "openTabs": {
       "openedFiles": [
@@ -9,11 +9,11 @@
           "relativePath": ".mpp-datapack"
         },
         {
-          "datapackDir": "datapackmanager-mc26.1",
+          "datapackDir": "racetotheend-v1.00.00",
           "relativePath": ".mpp-datapack"
         }
       ],
-      "activeFile": "datapackmanager-mc26.1|.mpp-datapack"
+      "activeFile": "racetotheend-v1.00.00|.mpp-datapack"
     },
     "autoSave": true,
     "explorerExpandedPaths": {
@@ -40,12 +40,14 @@
       "harvester-v3.03.02": [
         "harvester-v3.03.02/data",
         "harvester-v3.03.02/data/harvester/function",
-        "harvester-v3.03.02/data/harvester/function/packages",
         "harvester-v3.03.02/data/harvester/function/packages/versioning/updates",
-        "harvester-v3.03.02/data/datapackmanager-1.21",
         "harvester-v3.03.02/data/datapackmanager-1.21/function",
         "harvester-v3.03.02/data/datapackmanager-1.21/function/packages",
-        "harvester-v3.03.02/data/datapackmanager-1.21/function/root"
+        "harvester-v3.03.02/data/datapackmanager-1.21/function/root",
+        "harvester-v3.03.02/data/harvester",
+        "harvester-v3.03.02/data/harvester/function/root/core",
+        "harvester-v3.03.02/data/harvester/function/packages",
+        "harvester-v3.03.02/data/harvester/function/packages/versioning"
       ],
       "swiftghasts-v1.00.00": [],
       "dimensionaldoors-v3.02.01": [],
@@ -76,15 +78,16 @@
       "matchAny": true
     },
     "inspectorSectionExpanded": {
-      "context:bindings": false,
+      "context:bindings": true,
       "context:holders": false,
       "context:tags": false,
       "context:variables": false,
       "context:scoreboards": false,
       "metadata:pack-format": false,
-      "metadata:core": false,
+      "metadata:core": true,
       "metadata:details": false,
-      "metadata:diagnostics": true
+      "metadata:diagnostics": true,
+      "export:settings": true
     }
   },
   "datapacks": [

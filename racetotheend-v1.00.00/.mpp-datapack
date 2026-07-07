@@ -12,5 +12,8 @@
     "requires update"
   ],
   "minecraftVersion": "26.1.2",
-  "unknownTagsLintMode": "warning"
+  "unknownTagsLintMode": "warning",
+  "export": {
+    "outputDir": "C:\\Users\\admin\\AppData\\Roaming\\.minecraft\\saves\\datapacks\\datapacks\\_dist"
+  }
 }
