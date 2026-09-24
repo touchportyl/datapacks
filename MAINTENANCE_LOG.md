@@ -99,3 +99,10 @@ Built and verified on 2026-09-25 after every other line of this entry was writte
 | Zip size | 2622094 bytes |
 | SHA-256 of the zip | `af8b30ef8e04d7c223b29f8202e22dd9137ce9224d7f8cf7df7bff03db25249a` |
 | Verification | `testzip` clean, 12 sampled entries re-hashed against the manifest, all key documents present |
+
+### Follow-up, same day: merged to main and tagged
+
+- The two untracked groups above were committed on `datapackmanager-26x-roadmap`, and `main` was fast-forwarded to that tip. `main` had no commits of its own since `598a613` (2026-01-27).
+- Tag `handover-baseline-2026-09-25` marks the resulting `main` commit. Tag `archive/datapack-manager-rework` keeps the abandoned rework commit `6fdc34c` reachable so its remote branch can be deleted later.
+- Local branches `datapackmanager-26x-roadmap` and `transition-to-mpp` were deleted as fully merged. The annotated tag `transition-to-mpp` at `df993d5` is untouched. `staging` was fast-forwarded to `main` so the two branches the README documents stay level.
+- Nothing was pushed. On origin, `main` and `staging` are still at `598a613`, and `origin/transition-to-mpp` and `origin/datapack-manager-rework` still exist.
