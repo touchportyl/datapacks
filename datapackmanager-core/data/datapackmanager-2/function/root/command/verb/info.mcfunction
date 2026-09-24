@@ -1,0 +1,1 @@
+tellraw @s [{"text":"[DatapackManager] ","color":"gray"},{"text":"A shared runtime for Minecraft datapacks: a cross-datapack event bus, a player command line, and a Minecraft version oracle.","color":"white"}]

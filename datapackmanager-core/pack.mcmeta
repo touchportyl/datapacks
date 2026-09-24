@@ -1,0 +1,9 @@
+{
+  "pack": {
+    "description": "DatapackManager core - cross-datapack event bus, player command line, and Minecraft version oracle.",
+    "pack_format": 48,
+    "supported_formats": { "min_inclusive": 48, "max_inclusive": 107 },
+    "min_format": 48,
+    "max_format": [107, 1]
+  }
+}

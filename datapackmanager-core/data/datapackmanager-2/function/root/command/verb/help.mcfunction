@@ -1,0 +1,6 @@
+tellraw @s [{"text":"[DatapackManager] ","color":"gray"},{"text":"Commands","color":"gold","bold":true}]
+tellraw @s [{"text":"  /trigger dm_command set 1","color":"yellow"},{"text":" - this help","color":"gray"}]
+tellraw @s [{"text":"  /trigger dm_command set 2","color":"yellow"},{"text":" - about","color":"gray"}]
+tellraw @s [{"text":"  /trigger dm_command set 3","color":"yellow"},{"text":" - detected Minecraft version","color":"gray"}]
+tellraw @s [{"text":"  /trigger dm_command set 4","color":"yellow"},{"text":" - open datapack config","color":"gray"}]
+tellraw @s [{"text":"  /trigger dm_command set 5","color":"yellow"},{"text":" - uninstall","color":"gray"}]
