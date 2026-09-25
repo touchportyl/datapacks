@@ -26,7 +26,7 @@ Fourth entry of the day. The packs are now checked on real Minecraft servers: `_
 
 | Item | Value |
 |---|---|
-| Branch | `staging` at `53bc701`; this and the previous entry are uncommitted working-tree changes, nothing pushed |
+| Branch | `staging`: the pack fixes of this and the previous entry are commit `495288c`, the harness `8d787bc`, the guide and this log `50e49a0`, and these git-state rows a follow-up log commit; all pushed to origin the same day at the user's request. `main` stays at `5321573` until the next release merge. |
 | New | `_pythontools/load_test.py`, `load_test.json`, `load_test_scenarios/harvester.txt`, `load_test_scenarios/dimensionaldoors.txt`, `verify_build.py`, `dimensionaldoors-v3.02.01/data/dimensionaldoors/function/compatibility/debug/samplepoint.mcfunction` |
 | Changed | `dimensionaldoors-v3.02.01/.../root/detection/portal.mcfunction`, `.../root/closermechanism/main.mcfunction`, `_pythontools/README.md`, `MAINTAINER_GUIDE.md` (sections 6.6, 8.4, 8.5, 10 step 9, 12, gotchas 4 and 16), this log |
 
@@ -87,7 +87,7 @@ Third entry of the day. Both packs now vendor the current `datapackmanager-1.21`
 | Item | Value |
 |---|---|
 | Branch | `staging` at `53bc701` |
-| This entry | Uncommitted working-tree changes on `staging`; nothing committed or pushed |
+| This entry | Commit `495288c` (both packs, together with the two fixes of the next entry) and `50e49a0` (this log and the guide) on `staging`, pushed to origin the same day |
 | Touched | `harvester-v3.03.02/`, `dimensionaldoors-v3.02.01/`, `MAINTAINER_GUIDE.md`, this log |
 | Not touched | the template, `datapackmanager-mc26.3`, `datapackmanager-core`, the other consumer packs |
 
