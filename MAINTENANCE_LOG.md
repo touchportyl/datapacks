@@ -18,6 +18,161 @@ Tools:
 
 ---
 
+## 2026-09-25: load test in the build verification
+
+Fourth entry of the day. The packs are now checked on real Minecraft servers: `_pythontools/verify_build.py --load --accept-eula` builds Harvester and Dimensional Doors and loads them on a headless server for each of 20 installed Minecraft versions from 1.14.4 to 26.2. The first runs found two more Dimensional Doors defects, both fixed below, and confirmed most of the third entry's fixes in game.
+
+### Git state
+
+| Item | Value |
+|---|---|
+| Branch | `staging` at `53bc701`; this and the previous entry are uncommitted working-tree changes, nothing pushed |
+| New | `_pythontools/load_test.py`, `load_test.json`, `load_test_scenarios/harvester.txt`, `load_test_scenarios/dimensionaldoors.txt`, `verify_build.py`, `dimensionaldoors-v3.02.01/data/dimensionaldoors/function/compatibility/debug/samplepoint.mcfunction` |
+| Changed | `dimensionaldoors-v3.02.01/.../root/detection/portal.mcfunction`, `.../root/closermechanism/main.mcfunction`, `_pythontools/README.md`, `MAINTAINER_GUIDE.md` (sections 6.6, 8.4, 8.5, 10 step 9, 12, gotchas 4 and 16), this log |
+
+### Decisions made in this entry
+
+1. **The user accepted the Minecraft EULA for local test servers** and asked for the load test to be part of the build verification. The harness still writes `eula=true` only when a run passes `--accept-eula` or sets `MINECRAFT_ACCEPT_EULA=1`, so nobody else accepts it by cloning the repo.
+2. **Servers come from the installed client jars, not downloaded server jars.** A client jar contains the dedicated server (`net.minecraft.server.Main`, `MinecraftServer` on 1.14 and 1.15), the version JSON lists its libraries, and the launcher's own runtimes provide Java 8, 16, 17, 21 and 25. Nothing is downloaded. 1.18.2 asks for `java-runtime-beta`, which is not installed; the harness falls back to the lowest installed Java that is new enough (17), only for Java 17+ versions.
+3. **The build is the dual layout** by default: singular folders plus a plural copy (`functions/`, `advancements/`, ...), which is what every released zip of these packs contains. A plain MPP export today is singular-only (open decision 2); `--layout singular` tests that.
+4. **Version windows live in `load_test.json`**, not in the packs. Every resource without a rule must load on every tested version; rules give windows like `1.20.5..` or `{name}..` (the version in the file's own name), and the framework probes must also fail to load before their window. The table doubles as the specification of which file is meant for which versions.
+5. **Golden `VERSION$minecraft.current` values were recorded from real servers**, which closes the "capture golden values" half of open decision 3 of the route-cleanup entry: 1.14.4 11404, 1.15.2 11502, 1.16.5 11605, 1.17.1 11701, 1.18.2 11802, 1.19.4 11904, 1.20.1 12002, 1.20.2 12002, 1.20.4 12003, 1.20.6 12005, 1.21.1 12005, 1.21.3 12102, 1.21.4 12104, 1.21.5 12105, 1.21.6 12106, 1.21.8 12107, 1.21.10 12109, 1.21.11 12111, 26.1.2 12601, 26.2 12602. 1.20.1 reporting 12002 and 1.21.1 reporting 12005 are the leaf gaps described in decision 5 of that entry, now measured.
+
+### What the harness does
+
+Per version: fresh flat world with the built packs; server bound to 127.0.0.1, offline, peaceful; every load error before "Done" attributed to a pack resource (function, advancement, predicate, item modifier, loot table; seven log formats between 1.14 and 26.2) and checked against its window, with any unattributable error mentioning a pack namespace failing the run; then the framework state (the golden value and its major/minor/patch, `FLAG$isActive`, `COUNT$datapacks` = 2, each pack's `FLAG$isActive` and `VERSION$datapack.latest`); then the smoke scenarios with random ticks frozen:
+
+- Harvester: an armor stand carrying the tags of a stone hoe and wheat seeds drives `root/positioner/filter` over a ripe 7x7 field; the five plots of the 3x3 star must be replanted, the corners left ripe, drops and XP present; then an iron hoe goes through `root/damagetool2` twice and must end at damage 1, then 2 (on 1.19.4+, through that version's item-modifier set).
+- Dimensional Doors: a conduit makes an entrance (north, left hinge), the entangled conduit makes an exit (east, right hinge), both must close in their own orientation, an armor stand on a sample point of the reopened entrance must arrive in front of the exit, a second pair (spruce and birch) is linked, and breaking both entrances in one command must remove all four portals.
+
+Each server runs in a Windows job object with kill-on-close, so killing the harness kills its server (tested by killing the Python process of a running test). A full run of 20 versions took 22 minutes on this machine; `--quick` runs five boundary versions in about 3.
+
+### Defects found by the load test and fixed
+
+- **Dimensional Doors never teleported anything on 1.14 to 1.16.** `root/detection/portal` drew its debug visualiser with `particle minecraft:small_flame`, a particle added in 1.17; the unknown id dropped the whole function on older versions, and that function is what tags an entity in the doorway. The particle now lives in `compatibility/debug/samplepoint`. Teleport now passes on 1.14.4, 1.15.2 and 1.16.5.
+- **Dimensional Doors never closed doors on 1.21.2 and 1.21.3.** Those versions report `.minor` 21, which routed them to the v1 closer, but until 1.21.4 `setblock` rebuilds the placed lower half from the still-open upper half, so v1's `replace` comes back open ("Could not set the block"; reproduced by hand on 1.21.3, works on 1.21.4). `closermechanism/main` now sends 12100..12103 to v2 and uses v1 from 12104.
+
+### Fixes from the third entry that the load test confirmed
+
+- The v2 closer keeps each door's orientation on 1.16.5 to 1.21.3 (it used to turn every door to face west with a right hinge).
+- Pale oak in its own `1.21.4` files: the copper door files now load on 1.21.1 and 1.21.3.
+- Conduit linking on 1.20.4 (tag data) and 1.20.6+ (components), teleport through the linked pair, and the same-tick destruction of two pairs, on every tested version.
+- Harvester's item-modifier sets: the durability write ends at 1 then 2 on 1.19.4 to 26.2 through the legacy, 1.20.5 (both `enchantment` keys) and 1.21.2 sets, which exercises the half-step margin.
+- Every version-isolated file loads exactly where its window says, and the framework probes fail below their windows.
+- The final gate: `verify_build.py --load --accept-eula` passed every step, format (674 files), references (the three framework trees and both packs, 0 unresolved), derivation (111 files, 0 drift) and the load test (20 of 20 versions, 0 problems).
+
+### Found out along the way
+
+- From 1.20.5 (seen on 1.20.6; 1.20.4 still resolves at run time), `item modify` and `execute if predicate` resolve their ids when the function loads, so a function that names a missing modifier or predicate does not load at all. That is why each item-modifier set needs its own `compatibility/setdamage-<version>` caller.
+- 1.21.11 renamed the game rules (`randomTickSpeed` became `random_tick_speed`; the old name is rejected). Neither pack nor the framework uses a game rule; Race to the End already uses the new names.
+- Before 1.21.4, `setblock` cannot open or close one half of a door by itself, so the scenario opens the entrance with a redstone block.
+
+### Not verified
+
+- 26.3: no 26.3 client is installed, so `load_test.json` carries no 26.3 entry and the 26.3 item modifiers, the 26.3 sneak predicate and the poplar door files have never been loaded. Installing 26.3 in the launcher and adding `"26.3": {"minecraft_current": 12603}` to `load_test.json` closes this.
+- Anything that needs a real player: sneak detection, `damagetool` reading `SelectedItem`, the config and uninstall menus, admin alerts, and particles.
+
+### Open decisions carried forward
+
+The list of the previous entry stands, with decision 3 narrowed to: install 26.3 and run the load test on it, then look at the player-only paths in game once.
+
+---
+
+## 2026-09-25: Harvester and Dimensional Doors re-vendored and fixed
+
+Third entry of the day. Both packs now vendor the current `datapackmanager-1.21` template byte for byte, and every defect found in their own code by a full read-through, the reference checker, the minecraft.wiki changelogs and the vanilla data in the locally installed client jars is fixed. Nothing was loaded in game.
+
+### Git state
+
+| Item | Value |
+|---|---|
+| Branch | `staging` at `53bc701` |
+| This entry | Uncommitted working-tree changes on `staging`; nothing committed or pushed |
+| Touched | `harvester-v3.03.02/`, `dimensionaldoors-v3.02.01/`, `MAINTAINER_GUIDE.md`, this log |
+| Not touched | the template, `datapackmanager-mc26.3`, `datapackmanager-core`, the other consumer packs |
+
+### Decisions made in this entry
+
+1. **No version bump, no folder rename.** The fixes live in the existing `harvester-v3.03.02/` and `dimensionaldoors-v3.02.01/` folders. Both versions already have zips in `_dist`, so the next export of either pack must bump the version first: `.mpp-datapack` `packVersion`, `VERSION$datapack.current` in `preinstaller/check`, the final clamp line in `versioning/check`, both `datapack disable` names in `root/core/disable`, the title of the pack's root advancement, and the folder name. No save-data layout changed, so no `updates/vX` migration is needed. Harvester's `changelog.md` has an "unreleased" section ready.
+2. **`forward` 12603** in both packs, `.mpp-datapack` `15..121` and `minecraftVersion` 26.3 in both (Dimensional Doors was `48..48`). `pack.mcmeta.disabled` is unchanged (still 15 and 48), because the export question is open decision 2 below.
+3. **The poplar door uses window class D** (no particles through a closed door). The wiki does not describe the texture and no 26.3 client jar is installed; check it in game and move the tag in `summon/door/26.3` if the door has a window.
+4. **Dimensional Doors' 404 displacement is unchanged.** `spreadplayers ~ ~ 0 1 false @s` puts an entity on the highest block at the chosen column, so walking into an unlinked entrance indoors lands the player on the roof, and in the Nether on the bedrock ceiling. Keeping the entity at its own height needs `under <absolute y>`, which only a macro can supply, so this is a design decision for the author rather than a mechanical fix.
+5. **Migration jingles stay silent.** The `updates/vX` calls now reach the real `ui/jingle`, but that plays to `@s` and the migrations run from the scheduled listener with no executing entity. The template's example update behaves the same way; changing it belongs in the template.
+
+### Facts verified (2026-09-25)
+
+| Fact | Source |
+|---|---|
+| Item stacks moved from `tag` to `components`, and `Count` to `count`, in 1.20.5 (24w09a); 1.20.3 and 1.20.4 still use `tag` | minecraft.wiki: Java Edition 1.20.5, Item format/Before 1.20.5 |
+| `custom_name` and `lore` became SNBT text components in 1.21.5 (25w02a); JSON strings before | minecraft.wiki: Java Edition 25w02a, Text component format |
+| Particle options became SNBT in 1.20.5 (Pre-Release 1); `flash` needs `color` since 1.21.9 (25w36a); no /particle change in 26.x | minecraft.wiki: Commands/particle, Java Edition 1.20.5, 1.21.9 |
+| Item predicate enchantment checks moved to `predicates.minecraft:enchantments` in 1.20.5 (24w11a); the field is `enchantment` in 1.20.5/1.20.6 and `enchantments` from 1.21 | minecraft.wiki: Java Edition 1.20.5, 1.21; vanilla `silk_touch_nest.json` in the local 1.20.6, 1.21.1 and 26.2 jars |
+| Inventory-changed item predicates take an `items` list before 1.20.5 (`"items": ["minecraft:dragon_breath"]`) and accept a list or a string after | vanilla `end/dragon_breath.json` in the local 1.19.4, 1.20.4 and 26.2 jars |
+| 26.2 (Snapshot 3) turned entity predicates into a component-style map: existing field names stay valid as ids, `type` became `minecraft:entity_type`, unknown keys are rejected; vanilla writes `minecraft:flags`, `minecraft:equipment` | minecraft.wiki: Java Edition 26.2 Snapshot 3; vanilla advancements in the local 26.2 jar |
+| 26.3 (Snapshot 4) renamed the predicate type key `condition` to `type`, the loot-function key `function` to `type`, and `conditions` (list) to `condition` (one inline value or id) | minecraft.wiki: Java Edition 26.3 Snapshot 4, Item modifier (history) |
+| 26.3 (Pre-Release 1) split number providers into int and float registries; `minecraft:score` is int-only with `score`, `target`, `fallback` (no `scale`); float `from_int` takes `input`, float `div` takes `left` and `right`; `set_damage.damage` and `random_chance.chance` take float providers | minecraft.wiki: Java Edition 26.3 Pre-Release 1, Number provider |
+| `SelectedItem` still exists for /data and nbt selectors in 26.3; experience orb `Age`/`Health`/`Value`, fireball `ExplosionPower`/`Motion`/`Invulnerable`, armor stand `Marker`/`Invisible` unchanged | minecraft.wiki: Player, Experience, Fireball, Armor Stand |
+| `minecraft:copper_hoe` is vanilla since 1.21.9 (durability 190); Java iron tools have 250 durability, not 251 | minecraft.wiki: Hoe, Java Edition 1.21.9 |
+| `minecraft:pale_oak_door` is gameplay-normal from 1.21.4; 26.3 added `minecraft:poplar_door` (in `#wooden_doors`); 26.1 and 26.2 added no doors; door block states unchanged | minecraft.wiki: Door, Java Edition 1.21.4, 26.3, Block tag |
+| Crop ids and maximum ages, all sound events and particles the packs use, and the `spreadplayers`, `forceload`, `datapack`, `item`, `trigger` syntax are unchanged in 26.3 (26.3's /item takes slot sources, plain slot names still work) | minecraft.wiki: the respective pages |
+
+### Re-vendor
+
+Same procedure as the Framework Updater: `data/datapackmanager-1.21`, `data/datapackmanager` and `data/minecraft` were deleted in each pack, copied from `datapackmanager-mc1.21`, and `mydatapack:` rewritten to the pack's namespace. `diff -r` against the template is empty for both framework folders in both packs; `load.json` differs only in the namespace. That removed `versions/patch.mcfunction`, added the 1.21.11, 26.1, 26.2 and 26.3 leaves, and brought the uninstall, banner and `dm_version` fixes of the previous entry.
+
+A formatting pass (`format_check.py --fix`) ran on both packs before any logic edit: `git diff -w --ignore-blank-lines` on that pass showed only the four Harvester item modifiers, whose `0.000001` the JSON writer re-serialises as `1e-06` (valid JSON, same value).
+
+### Fixes, Harvester (`harvester-v3.03.02`)
+
+- **Own event tags.** The config and uninstall handlers used the framework's `DM_command_config`/`DM_command_uninstall` tags directly (the "copy" added the tag to itself) and removed them after answering, so if Harvester's handler ran before another pack's listener, that pack never showed its menu. Harvester now copies to `HV_command_*` like the template and Dimensional Doors.
+- **`handle` files wired in**, writing `EVENT$command.*.handled` on the `Harvester` objective with `BOOL$true` (they wrote a literal 1 on `DatapackManager` and were never called).
+- **Throws run once.** `versioning/check` ran the throws `as @a at @s`, and `throw/datapacknotcompatible` calls `root/core/disable`, which decrements `COUNT$datapacks`: with several players online one incompatible pack could zero the counter and uninstall the manager under the other packs.
+- **Legacy port moved.** The installer copied `$h.version TP_version` into `VERSION$datapack.latest` after the updates had already run and reset it; in any world where the `TP_version` objective exists, the read created the score as 0, `latest` became 0, and the next load re-ran every update, whose v3.03.01 step resets the config (tool breaking off). The port now happens in `versioning/check` before the default, and only for a real value (`matches 10000..`).
+- **Dead jingle references** in the three updates now call `ui/jingle`; the installer calls the `configurationloaded` alert like the template.
+- **Hoe detection per player.** `root/inventory/hoe` and `range` tagged `@a` and re-ran `hoe2` for every player already tagged that tick; they now work on `@s` only.
+- **1.20.5 boundary.** `damagetool` read the removed `tag.Damage` on 1.20.5 to 1.21.1 (all reported as 12005, inside `..12005`); a failed `data get` stores 0, so the write set the hoe to 1 damage and harvesting repaired hoes. `toolbreak` switched to SNBT particles at 12000, so 1.20.2 to 1.20.4 had no break particles. Both now split at `..12004` / `12005..`.
+- **Tool damage modifiers, four sets** (table in guide §7.5). The single legacy set ignored Unbreaking on 1.20.5+ (unknown top-level `enchantments` field, so every hoe lost durability on about 3 of 4 harvests) and does not load on 26.3. New sets for 1.20.5 to 1.21.1 (both `enchantment` and `enchantments`, because 1.21 and 1.21.1 report 12005), 1.21.2 to 26.2, and 26.3 (`type` keys, one `condition` via `all_of`, damage `div(from_int(score), 1000000.0)`), each called from its own `compatibility/setdamage-<version>`.
+- **Iron durability 250**, not 251: with 251 the floored write never advanced an iron hoe's damage (simulated: 250 of 250 steps skipped). **Half-step margin:** `damagetool2` subtracts 500000 before dividing, because `set_damage` floors a float32 product; without it a float32 simulation of every tier and damage value skipped the damage on 2 copper, 44 iron, 2 diamond and 6 netherite steps (2, 51, 3 and 6 with the 26.3 division), with it none, in both arithmetic forms.
+- **26.3 sneak predicate.** `predicate/26.3/player_checkers/is_sneaking.json` (`type`, `minecraft:flags`) and `compatibility/is_sneaking-26.3`; the main loop uses it on `12603..`. Without it Harvester does nothing on 26.3.
+
+### Fixes, Dimensional Doors (`dimensionaldoors-v3.02.01`)
+
+- **v2 door closer rotated doors.** Each of the 21 v2 per-wood files ran all eight upper-half `setblock` lines unconditionally; the lower half copies the upper half on the shape update, so every door closed facing west with a right hinge. The upper-half line is now conditional on the matching closed lower half. v2 runs on 1.16 to 1.20 and on 1.21/1.21.1 (reported `.minor` 20), so this hit 1.21.1 servers too.
+- **v2 item cleanup:** `waxedcopper` killed a "Copper Door" item instead of "Waxed Copper Door"; `paleoak` had no kill line.
+- **Pale oak split out** of the `1.21` files into `1.21.4` files (summon, v1, v2): the unknown `pale_oak_door` id dropped the whole file on 1.21 to 1.21.3, so copper doors never became portals or closed there.
+- **Poplar door (26.3)** added in all places the playbook lists: `summon/door/26.3`, `closermechanism/v1/26.3` + `v1/poplar`, `v2/26.3` + `v2/poplar`.
+- **Conduit data at 1.20.5.** Detection, linking, the "blow up the entrance" check and the uninstaller split at 1.20.3, so on 1.20.3 and 1.20.4 linked conduits were never recognised (and could spawn a second entrance). `createlinkedconduit` used the SNBT-text summon on 1.21.2 to 1.21.4, where names and lore must still be JSON strings. Splits are now `..12004` (tag), `12005..12104` (components, JSON-string text), `12105..` (SNBT text); the component-era summons use `count`.
+- **Same-tick destruction.** `destroy/filter` matched partners against only the single furthest queued door, so when two linked pairs broke in the same tick (a creeper or TNT at a door hub) one partner was left as an orphan portal. `destroy/partners` now tags partners for every queued door, still without `distance` or `sort`, so it stays cross-dimensional.
+- **"Quantum Conduits" advancement** used `"item"`, which item predicates have not had since 1.17, so it matched any item and was granted on the first pickup; that also made the background loop's conduit gate always true. It now uses `"items": ["minecraft:conduit"]`, the form the 1.19.4, 1.20.4 and 26.2 vanilla data all accept.
+- **Event plumbing, throws, jingle, installer:** the same fixes as Harvester (handle files wired to the `DimensionalDoors` objective, throws once, `ui/jingle`, `configurationloaded`, redundant `execute as @s run` removed in `configtriggers/reset`).
+
+### Verified
+
+- `reference_check.py --orphans`: Harvester 140 functions, 254 references, 0 unresolved, 0 orphans; Dimensional Doors 211 functions, 277 references, 0 unresolved, 0 orphans; the template unchanged (1 intentional orphan).
+- A scratch resolver for the references `reference_check.py` does not cover (item modifiers, predicates, advancement grants, `advancements=` selectors, advancement parents): 26 in Harvester and 9 in Dimensional Doors, 0 missing (the `tinkererscraft:` parent of `a_better_harvester` is external by design).
+- `diff -r` template vs both vendored framework folders: empty. `derive_generation.py --check`: 111 files, 0 drifted. `format_check.py`: 0 findings over 392 files in the two packs, and on `MAINTAINER_GUIDE.md`.
+- Every version gate in both packs was listed and checked against the verified boundaries: 1.20.5 for components and particle syntax, 1.21.5 for SNBT text, 1.21.9 for `flash`, 26.3 for the predicate and loot-function format.
+- The 21 v2 per-wood files were checked structurally before the rewrite (eight matching lower/upper pairs each, block ids consistent).
+- **Not verified:** nothing was loaded in game. The 26.3 item modifiers and predicate are written from the changelog text, since no 26.3 jar is installed (only the `26.3-snapshot-5` and `-10` manifests, without jars). The v2 closer fix follows from how door halves copy each other and was not watched on a 1.16 to 1.21.1 client.
+
+### Not done, and why
+
+- The four other framework consumers (both Around The World versions, Portyl Trident, Seaskipper) still vendor the baseline framework.
+- No version bump or export (decision 1).
+- The 404 displacement (decision 4).
+- `predicate/player_checkers/is_sneaking_.json` is still dead code and now also logs a load error on 26.3; left for the author, like the other documented dead code.
+
+### Open decisions carried forward
+
+1. Confirm the long-term generation label (unchanged from the previous entry).
+2. Sub-1.21 shipping, the plural-folder export, and the `pack_format` values in `pack.mcmeta.disabled` (15 for Harvester, 48 for Dimensional Doors).
+3. Load both packs in game on 1.20.4, 1.20.5, 1.21.1, 1.21.4, 1.21.11, 26.2 and 26.3: harvest with each hoe tier including Unbreaking III and an iron hoe, open `dm_config` with both packs installed, close a portal door on 1.21.1, link doors with a conduit on 1.20.4 and 26.3, check the poplar door's window.
+4. Bump versions and export Harvester (next after 3.03.02) and Dimensional Doors (next after 3.02.01).
+5. The 404 displacement behaviour (decision 4).
+6. Re-vendor the remaining consumers and fix Portyl Trident's loop start.
+
+---
+
 ## 2026-09-25: route cleanup and the 26.3 update
 
 Second entry of the day. Every dead reference inside the DatapackManager trees is gone, every file in them is in one formatting style, and the framework detects Minecraft 26.1, 26.2 and 26.3. The six consumer packs were deliberately not touched; they still vendor the framework as it was at the handover baseline (see "Not done" below).

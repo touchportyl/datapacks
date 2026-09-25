@@ -231,7 +231,7 @@ Tags use the same 2-letter prefix. Two lifetime classes:
 
 - **Semi-persistent** - added during a tick, explicitly stripped at end of each loop by a dedicated garbage-collection file. Harvester's `root/garbage_collection.mcfunction` is just `tag @s remove ...` for every transient tag (tier tags, area tags, crop tags, `HV_success`, `HV_isHoldingHoe`) plus `scoreboard players reset @s HV_sneak_time`. **No gameplay state survives a tick** except tool-item NBT and the global `RAND$`/`LOOP$`/`CONFIG$` scores. Everything is rebuilt from inventory each tick.
 - **Persistent** - DD portal markers carry long-lived `DD_portal`, `DD_entrance`, `DD_exit`, `DD_<wood>`, `DD_particle_X`, `DD_doorID`.
-- **Framework routing tags:** `DM_admin` (gates admin output + config/uninstall triggers), `DM_command_config`/`DM_command_uninstall` (marks who fired a command).
+- **Framework routing tags:** `DM_admin` (gates admin output + config/uninstall triggers), `DM_command_config`/`DM_command_uninstall` (marks who fired a command). These belong to the framework: a consumer copies them onto its own `<ID>_command_config`/`<ID>_command_uninstall` tags in its listener and only ever removes its own copy. Harvester used the `DM_` tags directly until 2026-09-25, so whichever pack's handler ran first could strip the tag before another pack's listener had copied it.
 - **Debug tags:** `hv_debug`, `dd_debug`, `DD_debug` gate developer visualizers/trace tellraws.
 
 ### 4.4 File granularity, comments, tellraw format
@@ -381,22 +381,23 @@ scoreboard players operation VERSION$ignorecompatibility.forward  Harvester = BO
 
 | Pattern | When to use | Example |
 |---|---|---|
-| **A - inline `execute if score ... matches` branches** | Two versions need different inline command text, same action | `damagetool.mcfunction`: `matches ..12005` reads `SelectedItem.tag.Damage`, else (`unless ..12005`, i.e. 12006+) reads `components.minecraft:damage` - **note this boundary is mis-set; see §6.9** |
+| **A - inline `execute if score ... matches` branches** | Two versions need different inline command text, same action | `damagetool.mcfunction`: `matches ..12004` reads `SelectedItem.tag.Damage`, else (`unless ..12004`, i.e. 1.20.5+) reads `components.minecraft:damage` (§6.9) |
 | **B - per-version file variants + score dispatcher** | Divergent code too large to inline | `toolbreak.mcfunction` dispatches to `toolbreak-1.19` (old particle syntax) vs `toolbreak-1.20` (SNBT); `createlinkedconduit` splits 3 ways across the NBT→components evolution |
 | **C - parse-failure isolation (call unconditionally)** | A resource ID simply doesn't exist below a version | DD `closermechanism/v1.mcfunction` calls `v1/1.16`, `v1/1.19`, `v1/1.20`, `v1/1.21` with **no guard**; older MC drops only the file whose block IDs it can't parse. The version-family filename is a comment-in-the-path, not read by any score. |
 | **D - predicate-vs-command fallback** | A whole feature is missing below a version | sneak detection (predicate 1.16+ vs stat fallback); `sonic_boom` (1.19+) vs `explosion` fallback |
 
 ### 6.6 Behavioral (non-resource) version forks can be non-monotonic
 
-The DD door closer (`closermechanism/main.mcfunction`) dispatches on `.minor`:
+The DD door closer (`closermechanism/main.mcfunction`) dispatches like this:
 
 ```mcfunction
 execute if score VERSION$minecraft.current.minor DatapackManager matches 14..15 ... run function dimensionaldoors:root/closermechanism/v1
 execute if score VERSION$minecraft.current.minor DatapackManager matches 16..20 ... run function dimensionaldoors:root/closermechanism/v2
-execute if score VERSION$minecraft.current.minor DatapackManager matches 21..   ... run function dimensionaldoors:root/closermechanism/v1
+execute if score VERSION$minecraft.current DatapackManager matches 12100..12103 ... run function dimensionaldoors:root/closermechanism/v2
+execute if score VERSION$minecraft.current DatapackManager matches 12104..      ... run function dimensionaldoors:root/closermechanism/v1
 ```
 
-In MC 1.16 to 1.20, `setblock replace` on an open door desynced/popped the two halves, so those versions need the v2 destroy-and-rebuild workaround. 1.14 to 1.15 and **1.21+** use the simple v1 `replace`. **Key lesson: version behavior can regress and later be restored - `21..` deliberately reuses the *older* v1 codepath. Never assume forks are monotonic.**
+From 1.16 to 1.21.3, `setblock` first rebuilds the placed door half from the other half's shape, so replacing the open lower half with a closed one comes back open and the command reports "Could not set the block"; those versions need the v2 destroy-and-rebuild. 1.14 to 1.15 and **1.21.4+** place the given state and use the simple v1 `replace`. Until 2026-09-25 the last line read `.minor matches 21..`, which sent 1.21.2 and 1.21.3 to v1, where doors never closed; the load test found it (1.21 and 1.21.1 report `.minor` 20 and were always on v2). **Key lesson: version behavior can regress and later be restored - `12104..` deliberately reuses the *older* v1 codepath. Never assume forks are monotonic, and let the load test tell you where a boundary really is.**
 
 ### 6.7 Cross-version text components
 
@@ -412,13 +413,13 @@ Text-component keys changed at 1.21.5 (`hoverEvent`→`hover_event`, `clickEvent
 `pack_format` decides "will MC agree to *load* this pack at all"; the canary engine (§6.1) decides "what version am I running." Two independent mechanisms.
 
 - Active `pack.mcmeta` is renamed `pack.mcmeta.disabled`; MPP regenerates `pack.mcmeta` with a `supported_formats` range at export from `.mpp-datapack`. **With no active `pack.mcmeta`, MC will not load the pack at all** (see §10 step 9).
-- `.mpp-datapack` holds `packFormatVersionMin/Max` (floats; `.1` = snapshot format). Harvester: `15..94.1` (formats for 1.20 to 1.21.11). **Dimensional Doors: `48..48` - narrow and inconsistent with its 1.14+ runtime support; likely stale, widen it.** Templates `datapackmanager-mc1.21` and `datapackmanager-mc26.3`: `15..121` (26.3).
+- `.mpp-datapack` holds `packFormatVersionMin/Max` (floats; `.1` = snapshot format). Harvester, Dimensional Doors and the templates `datapackmanager-mc1.21` and `datapackmanager-mc26.3`: `15..121` (26.3). Dimensional Doors was pinned at `48..48` until 2026-09-25. The `pack.mcmeta.disabled` files still say `pack_format` 15 (Harvester) and 48 (Dimensional Doors); see open decision 2 in `MAINTENANCE_LOG.md`.
 
 ### 6.9 Threshold inconsistencies to watch (real, in-code)
 
-- **The tag→components cutoff is written inconsistently, and at least one boundary is off by one.** In `harvester-v3.03.02/data/harvester/function/root/damagetool.mcfunction` the legacy path runs on `matches ..12005`, which **includes 1.20.5** (`12005`); the component path is the `unless matches ..12005` branch (12006+). Item components landed **in** 1.20.5 - so if 1.20.5 is meant to read components, the tag path should be gated `..12004` and the component path `12005..`. **As written, on a real 1.20.5 client the code takes the legacy branch and reads the removed `SelectedItem.tag.Damage`.** Treat this boundary as at best untested-on-1.20.5, *not* as verified-correct. DD's conduit-NBT split uses yet another threshold pair (`..12002` / `12003..`). **There is no global constant - check (and re-test) every call site, `damagetool` included, not just DD.**
-- `createlinkedconduit.mcfunction` has a harmless gap `12007..12099` (no branch for nonexistent 1.20.7 to 1.20.99).
-- `toolbreak.mcfunction` boundaries `11904..12000` and `12000..` overlap at exactly `12000` (1.20.0, which never existed - benign).
+- **The tag→components cutoff is 1.20.5, everywhere.** Item components replaced the `tag` field in 1.20.5 (24w09a), and particle options became SNBT in 1.20.5 (Pre-Release 1). Until 2026-09-25 the packs disagreed: Harvester's `damagetool` read the old tag on `..12005` (so 1.20.5, and 1.21/1.21.1, which report 12005, read nothing), `toolbreak` switched particle syntax at `12000` (so 1.20.2 to 1.20.4 got the SNBT form and no particles), and DD switched its conduit data at `12003` (so 1.20.3 and 1.20.4 looked for components that did not exist). All of them now use `..12004` / `12005..`. There is still no global constant, so check every call site when a new format change lands.
+- **Remember that 1.21 and 1.21.1 report `12005`** (decision 5 of the 2026-09-25 route-cleanup entry). Any branch that must tell 1.20.5/1.20.6 from 1.21/1.21.1 cannot use the score and has to carry both formats (Harvester's `item_modifier/1.20.5/*` carry both `enchantment` and `enchantments`), and `.minor` is 20 on those clients, so DD closes doors with the v2 closer there.
+- `createlinkedconduit.mcfunction` splits at `..12004`, `12005..12104` (components, names and lore as JSON strings) and `12105..` (text components as SNBT, 1.21.5).
 - `doortagger.mcfunction` even carries a `minor matches 13` branch below the official `backward=11404` (dead-ish legacy; shows the author's habit of keeping old branches).
 
 ---
@@ -439,7 +440,7 @@ One iteration, in order:
 
 ### 7.2 Hoe detection & tiering
 
-`root/inventory/hoe.mcfunction` tags `@s` by `SelectedItem.id` (one line per tier: `HV_wood/stone/copper/gold/iron/diamond/netherite`), collapses to `HV_isHoldingHoe`, then `hoe2` classifies range + seeds and gates on `x_rotation=0..90` (must be aiming at the ground). **`minecraft:copper_hoe` is a modded item (tinkererscraft), treated as a first-class tier throughout - preserve its branches.**
+`root/inventory/hoe.mcfunction` tags `@s` by `SelectedItem.id` (one line per tier: `HV_wood/stone/copper/gold/iron/diamond/netherite`), collapses to `HV_isHoldingHoe`, then `hoe2` classifies range + seeds and gates on `x_rotation=0..90` (must be aiming at the ground). **`minecraft:copper_hoe` has been a vanilla item since 1.21.9 (durability 190); the branches predate that for the tinkererscraft copper hoe. Treat it as a first-class tier throughout - preserve its branches.**
 
 `root/inventory/range.mcfunction` maps tier → area:
 
@@ -474,9 +475,18 @@ Key primitive: `setblock ... age=0 destroy` drops the crop's loot (yield) *then*
 
 ### 7.5 Tool damage - hand-rolled durability + Unbreaking
 
-`root/damagetool.mcfunction` reads current damage (version-split at `12005`: `tag.Damage` vs `components.minecraft:damage` - **but see §6.9: the split includes 1.20.5 in the legacy branch, which is off by one**), subtracts hardcoded max durability by tier (wood 59, gold 32, stone 131, **copper 190**, iron 251, diamond 1561, netherite 2031), decrements 1. `damagetool2` writes it back as a x1e6 fixed-point fraction via four `item_modifier/unbreaking{0..3}.json` (each `set_damage` with `scale:0.000001`), whose `conditions` replicate vanilla Unbreaking probability `1/(level+1)`. All four run; at most one matches; on a failed chance the `item modify` no-ops (no durability lost).
+`root/damagetool.mcfunction` reads current damage (version-split at 1.20.5: `tag.Damage` on `..12004`, `components.minecraft:damage` after), subtracts hardcoded max durability by tier (wood 59, gold 32, stone 131, **copper 190**, iron 250, diamond 1561, netherite 2031; iron was 251 until 2026-09-25, which made iron hoes unbreakable), decrements 1. `damagetool2` writes it back as a x1e6 fixed-point fraction, aimed half a durability point low because `set_damage` floors a float and an exact fraction could round back to the old damage (a float32 simulation of every tier and damage value found skipped damage on copper, iron, diamond and netherite without the offset, none with it). Four modifiers `unbreaking{0..3}` replicate vanilla Unbreaking probability `1/(level+1)`: all four run, at most one matches, and on a failed chance the `item modify` no-ops. The modifier format changed three times, so there are four sets, each called from its own `compatibility/setdamage-<version>` function:
 
-`effects/toolbreak.mcfunction` version-splits particle syntax at `12000` (old `particle minecraft:item minecraft:wooden_hoe` vs new SNBT `particle minecraft:item{"item":...}`); the 1.20 branch peels copper into `toolbreak-copper.mcfunction`.
+| Set | Minecraft | Enchantment check | Loot function format |
+|---|---|---|---|
+| `item_modifier/unbreaking*` | 1.19.4 to 1.20.4 | top-level `enchantments: [{enchantment, levels}]` | `function`, `conditions` list, score `scale` |
+| `item_modifier/1.20.5/*` | 1.20.5 to 1.21.1 | `predicates.minecraft:enchantments`, with both `enchantment` (1.20.5) and `enchantments` (1.21) | same |
+| `item_modifier/1.21.2/*` | 1.21.2 to 26.2 | `predicates.minecraft:enchantments` with `enchantments` | same |
+| `item_modifier/26.3/*` | 26.3 and later | same, under the entity predicate key `minecraft:equipment` | `type`, one `condition` (`all_of` for two), `div(from_int(score), 1000000.0)` |
+
+Before 2026-09-25 only the first set existed. On 1.20.5 and later the top-level `enchantments` field is unknown, so Unbreaking was ignored and every hoe lost durability on about three harvests in four; on 26.3 the files do not load at all.
+
+`effects/toolbreak.mcfunction` version-splits particle syntax at 1.20.5 (`11904..12004` old `particle minecraft:item minecraft:wooden_hoe`, `12005..` SNBT `particle minecraft:item{"item":...}`); the 1.20 branch peels copper into `toolbreak-copper.mcfunction`.
 
 ### 7.6 `HV_success` semi-persistent tag
 
@@ -488,12 +498,13 @@ Set on a real harvest; consumed once by sweep and once by tool damage (so **dama
 
 ### 7.8 Version seams to watch (Harvester)
 
-predicate availability (16), `/item` (11904), Damage NBT vs components (`..12005`/`12006+` - mis-set boundary, §6.9), toolbreak particle syntax (`11904..12000`/`12000..`), sweep particle (`..15`/`16+`), sneak method (14 to 15 stat vs 16+ predicate).
+predicate availability (16), `/item` (11904), Damage NBT vs components (`..12004`/`12005..`), item modifier format (`..12004`, `12005..12101`, `12102..12602`, `12603..`), toolbreak particle syntax (`11904..12004`/`12005..`), sweep particle (`..15`/`16+`), sneak method (14 to 15 stat, 16 to 26.2 predicate `player_checkers/is_sneaking`, 26.3+ predicate `26.3/player_checkers/is_sneaking` because 26.3 renamed the predicate type key `condition` to `type`).
 
 ### 7.9 Dead code / gotchas
 
-- `predicate/player_checkers/is_sneaking_.json` (trailing underscore, `is_sneaking:false`) is referenced nowhere.
-- Copper hoe modded branches thread through tiering, range, durability (190), toolbreak particles - don't drop them when refactoring.
+- `predicate/player_checkers/is_sneaking_.json` (trailing underscore, `is_sneaking:false`) is referenced nowhere. On 26.3 it, the 1.16 sneak predicate and the older item modifiers fail to load and log an error; that is the same parse-isolation trade-off as a version probe, not a defect.
+- Copper hoe branches thread through tiering, range, durability (190), toolbreak particles - don't drop them when refactoring.
+- `root/inventory/hoe` runs once per sneaking player. It tags and continues only `@s`; until 2026-09-25 it tagged `@a` and re-ran `hoe2` for every player already tagged that tick.
 - `RAND$4` is deterministic per-tick-global, not per-plot.
 
 ---
@@ -513,7 +524,7 @@ No custom dimensions or storage. **Portal markers** = `armor_stand {Marker:1b, I
 
 ### 8.3 Door creation & linking
 
-`root/create/conduitdetection.mcfunction` (background) - **ordering is load-bearing** (linked-conduit check must precede new-door check, per its comment). Linked conduit (custom-data `DD_Linked:1b`) on an open door → `createlinkeddoor`; plain conduit → `createnewdoor`. Version-split on NBT container (`Item.tag` <=12002 vs `Item.components.custom_data` 12003+).
+`root/create/conduitdetection.mcfunction` (background) - **ordering is load-bearing** (linked-conduit check must precede new-door check, per its comment). Linked conduit (custom-data `DD_Linked:1b`) on an open door → `createlinkeddoor`; plain conduit → `createnewdoor`. Version-split on NBT container (`Item.tag` `..12004` vs `Item.components.custom_data` `12005..`; the split sat at 1.20.3 until 2026-09-25, which broke linking on 1.20.3 and 1.20.4).
 
 `createnewdoor` summons the marker, allocates a new global ID, runs `setupentrance`, spawns the entangled conduit item stamped with the ID, consumes the source. `createlinkeddoor` runs `setupexit`, copying the ID off the thrown entangled conduit. `setupentrance`/`setupexit` also `forceload add ~ ~` (keeps the exit chunk loaded for cross-dimension TP) and grant advancements.
 
@@ -521,15 +532,15 @@ No custom dimensions or storage. **Portal markers** = `armor_stand {Marker:1b, I
 
 **Per-wood:** `setblock` requires a *literal* block id + full blockstate - you cannot parameterize the wood. So each wood needs its own file enumerating all 8 facingxhinge combos. `summon/door.mcfunction` also assigns each wood a hardcoded `DD_particle_X` window class. **Adding a new wood door means editing >=3 places:** `summon/door/<ver>.mcfunction` (portal + particle class), `closermechanism/v1/<wood>` + `v1/<ver>` dispatch, and `closermechanism/v2/<wood>` + `v2/<ver>` dispatch. Miss any and the door won't portal or won't close.
 
-**Per-version (`1.16/1.19/1.20/1.21` subfiles):** each lists only the doors that MC version introduced, called *unconditionally* (Pattern C) - older MC drops the files whose block IDs it can't parse. `door/1.16` = crimson/warped, `door/1.19` = mangrove, `door/1.20` = cherry/bamboo, `door/1.21` = copper family + pale_oak.
+**Per-version (`1.16/1.19/1.20/1.21/1.21.4/26.3` subfiles):** each lists only the doors that MC version introduced, called *unconditionally* (Pattern C) - older MC drops the files whose block IDs it can't parse. `door/1.16` = crimson/warped, `door/1.19` = mangrove, `door/1.20` = cherry/bamboo, `door/1.21` = copper family, `door/1.21.4` = pale_oak, `door/26.3` = poplar. **One release's ids per file:** a single unknown id drops the whole file, so when pale oak shared `door/1.21` with the copper doors, copper doors could not become portals or close on 1.21 to 1.21.3. Poplar uses window class D until someone checks its texture in game.
 
-**Why v1 vs v2 closer:** see §6.6 - v2 (1.16 to 1.20) destroys the lower half and rebuilds the upper (plus `kill @e[...name="Oak Door"...Age:0s]` to remove the popped item); v1 (1.14 to 1.15, 1.21+) does a clean `setblock replace`.
+**Why v1 vs v2 closer:** see §6.6 - v2 (1.16 to 1.21.3) destroys the lower half and rebuilds the upper (plus `kill @e[...name="Oak Door"...Age:0s]` to remove the popped item); v1 (1.14 to 1.15, 1.21.4+) does a clean `setblock replace`. In v2 the upper-half `setblock` must stay conditional on the lower half it belongs to: a door's lower half copies its upper half on the shape update, so the eight unconditional upper-half lines that shipped until 2026-09-25 turned every closed door to face west with a right hinge. The item names in the v2 `kill` lines must match the dropped item exactly (`Waxed Copper Door` was `Copper Door`, and pale oak had no `kill` line, until 2026-09-25).
 
 **Naming trap:** v1 copper files use underscores (`exposed_copper.mcfunction`); v2 uses concatenation (`exposedcopper.mcfunction`). The dispatchers must match their tree's literal exactly.
 
 ### 8.5 Teleport flow
 
-`detection/positioner` probes 10 sample points across the door plane (offset by hinge) → `portal.mcfunction` tags nearby non-cooldown entities `DD_enter` → `activation/main`. `activation/main` tags the portal `DD_close`, determines direction by the portal's own role (entrance tags `DD_enter+`, exit tags `DD_enter-`), dispatches `entrance_to_exit`/`exit_to_entrance`, applies cooldown, clears transient tags. The actual TP matches entrance and exit by equal `DD_doorID` and `tp`s the player to the paired marker (works cross-dimension because markers are force-loaded). **404 handling:** no matching exit → `DD_door404` → `portaldisplacement` (`spreadplayers` scatter) instead of teleport. A thrown linked conduit into a live entrance tags the portal `DD_destroy` (self-destructs).
+`detection/positioner` probes 10 sample points across the door plane (offset by hinge) → `portal.mcfunction` tags nearby non-cooldown entities `DD_enter` → `activation/main`. The debug visualiser in `portal` calls `compatibility/debug/samplepoint` rather than drawing `small_flame` itself: that particle only exists from 1.17, and inline it made `portal` fail to load on 1.14 to 1.16, so no door ever teleported there (fixed 2026-09-25). `activation/main` tags the portal `DD_close`, determines direction by the portal's own role (entrance tags `DD_enter+`, exit tags `DD_enter-`), dispatches `entrance_to_exit`/`exit_to_entrance`, applies cooldown, clears transient tags. The actual TP matches entrance and exit by equal `DD_doorID` and `tp`s the player to the paired marker (works cross-dimension because markers are force-loaded). **404 handling:** no matching exit → `DD_door404` → `portaldisplacement` (`spreadplayers` scatter) instead of teleport. A thrown linked conduit into a live entrance tags the portal `DD_destroy` (self-destructs).
 
 ### 8.6 Destroy path
 
@@ -567,7 +578,7 @@ Each `updates/vX` is idempotent, logs a `@a[tag=hv_debug]` trace, sets `.latest`
 
 First-time install detection uses the shared magic number: `execute unless score FLAG$secret <Pack> = FLAG$secret DatapackManager run <install>` then latch the number in - distinguishes fresh install from `/reload`.
 
-**Known bug in migrations:** every `updates/vX` in the consumer packs calls `datapackmanager-1.21:packages/effects/ui_jingle`, but the real function is `packages/effects/ui/jingle` (slash, not underscore), a silent dead reference. The template's example update already uses the slash form; use it in new migrations.
+**Known bug in migrations:** the `updates/vX` files of the consumer packs called `datapackmanager-1.21:packages/effects/ui_jingle`, but the real function is `packages/effects/ui/jingle` (slash, not underscore), a silent dead reference. Fixed in Harvester and Dimensional Doors on 2026-09-25; the other consumers still carry it. Note that the migrations run from the scheduled listener with no executing entity, so `ui/jingle` (which plays to `@s`) is silent there too, exactly as in the template's example update.
 
 **Testing note:** because the working tree ships no active `pack.mcmeta`, you cannot test any migration in-game until you MPP-export first (see §10 step 9). No `pack.mcmeta` = the pack never loads = the migration ratchet never runs.
 
@@ -602,9 +613,9 @@ There is no trailing `patch` line any more; a release without a new id simply re
 - **New wood/door types (DD):** new `closermechanism/v1/1.22.mcfunction` + `v2/1.22.mcfunction` (+ per-wood files, minding the v1-underscore/v2-concatenated split), called unconditionally from `v1.mcfunction`/`v2.mcfunction`; new `datatagging/summon/door/1.22.mcfunction` (with the correct `DD_particle_X` class) called from `door.mcfunction`. **Verify which `minor` range the new version falls into in `closermechanism/main.mcfunction` - check whether `setblock replace` still closes doors cleanly (v1) or regressed (v2). Do not assume.**
 - **New harvester tool tiers:** new particle/`toolbreak-*` variant + durability constant.
 
-**6. Handle any syntax break the update introduces** (like the 1.20.5 tag→components, 1.21 namespaced components, 1.21.5 event-key rename, 1.21.9 particle color). Add a Pattern-A score-gated branch or a new `compatibility/<feature>-1.22.mcfunction` at *every* affected call site - grep for the old syntax to find them all (thresholds are hand-tuned per file; there is no global constant, and at least one existing boundary is off by one - §6.9). Keep emitting both old+new text-component keys.
+**6. Handle any syntax break the update introduces** (like the 1.20.5 tag→components, 1.21 namespaced components, 1.21.5 event-key rename, 1.21.9 particle color). Add a Pattern-A score-gated branch or a new `compatibility/<feature>-1.22.mcfunction` at *every* affected call site - grep for the old syntax to find them all (thresholds are hand-tuned per file; there is no global constant - §6.9). Keep emitting both old+new text-component keys. **JSON data files cannot branch**: when a predicate, item modifier or advancement format changes, add a version-named copy and call it from a version-named function (Harvester's `compatibility/setdamage-<version>` and `is_sneaking-26.3` are the pattern), because the old file stops loading on the new version and the new one does not load on the old.
 
-**7. Update MPP metadata.** Raise `packFormatVersionMax` in every `.mpp-datapack` (with `.N` snapshot suffix if targeting snapshots), update `minecraftVersion`, and bump `pack_format` in `pack.mcmeta.disabled` only if you also raise the minimum. Re-export via MPP to regenerate `pack.mcmeta` with the widened `supported_formats`. (Also fix DD's stale `48..48` range.)
+**7. Update MPP metadata.** Raise `packFormatVersionMax` in every `.mpp-datapack` (with `.N` snapshot suffix if targeting snapshots), update `minecraftVersion`, and bump `pack_format` in `pack.mcmeta.disabled` only if you also raise the minimum. Re-export via MPP to regenerate `pack.mcmeta` with the widened `supported_formats`.
 
 **8. Propagate framework changes from the canonical template, then verify byte-identical copies.** There is one source of truth for the framework: the standalone template directory **`datapackmanager-mc1.21/`** at the repo root (the full reference implementation; the Project Creator / Framework Updater treat it as canonical). **Do NOT hand-edit the vendored `data/datapackmanager-1.21` copies first**, and do NOT edit one pack's copy and call it done. Workflow:
   - a. Make every framework edit (steps 1 to 4, 6) in the canonical template `datapackmanager-mc1.21/` only.
@@ -613,6 +624,8 @@ There is no trailing `patch` line any more; a release without a new id simply re
   - d. Then bump each pack's `VERSION$datapack.current` and add an `updates/vX` migration **only if** save-data layout changed.
 
 **9. Export via MPP first - the working tree does NOT load as-is - then test on the real new version AND at least one old version** (e.g. 1.14.4). Both packs ship only `pack.mcmeta.disabled` and have **no active `pack.mcmeta`**, so Minecraft will silently refuse to load the repo working tree at all: no `pack.mcmeta` means the pack never loads, `#load` never fires, and the version-detection engine never runs - you'd be "testing" a pack that isn't installed. You **must** run an MPP export first (which regenerates `pack.mcmeta` from `.mpp-datapack`) to produce a loadable pack before *any* in-game test. Then confirm the new canary parses only where intended, no shared file broke from an unguarded new-syntax line, doors close correctly, and harvest/tool-damage still work.
+
+**The load test does most of this for you.** `python _pythontools/verify_build.py --load --accept-eula` builds the release packs the way the zips are laid out, starts a headless server from every client jar in `.minecraft/versions` that `_pythontools/load_test.json` lists, and fails on any load error outside a resource's declared version window, on a wrong `VERSION$minecraft.current`, on an inactive pack, or on a failed smoke scenario (§12). For a new Minecraft version: install it in the launcher once (so its jar and libraries exist), add it to `load_test.json` with the value the new leaf should produce, add version windows for the new version-isolated files, and run it. It still does not replace a look in game with a real player: sneak harvesting, the config menu and particles need one.
 
 **Mental model:**
 - "Does this ID/syntax exist yet?" → isolate into a version-named file, call it unguarded (C).
@@ -644,6 +657,12 @@ Moving a consumer onto the 26.3 generation means replacing its vendored `data/da
 - **`reference_check.py`** resolves every function reference in a pack (functions, tags, advancement rewards) and exits 1 on a dead one; `--orphans` lists functions nothing calls. Run it after any framework change.
 - **`format_check.py`** enforces one line-ending style per file, no trailing whitespace, one final line break, no runs of blank lines, and two-space JSON; `--fix` rewrites in place.
 - **`derive_generation.py`** derives `datapackmanager-mc26.3` from the canonical template (§11); `--check` reports drift.
+- **`verify_build.py`** is the build gate: format, reference and derivation checks over the framework trees, `_pythontools` and the release packs, plus the load test with `--load --accept-eula`. Run it before every commit that touches a pack and before every export.
+- **`load_test.py`** is the real load test. Per Minecraft version in `load_test.json` it builds the release packs into a fresh flat world (pack.mcmeta from pack.mcmeta.disabled, and with the default dual layout the plural folders the old zips carry), starts `net.minecraft.server.Main` (MinecraftServer on 1.14 and 1.15) from the installed client jar with the launcher's own Java runtime, offline and bound to 127.0.0.1, and checks:
+  - every load error in the log, attributed to a pack resource, against that resource's version window in `load_test.json` (first matching rule wins; `{name}` is the version in the resource's own name; no rule means it must load everywhere); an error it cannot attribute fails the run;
+  - the golden `VERSION$minecraft.current` for that version and its `.major/.minor/.patch`, `FLAG$isActive`, `COUNT$datapacks`, and each pack's `FLAG$isActive` and `VERSION$datapack.latest`;
+  - the smoke scenarios in `load_test_scenarios/`: Harvester harvests a plot through the positioner and writes tool damage twice through the version's item-modifier set; Dimensional Doors creates, links, closes (orientation checked), teleports an armor stand, and destroys two pairs in one tick.
+  Starting a server accepts the Minecraft EULA, so it needs `--accept-eula` or `MINECRAFT_ACCEPT_EULA=1`. Each server runs in a Windows job object, so killing the script kills the server. Logs and a JSON report per version land in `%TEMP%/datapacks-load-test/<timestamp>/logs`. A full run over 20 versions takes about 22 minutes; `--quick` runs five boundary versions. Scenario commands must work on every version they run on: `setblock` cannot open or close one half of a door before 1.21.4 (it recomputes the half from the other one), and 1.21.11 renamed the game rules (`randomTickSpeed` became `random_tick_speed`).
 - **`generate_positions.py`** - code-gens spherical-shell `execute positioned ~x ~y ~z if block ... run function ...` lines (for hand-unrolled fan-outs too large to write manually).
 - `dmtool_settings.ini` - gitignored (local paths). Reveals the old numbered-stage layout (`1. released/` ... `6. archived/`) now replaced by `_`-prefixed folders + M++ `tags`.
 
@@ -659,11 +678,11 @@ Ranked roughly by likelihood-to-bite on a future MC version.
 
 3. **Two same-named `versioning/check.mcfunction` files.** One in `datapackmanager-1.21` (MC-version oracle, §6.2) and one per pack (save-data migration ratchet, §9). Identical basename, different namespace, unrelated jobs - confirm the namespace before editing.
 
-4. **The v1/v2 door-closer boundary is a hardcoded behavioral assumption.** `matches 21..` → v1 is a catch-all; if a future MC re-breaks `setblock replace` on doors, `21..` will silently leave broken doors. Behavior forks here are non-monotonic - re-test door closing on every new version.
+4. **The v1/v2 door-closer boundary is a hardcoded behavioral assumption.** `current matches 12104..` → v1 is a catch-all; if a future MC re-breaks `setblock replace` on doors, it will silently leave doors open. The Dimensional Doors smoke scenario closes three doors and checks their state on every tested version, so run the load test on each new version before trusting the boundary.
 
 5. **Adding a new wood/door type needs edits in >=3 files** with the v1-underscore/v2-concatenated naming split. Easy to miss one and get doors that won't portal or won't close.
 
-6. **NBT/component dialect churn.** `Item.tag` (<=12002) vs `components.custom_data` (12003+); `Count`→`count`; unprefixed→`minecraft:`-prefixed keys; stringified-SNBT text→object text components; and the `SelectedItem.tag.Damage`→`components.minecraft:damage` split. These thresholds are written *inconsistently across files*, and at least one is **off by one** (`damagetool`'s `..12005` legacy branch wrongly includes 1.20.5 - §6.9). Grep every call site, don't trust a single constant, and re-test the 1.20.5 boundary specifically. Mojang keeps churning item components.
+6. **NBT/component dialect churn.** `Item.tag` (`..12004`) vs `components.custom_data` (`12005..`); `Count`→`count` (1.20.5); unprefixed→`minecraft:`-prefixed keys; stringified-JSON text→SNBT text components (1.21.5); and the `SelectedItem.tag.Damage`→`components.minecraft:damage` split. Every call site in Harvester and DD agrees on 1.20.5 since 2026-09-25 (§6.9), but there is no single constant: grep every call site on the next format change. Mojang keeps churning item components.
 
 7. **Particle name/arg churn** has already bitten twice (`flash` gained mandatory `color` at 1.21.9; `sonic_boom` only >=1.19). Particle failures don't halt execution - they silently produce no visual + log spam, so they're easy to miss in testing. This is also why particles make poor version canaries.
 
@@ -675,12 +694,12 @@ Ranked roughly by likelihood-to-bite on a future MC version.
 
 11. **Text components** - the dual `hoverEvent`/`hover_event` (and `clickEvent`/`click_event`) blocks are the mass-edit target if a future MC *removes* the legacy camelCase form. Note they only appear on tellraws that actually use hover/click (e.g. `harvester packages/events/command/config.mcfunction`, 6 occurrences), not on plain-text notifications (§3.8).
 
-12. **Known dead references in the consumer packs:** their vendored `root/core/uninstall` still calls nonexistent `root/commands/config-`/`uninstall-` (fixed in the template on 2026-09-25, gone once they re-vendor); every `updates/vX` calls `packages/effects/ui_jingle` instead of `ui/jingle`; `predicate/player_checkers/is_sneaking_.json` is unused. Missing-function calls are silent no-ops, so these are harmless but should be removed.
+12. **Known dead references in the consumer packs:** Harvester and Dimensional Doors were re-vendored and cleaned on 2026-09-25 and report 0 unresolved references and 0 orphans. The other four framework consumers still carry the baseline framework's `root/commands/config-`/`uninstall-` calls and the `ui_jingle` migrations. `predicate/player_checkers/is_sneaking_.json` in Harvester is unused. Missing-function calls are silent no-ops, so these are harmless but should be removed.
 
 13. **`RAND$4` is deterministic and per-tick-global**, not per-plot random - seed consumption and bonus XP are synchronized across all plots/players in a tick. Don't "fix" this expecting per-plot behavior without understanding the design.
 
-14. **DD's `.mpp-datapack` is pinned `48..48`** - inconsistent with its 1.14+ runtime support. Widen it when you next export, or it won't load on other formats.
+14. **Data-file formats changed in 26.2 and 26.3.** 26.2 turned entity predicates into a component-style map (`type` became `minecraft:entity_type`, unknown keys are rejected); 26.3 renamed the predicate type key `condition` to `type`, the loot-function key `function` to `type`, `conditions` (list) to `condition` (one predicate), and split number providers into int and float kinds with no `scale` on `minecraft:score`. Any JSON predicate, item modifier or loot table written for 26.2 or earlier fails to load on 26.3. See §10 step 6 and Harvester's `26.3` folders.
 
 15. **1.21.10 reports as 1.21.9 (`12109`).** It added no parseable id, so it shares the 1.21.9 leaf; 26.1.1 and 26.1.2 likewise report as 26.1. The former `patch.mcfunction`, which reported both 1.21.9 and 1.21.10 as `12110`, is gone. If you ever need to branch on a hotfix you cannot, short of finding an id it introduced.
 
-16. **The working tree isn't loadable.** Both packs ship only `pack.mcmeta.disabled` - with no active `pack.mcmeta`, Minecraft silently won't load the pack and none of the above ever runs. Always MPP-export before any in-game test (§10 step 9, §9).
+16. **The working tree isn't loadable.** Both packs ship only `pack.mcmeta.disabled` - with no active `pack.mcmeta`, Minecraft silently won't load the pack and none of the above ever runs. Always MPP-export before any in-game test (§10 step 9, §9); `load_test.py` builds its own loadable copy for its test servers.
