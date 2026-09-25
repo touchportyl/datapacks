@@ -1,22 +1,16 @@
 tellraw @a[tag=DD_debug] [{"text":"DD","color":"light_purple"},{"text":" > packages/versioning/updates/v3.02.00.mcfunction","color":"gray"}]
 
-function datapackmanager-1.21:packages/effects/ui_jingle
+function datapackmanager-1.21:packages/effects/ui/jingle
 
 # update
 scoreboard players set VERSION$datapack.latest DimensionalDoors 30200
 
-
-
 # create new scoreboards
 scoreboard objectives add DD_warpcooldown dummy [{"text":"Warp Cooldown","color":"light_purple"}]
-
-
 
 # create config triggers
 function dimensionaldoors:packages/configtriggers/create
 scoreboard players operation CONFIG$disableparticles DimensionalDoors = CONFIG$performance DimensionalDoors
-
-
 
 # replace all AECs with armor stand markers
 

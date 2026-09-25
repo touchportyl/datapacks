@@ -26,7 +26,6 @@
 # c - 1/3 door
 # d - no effect
 
-
 # ambient particles
 execute if entity @s[tag=DD_NS] positioned ^ ^1.1 ^0.425 run particle minecraft:portal ~ ~ ~ 0.12 0.26 0.02 0.35 1 force
 execute if entity @s[tag=DD_EW] positioned ^ ^1.1 ^0.425 run particle minecraft:portal ~ ~ ~ 0.02 0.26 0.12 0.35 1 force

@@ -1,25 +1,31 @@
+# changelog (unreleased, next after v3.03.02)
++ support up to 26.3 (datapack manager re-vendored from the current template)
++ fixed: sneak harvesting did nothing on 26.3 (the predicate format changed)
++ fixed: tool damage on 26.3 (the item modifier format changed)
++ fixed: Unbreaking was ignored on 1.20.5 and later, and unenchanted hoes lost durability on only about 3 of 4 harvests
++ fixed: on 1.20.5 to 1.21.1 harvesting reset the hoe to almost full durability instead of damaging it
++ fixed: iron hoes never lost durability (the pack used 251 instead of 250), and rounding skipped the damage on some harvests with copper, iron, diamond and netherite hoes
++ fixed: no tool break particles on 1.20.2 to 1.20.4
++ fixed: Harvester could swallow a dm_config or dm_uninstall request before other packs saw it
++ fixed: worlds that once ran Harvester v1.3/v2.0 had their config reset on the second load after installing
++ fixed: an incompatible-version shutdown ran once per online player
+
 # changelog v3.03.02
 + added support for copper hoes (identical to stone)
-
 
 # changelog v3.03.01
 
 + added hoe durability damage on harvest for MC 1.17+
 + added config options for xp gain and hoe damage (Suggested by Gaebuh on GitHub https://github.com/touchportyl/harvester/issues/4)
 
-
 # changelog v3.03.00
 
 + support up to 1.21.8
 + updated datapack manager (1.20 -> 1.21)
 
-
-
 # changelog v3.02.03
 
 + fixed a few oversights with versioning settings
-
-
 
 # changelog v3.02.02
 
@@ -31,7 +37,6 @@ important changes:
 + netherite hoes now harvest in a 5x5 pattern
 + no longer works with Tinkerer's Craft (wait for a TC update first!)
 
-
 full dev log:
 + ported over to the latest version of datapack manager
 + buffed most of the hoes
@@ -41,8 +46,6 @@ full dev log:
 + updated compatibility support for 1.14 (no predicates)
 + updated for 1.20
 + temporarily disabled api/hooks
-
-
 
 # changelog v2.00.00
 
@@ -55,7 +58,6 @@ gameplay related changes:
 + harvester now has in-built progression where the hoes harvest more land and crops as the materials improve
 + xp is given on replant
 + api now fully works when installed with Tinkerer's Craft
-
 
 full dev log:
 
@@ -92,8 +94,6 @@ full dev log:
 + harvesting with irgol hoes now grants an extra drop per plot harvested and poisonous potatoes are replaced with normal potatoes
 + harvesting with obdiam hoes now instantly cooks normal and poisonous potatoes
 + swapped the hardcoded item data swapper out for a for loop
-
-
 
 # old changelogs
 - Remove the offhand requirement for harvesting (Added in the v1.3 update)

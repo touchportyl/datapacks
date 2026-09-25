@@ -18,8 +18,9 @@ execute as @s at @s align xyz if block ~ ~ ~ minecraft:acacia_door run summon mi
 
 execute as @s at @s align xyz if block ~ ~ ~ minecraft:dark_oak_door run summon minecraft:armor_stand ~0.5 ~ ~0.5 {Tags:["DimensionalDoors","DD_portal","DD_dark_oak","DD_particle_D","DD_new","DD_close"],Rotation:[0f,0f],Marker:1b,Invisible:1b}
 
-
 function dimensionaldoors:root/create/datatagging/summon/door/1.16
 function dimensionaldoors:root/create/datatagging/summon/door/1.19
 function dimensionaldoors:root/create/datatagging/summon/door/1.20
 function dimensionaldoors:root/create/datatagging/summon/door/1.21
+function dimensionaldoors:root/create/datatagging/summon/door/1.21.4
+function dimensionaldoors:root/create/datatagging/summon/door/26.3

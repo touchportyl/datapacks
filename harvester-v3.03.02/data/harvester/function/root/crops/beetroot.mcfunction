@@ -1,6 +1,5 @@
 # this code harvests and replants one plot of beetroot
 
-
 # harvest
 execute if entity @s[tag=HV_beetroot] run setblock ~ ~1 ~ minecraft:beetroots[age=0] destroy
 execute if entity @s[tag=!HV_beetroot] run setblock ~ ~1 ~ minecraft:air destroy

@@ -1,6 +1,5 @@
 # this code controls the harvesting process
 
-
 #> wheat
 execute if block ~ ~1 ~ minecraft:wheat[age=7] run function harvester:root/crops/wheat
 

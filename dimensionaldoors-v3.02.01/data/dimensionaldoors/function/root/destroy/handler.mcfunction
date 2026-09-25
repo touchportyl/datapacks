@@ -10,6 +10,5 @@ forceload remove ~ ~
 # hard check if it's supposed to be loaded
 execute at @e[tag=DD_portal,tag=!DD_destroy,distance=..32] run forceload add ~ ~
 
-
 # kill tag
 kill @s

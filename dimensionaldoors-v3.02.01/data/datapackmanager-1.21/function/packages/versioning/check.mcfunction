@@ -2,8 +2,9 @@
 scoreboard players operation VERSION$minecraft.current DatapackManager = VERSION$minecraft.backward DatapackManager
 scoreboard players remove VERSION$minecraft.current DatapackManager 1
 
-# check for all supported versions
-# every version requires some form of new block or change in command pattern in order for it to be "checked"
+# check for all supported versions, oldest first
+# every version file leads with a probe that only parses on that version or newer, so an older client drops the whole file and the score is never set
+# versions are encoded as major*10000 + minor*100 + patch; the year.drop releases (26.1 and later) are stored as 1.<year>.<drop>, so 26.3 is 12603
 execute unless score VERSION$minecraft.current DatapackManager matches 11404.. run function datapackmanager-1.21:packages/versioning/versions/1.14.4
 execute unless score VERSION$minecraft.current DatapackManager matches 11502.. run function datapackmanager-1.21:packages/versioning/versions/1.15.2
 execute unless score VERSION$minecraft.current DatapackManager matches 11605.. run function datapackmanager-1.21:packages/versioning/versions/1.16.5
@@ -19,17 +20,16 @@ execute unless score VERSION$minecraft.current DatapackManager matches 12105.. r
 execute unless score VERSION$minecraft.current DatapackManager matches 12106.. run function datapackmanager-1.21:packages/versioning/versions/1.21.6
 execute unless score VERSION$minecraft.current DatapackManager matches 12107.. run function datapackmanager-1.21:packages/versioning/versions/1.21.7
 execute unless score VERSION$minecraft.current DatapackManager matches 12109.. run function datapackmanager-1.21:packages/versioning/versions/1.21.9
-
-# patch version
-# this is for updating minor changes that do not affect compatibility
-execute if score VERSION$minecraft.current DatapackManager matches 12109.. run function datapackmanager-1.21:packages/versioning/versions/patch
-
+execute unless score VERSION$minecraft.current DatapackManager matches 12111.. run function datapackmanager-1.21:packages/versioning/versions/1.21.11
+execute unless score VERSION$minecraft.current DatapackManager matches 12601.. run function datapackmanager-1.21:packages/versioning/versions/26.1
+execute unless score VERSION$minecraft.current DatapackManager matches 12602.. run function datapackmanager-1.21:packages/versioning/versions/26.2
+execute unless score VERSION$minecraft.current DatapackManager matches 12603.. run function datapackmanager-1.21:packages/versioning/versions/26.3
 
 # throw warnings/errors for unsupported versions
 execute if score VERSION$minecraft.current DatapackManager < VERSION$minecraft.backward DatapackManager run function datapackmanager-1.21:packages/alerts/minecraftnotcompatible
 execute if score VERSION$minecraft.current DatapackManager > VERSION$minecraft.forward DatapackManager run function datapackmanager-1.21:packages/alerts/minecraftunknownversion
 
 # push state to all listening datapacks
-# only activate if the version is not
+# only activate if the version is supported
 scoreboard players operation FLAG$isActive DatapackManager = BOOL$false DatapackManager
 execute if score VERSION$minecraft.current DatapackManager >= VERSION$minecraft.backward DatapackManager run scoreboard players operation FLAG$isActive DatapackManager = BOOL$true DatapackManager

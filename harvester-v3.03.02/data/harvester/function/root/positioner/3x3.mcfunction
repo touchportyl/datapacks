@@ -5,7 +5,6 @@
 # 8 1 4
 # 7 6 5
 
-
 execute positioned ~ ~ ~ run function harvester:root/crops/filter
 execute positioned ~1 ~ ~ run function harvester:root/crops/filter
 execute positioned ~1 ~ ~1 run function harvester:root/crops/filter

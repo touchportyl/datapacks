@@ -1,11 +1,9 @@
 # main game loop
 
-
 # effect range = 32
 execute if score CONFIG$disableparticles DimensionalDoors = BOOL$false DatapackManager as @e[tag=DD_portal] at @s if entity @a[distance=..32] run function dimensionaldoors:effects/ambience/door
 
 execute as @e[tag=DD_particleLink] at @s run function dimensionaldoors:effects/ambience/linkedconduit
-
 
 # check for destroyed doors
 function dimensionaldoors:root/destroy/filter
@@ -19,7 +17,6 @@ execute as @e[tag=DD_portal,tag=DD_close] at @s run function dimensionaldoors:ro
 
 # reset timers for closed doors
 execute as @e[tag=DD_portal] at @s if block ~ ~ ~ #minecraft:doors[open=false] run scoreboard players reset @s DimensionalDoors
-
 
 # loop
 execute if score LOOP$main.isActive DimensionalDoors = BOOL$true DatapackManager run schedule function dimensionaldoors:root/loops/main 1t

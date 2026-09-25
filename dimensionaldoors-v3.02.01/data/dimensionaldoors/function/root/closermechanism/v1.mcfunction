@@ -12,3 +12,5 @@ function dimensionaldoors:root/closermechanism/v1/1.16
 function dimensionaldoors:root/closermechanism/v1/1.19
 function dimensionaldoors:root/closermechanism/v1/1.20
 function dimensionaldoors:root/closermechanism/v1/1.21
+function dimensionaldoors:root/closermechanism/v1/1.21.4
+function dimensionaldoors:root/closermechanism/v1/26.3

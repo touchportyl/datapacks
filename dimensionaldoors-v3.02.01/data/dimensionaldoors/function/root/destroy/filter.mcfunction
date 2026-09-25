@@ -1,12 +1,10 @@
 # tag if the door doesn't exist
 execute as @e[tag=DD_portal] at @s unless block ~ ~ ~ #minecraft:doors run tag @s add DD_destroy
 
-
 # tag any corresponding doors that are linked to doors queued for destruction
-# don't use `distance=0.5..` because it limits the search to the same dimension
-# use `sort=furthest` instead
-execute as @e[tag=DD_portal] at @s if score @s DD_doorID = @e[tag=DD_destroy,sort=furthest,limit=1] DD_doorID run tag @s add DD_destroy
-
+# every queued door is matched on its own, so two linked pairs broken in the same tick are both removed
+# no distance or sort argument is used, because either would limit the search to the same dimension
+execute as @e[tag=DD_destroy] run function dimensionaldoors:root/destroy/partners
 
 # handle destruction
 execute as @e[tag=DD_destroy] at @s run function dimensionaldoors:root/destroy/handler

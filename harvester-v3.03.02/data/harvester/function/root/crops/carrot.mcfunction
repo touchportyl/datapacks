@@ -1,6 +1,5 @@
 # this code harvests and replants one plot of carrot
 
-
 # harvest
 execute if entity @s[tag=HV_carrot] run setblock ~ ~1 ~ minecraft:carrots[age=0] destroy
 execute if entity @s[tag=!HV_carrot] run setblock ~ ~1 ~ minecraft:air destroy

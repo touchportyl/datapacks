@@ -3,6 +3,7 @@ tellraw @a [{"text":"","color":"gray"},{"text":" + ","color":"green"},{"text":"D
 
 # load the default config
 function dimensionaldoors:defaultconfig
+function datapackmanager-1.21:packages/alerts/configurationloaded
 
 function dimensionaldoors:packages/configtriggers/create
 

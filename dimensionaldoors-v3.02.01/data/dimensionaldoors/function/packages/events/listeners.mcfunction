@@ -2,7 +2,6 @@
 # if event is active and not handled
 # copy the event for processing
 
-
 # config command
 
 # if the event is active, initialize
@@ -13,7 +12,6 @@ execute unless score EVENT$command.config DimensionalDoors = BOOL$true DatapackM
 
 # reset the handled state when both the copied event and the initial event are no longer active
 execute unless score EVENT$command.config DatapackManager = BOOL$true DatapackManager unless score EVENT$command.config DimensionalDoors = BOOL$true DatapackManager run scoreboard players reset EVENT$command.config.handled DimensionalDoors
-
 
 # uninstall command
 execute unless score EVENT$command.uninstall.handled DimensionalDoors = BOOL$true DatapackManager if score EVENT$command.uninstall DatapackManager = BOOL$true DatapackManager run scoreboard players operation EVENT$command.uninstall.handled DimensionalDoors = BOOL$false DatapackManager

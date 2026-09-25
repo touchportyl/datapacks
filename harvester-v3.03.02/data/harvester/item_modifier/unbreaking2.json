@@ -4,7 +4,7 @@
     "type": "minecraft:score",
     "target": "this",
     "score": "HV_damagetool",
-    "scale": 0.000001
+    "scale": 1e-06
   },
   "add": false,
   "conditions": [

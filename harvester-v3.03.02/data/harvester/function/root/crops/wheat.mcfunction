@@ -1,6 +1,5 @@
 # this code harvests and replants one plot of wheat
 
-
 # harvest
 execute if entity @s[tag=HV_wheat] run setblock ~ ~1 ~ minecraft:wheat[age=0] destroy
 execute if entity @s[tag=!HV_wheat] run setblock ~ ~1 ~ minecraft:air destroy

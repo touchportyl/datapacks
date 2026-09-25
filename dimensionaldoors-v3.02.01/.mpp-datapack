@@ -6,11 +6,11 @@
   "id": "DD",
   "author": "touchportyl",
   "description": "Survival friendly method to transport players and animals over long distances and across dimensions!",
-  "packFormatVersionMin": 48,
-  "packFormatVersionMax": 48,
+  "packFormatVersionMin": 15,
+  "packFormatVersionMax": 121,
   "tags": [
     "ready for release"
   ],
-  "minecraftVersion": "26.1.2",
+  "minecraftVersion": "26.3",
   "unknownTagsLintMode": "warning"
 }

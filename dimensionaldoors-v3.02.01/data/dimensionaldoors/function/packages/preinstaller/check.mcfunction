@@ -5,18 +5,16 @@ scoreboard objectives add DimensionalDoors dummy [{"text":"Dimensional Doors","c
 # increment the datapack counter
 function datapackmanager-1.21:root/datapackcounter/increment
 
-
 # set the datapack's current version
 scoreboard players set VERSION$datapack.current DimensionalDoors 30201
 
 # set the backward and forward compatible minecraft versions
 scoreboard players set VERSION$minecraft.backward DimensionalDoors 11404
-scoreboard players set VERSION$minecraft.forward DimensionalDoors 12110
+scoreboard players set VERSION$minecraft.forward DimensionalDoors 12603
 
 # special override to run this datapack on other versions
 scoreboard players operation VERSION$ignorecompatibility.backward DimensionalDoors = BOOL$false DatapackManager
 scoreboard players operation VERSION$ignorecompatibility.forward DimensionalDoors = BOOL$true DatapackManager
-
 
 # check datapack version
 function dimensionaldoors:packages/versioning/check

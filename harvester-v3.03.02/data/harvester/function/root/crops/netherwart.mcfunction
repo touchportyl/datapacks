@@ -1,6 +1,5 @@
 # this code harvests and replants one plot of nether wart
 
-
 # harvest
 execute if entity @s[tag=HV_netherwart] run setblock ~ ~1 ~ minecraft:nether_wart[age=0] destroy
 execute if entity @s[tag=!HV_netherwart] run setblock ~ ~1 ~ minecraft:air destroy

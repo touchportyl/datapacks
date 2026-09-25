@@ -25,5 +25,4 @@ tag @s remove HV_netherwart
 
 tag @s remove HV_success
 
-
 scoreboard players reset @s HV_sneak_time

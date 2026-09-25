@@ -5,18 +5,16 @@ scoreboard objectives add Harvester dummy [{"text":"Harvester","color":"gold"}]
 # increment the datapack counter
 function datapackmanager-1.21:root/datapackcounter/increment
 
-
 # set the datapack's current version
 scoreboard players set VERSION$datapack.current Harvester 30302
 
 # set the backward and forward compatible minecraft versions
 scoreboard players set VERSION$minecraft.backward Harvester 11404
-scoreboard players set VERSION$minecraft.forward Harvester 12108
+scoreboard players set VERSION$minecraft.forward Harvester 12603
 
 # special override to run this datapack on other versions
 scoreboard players operation VERSION$ignorecompatibility.backward Harvester = BOOL$false DatapackManager
 scoreboard players operation VERSION$ignorecompatibility.forward Harvester = BOOL$true DatapackManager
-
 
 # check datapack version
 function harvester:packages/versioning/check

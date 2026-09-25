@@ -30,5 +30,4 @@
 - Add a config option to restrict door creation to the same material (oak doors can only be linked to other oak doors)
 - Suggestions welcome!
 
-
 ---

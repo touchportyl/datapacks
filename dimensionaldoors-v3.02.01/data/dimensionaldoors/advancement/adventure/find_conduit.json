@@ -21,7 +21,9 @@
       "conditions": {
         "items": [
           {
-            "item": "minecraft:conduit"
+            "items": [
+              "minecraft:conduit"
+            ]
           }
         ]
       }

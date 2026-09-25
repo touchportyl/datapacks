@@ -1,6 +1,5 @@
 # event handlers
 
-
 # initialize event
 
 execute if score EVENT$initialize.handled DatapackManager = BOOL$false DatapackManager if score EVENT$initialize.copy DatapackManager = BOOL$true DatapackManager run function datapackmanager-1.21:packages/events/event/initialize

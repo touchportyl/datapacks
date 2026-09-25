@@ -1,11 +1,11 @@
 # notify
 tellraw @a [{"text":"","color":"gray"},{"text":" + ","color":"green"},{"text":"Harvester","color":"gold"},{"text":" >","color":"white"},{"text":" Installed."}]
 
-# compatibility: porting version number from the old v1.3/v2.0 system to new datapack manager
-scoreboard players operation VERSION$datapack.latest Harvester = $h.version TP_version
+# the version number of the old v1.3/v2.0 system is ported in packages/versioning/check, before the updates run
 
 # load the default config
 function harvester:defaultconfig
+function datapackmanager-1.21:packages/alerts/configurationloaded
 
 function harvester:packages/configtriggers/create
 
