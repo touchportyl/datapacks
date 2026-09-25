@@ -1,0 +1,10 @@
+{
+  "criteria": {
+    "tick": {
+      "trigger": "minecraft:tick"
+    }
+  },
+  "rewards": {
+    "function": "datapackmanager-2:root/command/enable"
+  }
+}

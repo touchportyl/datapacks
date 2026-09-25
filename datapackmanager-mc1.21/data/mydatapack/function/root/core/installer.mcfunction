@@ -3,6 +3,7 @@ tellraw @a [{"text":"","color":"gray"},{"text":" + ","color":"green"},{"text":"M
 
 # load the default config
 function mydatapack:defaultconfig
+function datapackmanager-1.21:packages/alerts/configurationloaded
 
 function mydatapack:packages/configtriggers/create
 

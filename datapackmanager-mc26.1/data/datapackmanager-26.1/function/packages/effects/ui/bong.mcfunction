@@ -1,1 +1,0 @@
-playsound minecraft:block.note_block.pling player @s ~ ~ ~ .6 .5 .6

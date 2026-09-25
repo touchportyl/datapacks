@@ -5,9 +5,7 @@ function datapackmanager-1.21:packages/effects/ui/jingle
 # update
 scoreboard players set VERSION$datapack.latest MyDatapack 10100
 
-
 # change color (light_purple) of "MyDatapack"
 scoreboard objectives modify MyDatapack displayname [{"text":"My Datapack","color":"light_purple"}]
-
 
 # cleanup

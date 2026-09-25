@@ -1,4 +1,5 @@
-# Reward function of the enable_command advancement: arms the CLI for a player on their first
-# tick online. Deliberately not revoked - revoking would let the tick trigger re-grant it every
-# tick, turning a once-per-player hook into a per-tick loop.
+# Reward function of the hidden advancement datapackmanager-2:enable_command (criterion
+# minecraft:tick, no display), which every player earns on their first second online: it arms
+# the CLI for that player. Deliberately never revoked - revoking would let the tick trigger
+# re-grant it every second, turning a once-per-player hook into a per-second loop.
 scoreboard players enable @s dm_command

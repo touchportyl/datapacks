@@ -1,9 +1,10 @@
 # Runs only in the active generation, once per load.
-# Supported Minecraft range, encoded major*10000 + minor*100 + patch (each field stays below 100).
-# backward: 1.14.4 - the /schedule floor. forward: one below the 26.3 sentinel leaf, so 26.3 and
-# anything newer trips the "too new" alert.
+# Supported Minecraft range, encoded major*10000 + minor*100 + patch. Year.drop releases are
+# stored as 1.<year>.<drop>, so 26.3 is 12603. backward: 1.14.4, the /schedule floor. forward:
+# 26.3, the newest leaf. Anything newer saturates at 12603 until a sentinel leaf exists, so
+# pack.mcmeta's max_format is the guard for versions newer than 26.3.
 scoreboard players set VERSION$minecraft.backward DatapackManager 11404
-scoreboard players set VERSION$minecraft.forward DatapackManager 260299
+scoreboard players set VERSION$minecraft.forward DatapackManager 12603
 
 function datapackmanager-2:packages/versioning/check
 

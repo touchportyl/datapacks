@@ -1,1 +1,0 @@
-scoreboard players set EVENT$command.uninstall.handled DatapackManager 1

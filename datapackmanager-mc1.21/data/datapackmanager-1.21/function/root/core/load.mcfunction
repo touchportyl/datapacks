@@ -6,10 +6,8 @@ scoreboard objectives add DatapackManager dummy [{"text":"Datapack Manager","col
 scoreboard players set BOOL$false DatapackManager 0
 scoreboard players set BOOL$true DatapackManager 1
 
-
 # reset counter
 function datapackmanager-1.21:root/datapackcounter/reset
-
 
 # initialize
 # delay to allow all loads to run first before performing any init

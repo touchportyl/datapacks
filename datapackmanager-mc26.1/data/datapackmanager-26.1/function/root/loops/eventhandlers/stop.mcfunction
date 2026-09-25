@@ -1,1 +1,0 @@
-scoreboard players operation LOOP$eventhandlers.isActive DatapackManager = BOOL$false DatapackManager

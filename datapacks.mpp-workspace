@@ -62,15 +62,14 @@
       "datapackmanager-mc1.21": [
         "datapackmanager-mc1.21/data"
       ],
-      "datapackmanager-mc26.1": [
-        "datapackmanager-mc26.1/data",
-        "datapackmanager-mc26.1/data/datapackmanager-1.21",
-        "datapackmanager-mc26.1/data/datapackmanager-26.1",
-        "datapackmanager-mc26.1/data/datapackmanager-26.1/function",
-        "datapackmanager-mc26.1/data/datapackmanager-26.1/function/root",
-        "datapackmanager-mc26.1/data/datapackmanager-26.1/function/packages",
-        "datapackmanager-mc26.1/data/datapackmanager-26.1/function/packages/versioning",
-        "datapackmanager-mc26.1/data/datapackmanager-26.1/function/packages/versioning/versions"
+      "datapackmanager-mc26.3": [
+        "datapackmanager-mc26.3/data",
+        "datapackmanager-mc26.3/data/datapackmanager-26.3",
+        "datapackmanager-mc26.3/data/datapackmanager-26.3/function",
+        "datapackmanager-mc26.3/data/datapackmanager-26.3/function/root",
+        "datapackmanager-mc26.3/data/datapackmanager-26.3/function/packages",
+        "datapackmanager-mc26.3/data/datapackmanager-26.3/function/packages/versioning",
+        "datapackmanager-mc26.3/data/datapackmanager-26.3/function/packages/versioning/versions"
       ]
     },
     "explorerTagFilter": {
@@ -93,7 +92,7 @@
   "datapacks": [
     "racetotheend-v1.00.00",
     "datapackmanager-mc1.21",
-    "datapackmanager-mc26.1",
+    "datapackmanager-mc26.3",
     "swiftghasts-v1.00.01",
     "dev",
     "harvester-v3.03.02",
