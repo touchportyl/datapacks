@@ -27,7 +27,7 @@ Second entry of the day. Every dead reference inside the DatapackManager trees i
 | Item | Value |
 |---|---|
 | Branch | `main` at `5321573`, the pushed handover baseline |
-| This entry | Working tree only, nothing committed or staged |
+| This entry | Commit `edcd279` on `staging`, followed by this log update as its own commit; both pushed to origin the same day. `main` stays at `5321573` until the next release merge, per the README's branch model. |
 | Retired | `datapackmanager-mc26.1/` (108 tracked files deleted) |
 | New | `datapackmanager-mc26.3/` (111 files, derived), four version leaves in the template, `datapackmanager-core/data/datapackmanager-2/advancement/enable_command.json`, `_pythontools/format_check.py`, `_pythontools/derive_generation.py` |
 
