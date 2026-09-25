@@ -1,0 +1,59 @@
+# Harvester smoke test, run by load_test.py on every version.
+#
+# Step syntax: run <command> | assert <execute condition> | refute <execute condition> | wait <seconds>s
+# A line may start with a version window in brackets, like [1.20.5..], and only runs inside it.
+#
+# Sneak detection needs a real player, so an armor stand carrying the tags hoe detection would
+# have set drives the positioner directly: a stone hoe's 3x3 star with wheat seeds.
+# Then the durability write: an iron hoe (250 uses) goes through root/damagetool2 twice with the
+# remaining durability damagetool would have computed, and must end at damage 1, then 2.
+# That runs the item modifier set of the version under test.
+
+@packs harvester
+
+# no random ticks while the scenario runs, so crops cannot grow between a harvest and its check
+# (1.21.11 renamed the game rule)
+[..1.21.10] run gamerule randomTickSpeed 0
+[1.21.11..] run gamerule random_tick_speed 0
+run forceload add -16 -16 15 15
+run fill -4 98 -4 4 98 4 minecraft:stone
+run fill -4 99 -4 4 99 4 minecraft:farmland
+run fill -4 100 -4 4 103 4 minecraft:air
+run fill -3 100 -3 3 100 3 minecraft:wheat[age=7]
+run kill @e[type=minecraft:item]
+run kill @e[type=minecraft:experience_orb]
+run summon minecraft:armor_stand 0.5 100 0.5 {NoGravity:1b,Tags:["lt_farmer","HV_3x3_star","HV_wheat"]}
+run execute as @e[tag=lt_farmer] at @s align xz positioned ~0.5 ~ ~0.5 run function harvester:root/positioner/filter
+
+# the 3x3 star: centre and the four sides are replanted, the corners stay ripe
+assert if block 0 99 0 minecraft:farmland
+assert if block 0 100 0 minecraft:wheat
+refute if block 0 100 0 minecraft:wheat[age=7]
+assert if block 0 100 0 minecraft:wheat[age=0]
+assert if block 1 100 0 minecraft:wheat[age=0]
+assert if block -1 100 0 minecraft:wheat[age=0]
+assert if block 0 100 1 minecraft:wheat[age=0]
+assert if block 0 100 -1 minecraft:wheat[age=0]
+assert if block 1 100 1 minecraft:wheat[age=7]
+assert if block 2 100 0 minecraft:wheat[age=7]
+assert if entity @e[type=minecraft:item,x=0,y=100,z=0,distance=..4]
+assert if entity @e[type=minecraft:experience_orb,x=0,y=100,z=0,distance=..4]
+assert if entity @e[tag=lt_farmer,tag=HV_success]
+
+# tool damage (the main loop only damages tools from 1.19.4)
+[1.19.4..] run item replace entity @e[tag=lt_farmer,limit=1] weapon.mainhand with minecraft:iron_hoe
+[1.19.4..] run scoreboard players set TEMP$a HV_damagetool 250
+[1.19.4..] run scoreboard players set @e[tag=lt_farmer] HV_damagetool 249
+[1.19.4..] run execute as @e[tag=lt_farmer] run function harvester:root/damagetool2
+[1.19.4..1.20.4] assert if data entity @e[tag=lt_farmer,limit=1] HandItems[0].tag{Damage:1}
+[1.20.5..] assert if items entity @e[tag=lt_farmer,limit=1] weapon.mainhand minecraft:iron_hoe[minecraft:damage=1]
+[1.19.4..] run scoreboard players set TEMP$a HV_damagetool 250
+[1.19.4..] run scoreboard players set @e[tag=lt_farmer] HV_damagetool 248
+[1.19.4..] run execute as @e[tag=lt_farmer] run function harvester:root/damagetool2
+[1.19.4..1.20.4] assert if data entity @e[tag=lt_farmer,limit=1] HandItems[0].tag{Damage:2}
+[1.20.5..] assert if items entity @e[tag=lt_farmer,limit=1] weapon.mainhand minecraft:iron_hoe[minecraft:damage=2]
+
+run kill @e[tag=lt_farmer]
+
+[..1.21.10] run gamerule randomTickSpeed 3
+[1.21.11..] run gamerule random_tick_speed 3

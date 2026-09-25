@@ -1,0 +1,90 @@
+# Dimensional Doors smoke test, run by load_test.py on every version.
+#
+# Step syntax: run <command> | assert <execute condition> | refute <execute condition> | wait <seconds>s
+# A line may start with a version window in brackets, like [1.20.5..], and only runs inside it.
+# assert and refute send "execute <condition>" and read the console's "Test passed" or "Test failed".
+#
+# Creates an entrance, links an exit, checks that both doors close in their own orientation
+# (the pre-2026-09-25 v2 closer turned every door to face west with a right hinge), sends an
+# armor stand through, then breaks two linked pairs in the same tick and checks that all four
+# portals are gone (the old partner search left one behind).
+# conduitdetection is called directly because the background loop only scans when a player
+# holds the find_conduit advancement.
+
+@packs dimensionaldoors
+
+# no random ticks while the scenario runs, so crops cannot grow between a harvest and its check
+# (1.21.11 renamed the game rule)
+[..1.21.10] run gamerule randomTickSpeed 0
+[1.21.11..] run gamerule random_tick_speed 0
+run forceload add -16 -16 31 31
+run fill -3 99 -3 13 99 9 minecraft:stone
+run fill -3 100 -3 13 103 9 minecraft:air
+run kill @e[type=minecraft:item]
+
+# pair A: entrance facing north with a left hinge, exit facing east with a right hinge
+run setblock 0 100 0 minecraft:oak_door[half=lower,facing=north,hinge=left,open=true]
+run setblock 0 101 0 minecraft:oak_door[half=upper,facing=north,hinge=left,open=true]
+run setblock 10 100 0 minecraft:oak_door[half=lower,facing=east,hinge=right,open=true]
+run setblock 10 101 0 minecraft:oak_door[half=upper,facing=east,hinge=right,open=true]
+
+[..1.20.4] run summon minecraft:item 0.5 100.1 0.5 {Item:{id:"minecraft:conduit",Count:1b}}
+[1.20.5..] run summon minecraft:item 0.5 100.1 0.5 {Item:{id:"minecraft:conduit",count:1}}
+wait 1.5s
+run function dimensionaldoors:root/create/conduitdetection
+assert if entity @e[tag=DD_portal,tag=DD_entrance]
+assert if entity @e[type=minecraft:item,tag=DD_particleLink]
+
+# new portals are tagged DD_close, so the main loop closes the door on the next tick
+wait 1s
+assert if block 0 100 0 minecraft:oak_door[half=lower,facing=north,hinge=left,open=false]
+assert if block 0 101 0 minecraft:oak_door[half=upper,facing=north,hinge=left,open=false]
+
+run tp @e[type=minecraft:item,tag=DD_particleLink] 10.5 100.1 0.5
+wait 1.5s
+run function dimensionaldoors:root/create/conduitdetection
+assert if entity @e[tag=DD_portal,tag=DD_exit]
+refute if entity @e[type=minecraft:item,tag=DD_particleLink]
+wait 1s
+assert if block 10 100 0 minecraft:oak_door[half=lower,facing=east,hinge=right,open=false]
+assert if block 10 101 0 minecraft:oak_door[half=upper,facing=east,hinge=right,open=false]
+
+# teleport: open the entrance with redstone and put an armor stand on one of its sample points
+# (the entrance marker faces yaw 0, so ^-0.22 ^0.15 ^0.425 is x 0.28, y 100.15, z 0.925)
+# setblock cannot open one half of a door before 1.21.4: it recomputes the new half from the
+# closed other half first and reports "Could not set the block"
+run setblock -1 100 0 minecraft:redstone_block
+assert if block 0 100 0 minecraft:oak_door[half=lower,open=true]
+run summon minecraft:armor_stand 0.28 100.15 0.925 {NoGravity:1b,Tags:["lt_traveler"]}
+wait 1s
+assert if entity @e[tag=lt_traveler,x=9.5,y=100,z=0.5,distance=..1.5]
+refute if entity @e[tag=lt_traveler,x=0.5,y=100,z=0.5,distance=..3]
+run kill @e[tag=lt_traveler]
+run setblock -1 100 0 minecraft:air
+
+# pair B next to pair A
+run setblock 0 100 6 minecraft:spruce_door[half=lower,facing=south,hinge=right,open=true]
+run setblock 0 101 6 minecraft:spruce_door[half=upper,facing=south,hinge=right,open=true]
+run setblock 10 100 6 minecraft:birch_door[half=lower,facing=west,hinge=left,open=true]
+run setblock 10 101 6 minecraft:birch_door[half=upper,facing=west,hinge=left,open=true]
+[..1.20.4] run summon minecraft:item 0.5 100.1 6.5 {Item:{id:"minecraft:conduit",Count:1b}}
+[1.20.5..] run summon minecraft:item 0.5 100.1 6.5 {Item:{id:"minecraft:conduit",count:1}}
+wait 1.5s
+run function dimensionaldoors:root/create/conduitdetection
+run tp @e[type=minecraft:item,tag=DD_particleLink] 10.5 100.1 6.5
+wait 1.5s
+run function dimensionaldoors:root/create/conduitdetection
+assert if entity @e[tag=DD_portal,tag=DD_exit,x=10.5,y=100,z=6.5,distance=..1]
+wait 1s
+assert if block 0 100 6 minecraft:spruce_door[half=lower,facing=south,hinge=right,open=false]
+assert if block 10 100 6 minecraft:birch_door[half=lower,facing=west,hinge=left,open=false]
+
+# break both entrances in one command, so both pairs are queued for destruction in the same tick
+run scoreboard players operation CONFIG$destroyexplosively DimensionalDoors = BOOL$false DatapackManager
+run fill 0 100 0 0 101 6 minecraft:air
+wait 1s
+refute if entity @e[tag=DD_portal]
+run scoreboard players operation CONFIG$destroyexplosively DimensionalDoors = BOOL$true DatapackManager
+
+[..1.21.10] run gamerule randomTickSpeed 3
+[1.21.11..] run gamerule random_tick_speed 3

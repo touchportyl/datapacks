@@ -1,0 +1,261 @@
+{
+  "_about": [
+    "Configuration for load_test.py.",
+    "packs: pack folders to build and load together (globs; the highest match is used).",
+    "layout: dual builds both the singular (1.21+) and plural (1.14 to 1.20) data folders, as the released zips do; singular is what a plain MPP export produces.",
+    "versions: every Minecraft version to test, with the VERSION$minecraft.current value DatapackManager must detect there (golden values, recorded from real servers).",
+    "quick: the subset --quick runs.",
+    "resources: version windows for resources that are meant to load only on some versions. The first matching rule wins; anything without a rule must load on every tested version.",
+    "  loads: A..B, A.., ..B, never; {name} is the version in the resource's own name.",
+    "  must_fail_outside: the resource must also fail to load outside its window (version probes)."
+  ],
+  "packs": [
+    "harvester-v*",
+    "dimensionaldoors-v*"
+  ],
+  "layout": "dual",
+  "versions": {
+    "1.14.4": {
+      "minecraft_current": 11404
+    },
+    "1.15.2": {
+      "minecraft_current": 11502
+    },
+    "1.16.5": {
+      "minecraft_current": 11605
+    },
+    "1.17.1": {
+      "minecraft_current": 11701
+    },
+    "1.18.2": {
+      "minecraft_current": 11802
+    },
+    "1.19.4": {
+      "minecraft_current": 11904
+    },
+    "1.20.1": {
+      "minecraft_current": 12002
+    },
+    "1.20.2": {
+      "minecraft_current": 12002
+    },
+    "1.20.4": {
+      "minecraft_current": 12003
+    },
+    "1.20.6": {
+      "minecraft_current": 12005
+    },
+    "1.21.1": {
+      "minecraft_current": 12005
+    },
+    "1.21.3": {
+      "minecraft_current": 12102
+    },
+    "1.21.4": {
+      "minecraft_current": 12104
+    },
+    "1.21.5": {
+      "minecraft_current": 12105
+    },
+    "1.21.6": {
+      "minecraft_current": 12106
+    },
+    "1.21.8": {
+      "minecraft_current": 12107
+    },
+    "1.21.10": {
+      "minecraft_current": 12109
+    },
+    "1.21.11": {
+      "minecraft_current": 12111
+    },
+    "26.1.2": {
+      "minecraft_current": 12601
+    },
+    "26.2": {
+      "minecraft_current": 12602
+    }
+  },
+  "quick": [
+    "1.16.5",
+    "1.20.4",
+    "1.21.1",
+    "1.21.11",
+    "26.2"
+  ],
+  "resources": [
+    {
+      "match": "function datapackmanager-1.21:packages/versioning/versions/1.15.2",
+      "loads": "1.15..",
+      "must_fail_outside": true,
+      "why": "the probe id exists from 1.15, so 1.15 clients before 1.15.2 report this leaf"
+    },
+    {
+      "match": "function datapackmanager-1.21:packages/versioning/versions/1.16.5",
+      "loads": "1.16..",
+      "must_fail_outside": true,
+      "why": "the probe id exists from 1.16, so 1.16 clients before 1.16.5 report this leaf"
+    },
+    {
+      "match": "function datapackmanager-1.21:packages/versioning/versions/1.17.1",
+      "loads": "1.17..",
+      "must_fail_outside": true,
+      "why": "the probe id exists from 1.17, so 1.17 clients before 1.17.1 report this leaf"
+    },
+    {
+      "match": "function datapackmanager-1.21:packages/versioning/versions/1.18.2",
+      "loads": "1.18..",
+      "must_fail_outside": true,
+      "why": "the probe id exists from 1.18, so 1.18 clients before 1.18.2 report this leaf"
+    },
+    {
+      "match": "function datapackmanager-1.21:packages/versioning/versions/1.19.4",
+      "loads": "1.19..",
+      "must_fail_outside": true,
+      "why": "the probe id exists from 1.19, so 1.19 clients before 1.19.4 report this leaf"
+    },
+    {
+      "match": "function datapackmanager-1.21:packages/versioning/versions/1.20.2",
+      "loads": "1.20..",
+      "must_fail_outside": true,
+      "why": "the probe id exists from 1.20, so 1.20 clients before 1.20.2 report this leaf"
+    },
+    {
+      "match": "function datapackmanager-1.21:packages/versioning/versions/*",
+      "loads": "{name}..",
+      "must_fail_outside": true,
+      "why": "version probe: parses on its own release and later only"
+    },
+    {
+      "match": "function dimensionaldoors:root/create/datatagging/summon/door/*",
+      "loads": "{name}..",
+      "why": "doors added in that release"
+    },
+    {
+      "match": "function dimensionaldoors:root/closermechanism/v[12]/*",
+      "loads": "{name}..",
+      "why": "doors added in that release"
+    },
+    {
+      "match": "function dimensionaldoors:root/closermechanism/v[12]/crimson",
+      "loads": "1.16.."
+    },
+    {
+      "match": "function dimensionaldoors:root/closermechanism/v[12]/warped",
+      "loads": "1.16.."
+    },
+    {
+      "match": "function dimensionaldoors:root/closermechanism/v[12]/mangrove",
+      "loads": "1.19.."
+    },
+    {
+      "match": "function dimensionaldoors:root/closermechanism/v[12]/bamboo",
+      "loads": "1.20.."
+    },
+    {
+      "match": "function dimensionaldoors:root/closermechanism/v[12]/cherry",
+      "loads": "1.20.."
+    },
+    {
+      "match": "function dimensionaldoors:root/closermechanism/v[12]/*copper*",
+      "loads": "1.21.."
+    },
+    {
+      "match": "function dimensionaldoors:root/closermechanism/v[12]/paleoak",
+      "loads": "1.21.4.."
+    },
+    {
+      "match": "function dimensionaldoors:root/closermechanism/v[12]/poplar",
+      "loads": "26.3.."
+    },
+    {
+      "match": "function dimensionaldoors:compatibility/flash",
+      "loads": "..1.21.8",
+      "why": "flash takes no options before 1.21.9 and requires a color from 1.21.9"
+    },
+    {
+      "match": "function dimensionaldoors:compatibility/flash-1.21.9",
+      "loads": "{name}.."
+    },
+    {
+      "match": "function dimensionaldoors:compatibility/sonic_boom",
+      "loads": "1.19.."
+    },
+    {
+      "match": "function dimensionaldoors:compatibility/debug/samplepoint",
+      "loads": "1.17..",
+      "why": "small_flame"
+    },
+    {
+      "match": "function dimensionaldoors:effects/warppoint",
+      "loads": "1.17..",
+      "why": "small_flame; the file holds only the particle"
+    },
+    {
+      "match": "function dimensionaldoors:compatibility/root/create/datatagging/summon/createlinkedconduit-1.21",
+      "loads": "1.21.5..",
+      "why": "the lore list mixes text component types, which SNBT accepts from 1.21.5"
+    },
+    {
+      "match": "function harvester:compatibility/effects/toolbreak-1.19",
+      "loads": "1.16..1.20.4",
+      "why": "netherite_hoe arrived in 1.16; positional particle options were replaced by SNBT in 1.20.5"
+    },
+    {
+      "match": "function harvester:compatibility/effects/toolbreak-1.20",
+      "loads": "1.20.5..",
+      "why": "SNBT particle options"
+    },
+    {
+      "match": "function harvester:compatibility/effects/toolbreak-copper",
+      "loads": "1.21.9..",
+      "why": "copper_hoe"
+    },
+    {
+      "match": "function harvester:effects/toolbreak",
+      "loads": "1.17..",
+      "why": "/item arrived in 1.17; tool damage runs from 1.19.4"
+    },
+    {
+      "match": "function harvester:compatibility/is_sneaking",
+      "loads": "1.15..26.2",
+      "why": "execute if predicate arrived in 1.15; the predicate file does not load on 26.3"
+    },
+    {
+      "match": "function harvester:compatibility/is_sneaking-26.3",
+      "loads": "26.3.."
+    },
+    {
+      "match": "function harvester:compatibility/setdamage-26.3",
+      "loads": "26.3.."
+    },
+    {
+      "match": "function harvester:compatibility/setdamage-*",
+      "loads": "1.17..26.2",
+      "why": "/item arrived in 1.17; these modifiers do not load on 26.3"
+    },
+    {
+      "match": "item_modifier harvester:26.3/*",
+      "loads": "26.3.."
+    },
+    {
+      "match": "item_modifier harvester:*",
+      "loads": "1.17..26.2",
+      "why": "loot function format before 26.3"
+    },
+    {
+      "match": "predicate harvester:26.3/*",
+      "loads": "26.3.."
+    },
+    {
+      "match": "predicate harvester:*",
+      "loads": "..26.2",
+      "why": "predicate format before 26.3"
+    },
+    {
+      "match": "advancement harvester:a_better_harvester",
+      "loads": "never",
+      "why": "its parent tinkererscraft:root_skills comes from Tinkerer's Craft, which the test world does not have"
+    }
+  ]
+}
